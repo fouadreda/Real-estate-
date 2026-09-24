@@ -4,10 +4,8 @@ import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import { requireUser } from "@/lib/auth";
 import { randomUUID } from "crypto";
-import { mkdir, unlink, writeFile } from "fs/promises";
-import path from "path";
+import { put, del } from "@vercel/blob";
 
-const UPLOAD_DIR = path.join(process.cwd(), "public", "uploads");
 const MAX_FILE_BYTES = 10 * 1024 * 1024;
 const ALLOWED_TYPES = new Set([
   "image/jpeg",
@@ -32,17 +30,17 @@ async function saveUpload(file: File, userId: string) {
     throw new Error("Files must be smaller than 10 MB.");
   }
 
-  await mkdir(UPLOAD_DIR, { recursive: true });
-
   const storedName = `${randomUUID()}${EXTENSIONS[file.type]}`;
-  const bytes = Buffer.from(await file.arrayBuffer());
-  await writeFile(path.join(UPLOAD_DIR, storedName), bytes);
+  const blob = await put(storedName, file, {
+    access: "public",
+    contentType: file.type,
+  });
 
   return prisma.attachment.create({
     data: {
       filename: file.name || storedName,
       fileType: file.type,
-      url: `/uploads/${storedName}`,
+      url: blob.url,
       uploadedById: userId,
     },
   });
@@ -99,8 +97,7 @@ export async function uploadExpenseAttachment(expenseId: string, formData: FormD
 }
 
 async function deleteStoredFile(url: string) {
-  const storedName = path.basename(url);
-  await unlink(path.join(UPLOAD_DIR, storedName)).catch(() => {});
+  await del(url).catch(() => {});
 }
 
 export async function deleteLeaseAttachment(leaseId: string, attachmentId: string) {
