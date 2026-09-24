@@ -1,0 +1,180 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum PropertyCategory {
+  APARTMENT
+  VILLA
+  WAREHOUSE
+  SHOP
+  OFFICE
+  LAND
+  COMMERCIAL
+  OTHER
+}
+
+enum PropertyStatus {
+  VACANT
+  OCCUPIED
+  MAINTENANCE
+}
+
+enum LeaseStatus {
+  ACTIVE
+  PENDING
+  ENDED
+  TERMINATED
+}
+
+enum BillingFrequency {
+  MONTHLY
+  QUARTERLY
+  SEMIANNUAL
+  ANNUAL
+}
+
+enum Role {
+  MANAGER
+  ADMIN
+}
+
+enum Language {
+  EN
+  FR
+}
+
+enum ExpenseCategory {
+  MAINTENANCE
+  UTILITIES
+  REPAIRS
+  INSURANCE
+  TAXES
+  MANAGEMENT_FEE
+  OTHER
+}
+
+model User {
+  id           String        @id @default(cuid())
+  name         String
+  email        String        @unique
+  passwordHash String
+  role         Role          @default(MANAGER)
+  language     Language      @default(EN)
+  sessions     Session[]
+  expenses     Expense[]
+  payments     Payment[]
+  attachments  Attachment[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+}
+
+model Property {
+  id        String           @id @default(cuid())
+  name      String
+  category  PropertyCategory @default(APARTMENT)
+  address   String
+  city      String
+  dimension Float?
+  bedrooms  Int?
+  bathrooms Float?
+  price     Float?
+  status    PropertyStatus   @default(VACANT)
+  notes     String?
+  leases    Lease[]
+  expenses  Expense[]
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @updatedAt
+}
+
+model Tenant {
+  id        String   @id @default(cuid())
+  firstName String
+  lastName  String
+  email     String?
+  phone     String?
+  company   String?
+  idNumber  String?
+  address   String?
+  city      String?
+  notes     String?
+  leases    Lease[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Lease {
+  id               String           @id @default(cuid())
+  property         Property         @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  propertyId       String
+  tenant           Tenant           @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  tenantId         String
+  startDate        DateTime
+  endDate          DateTime
+  rentAmount       Float
+  billingFrequency BillingFrequency @default(MONTHLY)
+  depositAmount    Float            @default(0)
+  status           LeaseStatus      @default(ACTIVE)
+  payments         Payment[]
+  attachments      Attachment[]
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+}
+
+model Payment {
+  id           String   @id @default(cuid())
+  lease        Lease    @relation(fields: [leaseId], references: [id], onDelete: Cascade)
+  leaseId      String
+  amount       Float
+  date         DateTime
+  method       String?
+  notes        String?
+  recordedBy   User?    @relation(fields: [recordedById], references: [id], onDelete: SetNull)
+  recordedById String?
+  attachments  Attachment[]
+  createdAt    DateTime @default(now())
+}
+
+model Attachment {
+  id           String   @id @default(cuid())
+  filename     String
+  fileType     String
+  url          String
+  lease        Lease?   @relation(fields: [leaseId], references: [id], onDelete: Cascade)
+  leaseId      String?
+  payment      Payment? @relation(fields: [paymentId], references: [id], onDelete: Cascade)
+  paymentId    String?
+  expense      Expense? @relation(fields: [expenseId], references: [id], onDelete: Cascade)
+  expenseId    String?
+  uploadedBy   User?    @relation(fields: [uploadedById], references: [id], onDelete: SetNull)
+  uploadedById String?
+  createdAt    DateTime @default(now())
+}
+
+model Expense {
+  id           String          @id @default(cuid())
+  property     Property        @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  propertyId   String
+  category     ExpenseCategory @default(OTHER)
+  amount       Float
+  date         DateTime
+  description  String?
+  recordedBy   User?           @relation(fields: [recordedById], references: [id], onDelete: SetNull)
+  recordedById String?
+  attachments  Attachment[]
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+}
