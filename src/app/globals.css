@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-paper text-stone-900;
+}
+
+h1,
+h2,
+h3 {
+  @apply font-display;
+  text-wrap: balance;
+}
+
+.card {
+  @apply rounded-2xl border border-stone-200/80 bg-paper-raised p-5 shadow-card;
+}
+
+.stat-tile {
+  @apply relative min-w-0 rounded-2xl border border-stone-200/80 bg-paper-raised p-5 pl-6 shadow-card;
+}
+
+.stat-tile::before {
+  content: "";
+  @apply absolute inset-y-0 left-0 w-1 rounded-l-2xl bg-brand-500;
+}
+
+.stat-tile .stat-label {
+  @apply text-xs font-medium uppercase tracking-wide text-stone-500;
+}
+
+.stat-tile .stat-value {
+  @apply mt-1.5 break-words font-display text-xl font-semibold leading-tight text-stone-900 sm:text-2xl;
+}
+
+.btn {
+  @apply inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium transition-colors;
+}
+
+.btn-primary {
+  @apply btn bg-brand-600 text-white hover:bg-brand-700;
+}
+
+.btn-secondary {
+  @apply btn bg-stone-100 text-stone-700 hover:bg-stone-200;
+}
+
+.btn-danger {
+  @apply btn bg-red-50 text-red-600 hover:bg-red-100;
+}
+
+.input {
+  @apply w-full rounded-lg border border-stone-300 bg-paper-raised px-3 py-2 text-sm text-stone-900 focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500;
+}
+
+.label {
+  @apply mb-1 block text-sm font-medium text-stone-700;
+}
+
+.badge {
+  @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium;
+}
