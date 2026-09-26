@@ -3,6 +3,8 @@ import { prisma } from "@/lib/prisma";
 import { formatMoney, formatDate, daysUntil } from "@/lib/format";
 import { requireUserWithDictionary } from "@/lib/auth";
 import { computeLeaseLedger, monthlyEquivalentRent } from "@/lib/ledger";
+import { leaseLocationName } from "@/lib/leaseLocation";
+import { tenantDisplayName } from "@/lib/tenantName";
 import Badge from "@/components/Badge";
 
 export default async function DashboardPage() {
@@ -13,19 +15,19 @@ export default async function DashboardPage() {
     await Promise.all([
       prisma.property.findMany(),
       prisma.lease.findMany({
-        where: { status: "ACTIVE" },
-        include: { tenant: true, property: true },
+        where: { status: "ACTIVE", needsReview: false },
+        include: { tenant: true, property: { include: { building: true } } },
       }),
       prisma.lease.findMany({
-        where: { status: { not: "PENDING" } },
-        include: { tenant: true, property: true, payments: true },
+        where: { status: { not: "PENDING" }, needsReview: false },
+        include: { tenant: true, property: { include: { building: true } }, payments: true },
       }),
       prisma.lease.findMany({
         where: {
           status: "ACTIVE",
-          endDate: { lte: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000) },
+          endDate: { not: null, lte: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000) },
         },
-        include: { tenant: true, property: true },
+        include: { tenant: true, property: { include: { building: true } } },
         orderBy: { endDate: "asc" },
       }),
     ]);
@@ -83,15 +85,13 @@ export default async function DashboardPage() {
                 <li key={lease.id} className="flex items-center justify-between py-3">
                   <div>
                     <Link href={`/leases/${lease.id}`} className="font-medium text-stone-900 hover:underline">
-                      {lease.tenant.firstName} {lease.tenant.lastName}
+                      {tenantDisplayName(lease.tenant)}
                     </Link>
-                    <p className="text-sm text-stone-500">
-                      {lease.property.name}
-                    </p>
+                    <p className="text-sm text-stone-500">{leaseLocationName(lease)}</p>
                   </div>
                   <div className="text-right text-sm">
-                    <p className="text-stone-900">{formatDate(lease.endDate, locale)}</p>
-                    <p className="text-stone-500">{t.dashboard.days(daysUntil(lease.endDate))}</p>
+                    <p className="text-stone-900">{lease.endDate ? formatDate(lease.endDate, locale) : "—"}</p>
+                    <p className="text-stone-500">{lease.endDate ? t.dashboard.days(daysUntil(lease.endDate)) : ""}</p>
                   </div>
                 </li>
               ))}
@@ -117,11 +117,9 @@ export default async function DashboardPage() {
                       href={`/leases/${lease.id}`}
                       className="font-medium text-stone-900 hover:underline"
                     >
-                      {lease.tenant.firstName} {lease.tenant.lastName}
+                      {tenantDisplayName(lease.tenant)}
                     </Link>
-                    <p className="text-sm text-stone-500">
-                      {lease.property.name}
-                    </p>
+                    <p className="text-sm text-stone-500">{leaseLocationName(lease)}</p>
                   </div>
                   <div className="text-right text-sm">
                     <p className="font-medium text-red-600">{formatMoney(ledger.unpaid, locale)}</p>

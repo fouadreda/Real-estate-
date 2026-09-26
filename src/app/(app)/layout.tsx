@@ -9,13 +9,20 @@ export default async function AppLayout({ children }: { children: React.ReactNod
 
   const [leasesWithPayments, expiringCount] = await Promise.all([
     prisma.lease.findMany({
-      where: { status: { not: "PENDING" } },
-      select: { startDate: true, endDate: true, rentAmount: true, billingFrequency: true, payments: { select: { amount: true } } },
+      where: { status: { not: "PENDING" }, needsReview: false },
+      select: {
+        startDate: true,
+        endDate: true,
+        ledgerStartDate: true,
+        rentAmount: true,
+        billingFrequency: true,
+        payments: { select: { amount: true, kind: true, confirmed: true, date: true } },
+      },
     }),
     prisma.lease.count({
       where: {
         status: "ACTIVE",
-        endDate: { lte: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000) },
+        endDate: { not: null, lte: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000) },
       },
     }),
   ]);
