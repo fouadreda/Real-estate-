@@ -1,9 +1,11 @@
 import Link from "next/link";
+import { prisma } from "@/lib/prisma";
 import { createProperty } from "@/lib/actions/properties";
 import { requireUserWithDictionary } from "@/lib/auth";
 
 export default async function NewPropertyPage() {
   const { t } = await requireUserWithDictionary();
+  const buildings = await prisma.building.findMany({ orderBy: { name: "asc" } });
 
   return (
     <div className="max-w-xl space-y-6">
@@ -32,6 +34,37 @@ export default async function NewPropertyPage() {
             <option value="OTHER">{t.status.OTHER}</option>
           </select>
         </div>
+
+        <div className="rounded-lg border border-stone-200 p-3">
+          <label className="label" htmlFor="buildingId">{t.propertyForm.building}</label>
+          <select className="input" id="buildingId" name="buildingId" defaultValue="">
+            <option value="">{t.propertyForm.noBuilding}</option>
+            {buildings.map((b) => (
+              <option key={b.id} value={b.id}>{b.name}</option>
+            ))}
+            <option value="__new__">{t.propertyForm.newBuilding}</option>
+          </select>
+          <p className="mt-1 text-xs text-stone-500">{t.propertyForm.buildingHint}</p>
+          <div className="mt-2 grid grid-cols-2 gap-3">
+            <input className="input" name="newBuildingName" placeholder={t.propertyForm.newBuildingName} />
+            <select className="input" name="newBuildingType" defaultValue="BUILDING">
+              <option value="BUILDING">{t.status.BUILDING}</option>
+              <option value="VILLA">{t.status.VILLA}</option>
+              <option value="WAREHOUSE_SITE">{t.status.WAREHOUSE_SITE}</option>
+            </select>
+          </div>
+          <div className="mt-2 grid grid-cols-2 gap-4">
+            <div>
+              <label className="label" htmlFor="floor">{t.units.floor}</label>
+              <input className="input" id="floor" name="floor" placeholder={t.units.floorPlaceholder} />
+            </div>
+            <div>
+              <label className="label" htmlFor="unitCode">{t.units.code}</label>
+              <input className="input" id="unitCode" name="unitCode" placeholder={t.units.codePlaceholder} />
+            </div>
+          </div>
+        </div>
+
         <div>
           <label className="label" htmlFor="address">{t.propertyForm.address}</label>
           <input className="input" id="address" name="address" required placeholder="123 Maple St" />
@@ -49,6 +82,10 @@ export default async function NewPropertyPage() {
             <label className="label" htmlFor="price">{t.propertyForm.price}</label>
             <input className="input" id="price" name="price" type="number" min="0" step="0.01" placeholder="Optional" />
           </div>
+        </div>
+        <div>
+          <label className="label" htmlFor="areaLabel">{t.propertyForm.areaLabel}</label>
+          <input className="input" id="areaLabel" name="areaLabel" placeholder={t.propertyForm.areaLabelPlaceholder} />
         </div>
         <div className="grid grid-cols-2 gap-4">
           <div>
