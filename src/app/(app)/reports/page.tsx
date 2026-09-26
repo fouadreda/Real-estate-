@@ -175,32 +175,34 @@ export default async function ReportsPage({
           <div className="card text-sm text-stone-500">{t.reports.allPaid}</div>
         ) : (
           <div className="card overflow-hidden p-0">
-            <table className="w-full text-sm">
-              <thead className="border-b border-stone-200 bg-stone-50 text-left text-stone-500">
-                <tr>
-                  <th className="px-5 py-3 font-medium">{t.reports.tenantHeader}</th>
-                  <th className="px-5 py-3 font-medium">{t.reports.propertyHeader}</th>
-                  <th className="px-5 py-3 font-medium">{t.reports.oldestDueHeader}</th>
-                  <th className="px-5 py-3 font-medium">{t.reports.amountHeader}</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-stone-100">
-                {arRows.map(({ lease, unpaid, oldestUnpaidDate }) => (
-                  <tr key={lease.id}>
-                    <td className="px-5 py-3">
-                      <Link href={`/leases/${lease.id}`} className="font-medium text-stone-900 hover:underline">
-                        {tenantDisplayName(lease.tenant)}
-                      </Link>
-                    </td>
-                    <td className="px-5 py-3 text-stone-600">{leaseLocationName(lease)}</td>
-                    <td className="px-5 py-3 text-stone-600">
-                      {oldestUnpaidDate ? formatDate(oldestUnpaidDate, locale) : "—"}
-                    </td>
-                    <td className="px-5 py-3 font-medium text-red-600">{formatMoney(unpaid, locale)}</td>
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[560px] text-sm">
+                <thead className="border-b border-stone-200 bg-stone-50 text-left text-stone-500">
+                  <tr>
+                    <th className="px-5 py-3 font-medium">{t.reports.tenantHeader}</th>
+                    <th className="px-5 py-3 font-medium">{t.reports.propertyHeader}</th>
+                    <th className="px-5 py-3 font-medium">{t.reports.oldestDueHeader}</th>
+                    <th className="px-5 py-3 font-medium">{t.reports.amountHeader}</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody className="divide-y divide-stone-100">
+                  {arRows.map(({ lease, unpaid, oldestUnpaidDate }) => (
+                    <tr key={lease.id}>
+                      <td className="px-5 py-3">
+                        <Link href={`/leases/${lease.id}`} className="font-medium text-stone-900 hover:underline">
+                          {tenantDisplayName(lease.tenant)}
+                        </Link>
+                      </td>
+                      <td className="px-5 py-3 text-stone-600">{leaseLocationName(lease)}</td>
+                      <td className="px-5 py-3 text-stone-600">
+                        {oldestUnpaidDate ? formatDate(oldestUnpaidDate, locale) : "—"}
+                      </td>
+                      <td className="px-5 py-3 font-medium text-red-600">{formatMoney(unpaid, locale)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         )}
       </div>
@@ -212,26 +214,28 @@ export default async function ReportsPage({
             <div className="card text-sm text-stone-500">{t.reports.noPayments}</div>
           ) : (
             <div className="card overflow-hidden p-0">
-              <table className="w-full text-sm">
-                <thead className="border-b border-stone-200 bg-stone-50 text-left text-stone-500">
-                  <tr>
-                    <th className="px-5 py-3 font-medium">{t.reports.dueHeader}</th>
-                    <th className="px-5 py-3 font-medium">{t.reports.tenantHeader}</th>
-                    <th className="px-5 py-3 font-medium">{t.reports.amountHeader}</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-stone-100">
-                  {filteredPayments.slice(0, 25).map((payment) => (
-                    <tr key={payment.id}>
-                      <td className="px-5 py-3 text-stone-600">{formatDate(payment.date, locale)}</td>
-                      <td className="px-5 py-3 text-stone-900">
-                        {tenantDisplayName(payment.lease.tenant)}
-                      </td>
-                      <td className="px-5 py-3 text-stone-600">{formatMoney(payment.amount, locale)}</td>
+              <div className="overflow-x-auto">
+                <table className="w-full min-w-[420px] text-sm">
+                  <thead className="border-b border-stone-200 bg-stone-50 text-left text-stone-500">
+                    <tr>
+                      <th className="px-5 py-3 font-medium">{t.reports.dueHeader}</th>
+                      <th className="px-5 py-3 font-medium">{t.reports.tenantHeader}</th>
+                      <th className="px-5 py-3 font-medium">{t.reports.amountHeader}</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody className="divide-y divide-stone-100">
+                    {filteredPayments.slice(0, 25).map((payment) => (
+                      <tr key={payment.id}>
+                        <td className="px-5 py-3 text-stone-600">{formatDate(payment.date, locale)}</td>
+                        <td className="px-5 py-3 text-stone-900">
+                          {tenantDisplayName(payment.lease.tenant)}
+                        </td>
+                        <td className="px-5 py-3 text-stone-600">{formatMoney(payment.amount, locale)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           )}
         </div>
@@ -264,36 +268,38 @@ export default async function ReportsPage({
           <div className="card text-sm text-stone-500">{t.reports.noExpenses}</div>
         ) : (
           <div className="card overflow-hidden p-0">
-            <table className="w-full text-sm">
-              <thead className="border-b border-stone-200 bg-stone-50 text-left text-stone-500">
-                <tr>
-                  <th className="px-5 py-3 font-medium">{t.expenses.dateHeader}</th>
-                  <th className="px-5 py-3 font-medium">{t.expenses.propertyHeader}</th>
-                  <th className="px-5 py-3 font-medium">{t.expenses.categoryHeader}</th>
-                  <th className="px-5 py-3 font-medium">{t.expenses.descriptionHeader}</th>
-                  <th className="px-5 py-3 font-medium">{t.expenses.amountHeader}</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-stone-100">
-                {filteredExpenses.slice(0, 25).map((expense) => (
-                  <tr key={expense.id}>
-                    <td className="px-5 py-3 text-stone-600">{formatDate(expense.date, locale)}</td>
-                    <td className="px-5 py-3">
-                      <Link href={`/properties/${expense.propertyId}`} className="text-stone-900 hover:underline">
-                        {expense.property.name}
-                      </Link>
-                    </td>
-                    <td className="px-5 py-3">
-                      <Badge status={expense.category} label={t.status[expense.category]} />
-                    </td>
-                    <td className="px-5 py-3 text-stone-600">
-                      {expense.description ?? <span className="text-stone-400">—</span>}
-                    </td>
-                    <td className="px-5 py-3 font-medium text-stone-900">{formatMoney(expense.amount, locale)}</td>
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[640px] text-sm">
+                <thead className="border-b border-stone-200 bg-stone-50 text-left text-stone-500">
+                  <tr>
+                    <th className="px-5 py-3 font-medium">{t.expenses.dateHeader}</th>
+                    <th className="px-5 py-3 font-medium">{t.expenses.propertyHeader}</th>
+                    <th className="px-5 py-3 font-medium">{t.expenses.categoryHeader}</th>
+                    <th className="px-5 py-3 font-medium">{t.expenses.descriptionHeader}</th>
+                    <th className="px-5 py-3 font-medium">{t.expenses.amountHeader}</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody className="divide-y divide-stone-100">
+                  {filteredExpenses.slice(0, 25).map((expense) => (
+                    <tr key={expense.id}>
+                      <td className="px-5 py-3 text-stone-600">{formatDate(expense.date, locale)}</td>
+                      <td className="px-5 py-3">
+                        <Link href={`/properties/${expense.propertyId}`} className="text-stone-900 hover:underline">
+                          {expense.property.name}
+                        </Link>
+                      </td>
+                      <td className="px-5 py-3">
+                        <Badge status={expense.category} label={t.status[expense.category]} />
+                      </td>
+                      <td className="px-5 py-3 text-stone-600">
+                        {expense.description ?? <span className="text-stone-400">—</span>}
+                      </td>
+                      <td className="px-5 py-3 font-medium text-stone-900">{formatMoney(expense.amount, locale)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         )}
       </div>
