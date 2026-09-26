@@ -1,0 +1,3446 @@
+{
+ "newTenants": [
+  {
+   "id": "T066",
+   "name": "SEVENFOOD"
+  },
+  {
+   "id": "T067",
+   "name": "AFRICA BIO COMMODITIES"
+  },
+  {
+   "id": "T068",
+   "name": "INTERFOOD"
+  },
+  {
+   "id": "T069",
+   "name": "ETG"
+  },
+  {
+   "id": "T070",
+   "name": "AFRIQUE CENTURY"
+  },
+  {
+   "id": "T071",
+   "name": "Mr DHANRAJ"
+  }
+ ],
+ "newActiveLeases": [
+  {
+   "id": "B088",
+   "unitId": "L057",
+   "tenantId": "T066",
+   "startDate": "2026-06-01",
+   "status": "ACTIVE",
+   "rent": 800000,
+   "rows": [
+    {
+     "amount": 1600000,
+     "date": "2026-06-01",
+     "monthsCovered": 2,
+     "notes": "Payement de 2 mois de loyer du 01/05/2026 au 30/06/2026"
+    },
+    {
+     "amount": 2400000,
+     "date": "2026-08-01",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/07/2026 au 30/09/2026"
+    }
+   ],
+   "paidThrough": "2026-09-30"
+  },
+  {
+   "id": "B089",
+   "unitId": "L059",
+   "tenantId": "T067",
+   "startDate": "2026-06-01",
+   "status": "ACTIVE",
+   "rent": 800000,
+   "rows": [
+    {
+     "amount": 1600000,
+     "date": "2026-06-01",
+     "monthsCovered": 2,
+     "notes": "Payement de 2 mois de loyer du 01/05/2026 au 30/06/2026"
+    },
+    {
+     "amount": 2400000,
+     "date": "2026-08-01",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/07/2026 au 30/09/2026"
+    }
+   ],
+   "paidThrough": "2026-09-30"
+  },
+  {
+   "id": "B090",
+   "unitId": "L058",
+   "tenantId": "T068",
+   "startDate": "2026-06-01",
+   "status": "ACTIVE",
+   "rent": 400000,
+   "rows": [
+    {
+     "amount": 800000,
+     "date": "2026-06-01",
+     "monthsCovered": 2,
+     "notes": "Payement de 2 mois de loyer du 01/05/2026 au 30/06/2026"
+    },
+    {
+     "amount": 1200000,
+     "date": "2026-08-01",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/07/2026 au 30/09/2026"
+    }
+   ],
+   "paidThrough": "2026-09-30"
+  }
+ ],
+ "newHistoricalLeases": [
+  {
+   "id": "B091",
+   "unitId": "L074",
+   "tenantId": "T069",
+   "startDate": "2025-02-01",
+   "endDate": "2025-11-01",
+   "status": "ENDED",
+   "rows": [
+    {
+     "amount": 24000000,
+     "date": "2025-02-01",
+     "monthsCovered": 6,
+     "notes": "Payement de loyer de 6 mois du 01/01/2025 au 30/06/2025"
+    },
+    {
+     "amount": 8000000,
+     "date": "2025-11-01",
+     "monthsCovered": 2,
+     "notes": "Payement de loyer de 2 mois du 01/07/2025 au 31/08/2025"
+    }
+   ],
+   "rent": 4000000
+  },
+  {
+   "id": "B092",
+   "unitId": "L075",
+   "tenantId": "T070",
+   "startDate": "2025-01-01",
+   "endDate": "2025-09-01",
+   "status": "ENDED",
+   "rows": [
+    {
+     "amount": 10500000,
+     "date": "2025-01-01",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 01/12/2024 au 28/02/2025"
+    },
+    {
+     "amount": 10500000,
+     "date": "2025-03-01",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 01/03/2025 au 31/05/2025"
+    },
+    {
+     "amount": 10500000,
+     "date": "2025-06-01",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 01/06/2025 au 31/08/2025"
+    },
+    {
+     "amount": 10500000,
+     "date": "2025-09-01",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 01/09/2025 au 30/11/2025"
+    }
+   ],
+   "rent": 3500000
+  },
+  {
+   "id": "B093",
+   "unitId": "L083",
+   "tenantId": "T071",
+   "startDate": "2025-03-01",
+   "endDate": "2025-11-01",
+   "status": "ENDED",
+   "rows": [
+    {
+     "amount": 21000000,
+     "date": "2025-03-01",
+     "monthsCovered": 6,
+     "notes": "Payement de loyer de 6 mois du 01/03/2025 au 31/08/2025"
+    },
+    {
+     "amount": 14000000,
+     "date": "2025-11-01",
+     "monthsCovered": 4,
+     "notes": "Payement de loyer de 4 mois du 01/07/2024 au 31/12/2025"
+    }
+   ],
+   "rent": 3500000
+  }
+ ],
+ "matchedPayments": [
+  {
+   "leaseId": "B002",
+   "unitId": "L002",
+   "group": "Assigame",
+   "amount": 1500000,
+   "date": "2026-01-01",
+   "monthsCovered": 5,
+   "notes": "Payement de solde loyer de 5 mois du 01/08/2025 au 30/01/2026"
+  },
+  {
+   "leaseId": "B020",
+   "unitId": "L020",
+   "group": "Assigame",
+   "amount": 300000,
+   "date": "2026-01-01",
+   "monthsCovered": 6,
+   "notes": "Payement partiel de 6 mois de loyer du 29/07/2025 au 28/01/2026"
+  },
+  {
+   "leaseId": "B025",
+   "unitId": "L025",
+   "group": "Assigame",
+   "amount": 210000,
+   "date": "2026-01-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 09/11/2025 au 08/02/2026"
+  },
+  {
+   "leaseId": "B006",
+   "unitId": "L006",
+   "group": "Assigame",
+   "amount": 907500,
+   "date": "2026-01-01",
+   "monthsCovered": 6,
+   "notes": "Payement de 6 mois de loyer du 12/07/2025 au 11/01/2026"
+  },
+  {
+   "leaseId": "B011",
+   "unitId": "L011",
+   "group": "Assigame",
+   "amount": 363000,
+   "date": "2026-01-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 27/12/2025 au 26/03/2026"
+  },
+  {
+   "leaseId": "B019",
+   "unitId": "L019",
+   "group": "Assigame",
+   "amount": 330000,
+   "date": "2026-02-01",
+   "monthsCovered": 3,
+   "notes": "Payement de solde loyer de 3 mois du 10/01/2026 au 09/04/2026"
+  },
+  {
+   "leaseId": "B016",
+   "unitId": "L016",
+   "group": "Assigame",
+   "amount": 660000,
+   "date": "2026-02-01",
+   "monthsCovered": 6,
+   "notes": "Payement de 6 mois de loyer du 01/09/2025 au 28/02/2026"
+  },
+  {
+   "leaseId": "B003",
+   "unitId": "L003",
+   "group": "Assigame",
+   "amount": 350000,
+   "date": "2026-02-01",
+   "monthsCovered": null,
+   "notes": "Payement d'un (1) mois de loyer du 01/05/2025 au 31/05/2025"
+  },
+  {
+   "leaseId": "B009",
+   "unitId": "L009",
+   "group": "Assigame",
+   "amount": 151250,
+   "date": "2026-02-01",
+   "monthsCovered": null,
+   "notes": "Payement d'un (1) mois de loyer du 01/05/2025 au 31/06/2025"
+  },
+  {
+   "leaseId": "B013",
+   "unitId": "L013",
+   "group": "Assigame",
+   "amount": 121000,
+   "date": "2026-02-01",
+   "monthsCovered": null,
+   "notes": "Payement d'un (1) mois de loyer du 11/06/2025 au 11/07/2025"
+  },
+  {
+   "leaseId": "B005",
+   "unitId": "L005",
+   "group": "Assigame",
+   "amount": 756250,
+   "date": "2026-02-01",
+   "monthsCovered": 2,
+   "notes": "Location de magasin Payement de 2 mois de caution et de 3 mois de loyer du 01/02/2026 au 31/03/2026"
+  },
+  {
+   "leaseId": "B007",
+   "unitId": "L007",
+   "group": "Assigame",
+   "amount": 302500,
+   "date": "2026-02-01",
+   "monthsCovered": 2,
+   "notes": "Payement de 2 mois de loyer du 01/11/2025 au 31/12/2025"
+  },
+  {
+   "leaseId": "B008",
+   "unitId": "L008",
+   "group": "Assigame",
+   "amount": 412500,
+   "date": "2026-02-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/04/2026 au 30/06/2026"
+  },
+  {
+   "leaseId": "B024",
+   "unitId": "L024",
+   "group": "Assigame",
+   "amount": 480000,
+   "date": "2026-02-01",
+   "monthsCovered": 6,
+   "notes": "Payement de 6 mois de loyer du 01/09/2025 au 28/02/2026"
+  },
+  {
+   "leaseId": "B026",
+   "unitId": "L026",
+   "group": "Assigame",
+   "amount": 210000,
+   "date": "2026-02-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/02/2026 au 30/04/2026"
+  },
+  {
+   "leaseId": "B028",
+   "unitId": "L028",
+   "group": "Assigame",
+   "amount": 420000,
+   "date": "2026-02-01",
+   "monthsCovered": 6,
+   "notes": "Payement de 6 mois de loyer du 01/09/2025 au 28/02/2026"
+  },
+  {
+   "leaseId": "B025",
+   "unitId": "L025",
+   "group": "Assigame",
+   "amount": 210000,
+   "date": "2026-03-01",
+   "monthsCovered": 3,
+   "notes": "Payement de solde loyer de 3 mois du 09/02/2026 au 08/05/2026"
+  },
+  {
+   "leaseId": "B017",
+   "unitId": "L017",
+   "group": "Assigame",
+   "amount": 300000,
+   "date": "2026-03-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 08/01/2026 au 07/04/2026"
+  },
+  {
+   "leaseId": "B015",
+   "unitId": "L015",
+   "group": "Assigame",
+   "amount": 242000,
+   "date": "2026-03-01",
+   "monthsCovered": 2,
+   "notes": "Payement de 2 mois de loyer du 01/04/2025 au 31/05/2025"
+  },
+  {
+   "leaseId": "B021",
+   "unitId": "L021",
+   "group": "Assigame",
+   "amount": 270000,
+   "date": "2026-03-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 20/01/2026 au 19/04/2026"
+  },
+  {
+   "leaseId": "B001",
+   "unitId": "L001",
+   "group": "Assigame",
+   "amount": 1050000,
+   "date": "2026-03-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/10/2025 au 31/12/2025"
+  },
+  {
+   "leaseId": "B009",
+   "unitId": "L009",
+   "group": "Assigame",
+   "amount": 302500,
+   "date": "2026-04-01",
+   "monthsCovered": 2,
+   "notes": "Payement de 2 mois de loyer du 01/07/2025 au 31/08/2025"
+  },
+  {
+   "leaseId": "B013",
+   "unitId": "L013",
+   "group": "Assigame",
+   "amount": 242000,
+   "date": "2026-04-01",
+   "monthsCovered": 2,
+   "notes": "Payement de 2 mois de loyer du 11/07/2025 au 10/09/2025"
+  },
+  {
+   "leaseId": "B003",
+   "unitId": "L003",
+   "group": "Assigame",
+   "amount": 350000,
+   "date": "2026-04-01",
+   "monthsCovered": null,
+   "notes": "Payement d'un (1) mois de loyer du 01/06/2025 au 30/06/2025"
+  },
+  {
+   "leaseId": "B004",
+   "unitId": "L004",
+   "group": "Assigame",
+   "amount": 1050000,
+   "date": "2026-04-01",
+   "monthsCovered": 3,
+   "notes": "Payement de solde loyer de 3 mois du 10/10/2025 au 09/01/2026"
+  },
+  {
+   "leaseId": "B022",
+   "unitId": "L022",
+   "group": "Assigame",
+   "amount": 270000,
+   "date": "2026-04-01",
+   "monthsCovered": 3,
+   "notes": "Payement de solde loyer de 3 mois du 10/10/2025 au 09/01/2026"
+  },
+  {
+   "leaseId": "B019",
+   "unitId": "L019",
+   "group": "Assigame",
+   "amount": 330000,
+   "date": "2026-04-01",
+   "monthsCovered": 3,
+   "notes": "Payement de solde loyer de 3 mois du 10/04/2026 au 09/07/2026"
+  },
+  {
+   "leaseId": "B008",
+   "unitId": "L008",
+   "group": "Assigame",
+   "amount": 412500,
+   "date": "2026-04-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/04/2026 au 30/06/2026"
+  },
+  {
+   "leaseId": "B010",
+   "unitId": "L010",
+   "group": "Assigame",
+   "amount": 210000,
+   "date": "2026-04-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/02/2026 au 30/04/2026"
+  },
+  {
+   "leaseId": "B014",
+   "unitId": "L014",
+   "group": "Assigame",
+   "amount": 363000,
+   "date": "2026-04-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/01/2026 au 31/03/2026"
+  },
+  {
+   "leaseId": "B015",
+   "unitId": "L015",
+   "group": "Assigame",
+   "amount": 269000,
+   "date": "2026-04-01",
+   "monthsCovered": 3,
+   "notes": "Payement de solde de loyer de 3 mois du 01/06/2025 au 31/08/2025"
+  },
+  {
+   "leaseId": "B023",
+   "unitId": "L023",
+   "group": "Assigame",
+   "amount": 480000,
+   "date": "2026-04-01",
+   "monthsCovered": 6,
+   "notes": "Payement de 6 mois de loyer du 01/12/2025 au 31/05/2026"
+  },
+  {
+   "leaseId": "B027",
+   "unitId": "L027",
+   "group": "Assigame",
+   "amount": 180000,
+   "date": "2026-04-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 15/03/2026 au 14/06/2026"
+  },
+  {
+   "leaseId": "B029",
+   "unitId": "L029",
+   "group": "Assigame",
+   "amount": 420000,
+   "date": "2026-04-01",
+   "monthsCovered": 6,
+   "notes": "Payement de 6 mois de loyer du 04/10/2025 au 03/10/2025"
+  },
+  {
+   "leaseId": "B002",
+   "unitId": "L002",
+   "group": "Assigame",
+   "amount": 1050000,
+   "date": "2026-05-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/02/2026 au 30/04/2026"
+  },
+  {
+   "leaseId": "B017",
+   "unitId": "L017",
+   "group": "Assigame",
+   "amount": 300000,
+   "date": "2026-05-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 08/04/2026 au 07/07/2026"
+  },
+  {
+   "leaseId": "B011",
+   "unitId": "L011",
+   "group": "Assigame",
+   "amount": 363000,
+   "date": "2026-05-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 27/03/2026 au 26/06/2026"
+  },
+  {
+   "leaseId": "B007",
+   "unitId": "L007",
+   "group": "Assigame",
+   "amount": 453750,
+   "date": "2026-06-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/01/2026 au 31/03/2026"
+  },
+  {
+   "leaseId": "B006",
+   "unitId": "L006",
+   "group": "Assigame",
+   "amount": 453750,
+   "date": "2026-06-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 12/01/2026 au 11/04/2026"
+  },
+  {
+   "leaseId": "B012",
+   "unitId": "L012",
+   "group": "Assigame",
+   "amount": 2178000,
+   "date": "2026-06-01",
+   "monthsCovered": 18,
+   "notes": "Payement de 18 mois de loyer du 01/01/2025 au 30/06/2026"
+  },
+  {
+   "leaseId": "B020",
+   "unitId": "L020",
+   "group": "Assigame",
+   "amount": 500000,
+   "date": "2026-06-01",
+   "monthsCovered": 6,
+   "notes": "Payement partiel de 6 mois de loyer du 29/01/2026 au 28/07/2026"
+  },
+  {
+   "leaseId": "B026",
+   "unitId": "L026",
+   "group": "Assigame",
+   "amount": 210000,
+   "date": "2026-06-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/05/2026 au 31/07/2026"
+  },
+  {
+   "leaseId": "B027",
+   "unitId": "L027",
+   "group": "Assigame",
+   "amount": 180000,
+   "date": "2026-06-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 15/06/2026 au 14/09/2026"
+  },
+  {
+   "leaseId": "B028",
+   "unitId": "L028",
+   "group": "Assigame",
+   "amount": 210000,
+   "date": "2026-06-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/03/2026 au 31/05/2026"
+  },
+  {
+   "leaseId": "B024",
+   "unitId": "L024",
+   "group": "Assigame",
+   "amount": 270000,
+   "date": "2026-06-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/03/2026 au 31/05/2026"
+  },
+  {
+   "leaseId": "B016",
+   "unitId": "L016",
+   "group": "Assigame",
+   "amount": 330000,
+   "date": "2026-06-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/03/2026 au 31/05/2026"
+  },
+  {
+   "leaseId": "B018",
+   "unitId": "L018",
+   "group": "Assigame",
+   "amount": 300000,
+   "date": "2026-06-01",
+   "monthsCovered": null,
+   "notes": "Dépôt pour payement d'arriére de loyer"
+  },
+  {
+   "leaseId": "B007",
+   "unitId": "L007",
+   "group": "Assigame",
+   "amount": 453750,
+   "date": "2026-07-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/04/2026 au 30/06/2026"
+  },
+  {
+   "leaseId": "B014",
+   "unitId": "L014",
+   "group": "Assigame",
+   "amount": 363000,
+   "date": "2026-07-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/04/2026 au 30/06/2026"
+  },
+  {
+   "leaseId": "B008",
+   "unitId": "L008",
+   "group": "Assigame",
+   "amount": 412500,
+   "date": "2026-07-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/04/2026 au 30/06/2026"
+  },
+  {
+   "leaseId": "B010",
+   "unitId": "L010",
+   "group": "Assigame",
+   "amount": 210000,
+   "date": "2026-07-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/05/2026 au 31/07/2026"
+  },
+  {
+   "leaseId": "B025",
+   "unitId": "L025",
+   "group": "Assigame",
+   "amount": 210000,
+   "date": "2026-07-01",
+   "monthsCovered": 3,
+   "notes": "Payement de solde loyer de 3 mois du 09/05/2026 au 08/08/2026"
+  },
+  {
+   "leaseId": "B009",
+   "unitId": "L009",
+   "group": "Assigame",
+   "amount": 500000,
+   "date": "2026-07-01",
+   "monthsCovered": null,
+   "notes": "Depôt pour payement d'arrièré de loyer de 01/09/2025 au 31/10/2026"
+  },
+  {
+   "leaseId": "B013",
+   "unitId": "L013",
+   "group": "Assigame",
+   "amount": 500000,
+   "date": "2026-07-01",
+   "monthsCovered": null,
+   "notes": "Depôt pour payement d'arrièré de loyer de 11/09/2025 au 10/10/2026"
+  },
+  {
+   "leaseId": "B003",
+   "unitId": "L003",
+   "group": "Assigame",
+   "amount": 500000,
+   "date": "2026-07-01",
+   "monthsCovered": null,
+   "notes": "Depôt pour payement d'arrièré de loyer de 01/07/2025 au 31/07/2026"
+  },
+  {
+   "leaseId": "B019",
+   "unitId": "L019",
+   "group": "Assigame",
+   "amount": 330000,
+   "date": "2026-07-01",
+   "monthsCovered": 3,
+   "notes": "Payement de solde loyer de 3 mois du 10/07/2026 au 09/10/2026"
+  },
+  {
+   "leaseId": "B017",
+   "unitId": "L017",
+   "group": "Assigame",
+   "amount": 300000,
+   "date": "2026-08-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 08/07/2026 au 07/10/2026"
+  },
+  {
+   "leaseId": "B011",
+   "unitId": "L011",
+   "group": "Assigame",
+   "amount": 363000,
+   "date": "2026-08-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 27/06/2026 au 26/09/2026"
+  },
+  {
+   "leaseId": "B021",
+   "unitId": "L021",
+   "group": "Assigame",
+   "amount": 270000,
+   "date": "2026-08-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 20/04/2026 au 19/07/2026"
+  },
+  {
+   "leaseId": "B031",
+   "unitId": "L031",
+   "group": "JeanPaulII",
+   "amount": 900000,
+   "date": "2026-01-01",
+   "monthsCovered": 3,
+   "notes": "Payement de loyer de 3 mois du 24/12/2025 au 23/03/2026"
+  },
+  {
+   "leaseId": "B032",
+   "unitId": "L032",
+   "group": "JeanPaulII",
+   "amount": 990000,
+   "date": "2026-01-01",
+   "monthsCovered": 3,
+   "notes": "Payement de loyer de 3 mois du 01/01/2026 au 31/03/2026"
+  },
+  {
+   "leaseId": "B033",
+   "unitId": "L033",
+   "group": "JeanPaulII",
+   "amount": 990000,
+   "date": "2026-01-01",
+   "monthsCovered": 3,
+   "notes": "Payement de loyer de 3 mois du 01/01/2026 au 31/03/2026"
+  },
+  {
+   "leaseId": "B036",
+   "unitId": "L036",
+   "group": "JeanPaulII",
+   "amount": 250000,
+   "date": "2026-01-01",
+   "monthsCovered": null,
+   "notes": "Payement de loyer d'un (1) mois du 01/12/2025 au 31/12/2025"
+  },
+  {
+   "leaseId": "B037",
+   "unitId": "L038",
+   "group": "JeanPaulII",
+   "amount": 300000,
+   "date": "2026-01-01",
+   "monthsCovered": null,
+   "notes": "Payement de loyer d'un (1) mois du 01/01/2026 au 31/01/2026"
+  },
+  {
+   "leaseId": "B035",
+   "unitId": "L035",
+   "group": "JeanPaulII",
+   "amount": 750000,
+   "date": "2026-02-01",
+   "monthsCovered": 3,
+   "notes": "Location de studio Payement de 3 mois de loyer du 15/01/2026 au 14/04/2026"
+  },
+  {
+   "leaseId": "B037",
+   "unitId": "L038",
+   "group": "JeanPaulII",
+   "amount": 300000,
+   "date": "2026-02-01",
+   "monthsCovered": null,
+   "notes": "Payement de loyer d'un (1) mois du 01/02/2026 au 28/02/2026"
+  },
+  {
+   "leaseId": "B036",
+   "unitId": "L036",
+   "group": "JeanPaulII",
+   "amount": 500000,
+   "date": "2026-03-01",
+   "monthsCovered": 2,
+   "notes": "Payement de loyer de 2 mois du 01/01/2026 au 28/02/2026"
+  },
+  {
+   "leaseId": "B037",
+   "unitId": "L038",
+   "group": "JeanPaulII",
+   "amount": 300000,
+   "date": "2026-03-01",
+   "monthsCovered": null,
+   "notes": "Payement de loyer d'un (1) mois du 01/03/2026 au 31/03/2026"
+  },
+  {
+   "leaseId": "B030",
+   "unitId": "L030",
+   "group": "JeanPaulII",
+   "amount": 300000,
+   "date": "2026-04-01",
+   "monthsCovered": 3,
+   "notes": "Payement de loyer de 3 mois du 01/02/2026 au 30/04/2026"
+  },
+  {
+   "leaseId": "B032",
+   "unitId": "L032",
+   "group": "JeanPaulII",
+   "amount": 990000,
+   "date": "2026-04-01",
+   "monthsCovered": 3,
+   "notes": "Payement de loyer de 3 mois du 01/04/2026 au 30/06/2026"
+  },
+  {
+   "leaseId": "B033",
+   "unitId": "L033",
+   "group": "JeanPaulII",
+   "amount": 990000,
+   "date": "2026-04-01",
+   "monthsCovered": 3,
+   "notes": "Payement de loyer de 3 mois du 01/04/2026 au 30/06/2026"
+  },
+  {
+   "leaseId": "B036",
+   "unitId": "L036",
+   "group": "JeanPaulII",
+   "amount": 250000,
+   "date": "2026-04-01",
+   "monthsCovered": null,
+   "notes": "Payement de loyer d'un (1) mois du 01/03/2026 au 31/03/2026"
+  },
+  {
+   "leaseId": "B037",
+   "unitId": "L038",
+   "group": "JeanPaulII",
+   "amount": 300000,
+   "date": "2026-04-01",
+   "monthsCovered": null,
+   "notes": "Payement de loyer d'un (1) mois du 01/04/2026 au 30/04/2026"
+  },
+  {
+   "leaseId": "B031",
+   "unitId": "L031",
+   "group": "JeanPaulII",
+   "amount": 900000,
+   "date": "2026-04-01",
+   "monthsCovered": 3,
+   "notes": "Payement de loyer de 3 mois du 24/03/2026 au 23/06/2026"
+  },
+  {
+   "leaseId": "B035",
+   "unitId": "L035",
+   "group": "JeanPaulII",
+   "amount": 750000,
+   "date": "2026-05-01",
+   "monthsCovered": 3,
+   "notes": "Payement de loyer de 3 mois du 15/04/2026 au 14/07/2026"
+  },
+  {
+   "leaseId": "B037",
+   "unitId": "L038",
+   "group": "JeanPaulII",
+   "amount": 300000,
+   "date": "2026-05-01",
+   "monthsCovered": null,
+   "notes": "Payement de loyer d'un (1) mois du 01/05/2026 au 31/05/2026"
+  },
+  {
+   "leaseId": "B036",
+   "unitId": "L036",
+   "group": "JeanPaulII",
+   "amount": 500000,
+   "date": "2026-06-01",
+   "monthsCovered": 2,
+   "notes": "Payement de loyer de 2 mois du 01/04/2026 au 31/05/2026"
+  },
+  {
+   "leaseId": "B030",
+   "unitId": "L030",
+   "group": "JeanPaulII",
+   "amount": 300000,
+   "date": "2026-06-01",
+   "monthsCovered": 3,
+   "notes": "Payement de loyer de 3 mois du 01/05/2026 au 31/07/2026"
+  },
+  {
+   "leaseId": "B037",
+   "unitId": "L038",
+   "group": "JeanPaulII",
+   "amount": 300000,
+   "date": "2026-06-01",
+   "monthsCovered": null,
+   "notes": "Payement de loyer d'un (1) mois du 01/06/2026 au 30/06/2026"
+  },
+  {
+   "leaseId": "B036",
+   "unitId": "L036",
+   "group": "JeanPaulII",
+   "amount": 250000,
+   "date": "2026-07-01",
+   "monthsCovered": null,
+   "notes": "Payement de loyer d'un (1) mois du 01/06/2026 au 30/06/2026"
+  },
+  {
+   "leaseId": "B032",
+   "unitId": "L032",
+   "group": "JeanPaulII",
+   "amount": 990000,
+   "date": "2026-07-01",
+   "monthsCovered": 3,
+   "notes": "Payement de loyer de 3 mois du 01/07/2026 au 30/09/2026"
+  },
+  {
+   "leaseId": "B033",
+   "unitId": "L033",
+   "group": "JeanPaulII",
+   "amount": 990000,
+   "date": "2026-07-01",
+   "monthsCovered": 3,
+   "notes": "Payement de loyer de 3 mois du 01/07/2026 au 30/09/2026"
+  },
+  {
+   "leaseId": "B037",
+   "unitId": "L038",
+   "group": "JeanPaulII",
+   "amount": 300000,
+   "date": "2026-07-01",
+   "monthsCovered": null,
+   "notes": "Payement de loyer d'un (1) mois du 01/07/2026 au 31/07/2026"
+  },
+  {
+   "leaseId": "B037",
+   "unitId": "L038",
+   "group": "JeanPaulII",
+   "amount": 300000,
+   "date": "2026-08-01",
+   "monthsCovered": null,
+   "notes": "Payement de loyer d'un (1) mois du 01/08/2026 au 31/08/2026"
+  },
+  {
+   "leaseId": "B042",
+   "unitId": "L043",
+   "group": "LaPaix",
+   "amount": 1200000,
+   "date": "2026-01-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/12/2025 au 28/02/2026"
+  },
+  {
+   "leaseId": "B048",
+   "unitId": "L049",
+   "group": "LaPaix",
+   "amount": 8700000,
+   "date": "2026-01-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/10/2025 au 31/12/2025"
+  },
+  {
+   "leaseId": "B043",
+   "unitId": "L044",
+   "group": "LaPaix",
+   "amount": 1155000,
+   "date": "2026-02-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/12/2025 au 28/02/2026"
+  },
+  {
+   "leaseId": "B044",
+   "unitId": "L045",
+   "group": "LaPaix",
+   "amount": 1320000,
+   "date": "2026-02-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/12/2025 au 28/02/2026"
+  },
+  {
+   "leaseId": "B050",
+   "unitId": "L056",
+   "group": "LaPaix",
+   "amount": 6000000,
+   "date": "2026-02-01",
+   "monthsCovered": 6,
+   "notes": "Payement de 6 mois de loyer du 01/02/2026 au 31/07/2026"
+  },
+  {
+   "leaseId": "B045",
+   "unitId": "L046",
+   "group": "LaPaix",
+   "amount": 6750000,
+   "date": "2026-03-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/01/2026 au 31/03/2026"
+  },
+  {
+   "leaseId": "B048",
+   "unitId": "L049",
+   "group": "LaPaix",
+   "amount": 8700000,
+   "date": "2026-03-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/01/2026 au 31/03/2026"
+  },
+  {
+   "leaseId": "B048",
+   "unitId": "L049",
+   "group": "LaPaix",
+   "amount": 1000000,
+   "date": "2026-03-01",
+   "monthsCovered": 5,
+   "notes": "Payement de 5 mois de loyer du 01/11/2025 au 31/03/2026"
+  },
+  {
+   "leaseId": "B041",
+   "unitId": "L042",
+   "group": "LaPaix",
+   "amount": 900000,
+   "date": "2026-04-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/02/2026 au 30/04/2026"
+  },
+  {
+   "leaseId": "B047",
+   "unitId": "L048",
+   "group": "LaPaix",
+   "amount": 1200000,
+   "date": "2026-04-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/03/2026 au 31/05/2026"
+  },
+  {
+   "leaseId": "B046",
+   "unitId": "L047",
+   "group": "LaPaix",
+   "amount": 2100000,
+   "date": "2026-04-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/01/2026 au 31/03/2026"
+  },
+  {
+   "leaseId": "B051",
+   "unitId": "L060",
+   "group": "LaPaix",
+   "amount": 2400000,
+   "date": "2026-04-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/02/2026 au 30/04/2026 et 3 mois de frais d'entretien 01/01/2026 au 31/03/2026(150 000)"
+  },
+  {
+   "leaseId": "B042",
+   "unitId": "L043",
+   "group": "LaPaix",
+   "amount": 1200000,
+   "date": "2026-05-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/03/2026 au 31/05/2026"
+  },
+  {
+   "leaseId": "B043",
+   "unitId": "L044",
+   "group": "LaPaix",
+   "amount": 1155000,
+   "date": "2026-05-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/03/2026 au 31/05/2026"
+  },
+  {
+   "leaseId": "B044",
+   "unitId": "L045",
+   "group": "LaPaix",
+   "amount": 1320000,
+   "date": "2026-05-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/03/2026 au 31/05/2026"
+  },
+  {
+   "leaseId": "B048",
+   "unitId": "L049",
+   "group": "LaPaix",
+   "amount": 9300000,
+   "date": "2026-06-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/04/2026 au 30/06/2026"
+  },
+  {
+   "leaseId": "B045",
+   "unitId": "L046",
+   "group": "LaPaix",
+   "amount": 6750000,
+   "date": "2026-06-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/04/2026 au 30/06/2026"
+  },
+  {
+   "leaseId": "B046",
+   "unitId": "L047",
+   "group": "LaPaix",
+   "amount": 2100000,
+   "date": "2026-06-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/04/2026 au 30/06/2026"
+  },
+  {
+   "leaseId": "B049",
+   "unitId": "L055",
+   "group": "LaPaix",
+   "amount": 1800000,
+   "date": "2026-06-01",
+   "monthsCovered": 6,
+   "notes": "Payement de 6 mois de loyer du 01/06/2025 au 30/11/2026"
+  },
+  {
+   "leaseId": "B042",
+   "unitId": "L043",
+   "group": "LaPaix",
+   "amount": 1200000,
+   "date": "2026-07-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/06/2026 au 31/08/2026"
+  },
+  {
+   "leaseId": "B046",
+   "unitId": "L047",
+   "group": "LaPaix",
+   "amount": 2100000,
+   "date": "2026-07-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/07/2026 au 30/09/2026"
+  },
+  {
+   "leaseId": "B041",
+   "unitId": "L042",
+   "group": "LaPaix",
+   "amount": 990000,
+   "date": "2026-07-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/05/2026 au 31/07/2026"
+  },
+  {
+   "leaseId": "B047",
+   "unitId": "L048",
+   "group": "LaPaix",
+   "amount": 1200000,
+   "date": "2026-07-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/06/2026 au 31/08/2026"
+  },
+  {
+   "leaseId": "B051",
+   "unitId": "L060",
+   "group": "LaPaix",
+   "amount": 5150000,
+   "date": "2026-07-01",
+   "monthsCovered": 6,
+   "notes": "Payement de 6 mois de loyer du 01/05/2026 au 31/10/2026 et 7 mois de frais d'entretien 01/04/2026 au 31/10/2026(350 000)"
+  },
+  {
+   "leaseId": "B043",
+   "unitId": "L044",
+   "group": "LaPaix",
+   "amount": 1155000,
+   "date": "2026-08-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/06/2026 au 31/08/2026"
+  },
+  {
+   "leaseId": "B044",
+   "unitId": "L045",
+   "group": "LaPaix",
+   "amount": 1320000,
+   "date": "2026-08-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/06/2026 au 31/08/2026"
+  },
+  {
+   "leaseId": "B050",
+   "unitId": "L056",
+   "group": "LaPaix",
+   "amount": 6000000,
+   "date": "2026-08-01",
+   "monthsCovered": 6,
+   "notes": "Payement de 6 mois de loyer du 01/08/2026 au 31/01/2027"
+  },
+  {
+   "leaseId": "B055",
+   "unitId": "L064",
+   "group": "Villas",
+   "amount": 1320000,
+   "date": "2026-01-01",
+   "monthsCovered": null,
+   "notes": "Payement d'un (1) mois de loyer du 01/01/2026 au 31/01/2026"
+  },
+  {
+   "leaseId": "B055",
+   "unitId": "L064",
+   "group": "Villas",
+   "amount": 1320000,
+   "date": "2026-02-01",
+   "monthsCovered": null,
+   "notes": "Payement d'un (1) mois de loyer du 01/02/2026 au 28/02/2026"
+  },
+  {
+   "leaseId": "B054",
+   "unitId": "L063",
+   "group": "Villas",
+   "amount": 3900000,
+   "date": "2026-02-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/02/2026 au 30/04/2026"
+  },
+  {
+   "leaseId": "B057",
+   "unitId": "L066",
+   "group": "Villas",
+   "amount": 6000000,
+   "date": "2026-02-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/11/2025 au 31/01/2026"
+  },
+  {
+   "leaseId": "B052",
+   "unitId": "L061",
+   "group": "Villas",
+   "amount": 6000000,
+   "date": "2026-02-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/12/2025 au 28/02/2026"
+  },
+  {
+   "leaseId": "B055",
+   "unitId": "L064",
+   "group": "Villas",
+   "amount": 1320000,
+   "date": "2026-03-01",
+   "monthsCovered": null,
+   "notes": "Payement d'un (1) mois de loyer du 01/03/2026 au 31/03/2026"
+  },
+  {
+   "leaseId": "B059",
+   "unitId": "L068",
+   "group": "Villas",
+   "amount": 3900000,
+   "date": "2026-03-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/02/2026 au 30/04/2026"
+  },
+  {
+   "leaseId": "B056",
+   "unitId": "L065",
+   "group": "Villas",
+   "amount": 4500000,
+   "date": "2026-03-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 28/03/2026 au 27/06/2026"
+  },
+  {
+   "leaseId": "B053",
+   "unitId": "L062",
+   "group": "Villas",
+   "amount": 3600000,
+   "date": "2026-03-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/01/2026 au 31/03/2026"
+  },
+  {
+   "leaseId": "B055",
+   "unitId": "L064",
+   "group": "Villas",
+   "amount": 1320000,
+   "date": "2026-04-01",
+   "monthsCovered": null,
+   "notes": "Payement d'un (1) mois de loyer du 01/04/2026 au 30/04/2026"
+  },
+  {
+   "leaseId": "B060",
+   "unitId": "L069",
+   "group": "Villas",
+   "amount": 12000000,
+   "date": "2026-04-01",
+   "monthsCovered": 6,
+   "notes": "Payement de 6 mois de loyer du 01/02/2026 au 31/07/2026"
+  },
+  {
+   "leaseId": "B055",
+   "unitId": "L064",
+   "group": "Villas",
+   "amount": 1320000,
+   "date": "2026-05-01",
+   "monthsCovered": null,
+   "notes": "Payement d'un (1) mois de loyer du 01/05/2026 au 31/05/2026"
+  },
+  {
+   "leaseId": "B055",
+   "unitId": "L064",
+   "group": "Villas",
+   "amount": 1320000,
+   "date": "2026-06-01",
+   "monthsCovered": null,
+   "notes": "Payement d'un (1) mois de loyer du 01/06/2026 au 30/06/2026"
+  },
+  {
+   "leaseId": "B059",
+   "unitId": "L068",
+   "group": "Villas",
+   "amount": 3900000,
+   "date": "2026-06-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/05/2026 au 31/07/2026"
+  },
+  {
+   "leaseId": "B057",
+   "unitId": "L066",
+   "group": "Villas",
+   "amount": 6900000,
+   "date": "2026-06-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/02/2026 au 30/04/2026"
+  },
+  {
+   "leaseId": "B056",
+   "unitId": "L065",
+   "group": "Villas",
+   "amount": 4500000,
+   "date": "2026-06-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 28/06/2026 au 27/09/2026"
+  },
+  {
+   "leaseId": "B052",
+   "unitId": "L061",
+   "group": "Villas",
+   "amount": 6000000,
+   "date": "2026-06-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/03/2026 au 31/05/2026"
+  },
+  {
+   "leaseId": "B055",
+   "unitId": "L064",
+   "group": "Villas",
+   "amount": 1320000,
+   "date": "2026-07-01",
+   "monthsCovered": null,
+   "notes": "Payement d'un (1) mois de loyer du 01/07/2026 au 31/07/2026"
+  },
+  {
+   "leaseId": "B055",
+   "unitId": "L064",
+   "group": "Villas",
+   "amount": 1320000,
+   "date": "2026-08-01",
+   "monthsCovered": null,
+   "notes": "Payement d'un (1) mois de loyer du 01/08/2026 au 31/08/2026"
+  },
+  {
+   "leaseId": "B057",
+   "unitId": "L066",
+   "group": "Villas",
+   "amount": 6900000,
+   "date": "2026-08-01",
+   "monthsCovered": 3,
+   "notes": "Payement de 3 mois de loyer du 01/05/2026 au 31/07/2026"
+  },
+  {
+   "leaseId": "B087",
+   "unitId": "L100",
+   "group": "Entrepots",
+   "amount": 5000000,
+   "date": "2025-01-01",
+   "monthsCovered": 2,
+   "notes": "Payement de loyer de 2 mois du 01/12/2024 au 31/01/2025"
+  },
+  {
+   "leaseId": "B068",
+   "unitId": "L080",
+   "group": "Entrepots",
+   "amount": 14250000,
+   "date": "2025-01-01",
+   "monthsCovered": 3,
+   "notes": "Payement de loyer de 3 mois du 01/11/2024 au 31/01/2025"
+  },
+  {
+   "leaseId": "B069",
+   "unitId": "L081",
+   "group": "Entrepots",
+   "amount": 4500000,
+   "date": "2025-01-01",
+   "monthsCovered": 3,
+   "notes": "Payement de loyer de 3 mois du 01/01/2025 au 31/03/2025"
+  },
+  {
+   "leaseId": "B085",
+   "unitId": "L098",
+   "group": "Entrepots",
+   "amount": 12000000,
+   "date": "2025-01-01",
+   "monthsCovered": 6,
+   "notes": "Payement de loyer de 6 mois du 01/01/2025 au 30/06/2025"
+  },
+  {
+   "leaseId": "B079",
+   "unitId": "L092",
+   "group": "Entrepots",
+   "amount": 17400000,
+   "date": "2025-02-01",
+   "monthsCovered": 6,
+   "notes": "Payement de loyer de 6 mois du 01/10/2024 au 31/03/2025"
+  },
+  {
+   "leaseId": "B073",
+   "unitId": "L086",
+   "group": "Entrepots",
+   "amount": 9000000,
+   "date": "2025-02-01",
+   "monthsCovered": 3,
+   "notes": "Payement de loyer de 3 mois du 15/01/2025 au 14/04/2025"
+  },
+  {
+   "leaseId": "B075",
+   "unitId": "L088",
+   "group": "Entrepots",
+   "amount": 19500000,
+   "date": "2025-02-01",
+   "monthsCovered": 3,
+   "notes": "Payement de loyer de 3 mois du 01/10/2024 au 31/12/2024"
+  },
+  {
+   "leaseId": "B083",
+   "unitId": "L096",
+   "group": "Entrepots",
+   "amount": 4686601,
+   "date": "2025-02-01",
+   "monthsCovered": 12,
+   "notes": "Payement de loyer de 12 mois du 01/06/2024 au 31/05/2025"
+  },
+  {
+   "leaseId": "B070",
+   "unitId": "L082",
+   "group": "Entrepots",
+   "amount": 15000000,
+   "date": "2025-02-01",
+   "monthsCovered": 3,
+   "notes": "Payement de loyer de 3 mois du 01/01/2025 au 31/03/2025"
+  },
+  {
+   "leaseId": "B078",
+   "unitId": "L091",
+   "group": "Entrepots",
+   "amount": 7500000,
+   "date": "2025-03-01",
+   "monthsCovered": 3,
+   "notes": "Payement de loyer de 3 mois du 01/12/2024 au 28/02/2025"
+  },
+  {
+   "leaseId": "B068",
+   "unitId": "L080",
+   "group": "Entrepots",
+   "amount": 14250000,
+   "date": "2025-03-01",
+   "monthsCovered": 3,
+   "notes": "Payement de loyer de 3 mois du 01/02/2025 au 30/04/2025"
+  },
+  {
+   "leaseId": "B087",
+   "unitId": "L100",
+   "group": "Entrepots",
+   "amount": 2500000,
+   "date": "2025-03-01",
+   "monthsCovered": 1,
+   "notes": "Payement de loyer d'1 mois du 01/02/2025 au 28/02/2025"
+  },
+  {
+   "leaseId": "B072",
+   "unitId": "L084",
+   "group": "Entrepots",
+   "amount": 9000000,
+   "date": "2025-03-01",
+   "monthsCovered": 3,
+   "notes": "Payement de loyer de 3 mois du 01/03/2025 au 31/05/2025"
+  },
+  {
+   "leaseId": "B084",
+   "unitId": "L097",
+   "group": "Entrepots",
+   "amount": 1952750,
+   "date": "2025-04-01",
+   "monthsCovered": 5,
+   "notes": "Payement de loyer de 5 mois du 01/12/2024 au 30/04/2025"
+  },
+  {
+   "leaseId": "B066",
+   "unitId": "L078",
+   "group": "Entrepots",
+   "amount": 11100000,
+   "date": "2025-04-01",
+   "monthsCovered": 3,
+   "notes": "Payement de loyer de 3 mois du 01/04/2025 au 30/06/2025"
+  },
+  {
+   "leaseId": "B069",
+   "unitId": "L081",
+   "group": "Entrepots",
+   "amount": 4500000,
+   "date": "2025-04-01",
+   "monthsCovered": 3,
+   "notes": "Payement de loyer de 3 mois du 01/04/2025 au 30/06/2025"
+  },
+  {
+   "leaseId": "B074",
+   "unitId": "L087",
+   "group": "Entrepots",
+   "amount": 15000000,
+   "date": "2025-04-01",
+   "monthsCovered": 3,
+   "notes": "Payement de loyer de 3 mois du 01/01/2025 au 31/03/2025"
+  },
+  {
+   "leaseId": "B070",
+   "unitId": "L082",
+   "group": "Entrepots",
+   "amount": 15000000,
+   "date": "2025-04-01",
+   "monthsCovered": 3,
+   "notes": "Payement de loyer de 3 mois du 01/04/2025 au 30/06/2025"
+  },
+  {
+   "leaseId": "B075",
+   "unitId": "L088",
+   "group": "Entrepots",
+   "amount": 19500000,
+   "date": "2025-04-01",
+   "monthsCovered": 3,
+   "notes": "Payement de loyer de 3 mois du 01/01/2025 au 31/03/2025"
+  },
+  {
+   "leaseId": "B073",
+   "unitId": "L086",
+   "group": "Entrepots",
+   "amount": 9000000,
+   "date": "2025-05-01",
+   "monthsCovered": 3,
+   "notes": "Payement de loyer de 3 mois du 15/04/2025 au 14/07/2025"
+  },
+  {
+   "leaseId": "B072",
+   "unitId": "L084",
+   "group": "Entrepots",
+   "amount": 9000000,
+   "date": "2025-05-01",
+   "monthsCovered": 3,
+   "notes": "Payement de loyer de 3 mois du 01/06/2025 au 31/08/2025"
+  },
+  {
+   "leaseId": "B074",
+   "unitId": "L087",
+   "group": "Entrepots",
+   "amount": 15000000,
+   "date": "2025-06-01",
+   "monthsCovered": 3,
+   "notes": "Payement de loyer de 3 mois du 01/04/2025 au 30/06/2025"
+  },
+  {
+   "leaseId": "B078",
+   "unitId": "L091",
+   "group": "Entrepots",
+   "amount": 7500000,
+   "date": "2025-06-01",
+   "monthsCovered": 3,
+   "notes": "Payement de loyer de 3 mois du 01/03/2025 au 31/05/2025"
+  },
+  {
+   "leaseId": "B070",
+   "unitId": "L082",
+   "group": "Entrepots",
+   "amount": 30000000,
+   "date": "2025-07-01",
+   "monthsCovered": 6,
+   "notes": "Payement de loyer de 6 mois du 01/07/2025 au 31/12/2025"
+  },
+  {
+   "leaseId": "B068",
+   "unitId": "L080",
+   "group": "Entrepots",
+   "amount": 14250000,
+   "date": "2025-07-01",
+   "monthsCovered": 3,
+   "notes": "Payement de loyer de 3 mois du 01/05/2025 au 31/07/2025"
+  },
+  {
+   "leaseId": "B075",
+   "unitId": "L088",
+   "group": "Entrepots",
+   "amount": 19500000,
+   "date": "2025-07-01",
+   "monthsCovered": 3,
+   "notes": "Payement de loyer de 3 mois du 01/04/2025 au 30/06/2025"
+  },
+  {
+   "leaseId": "B087",
+   "unitId": "L100",
+   "group": "Entrepots",
+   "amount": 5000000,
+   "date": "2025-07-01",
+   "monthsCovered": 2,
+   "notes": "Payement de loyer de 2 mois du 01/03/2025 au 30/04/2025"
+  },
+  {
+   "leaseId": "B079",
+   "unitId": "L092",
+   "group": "Entrepots",
+   "amount": 11600000,
+   "date": "2025-07-01",
+   "monthsCovered": 4,
+   "notes": "Payement de loyer de 4 mois du 01/04/2025 au 31/07/2025"
+  },
+  {
+   "leaseId": "B073",
+   "unitId": "L086",
+   "group": "Entrepots",
+   "amount": 9000000,
+   "date": "2025-08-01",
+   "monthsCovered": 3,
+   "notes": "Payement de loyer de 3 mois du 15/07/2025 au 14/10/2025"
+  },
+  {
+   "leaseId": "B083",
+   "unitId": "L096",
+   "group": "Entrepots",
+   "amount": 2343300,
+   "date": "2025-09-01",
+   "monthsCovered": 6,
+   "notes": "Payement de loyer de 06 mois du 01/06/2025 au 30/11/2025"
+  },
+  {
+   "leaseId": "B084",
+   "unitId": "L097",
+   "group": "Entrepots",
+   "amount": 1171650,
+   "date": "2025-09-01",
+   "monthsCovered": 3,
+   "notes": "Payement de loyer de 3 mois du 01/04/2024 au 30/06/2025"
+  },
+  {
+   "leaseId": "B072",
+   "unitId": "L084",
+   "group": "Entrepots",
+   "amount": 9000000,
+   "date": "2025-09-01",
+   "monthsCovered": 3,
+   "notes": "Payement de loyer de 3 mois du 01/09/2025 au 30/11/2025"
+  },
+  {
+   "leaseId": "B075",
+   "unitId": "L088",
+   "group": "Entrepots",
+   "amount": 19500000,
+   "date": "2025-09-01",
+   "monthsCovered": 3,
+   "notes": "Payement de loyer de 3 mois du 01/07/2025 au 30/09/2025"
+  },
+  {
+   "leaseId": "B078",
+   "unitId": "L091",
+   "group": "Entrepots",
+   "amount": 7500000,
+   "date": "2025-09-01",
+   "monthsCovered": 3,
+   "notes": "Payement de loyer de 3 mois du 01/06/2025 au 31/08/2025"
+  },
+  {
+   "leaseId": "B067",
+   "unitId": "L079",
+   "group": "Entrepots",
+   "amount": 60000000,
+   "date": "2025-10-01",
+   "monthsCovered": null,
+   "notes": "Payement de loyer d'1 an du 01/07/2025 au 30/06/2026"
+  },
+  {
+   "leaseId": "B084",
+   "unitId": "L097",
+   "group": "Entrepots",
+   "amount": 1171650,
+   "date": "2025-10-01",
+   "monthsCovered": 3,
+   "notes": "Payement de loyer de 3 mois du 01/07/2024 au 30/09/2025"
+  },
+  {
+   "leaseId": "B073",
+   "unitId": "L086",
+   "group": "Entrepots",
+   "amount": 9000000,
+   "date": "2025-12-01",
+   "monthsCovered": 3,
+   "notes": "Payement de loyer de 3 mois du 15/10/2025 au 14/01/2026"
+  },
+  {
+   "leaseId": "B079",
+   "unitId": "L092",
+   "group": "Entrepots",
+   "amount": 2000000,
+   "date": "2025-12-01",
+   "monthsCovered": 3,
+   "notes": "Payement partiel de loyer de 3 mois du 01/11/2025 au 31/01/2026"
+  },
+  {
+   "leaseId": "B072",
+   "unitId": "L084",
+   "group": "Entrepots",
+   "amount": 9000000,
+   "date": "2025-12-01",
+   "monthsCovered": 3,
+   "notes": "Payement de loyer de 3 mois du 01/12/2025 au 28/02/2026"
+  },
+  {
+   "leaseId": "B075",
+   "unitId": "L088",
+   "group": "Entrepots",
+   "amount": 19500000,
+   "date": "2025-12-01",
+   "monthsCovered": 3,
+   "notes": "Payement de loyer de 3 mois du 01/10/2025 au 31/12/2025"
+  },
+  {
+   "leaseId": "B078",
+   "unitId": "L091",
+   "group": "Entrepots",
+   "amount": 7500000,
+   "date": "2025-12-01",
+   "monthsCovered": 3,
+   "notes": "Payement de loyer de 3 mois du 01/09/2025 au 30/11/2025"
+  }
+ ],
+ "expenses": [
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-01-06",
+   "amount": 400,
+   "category": "TAXES",
+   "description": "Taxe de versement sunu"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-01-21",
+   "amount": 15000,
+   "category": "OFFICE_EQUIPMENT",
+   "description": "Remboursement achat d'encre pour imprimante"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-01-21",
+   "amount": 8250,
+   "category": "OFFICE_SUPPLIES",
+   "description": "Remboursement achat de fourniture bureau"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-01-21",
+   "amount": 75000,
+   "category": "TRANSPORT_COMMS",
+   "description": "Remboursement consommation hebdommadaire du 05/01 au 19/01/2026"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-01-21",
+   "amount": 25000,
+   "category": "MAINTENANCE",
+   "description": "Remboursement facture du plombier pour rebobinage du suppresseur plus main d'œuvre"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-01-23",
+   "amount": 100,
+   "category": "TAXES",
+   "description": "Taxe de versement sunu"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-01-26",
+   "amount": 25000,
+   "category": "TRANSPORT_COMMS",
+   "description": "Consommation hebdommadaire"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-01-27",
+   "amount": 101588,
+   "category": "TAXES",
+   "description": "Payement de la cotisation de la CNSS mois décembre 2025"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-01-27",
+   "amount": 15000,
+   "category": "OTHER",
+   "description": "Recharge de l'internet mois de janvier 2026"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-01-27",
+   "amount": 25000,
+   "category": "TRANSPORT_COMMS",
+   "description": "Consommation hebdommadaire"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-01-27",
+   "amount": 109593,
+   "category": "UTILITIES",
+   "description": "Payement de la facture de CEET mois de novembre 2025"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-02-02",
+   "amount": 25000,
+   "category": "TRANSPORT_COMMS",
+   "description": "Consommation hebdommadaire"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-02-03",
+   "amount": 1447773,
+   "category": "TAXES",
+   "description": "Payement 1er acompte OTR"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-02-03",
+   "amount": 4000,
+   "category": "TAXES",
+   "description": "Payement de quittance pour dépôt de la carte CFI"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-02-03",
+   "amount": 21000,
+   "category": "TAXES",
+   "description": "Payement de E-timbre pour demande de 5 ARF et de la carte CFI plus pourboir secretaire"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-02-03",
+   "amount": 100,
+   "category": "TAXES",
+   "description": "Taxe de versement sunu"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-02-04",
+   "amount": 4000,
+   "category": "SALES_SERVICE_FEES",
+   "description": "Payement de la main d'œuvre du frigoriste pour la reparation du climatiseur"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-02-04",
+   "amount": 402500,
+   "category": "SALARY",
+   "description": "Payement de salaire du personnel sci mois de janvier 2026"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-02-06",
+   "amount": 27000,
+   "category": "SALES_SERVICE_FEES",
+   "description": "Payement de la facture du reparateur de l'imprimante"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-02-10",
+   "amount": 400,
+   "category": "TAXES",
+   "description": "Taxe de versement sunu"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-02-16",
+   "amount": 65850,
+   "category": "SALES_SERVICE_FEES",
+   "description": "Payement de la facture de l'electricien pour la réparation des phases"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-02-17",
+   "amount": 35000,
+   "category": "MAINTENANCE",
+   "description": "Payement de la facture de l'informaticien pour la reparation de l'uc et achat de disque, renouvellement de l'antivirus et achat de logiciel"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-02-18",
+   "amount": 117139,
+   "category": "UTILITIES",
+   "description": "Payement de la facture de CEET mois de décembre 2025"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-02-18",
+   "amount": 50000,
+   "category": "TRANSPORT_COMMS",
+   "description": "Remboursement consommation hebdomadaire de l'assistante du 19/02 au 16/02/2026"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-02-20",
+   "amount": 101588,
+   "category": "TAXES",
+   "description": "Payement de la cotisation de la CNSS mois de janvier 2026"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-02-20",
+   "amount": 15000,
+   "category": "OTHER",
+   "description": "Recharge de l'internet mois de février 2026"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-02-23",
+   "amount": 25000,
+   "category": "TRANSPORT_COMMS",
+   "description": "Consommation hebdommadaire"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-02-24",
+   "amount": 200,
+   "category": "TAXES",
+   "description": "Taxe de versement sunu"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-03-02",
+   "amount": 25000,
+   "category": "TRANSPORT_COMMS",
+   "description": "Consommation hebdommadaire"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-03-02",
+   "amount": 402500,
+   "category": "SALARY",
+   "description": "Payement de salaire du personnel sci mois de fevrier 2026"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-03-09",
+   "amount": 25000,
+   "category": "TRANSPORT_COMMS",
+   "description": "Consommation hebdommadaire"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-03-16",
+   "amount": 25000,
+   "category": "TRANSPORT_COMMS",
+   "description": "Consommation hebdommadaire"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-03-18",
+   "amount": 500,
+   "category": "TAXES",
+   "description": "Taxe de versement sunu"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-03-19",
+   "amount": 118898,
+   "category": "UTILITIES",
+   "description": "Payement de la facture de CEET mois de janvier 2026"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-03-19",
+   "amount": 101588,
+   "category": "TAXES",
+   "description": "Payement de la cotisation de la CNSS mois de février 2026"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-03-19",
+   "amount": 15000,
+   "category": "OTHER",
+   "description": "Recharge de l'internet mois de mars 2026"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-03-23",
+   "amount": 25000,
+   "category": "TRANSPORT_COMMS",
+   "description": "Consommation hebdommadaire"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-03-25",
+   "amount": 100,
+   "category": "TAXES",
+   "description": "Taxe de versement sunu"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-04-01",
+   "amount": 200,
+   "category": "TAXES",
+   "description": "Taxe de versement sunu"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-04-14",
+   "amount": 75000,
+   "category": "TRANSPORT_COMMS",
+   "description": "Remboursement de la Consommation hebdommadaire du 30 mars, du 7 avril et du 13 avril"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-04-14",
+   "amount": 402500,
+   "category": "SALARY",
+   "description": "Payement de salaire du personnel sci mois de mars 2026"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-04-14",
+   "amount": 2625,
+   "category": "SALARY",
+   "description": "Payement des heures supplémentaires du gardien Mr Palakiyem"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-04-14",
+   "amount": 230000,
+   "category": "OTHER",
+   "description": "Payement des frais d'huissier pour l'expulsion de la responsable de la boutique B7"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-04-16",
+   "amount": 100,
+   "category": "TAXES",
+   "description": "Taxe de versement sunu"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-04-20",
+   "amount": 25000,
+   "category": "TRANSPORT_COMMS",
+   "description": "Consommation hebdommadaire"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-04-21",
+   "amount": 95249,
+   "category": "UTILITIES",
+   "description": "Payement de la facture de CEET mois de février 2026"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-04-24",
+   "amount": 800,
+   "category": "TAXES",
+   "description": "Taxe de versement sunu"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-04-25",
+   "amount": 101588,
+   "category": "TAXES",
+   "description": "Payement de la cotisation de la CNSS mois de mars 2026"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-04-25",
+   "amount": 15000,
+   "category": "OTHER",
+   "description": "Recharge de l'internet mois de mars 2026"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-04-28",
+   "amount": 25000,
+   "category": "TRANSPORT_COMMS",
+   "description": "Consommation hebdommadaire"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-04-29",
+   "amount": 13000,
+   "category": "OTHER",
+   "description": "Achat de flotteur electrique, Dysmatique et attache plus la main d'œuvre pour la reparation du supresseur"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-05-04",
+   "amount": 25000,
+   "category": "TRANSPORT_COMMS",
+   "description": "Consommation hebdommadaire"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-05-04",
+   "amount": 402500,
+   "category": "SALARY",
+   "description": "Payement de salaire du personnel sci mois de fevrier 2026"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-05-11",
+   "amount": 25000,
+   "category": "TRANSPORT_COMMS",
+   "description": "Consommation hebdommadaire"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-05-15",
+   "amount": 300,
+   "category": "TAXES",
+   "description": "Taxe de versement sunu"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-05-18",
+   "amount": 25000,
+   "category": "TRANSPORT_COMMS",
+   "description": "Consommation hebdommadaire"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-05-18",
+   "amount": 712055,
+   "category": "TAXES",
+   "description": "Payement des impots IS et Patente"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-05-18",
+   "amount": 108156,
+   "category": "UTILITIES",
+   "description": "Payement de la facture de CEET mois de mars 2026"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-05-22",
+   "amount": 101588,
+   "category": "TAXES",
+   "description": "Payement de la cotisation de la CNSS mois d'avril 2026"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-05-22",
+   "amount": 15000,
+   "category": "OTHER",
+   "description": "Recharge de l'internet mois de mai 2026"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-05-26",
+   "amount": 25000,
+   "category": "TRANSPORT_COMMS",
+   "description": "Consommation hebdommadaire"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-06-04",
+   "amount": 400,
+   "category": "TAXES",
+   "description": "Taxe de versement sunu"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-06-11",
+   "amount": 50000,
+   "category": "TRANSPORT_COMMS",
+   "description": "Consommation hebdommadaire du 01/06 et du 08/06"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-06-11",
+   "amount": 402500,
+   "category": "SALARY",
+   "description": "Payement de salaire du personnel sci mois de mai 2026"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-06-11",
+   "amount": 15750,
+   "category": "SALARY",
+   "description": "Payement des heures supplémentaires du gardien paque, independance fete de travail, ascension,pentécote, tabaski"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-06-15",
+   "amount": 25000,
+   "category": "TRANSPORT_COMMS",
+   "description": "Consommation hebdommadaire"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-06-16",
+   "amount": 100,
+   "category": "TAXES",
+   "description": "Taxe de versement sunu"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-06-17",
+   "amount": 100,
+   "category": "TAXES",
+   "description": "Taxe de versement sunu"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-06-19",
+   "amount": 93465,
+   "category": "UTILITIES",
+   "description": "Payement de la facture de CEET mois d'avril 2026"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-06-22",
+   "amount": 25000,
+   "category": "TRANSPORT_COMMS",
+   "description": "Consommation hebdommadaire"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-06-22",
+   "amount": 101588,
+   "category": "TAXES",
+   "description": "Payement de la cotisation de la CNSS mois de mai 2026"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-06-22",
+   "amount": 15000,
+   "category": "OTHER",
+   "description": "Recharge de l'internet mois de juin 2026"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-06-23",
+   "amount": 400,
+   "category": "TAXES",
+   "description": "Taxe de versement sunu"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-06-24",
+   "amount": 50000,
+   "category": "MAINTENANCE",
+   "description": "Fabrication de grille pour protéger le groupe"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-06-24",
+   "amount": 5000,
+   "category": "SALES_SERVICE_FEES",
+   "description": "Payement de la main d'œuvre du macon pour la fixation de le grille sur le mur"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-06-24",
+   "amount": 52000,
+   "category": "MAINTENANCE",
+   "description": "Achat de l'onduleur et payement du transport allée et retour de l'informaticien"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-06-01",
+   "amount": 1424106,
+   "category": "TAXES",
+   "description": "Payement des impots IS et Patente"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-07-03",
+   "amount": 125000,
+   "category": "OTHER",
+   "description": "Entretient du petit groupe et achat de cable electrique pour installation"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-07-03",
+   "amount": 200,
+   "category": "TAXES",
+   "description": "Taxe de versement sunu"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-07-10",
+   "amount": 100,
+   "category": "TAXES",
+   "description": "Taxe de versement sunu"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-07-15",
+   "amount": 100,
+   "category": "TAXES",
+   "description": "Taxe de versement sunu"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-07-16",
+   "amount": 402500,
+   "category": "SALARY",
+   "description": "Payement de salaire du personnel sci mois de juin 2026"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-07-16",
+   "amount": 75000,
+   "category": "TRANSPORT_COMMS",
+   "description": "Consommation hebdommadaire du 29/06, du 06/07 et du 13/07/2026"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-07-17",
+   "amount": 101588,
+   "category": "TAXES",
+   "description": "Payement de la cotisation de la CNSS mois de juin 2026"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-07-17",
+   "amount": 15000,
+   "category": "OTHER",
+   "description": "Recharge de l'internet mois de juillet 2026"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-07-18",
+   "amount": 94684,
+   "category": "UTILITIES",
+   "description": "Payement de la facture de CEET mois de mai 2026"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-07-20",
+   "amount": 25000,
+   "category": "TRANSPORT_COMMS",
+   "description": "Consommation hebdommadaire"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-07-20",
+   "amount": 2500,
+   "category": "OTHER",
+   "description": "Achat de papier hygienique"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-07-24",
+   "amount": 400,
+   "category": "TAXES",
+   "description": "Taxe de versement sunu"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-07-27",
+   "amount": 25000,
+   "category": "TRANSPORT_COMMS",
+   "description": "Consommation hebdommadaire"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-07-01",
+   "amount": 200,
+   "category": "TAXES",
+   "description": "Taxe de versement sunu"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-08-03",
+   "amount": 25000,
+   "category": "TRANSPORT_COMMS",
+   "description": "Consommation hebdommadaire"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-08-10",
+   "amount": 25000,
+   "category": "TRANSPORT_COMMS",
+   "description": "Consommation hebdommadaire"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-08-10",
+   "amount": 402500,
+   "category": "SALARY",
+   "description": "Payement de salaire du personnel sci mois de juillet 2026"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-08-10",
+   "amount": 6000,
+   "category": "OTHER",
+   "description": "Achat d'ampoule pour le couloir"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-08-14",
+   "amount": 101588,
+   "category": "TAXES",
+   "description": "Payement de la cotisation de la CNSS mois de juillet 2026"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-08-14",
+   "amount": 15000,
+   "category": "OTHER",
+   "description": "Recharge de l'internet mois d'août 2026"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-08-14",
+   "amount": 84081,
+   "category": "UTILITIES",
+   "description": "Payement de la facture de CEET mois de mai 2026"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-08-17",
+   "amount": 25000,
+   "category": "TRANSPORT_COMMS",
+   "description": "Consommation hebdommadaire"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-08-17",
+   "amount": 100,
+   "category": "TAXES",
+   "description": "Taxe de versement sunu"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-08-24",
+   "amount": 25000,
+   "category": "TRANSPORT_COMMS",
+   "description": "Consommation hebdommadaire"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-08-28",
+   "amount": 200,
+   "category": "TAXES",
+   "description": "Taxe de versement sunu"
+  },
+  {
+   "anchorPropertyId": "L001",
+   "group": "Assigame",
+   "date": "2026-08-01",
+   "amount": 25000,
+   "category": "TRANSPORT_COMMS",
+   "description": "Consommation hebdommadaire"
+  },
+  {
+   "anchorPropertyId": "L030",
+   "group": "JeanPaulII",
+   "date": "2026-01-06",
+   "amount": 100,
+   "category": "TAXES",
+   "description": "Taxe de versement"
+  },
+  {
+   "anchorPropertyId": "L030",
+   "group": "JeanPaulII",
+   "date": "2026-01-08",
+   "amount": 60000,
+   "category": "SALES_SERVICE_FEES",
+   "description": "Payement de la facture du plombier Arnolde appartement APP2"
+  },
+  {
+   "anchorPropertyId": "L030",
+   "group": "JeanPaulII",
+   "date": "2026-01-10",
+   "amount": 400,
+   "category": "TAXES",
+   "description": "Remboursement taxe de versement"
+  },
+  {
+   "anchorPropertyId": "L030",
+   "group": "JeanPaulII",
+   "date": "2026-02-04",
+   "amount": 35000,
+   "category": "SALARY",
+   "description": "Payement de salaire mois de janvier du gardien mr mandjare"
+  },
+  {
+   "anchorPropertyId": "L030",
+   "group": "JeanPaulII",
+   "date": "2026-02-05",
+   "amount": 100,
+   "category": "TAXES",
+   "description": "Taxe de versement"
+  },
+  {
+   "anchorPropertyId": "L030",
+   "group": "JeanPaulII",
+   "date": "2026-02-10",
+   "amount": 100,
+   "category": "TAXES",
+   "description": "Taxe de versement"
+  },
+  {
+   "anchorPropertyId": "L030",
+   "group": "JeanPaulII",
+   "date": "2026-02-16",
+   "amount": 45000,
+   "category": "SALES_SERVICE_FEES",
+   "description": "Payement main d'œuvre du plombier pour les travaux immeuble JPII"
+  },
+  {
+   "anchorPropertyId": "L030",
+   "group": "JeanPaulII",
+   "date": "2026-02-16",
+   "amount": 31800,
+   "category": "MAINTENANCE",
+   "description": "Achat des materiaux à cct par le plombier pour les travaux STUGME2  immeuble JPII"
+  },
+  {
+   "anchorPropertyId": "L030",
+   "group": "JeanPaulII",
+   "date": "2026-02-16",
+   "amount": 39000,
+   "category": "MAINTENANCE",
+   "description": "Achat des materiaux à cct par le plombier pour les travaux STUGME2  immeuble JPII"
+  },
+  {
+   "anchorPropertyId": "L030",
+   "group": "JeanPaulII",
+   "date": "2026-03-02",
+   "amount": 35000,
+   "category": "SALARY",
+   "description": "Payement de salaire mois de fevrier du gardien mr mandjare"
+  },
+  {
+   "anchorPropertyId": "L030",
+   "group": "JeanPaulII",
+   "date": "2026-03-12",
+   "amount": 200,
+   "category": "TAXES",
+   "description": "Taxe de versement"
+  },
+  {
+   "anchorPropertyId": "L030",
+   "group": "JeanPaulII",
+   "date": "2026-03-18",
+   "amount": 280000,
+   "category": "SITE_STAFF",
+   "description": "Payement  de la facture de la société de sécurité"
+  },
+  {
+   "anchorPropertyId": "L030",
+   "group": "JeanPaulII",
+   "date": "2026-04-01",
+   "amount": 100,
+   "category": "TAXES",
+   "description": "Taxe de versement"
+  },
+  {
+   "anchorPropertyId": "L030",
+   "group": "JeanPaulII",
+   "date": "2026-04-14",
+   "amount": 35000,
+   "category": "SALARY",
+   "description": "Payement de salaire mois de MARS du gardien mr mandjare"
+  },
+  {
+   "anchorPropertyId": "L030",
+   "group": "JeanPaulII",
+   "date": "2026-04-14",
+   "amount": 120000,
+   "category": "SALES_SERVICE_FEES",
+   "description": "Payement de la main d'œuvre du plombier et la location d'echafaudage pour les travaux à l'immeuble JPII"
+  },
+  {
+   "anchorPropertyId": "L030",
+   "group": "JeanPaulII",
+   "date": "2026-04-14",
+   "amount": 50000,
+   "category": "SALES_SERVICE_FEES",
+   "description": "Achat de colle et quelques matériaux et payement de la main d'œuvre du carreleur pour les travaux immeuble JPII"
+  },
+  {
+   "anchorPropertyId": "L030",
+   "group": "JeanPaulII",
+   "date": "2026-04-16",
+   "amount": 300,
+   "category": "TAXES",
+   "description": "Taxe de versement"
+  },
+  {
+   "anchorPropertyId": "L030",
+   "group": "JeanPaulII",
+   "date": "2026-04-24",
+   "amount": 100,
+   "category": "TAXES",
+   "description": "Taxe de versement"
+  },
+  {
+   "anchorPropertyId": "L030",
+   "group": "JeanPaulII",
+   "date": "2026-05-04",
+   "amount": 35000,
+   "category": "SALARY",
+   "description": "Payement de salaire mois d'avril du gardien mr mandjare"
+  },
+  {
+   "anchorPropertyId": "L030",
+   "group": "JeanPaulII",
+   "date": "2026-05-15",
+   "amount": 420000,
+   "category": "SITE_STAFF",
+   "description": "Payement  de la facture de la société de sécurité"
+  },
+  {
+   "anchorPropertyId": "L030",
+   "group": "JeanPaulII",
+   "date": "2026-05-18",
+   "amount": 10000,
+   "category": "SALES_SERVICE_FEES",
+   "description": "Payement  de la facture de déplacement de l'electricien Mr Nestor"
+  },
+  {
+   "anchorPropertyId": "L030",
+   "group": "JeanPaulII",
+   "date": "2026-05-18",
+   "amount": 100,
+   "category": "TAXES",
+   "description": "Taxe de versement"
+  },
+  {
+   "anchorPropertyId": "L030",
+   "group": "JeanPaulII",
+   "date": "2026-05-28",
+   "amount": 100,
+   "category": "TAXES",
+   "description": "Taxe de versement"
+  },
+  {
+   "anchorPropertyId": "L030",
+   "group": "JeanPaulII",
+   "date": "2026-06-11",
+   "amount": 35000,
+   "category": "SALARY",
+   "description": "Payement de salaire mois de mai du gardien mr mandjare"
+  },
+  {
+   "anchorPropertyId": "L030",
+   "group": "JeanPaulII",
+   "date": "2026-06-12",
+   "amount": 200,
+   "category": "TAXES",
+   "description": "Taxe de versement"
+  },
+  {
+   "anchorPropertyId": "L030",
+   "group": "JeanPaulII",
+   "date": "2026-07-03",
+   "amount": 135000,
+   "category": "MAINTENANCE",
+   "description": "Achat de granite pour fabrication de pose pied à l'entrée des appartements"
+  },
+  {
+   "anchorPropertyId": "L030",
+   "group": "JeanPaulII",
+   "date": "2026-07-10",
+   "amount": 300,
+   "category": "TAXES",
+   "description": "Taxe de versement"
+  },
+  {
+   "anchorPropertyId": "L030",
+   "group": "JeanPaulII",
+   "date": "2026-07-16",
+   "amount": 35000,
+   "category": "SALARY",
+   "description": "Payement de salaire mois de mai du gardien mr mandjare"
+  },
+  {
+   "anchorPropertyId": "L030",
+   "group": "JeanPaulII",
+   "date": "2026-07-17",
+   "amount": 70000,
+   "category": "SALES_SERVICE_FEES",
+   "description": "Payement de la facture du plombier pour les travaux à l'immeuble"
+  },
+  {
+   "anchorPropertyId": "L030",
+   "group": "JeanPaulII",
+   "date": "2026-07-24",
+   "amount": 100,
+   "category": "TAXES",
+   "description": "Taxe de versement"
+  },
+  {
+   "anchorPropertyId": "L030",
+   "group": "JeanPaulII",
+   "date": "2026-08-10",
+   "amount": 35000,
+   "category": "SALARY",
+   "description": "Payement de salaire mois de juillet du gardien mr mandjare"
+  },
+  {
+   "anchorPropertyId": "L030",
+   "group": "JeanPaulII",
+   "date": "2026-08-12",
+   "amount": 100,
+   "category": "TAXES",
+   "description": "Taxe de versement"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-01-21",
+   "amount": 90000,
+   "category": "SITE_STAFF",
+   "description": "Payement de la facture du service d'entretien mois de décembre 2025"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-01-21",
+   "amount": 70000,
+   "category": "SALARY",
+   "description": "Payement du salaire du plombier mois de décembre 2025"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-01-21",
+   "amount": 100,
+   "category": "TAXES",
+   "description": "Remboursement Taxe de versement"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-01-26",
+   "amount": 67427,
+   "category": "UTILITIES",
+   "description": "Payement de la facture d'électricité mois de novembre 2025"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-02-03",
+   "amount": 200,
+   "category": "TAXES",
+   "description": "Taxe de versement"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-02-03",
+   "amount": 50000,
+   "category": "SALARY",
+   "description": "Payement de salaire mois de janvier du gardien mr mandja"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-02-16",
+   "amount": 90000,
+   "category": "SITE_STAFF",
+   "description": "Payement de la facture du service d'entretien mois de janvier 2026"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-02-16",
+   "amount": 70000,
+   "category": "SALARY",
+   "description": "Payement du salaire du plombier mois de janvier 2026"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-01-18",
+   "amount": 20000,
+   "category": "SALES_SERVICE_FEES",
+   "description": "Payement de la facture de l'agent de la CEET pour la reparation du compteur STU MER2"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-01-18",
+   "amount": 60312,
+   "category": "UTILITIES",
+   "description": "Payement de la facture d'électricité mois de décembre 2025"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-03-02",
+   "amount": 50000,
+   "category": "SALARY",
+   "description": "Payement de salaire mois de fevrier du gardien mr mandja"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-03-05",
+   "amount": 100,
+   "category": "TAXES",
+   "description": "Taxe de versement"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-03-18",
+   "amount": 90000,
+   "category": "SITE_STAFF",
+   "description": "Payement de la facture du service d'entretien mois de fevrier 2026"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-03-18",
+   "amount": 70000,
+   "category": "SALARY",
+   "description": "Payement du salaire du plombier mois de février 2026"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-03-19",
+   "amount": 76636,
+   "category": "UTILITIES",
+   "description": "Payement de la facture d'électricité mois de janvier 2026"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-04-14",
+   "amount": 50000,
+   "category": "SALARY",
+   "description": "Payement de salaire mois de fevrier du gardien mr mandja"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-04-14",
+   "amount": 90000,
+   "category": "SALARY",
+   "description": "Payement de la facture du service d'entretien mois de mars 2026"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-04-14",
+   "amount": 55000,
+   "category": "OTHER",
+   "description": "Payement de la facture de la recharge de l'extincteur"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-04-14",
+   "amount": 70000,
+   "category": "SALARY",
+   "description": "Payement du salaire du plombier mois de mars 2026"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-04-14",
+   "amount": 200,
+   "category": "TAXES",
+   "description": "Taxe de versement"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-04-21",
+   "amount": 74124,
+   "category": "UTILITIES",
+   "description": "Payement de la facture d'électricité mois de février 2026"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-05-04",
+   "amount": 50000,
+   "category": "SALARY",
+   "description": "Payement de salaire mois de fevrier du gardien mr mandja"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-05-15",
+   "amount": 90000,
+   "category": "SALARY",
+   "description": "Payement de la facture du service d'entretien mois d'avril 2026"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-05-15",
+   "amount": 70000,
+   "category": "SALARY",
+   "description": "Payement du salaire du plombier mois d'avril 2026"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-05-15",
+   "amount": 100000,
+   "category": "SALES_SERVICE_FEES",
+   "description": "Payement de la facture du peintre pour revision des appartements renovés"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-05-18",
+   "amount": 83434,
+   "category": "UTILITIES",
+   "description": "Payement de la facture d'électricité mois de mars 2026"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-05-18",
+   "amount": 100,
+   "category": "TAXES",
+   "description": "Taxe de versement"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-05-28",
+   "amount": 200,
+   "category": "TAXES",
+   "description": "Taxe de versement"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-06-09",
+   "amount": 100,
+   "category": "TAXES",
+   "description": "Taxe de versement"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-06-11",
+   "amount": 12000,
+   "category": "SALES_SERVICE_FEES",
+   "description": "Payement de la facture de l'electricien pour le depannage à la paix"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-06-11",
+   "amount": 50000,
+   "category": "SALARY",
+   "description": "Payement de salaire mois de fevrier du gardien mr mandja"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-06-11",
+   "amount": 90000,
+   "category": "SALARY",
+   "description": "Payement de la facture du service d'entretien mois de mai 2026"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-06-11",
+   "amount": 70000,
+   "category": "SALARY",
+   "description": "Payement du salaire du plombier mois de mai 2026"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-06-15",
+   "amount": 100,
+   "category": "TAXES",
+   "description": "Taxe de versement"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-06-17",
+   "amount": 300,
+   "category": "TAXES",
+   "description": "Taxe de versement"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-06-19",
+   "amount": 100,
+   "category": "TAXES",
+   "description": "Taxe de versement"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-06-19",
+   "amount": 61847,
+   "category": "UTILITIES",
+   "description": "Payement de la facture d'électricité mois d'avril 2026"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-06-24",
+   "amount": 35000,
+   "category": "MAINTENANCE",
+   "description": "Achat de contacteur pour supresseur plus main d'œuvre"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-06-24",
+   "amount": 100,
+   "category": "TAXES",
+   "description": "Taxe de versement frais d'entretien collecté chez les locataires"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-07-03",
+   "amount": 500000,
+   "category": "SALES_SERVICE_FEES",
+   "description": "Avance mr victor pour travaux d'étanchiété à la paix (achat bitume et gaz)"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-07-15",
+   "amount": 100,
+   "category": "TAXES",
+   "description": "Taxe de versement"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-07-16",
+   "amount": 200,
+   "category": "TAXES",
+   "description": "Taxe de versement"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-07-16",
+   "amount": 50000,
+   "category": "SALARY",
+   "description": "Payement de salaire mois de fevrier du gardien mr mandja"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-07-16",
+   "amount": 90000,
+   "category": "SALARY",
+   "description": "Payement de la facture du service d'entretien mois de mai 2026"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-07-16",
+   "amount": 70000,
+   "category": "SALARY",
+   "description": "Payement du salaire du plombier mois de mai 2026"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-07-18",
+   "amount": 73427,
+   "category": "UTILITIES",
+   "description": "Payement de la facture d'électricité mois de mai 2026"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-07-18",
+   "amount": 35000,
+   "category": "OTHER",
+   "description": "Achat de clou +frais de transport des toles par mr claude"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-07-20",
+   "amount": 12000,
+   "category": "SALES_SERVICE_FEES",
+   "description": "Payement de la facture du frigoriste pour l'entretien et la recharge de la clim 3APP3ME MER"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-08-04",
+   "amount": 200,
+   "category": "TAXES",
+   "description": "Taxe de versement"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-08-10",
+   "amount": 20000,
+   "category": "OTHER",
+   "description": "Avance du plombier pour achat de gaz pour la reparation de la clim du studio STUMER2"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-08-10",
+   "amount": 50000,
+   "category": "SALARY",
+   "description": "Payement de salaire mois de juillet 2026 du gardien mr mandja"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-08-10",
+   "amount": 90000,
+   "category": "SALARY",
+   "description": "Payement de la facture du service d'entretien mois de juillet 2026"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-08-10",
+   "amount": 70000,
+   "category": "SALARY",
+   "description": "Payement du salaire du plombier mois de juillet 2026"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-08-12",
+   "amount": 300,
+   "category": "TAXES",
+   "description": "Taxe de versement"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-08-13",
+   "amount": 100,
+   "category": "TAXES",
+   "description": "Taxe de versement"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-08-14",
+   "amount": 88418,
+   "category": "UTILITIES",
+   "description": "Payement de la facture d'électricité mois de juillet 2026"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-08-17",
+   "amount": 200,
+   "category": "TAXES",
+   "description": "Taxe de versement"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-08-17",
+   "amount": 41000,
+   "category": "OTHER",
+   "description": "Payement de la facture du frigoriste pour la réparation de la clim  et la recharge de la clim STUMER2"
+  },
+  {
+   "anchorPropertyId": "L042",
+   "group": "LaPaix",
+   "date": "2026-08-17",
+   "amount": 10000,
+   "category": "SALES_SERVICE_FEES",
+   "description": "Payement de la facture du plombier pour la réparation de la clim STUMER2"
+  },
+  {
+   "anchorPropertyId": "L061",
+   "group": "Villas",
+   "date": "2026-02-10",
+   "amount": 100,
+   "category": "TAXES",
+   "description": "Taxe de versement"
+  },
+  {
+   "anchorPropertyId": "L061",
+   "group": "Villas",
+   "date": "2026-02-16",
+   "amount": 13000,
+   "category": "SALES_SERVICE_FEES",
+   "description": "Payement des transports allés et retour des wc suspendus et wc normal"
+  },
+  {
+   "anchorPropertyId": "L061",
+   "group": "Villas",
+   "date": "2026-02-26",
+   "amount": 100000,
+   "category": "SALES_SERVICE_FEES",
+   "description": "Payement de la main d'œuvre du plombier pour la villa 313"
+  },
+  {
+   "anchorPropertyId": "L061",
+   "group": "Villas",
+   "date": "2026-03-01",
+   "amount": 200000,
+   "category": "MAINTENANCE",
+   "description": "Payement de la facture du monsieur de placo pour la villa 313"
+  },
+  {
+   "anchorPropertyId": "L061",
+   "group": "Villas",
+   "date": "2026-03-01",
+   "amount": 90000,
+   "category": "SALES_SERVICE_FEES",
+   "description": "Payement de la facture du carreleur pour la villa 313"
+  },
+  {
+   "anchorPropertyId": "L061",
+   "group": "Villas",
+   "date": "2026-07-28",
+   "amount": 286500,
+   "category": "OTHER",
+   "description": "Devis de l'etanchéiste villa millénium"
+  },
+  {
+   "anchorPropertyId": "L061",
+   "group": "Villas",
+   "date": "2026-07-28",
+   "amount": 40000,
+   "category": "OTHER",
+   "description": "Achat de vanne par arnold + main d'œuvre ( recu remi à Mr hussein)"
+  },
+  {
+   "anchorPropertyId": "L061",
+   "group": "Villas",
+   "date": "2026-07-28",
+   "amount": 40000,
+   "category": "OTHER",
+   "description": "entretien de la piscine (eau devenu vert) par pisciniste"
+  },
+  {
+   "anchorPropertyId": "L070",
+   "group": "Entrepots",
+   "date": "2026-01-07",
+   "amount": 100,
+   "category": "TAXES",
+   "description": "Taxe de versement"
+  },
+  {
+   "anchorPropertyId": "L070",
+   "group": "Entrepots",
+   "date": "2026-02-05",
+   "amount": 100,
+   "category": "TAXES",
+   "description": "Taxe de versement"
+  },
+  {
+   "anchorPropertyId": "L070",
+   "group": "Entrepots",
+   "date": "2026-02-09",
+   "amount": 1000000,
+   "category": "SALES_SERVICE_FEES",
+   "description": "Payement de la commission de l'agence Immo-house"
+  },
+  {
+   "anchorPropertyId": "L070",
+   "group": "Entrepots",
+   "date": "2026-03-05",
+   "amount": 200,
+   "category": "TAXES",
+   "description": "Taxe de versement"
+  },
+  {
+   "anchorPropertyId": "L070",
+   "group": "Entrepots",
+   "date": "2026-04-10",
+   "amount": 100,
+   "category": "TAXES",
+   "description": "Taxe de versement"
+  },
+  {
+   "anchorPropertyId": "L070",
+   "group": "Entrepots",
+   "date": "2026-04-13",
+   "amount": 595500,
+   "category": "MAINTENANCE",
+   "description": "Achat de toles pour travaux entrepots chinois de chaussure"
+  },
+  {
+   "anchorPropertyId": "L070",
+   "group": "Entrepots",
+   "date": "2026-04-24",
+   "amount": 100,
+   "category": "TAXES",
+   "description": "Taxe de versement"
+  },
+  {
+   "anchorPropertyId": "L070",
+   "group": "Entrepots",
+   "date": "2026-05-23",
+   "amount": 1000000,
+   "category": "MAINTENANCE",
+   "description": "Payement de la commission de l'agence  pour location de showroom site 2"
+  },
+  {
+   "anchorPropertyId": "L070",
+   "group": "Entrepots",
+   "date": "2026-06-09",
+   "amount": 200,
+   "category": "TAXES",
+   "description": "Taxe de versement"
+  },
+  {
+   "anchorPropertyId": "L070",
+   "group": "Entrepots",
+   "date": "2026-06-15",
+   "amount": 100,
+   "category": "TAXES",
+   "description": "Taxe de versement"
+  },
+  {
+   "anchorPropertyId": "L070",
+   "group": "Entrepots",
+   "date": "2026-07-20",
+   "amount": 595500,
+   "category": "MAINTENANCE",
+   "description": "Achat de toles pour travaux entrepots chinois de chaussure"
+  },
+  {
+   "anchorPropertyId": "L070",
+   "group": "Entrepots",
+   "date": "2026-08-28",
+   "amount": 100,
+   "category": "TAXES",
+   "description": "Taxe de versement"
+  }
+ ]
+}
