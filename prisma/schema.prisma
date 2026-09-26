@@ -7,6 +7,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum BuildingType {
+  BUILDING
+  VILLA
+  WAREHOUSE_SITE
+}
+
 enum PropertyCategory {
   APARTMENT
   VILLA
@@ -50,27 +56,63 @@ enum Language {
 
 enum ExpenseCategory {
   MAINTENANCE
+  SALES_SERVICE_FEES
+  TRANSPORT_COMMS
+  OFFICE_SUPPLIES
+  SALARY
+  SITE_STAFF
+  TAXES
   UTILITIES
+  OFFICE_EQUIPMENT
   REPAIRS
   INSURANCE
-  TAXES
   MANAGEMENT_FEE
   OTHER
 }
 
+enum PaymentKind {
+  RENT
+  ARREARS
+  ADVANCE_AT_ENTRY
+  DEPOSIT
+  DEPOSIT_REFUND
+  OTHER
+}
+
+enum FollowUpAction {
+  CALL_VISIT
+  SMS_WHATSAPP
+  LETTER
+  FORMAL_NOTICE
+  LAWYER
+}
+
+enum FollowUpResult {
+  PENDING
+  PAID
+  PARTIAL
+  BROKEN
+}
+
+enum IssueStatus {
+  TODO
+  IN_PROGRESS
+  FIXED
+}
+
 model User {
-  id           String        @id @default(cuid())
+  id           String       @id @default(cuid())
   name         String
-  email        String        @unique
+  email        String       @unique
   passwordHash String
-  role         Role          @default(MANAGER)
-  language     Language      @default(EN)
+  role         Role         @default(MANAGER)
+  language     Language     @default(EN)
   sessions     Session[]
   expenses     Expense[]
   payments     Payment[]
   attachments  Attachment[]
-  createdAt    DateTime      @default(now())
-  updatedAt    DateTime      @updatedAt
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
 }
 
 model Session {
@@ -82,70 +124,112 @@ model Session {
   createdAt DateTime @default(now())
 }
 
+/// Groups properties that belong to the same physical building or site: a multi-unit
+/// building (Grand Marché, Jean Paul II, La Paix), the villas as a set, or a warehouse site.
+model Building {
+  id         String       @id @default(cuid())
+  name       String       @unique
+  type       BuildingType
+  properties Property[]
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+}
+
 model Property {
-  id        String           @id @default(cuid())
-  name      String
-  category  PropertyCategory @default(APARTMENT)
-  address   String
-  city      String
-  dimension Float?
-  bedrooms  Int?
-  bathrooms Float?
-  price     Float?
-  status    PropertyStatus   @default(VACANT)
-  notes     String?
-  leases    Lease[]
-  expenses  Expense[]
-  createdAt DateTime         @default(now())
-  updatedAt DateTime         @updatedAt
+  id         String           @id @default(cuid())
+  name       String
+  category   PropertyCategory @default(APARTMENT)
+  address    String
+  city       String
+  dimension  Float?
+  /// Original area text from the source report when it wasn't a clean m² figure (e.g. "10a 7ca").
+  areaLabel  String?
+  bedrooms   Int?
+  bathrooms  Float?
+  price      Float?
+  status     PropertyStatus   @default(VACANT)
+  notes      String?
+  building   Building?        @relation(fields: [buildingId], references: [id], onDelete: SetNull)
+  buildingId String?
+  /// Floor within the building, e.g. "RDC", "R+1".
+  floor      String?
+  /// Unit code as used on the ground, e.g. "B1", "M12", "STUP ME1".
+  unitCode   String?
+  leases     Lease[]
+  expenses   Expense[]
+  issues     DataIssue[]
+  createdAt  DateTime         @default(now())
+  updatedAt  DateTime         @updatedAt
 }
 
 model Tenant {
-  id        String   @id @default(cuid())
-  firstName String
-  lastName  String
-  email     String?
-  phone     String?
-  company   String?
-  idNumber  String?
-  address   String?
-  city      String?
-  notes     String?
-  leases    Lease[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id             String   @id @default(cuid())
+  firstName      String?
+  lastName       String?
+  /// Company name, when the tenant is a business rather than an individual.
+  company        String?
+  representative String?
+  email          String?
+  phone          String?
+  poBox          String?
+  idNumber       String?
+  address        String?
+  city           String?
+  notes          String?
+  leases         Lease[]
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 }
 
 model Lease {
-  id               String           @id @default(cuid())
-  property         Property         @relation(fields: [propertyId], references: [id], onDelete: Cascade)
-  propertyId       String
-  tenant           Tenant           @relation(fields: [tenantId], references: [id], onDelete: Cascade)
-  tenantId         String
-  startDate        DateTime
-  endDate          DateTime
-  rentAmount       Float
-  billingFrequency BillingFrequency @default(MONTHLY)
-  depositAmount    Float            @default(0)
-  status           LeaseStatus      @default(ACTIVE)
-  payments         Payment[]
-  attachments      Attachment[]
-  createdAt        DateTime         @default(now())
-  updatedAt        DateTime         @updatedAt
+  id                String           @id @default(cuid())
+  property          Property         @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  propertyId        String
+  tenant            Tenant           @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  tenantId          String
+  startDate         DateTime
+  /// Optional: many leases here renew tacitly and have no fixed end date.
+  endDate           DateTime?
+  rentAmount        Float
+  billingFrequency  BillingFrequency @default(MONTHLY)
+  depositAmount     Float            @default(0)
+  /// Original deposit description from the source report, e.g. "03 mois de caution".
+  depositLabel      String?
+  depositRefundOwed Float            @default(0)
+  status            LeaseStatus      @default(ACTIVE)
+  /// First unpaid due date at the time data was imported — the ledger bills forward from
+  /// here instead of from startDate, so old leases don't show years of false arrears.
+  ledgerStartDate   DateTime?
+  /// True when the imported data for this lease is unreliable and must not count toward totals.
+  needsReview       Boolean          @default(false)
+  reviewReason      String?
+  payments          Payment[]
+  attachments       Attachment[]
+  followUps         FollowUp[]
+  rentReviews       RentReview[]
+  issues            DataIssue[]
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
 }
 
 model Payment {
-  id           String   @id @default(cuid())
-  lease        Lease    @relation(fields: [leaseId], references: [id], onDelete: Cascade)
-  leaseId      String
-  amount       Float
-  date         DateTime
-  method       String?
-  notes        String?
-  recordedBy   User?    @relation(fields: [recordedById], references: [id], onDelete: SetNull)
-  recordedById String?
-  attachments  Attachment[]
-  createdAt    DateTime @default(now())
+  id            String       @id @default(cuid())
+  lease         Lease        @relation(fields: [leaseId], references: [id], onDelete: Cascade)
+  leaseId       String
+  amount        Float
+  date          DateTime
+  kind          PaymentKind  @default(RENT)
+  receiptNumber String?
+  monthsCovered Int?
+  method        String?
+  /// False when this payment was reconstructed from a free-text report comment rather than
+  /// a real receipt, and still needs to be checked against the books.
+  confirmed     Boolean      @default(true)
+  notes         String?
+  recordedBy    User?        @relation(fields: [recordedById], references: [id], onDelete: SetNull)
+  recordedById  String?
+  attachments   Attachment[]
+  createdAt     DateTime     @default(now())
 }
 
 model Attachment {
@@ -177,4 +261,44 @@ model Expense {
   attachments  Attachment[]
   createdAt    DateTime        @default(now())
   updatedAt    DateTime        @updatedAt
+}
+
+/// A logged chase on a late or promised payment (call, visit, letter...).
+model FollowUp {
+  id            String         @id @default(cuid())
+  lease         Lease          @relation(fields: [leaseId], references: [id], onDelete: Cascade)
+  leaseId       String
+  date          DateTime
+  action        FollowUpAction
+  response      String?
+  promiseDate   DateTime?
+  promiseAmount Float?
+  result        FollowUpResult @default(PENDING)
+  createdAt     DateTime       @default(now())
+}
+
+/// A scheduled or applied rent increase, with the reminder date for sending the notice letter.
+model RentReview {
+  id           String    @id @default(cuid())
+  lease        Lease     @relation(fields: [leaseId], references: [id], onDelete: Cascade)
+  leaseId      String
+  dueDate      DateTime
+  rate         Float
+  letterSentAt DateTime?
+  appliedAt    DateTime?
+  createdAt    DateTime  @default(now())
+}
+
+/// A known data-quality problem flagged during import or day-to-day use, tracked to resolution.
+model DataIssue {
+  id         String      @id @default(cuid())
+  lease      Lease?      @relation(fields: [leaseId], references: [id], onDelete: Cascade)
+  leaseId    String?
+  property   Property?   @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  propertyId String?
+  problem    String
+  action     String?
+  owner      String?
+  status     IssueStatus @default(TODO)
+  createdAt  DateTime    @default(now())
 }
