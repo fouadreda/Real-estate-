@@ -70,43 +70,45 @@ export default async function LeasesPage({
         </div>
       ) : (
         <div className="card overflow-hidden p-0">
-          <table className="w-full text-sm">
-            <thead className="border-b border-stone-200 bg-stone-50 text-left text-stone-500">
-              <tr>
-                <th className="px-5 py-3 font-medium">{t.leases.tenantHeader}</th>
-                <th className="px-5 py-3 font-medium">{t.leases.propertyHeader}</th>
-                <th className="px-5 py-3 font-medium">{t.leases.termHeader}</th>
-                <th className="px-5 py-3 font-medium">{t.leases.rentHeader}</th>
-                <th className="px-5 py-3 font-medium">{t.leases.statusHeader}</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-stone-100">
-              {leases.map((lease) => (
-                <tr key={lease.id} className="hover:bg-stone-50">
-                  <td className="px-5 py-3">
-                    <Link href={`/leases/${lease.id}`} className="font-medium text-stone-900 hover:underline">
-                      {tenantDisplayName(lease.tenant)}
-                    </Link>
-                  </td>
-                  <td className="px-5 py-3 text-stone-600">
-                    {leaseLocationName(lease)}
-                  </td>
-                  <td className="px-5 py-3 text-stone-600">
-                    {formatDate(lease.startDate, locale)} – {lease.endDate ? formatDate(lease.endDate, locale) : t.leaseDetail.openEnded}
-                  </td>
-                  <td className="px-5 py-3 text-stone-600">
-                    {formatMoney(lease.rentAmount, locale)} / {t.leaseNew.frequencyShort[lease.billingFrequency]}
-                  </td>
-                  <td className="px-5 py-3">
-                    <div className="flex items-center gap-1">
-                      {lease.needsReview && <Badge status="TODO" label={t.leaseDetail.needsReview} />}
-                      <Badge status={lease.status} label={t.status[lease.status]} />
-                    </div>
-                  </td>
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[640px] text-sm">
+              <thead className="border-b border-stone-200 bg-stone-50 text-left text-stone-500">
+                <tr>
+                  <th className="px-5 py-3 font-medium">{t.leases.tenantHeader}</th>
+                  <th className="px-5 py-3 font-medium">{t.leases.propertyHeader}</th>
+                  <th className="px-5 py-3 font-medium">{t.leases.termHeader}</th>
+                  <th className="px-5 py-3 font-medium">{t.leases.rentHeader}</th>
+                  <th className="px-5 py-3 font-medium">{t.leases.statusHeader}</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="divide-y divide-stone-100">
+                {leases.map((lease) => (
+                  <tr key={lease.id} className="hover:bg-stone-50">
+                    <td className="px-5 py-3">
+                      <Link href={`/leases/${lease.id}`} className="font-medium text-stone-900 hover:underline">
+                        {tenantDisplayName(lease.tenant)}
+                      </Link>
+                    </td>
+                    <td className="px-5 py-3 text-stone-600">
+                      {leaseLocationName(lease)}
+                    </td>
+                    <td className="px-5 py-3 text-stone-600">
+                      {formatDate(lease.startDate, locale)} – {lease.endDate ? formatDate(lease.endDate, locale) : t.leaseDetail.openEnded}
+                    </td>
+                    <td className="px-5 py-3 text-stone-600">
+                      {formatMoney(lease.rentAmount, locale)} / {t.leaseNew.frequencyShort[lease.billingFrequency]}
+                    </td>
+                    <td className="px-5 py-3">
+                      <div className="flex items-center gap-1">
+                        {lease.needsReview && <Badge status="TODO" label={t.leaseDetail.needsReview} />}
+                        <Badge status={lease.status} label={t.status[lease.status]} />
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
     </div>
