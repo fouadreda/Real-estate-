@@ -15,23 +15,16 @@ export default async function NewTenantPage() {
       </div>
 
       <form action={createTenant} className="card space-y-4">
+        <p className="text-xs text-stone-500">{t.tenantForm.personOrCompanyHint}</p>
         <div className="grid grid-cols-2 gap-4">
           <div>
             <label className="label" htmlFor="firstName">{t.tenantForm.firstName}</label>
-            <input className="input" id="firstName" name="firstName" required />
+            <input className="input" id="firstName" name="firstName" placeholder="Optional" />
           </div>
           <div>
             <label className="label" htmlFor="lastName">{t.tenantForm.lastName}</label>
-            <input className="input" id="lastName" name="lastName" required />
+            <input className="input" id="lastName" name="lastName" placeholder="Optional" />
           </div>
-        </div>
-        <div>
-          <label className="label" htmlFor="email">{t.tenantForm.email}</label>
-          <input className="input" id="email" name="email" type="email" placeholder="Optional" />
-        </div>
-        <div>
-          <label className="label" htmlFor="phone">{t.tenantForm.phone}</label>
-          <input className="input" id="phone" name="phone" placeholder="Optional" />
         </div>
         <div className="grid grid-cols-2 gap-4">
           <div>
@@ -39,9 +32,27 @@ export default async function NewTenantPage() {
             <input className="input" id="company" name="company" placeholder="Optional" />
           </div>
           <div>
-            <label className="label" htmlFor="idNumber">{t.tenantForm.idNumber}</label>
-            <input className="input" id="idNumber" name="idNumber" placeholder="Optional" />
+            <label className="label" htmlFor="representative">{t.tenantForm.representative}</label>
+            <input className="input" id="representative" name="representative" placeholder="Optional" />
           </div>
+        </div>
+        <div>
+          <label className="label" htmlFor="email">{t.tenantForm.email}</label>
+          <input className="input" id="email" name="email" type="email" placeholder="Optional" />
+        </div>
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label className="label" htmlFor="phone">{t.tenantForm.phone}</label>
+            <input className="input" id="phone" name="phone" placeholder="Optional" />
+          </div>
+          <div>
+            <label className="label" htmlFor="poBox">{t.tenantForm.poBox}</label>
+            <input className="input" id="poBox" name="poBox" placeholder="Optional" />
+          </div>
+        </div>
+        <div>
+          <label className="label" htmlFor="idNumber">{t.tenantForm.idNumber}</label>
+          <input className="input" id="idNumber" name="idNumber" placeholder="Optional" />
         </div>
         <div>
           <label className="label" htmlFor="address">{t.tenantForm.address}</label>
