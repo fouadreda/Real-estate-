@@ -27,6 +27,7 @@ export default function Nav({
     { href: "/leases", label: nav.leases },
     { href: "/expenses", label: nav.expenses },
     { href: "/reports", label: nav.reports },
+    { href: "/data-quality", label: nav.dataQuality },
   ];
 
   const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
