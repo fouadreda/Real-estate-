@@ -38,10 +38,16 @@ export default async function NewExpensePage() {
             <label className="label" htmlFor="category">{t.expenseForm.category}</label>
             <select className="input" id="category" name="category" defaultValue="MAINTENANCE">
               <option value="MAINTENANCE">{t.status.MAINTENANCE}</option>
+              <option value="SALES_SERVICE_FEES">{t.status.SALES_SERVICE_FEES}</option>
+              <option value="TRANSPORT_COMMS">{t.status.TRANSPORT_COMMS}</option>
+              <option value="OFFICE_SUPPLIES">{t.status.OFFICE_SUPPLIES}</option>
+              <option value="SALARY">{t.status.SALARY}</option>
+              <option value="SITE_STAFF">{t.status.SITE_STAFF}</option>
+              <option value="TAXES">{t.status.TAXES}</option>
               <option value="UTILITIES">{t.status.UTILITIES}</option>
+              <option value="OFFICE_EQUIPMENT">{t.status.OFFICE_EQUIPMENT}</option>
               <option value="REPAIRS">{t.status.REPAIRS}</option>
               <option value="INSURANCE">{t.status.INSURANCE}</option>
-              <option value="TAXES">{t.status.TAXES}</option>
               <option value="MANAGEMENT_FEE">{t.status.MANAGEMENT_FEE}</option>
               <option value="OTHER">{t.status.OTHER}</option>
             </select>
