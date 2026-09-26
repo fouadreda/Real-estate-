@@ -1,4 +1,4 @@
-import type { BillingFrequency } from "@prisma/client";
+import type { BillingFrequency, PaymentKind } from "@prisma/client";
 
 const MONTHS_PER_PERIOD: Record<BillingFrequency, number> = {
   MONTHLY: 1,
@@ -6,6 +6,8 @@ const MONTHS_PER_PERIOD: Record<BillingFrequency, number> = {
   SEMIANNUAL: 6,
   ANNUAL: 12,
 };
+
+export const DEFAULT_GRACE_DAYS = 10;
 
 export function monthsPerPeriod(frequency: BillingFrequency): number {
   return MONTHS_PER_PERIOD[frequency];
@@ -58,23 +60,52 @@ export interface LeaseLedger {
 
 interface LeaseLike {
   startDate: Date;
-  endDate: Date;
+  endDate: Date | null;
+  /** First due date not yet paid at import time — billing starts here instead of startDate. */
+  ledgerStartDate?: Date | null;
   rentAmount: number;
   billingFrequency: BillingFrequency;
 }
 
 interface PaymentLike {
   amount: number;
+  kind?: PaymentKind;
+  confirmed?: boolean;
+  date?: Date;
 }
+
+const RENT_LIKE_KINDS: PaymentKind[] = ["RENT", "ARREARS"];
 
 /**
  * Computes rent accrued to date, total paid, and a FIFO allocation of
  * payments across billing periods (oldest period paid first).
+ *
+ * Billing starts at `ledgerStartDate` when set (so old leases with unknown
+ * pre-import history don't show years of false arrears), and a period only
+ * counts as due once it is more than `graceDays` in the past. Only confirmed
+ * rent/arrears payments dated on or after the billing start feed the pool —
+ * deposits, advances, and unconfirmed report-comment payments don't count
+ * toward rent owed.
  */
-export function computeLeaseLedger(lease: LeaseLike, payments: PaymentLike[], asOf: Date): LeaseLedger {
-  const allDates = leasePeriods(lease.startDate, lease.endDate, lease.billingFrequency);
-  const elapsedDates = allDates.filter((d) => d <= asOf);
-  const totalPaid = payments.reduce((sum, p) => sum + p.amount, 0);
+export function computeLeaseLedger(
+  lease: LeaseLike,
+  payments: PaymentLike[],
+  asOf: Date,
+  graceDays: number = DEFAULT_GRACE_DAYS,
+): LeaseLedger {
+  const billingStart = lease.ledgerStartDate ?? lease.startDate;
+  const end = lease.endDate ?? addMonths(asOf, 1);
+  const cutoff = new Date(asOf.getTime() - graceDays * 24 * 60 * 60 * 1000);
+  const allDates = leasePeriods(billingStart, end, lease.billingFrequency);
+  const elapsedDates = allDates.filter((d) => d <= cutoff);
+
+  const rentPayments = payments.filter(
+    (p) =>
+      (p.confirmed ?? true) &&
+      (p.kind === undefined || RENT_LIKE_KINDS.includes(p.kind)) &&
+      (p.date === undefined || p.date >= billingStart),
+  );
+  const totalPaid = rentPayments.reduce((sum, p) => sum + p.amount, 0);
 
   let pool = totalPaid;
   let oldestUnpaidDate: Date | null = null;
@@ -121,7 +152,8 @@ export function daysBetween(from: Date, to: Date): number {
   return Math.floor((to.getTime() - from.getTime()) / (1000 * 60 * 60 * 24));
 }
 
-/** Whether a lease has any billing activity during [monthStart, monthEnd]. */
+/** Whether a lease has any billing activity during [rangeStart, rangeEnd]. */
 export function leaseActiveInRange(lease: LeaseLike, rangeStart: Date, rangeEnd: Date): boolean {
-  return lease.startDate <= rangeEnd && lease.endDate >= rangeStart;
+  const end = lease.endDate ?? rangeEnd;
+  return lease.startDate <= rangeEnd && end >= rangeStart;
 }
