@@ -5,21 +5,23 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 function readTenantFields(formData: FormData) {
-  const firstName = String(formData.get("firstName") ?? "").trim();
-  const lastName = String(formData.get("lastName") ?? "").trim();
+  const firstName = String(formData.get("firstName") ?? "").trim() || null;
+  const lastName = String(formData.get("lastName") ?? "").trim() || null;
+  const company = String(formData.get("company") ?? "").trim() || null;
+  const representative = String(formData.get("representative") ?? "").trim() || null;
   const email = String(formData.get("email") ?? "").trim() || null;
   const phone = String(formData.get("phone") ?? "").trim() || null;
-  const company = String(formData.get("company") ?? "").trim() || null;
+  const poBox = String(formData.get("poBox") ?? "").trim() || null;
   const idNumber = String(formData.get("idNumber") ?? "").trim() || null;
   const address = String(formData.get("address") ?? "").trim() || null;
   const city = String(formData.get("city") ?? "").trim() || null;
   const notes = String(formData.get("notes") ?? "").trim() || null;
 
-  if (!firstName || !lastName) {
-    throw new Error("First and last name are required.");
+  if (!firstName && !lastName && !company) {
+    throw new Error("A first/last name or a company name is required.");
   }
 
-  return { firstName, lastName, email, phone, company, idNumber, address, city, notes };
+  return { firstName, lastName, company, representative, email, phone, poBox, idNumber, address, city, notes };
 }
 
 export async function createTenant(formData: FormData) {

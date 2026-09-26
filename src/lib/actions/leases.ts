@@ -5,11 +5,18 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { BillingFrequency, LeaseStatus } from "@prisma/client";
 
+function parseOptionalDate(value: FormDataEntryValue | null): Date | null {
+  const raw = String(value ?? "").trim();
+  if (!raw) return null;
+  const date = new Date(raw);
+  return Number.isNaN(date.getTime()) ? null : date;
+}
+
 export async function createLease(formData: FormData) {
   const propertyId = String(formData.get("propertyId") ?? "");
   const tenantId = String(formData.get("tenantId") ?? "");
   const startDate = new Date(String(formData.get("startDate") ?? ""));
-  const endDate = new Date(String(formData.get("endDate") ?? ""));
+  const endDate = parseOptionalDate(formData.get("endDate"));
   const rentAmount = Number(formData.get("rentAmount") ?? 0);
   const billingFrequency = String(formData.get("billingFrequency") ?? "MONTHLY") as BillingFrequency;
   const depositAmount = Number(formData.get("depositAmount") ?? 0);
@@ -40,13 +47,13 @@ export async function createLease(formData: FormData) {
 
 export async function updateLease(leaseId: string, formData: FormData) {
   const startDate = new Date(String(formData.get("startDate") ?? ""));
-  const endDate = new Date(String(formData.get("endDate") ?? ""));
+  const endDate = parseOptionalDate(formData.get("endDate"));
   const rentAmount = Number(formData.get("rentAmount") ?? 0);
   const billingFrequency = String(formData.get("billingFrequency") ?? "MONTHLY") as BillingFrequency;
   const depositAmount = Number(formData.get("depositAmount") ?? 0);
 
-  if (Number.isNaN(rentAmount) || !startDate.getTime() || !endDate.getTime()) {
-    throw new Error("Valid start date, end date, and rent amount are required.");
+  if (Number.isNaN(rentAmount) || !startDate.getTime()) {
+    throw new Error("A valid start date and rent amount are required.");
   }
 
   await prisma.lease.update({
@@ -63,7 +70,6 @@ export async function updateLeaseStatus(leaseId: string, status: LeaseStatus) {
   const lease = await prisma.lease.update({
     where: { id: leaseId },
     data: { status },
-    include: { property: true },
   });
 
   if (status === "ENDED" || status === "TERMINATED") {
