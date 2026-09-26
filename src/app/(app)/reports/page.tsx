@@ -10,6 +10,8 @@ import {
   addToAgingBuckets,
   daysBetween,
 } from "@/lib/ledger";
+import { leaseLocationName } from "@/lib/leaseLocation";
+import { tenantDisplayName } from "@/lib/tenantName";
 import Badge from "@/components/Badge";
 
 export default async function ReportsPage({
@@ -28,17 +30,20 @@ export default async function ReportsPage({
   const hasFilter = Boolean(rangeFrom || rangeTo);
   const asOf = rangeTo ?? now;
 
-  const [leases, payments, expenses] = await Promise.all([
+  const [leasesAll, payments, expenses] = await Promise.all([
     prisma.lease.findMany({
       where: { status: { not: "PENDING" } },
-      include: { tenant: true, property: true, payments: true },
+      include: { tenant: true, property: { include: { building: true } }, payments: true },
     }),
     prisma.payment.findMany({
-      include: { lease: { include: { tenant: true, property: true } } },
+      include: { lease: { include: { tenant: true, property: { include: { building: true } } } } },
       orderBy: { date: "desc" },
     }),
     prisma.expense.findMany({ include: { property: true }, orderBy: { date: "desc" } }),
   ]);
+
+  const needsReviewCount = leasesAll.filter((l) => l.needsReview).length;
+  const leases = leasesAll.filter((l) => !l.needsReview);
 
   const revenueThisMonth = leases
     .filter((l) => leaseActiveInRange(l, monthStart, monthEnd))
@@ -159,6 +164,9 @@ export default async function ReportsPage({
             <p className="stat-value text-red-600">{formatMoney(aging.d90plus, locale)}</p>
           </div>
         </div>
+        {needsReviewCount > 0 && (
+          <p className="mt-2 text-xs text-amber-700">{t.reports.needsReviewExcluded(needsReviewCount)}</p>
+        )}
       </div>
 
       <div>
@@ -181,10 +189,10 @@ export default async function ReportsPage({
                   <tr key={lease.id}>
                     <td className="px-5 py-3">
                       <Link href={`/leases/${lease.id}`} className="font-medium text-stone-900 hover:underline">
-                        {lease.tenant.firstName} {lease.tenant.lastName}
+                        {tenantDisplayName(lease.tenant)}
                       </Link>
                     </td>
-                    <td className="px-5 py-3 text-stone-600">{lease.property.name}</td>
+                    <td className="px-5 py-3 text-stone-600">{leaseLocationName(lease)}</td>
                     <td className="px-5 py-3 text-stone-600">
                       {oldestUnpaidDate ? formatDate(oldestUnpaidDate, locale) : "—"}
                     </td>
@@ -217,7 +225,7 @@ export default async function ReportsPage({
                     <tr key={payment.id}>
                       <td className="px-5 py-3 text-stone-600">{formatDate(payment.date, locale)}</td>
                       <td className="px-5 py-3 text-stone-900">
-                        {payment.lease.tenant.firstName} {payment.lease.tenant.lastName}
+                        {tenantDisplayName(payment.lease.tenant)}
                       </td>
                       <td className="px-5 py-3 text-stone-600">{formatMoney(payment.amount, locale)}</td>
                     </tr>
