@@ -6,6 +6,8 @@ import { updatePayment } from "@/lib/actions/payments";
 import { deletePaymentAttachment, uploadPaymentAttachment } from "@/lib/actions/attachments";
 import AttachmentGallery from "@/components/AttachmentGallery";
 import { requireUserWithDictionary } from "@/lib/auth";
+import { leaseLocationName } from "@/lib/leaseLocation";
+import { tenantDisplayName } from "@/lib/tenantName";
 
 export default async function EditPaymentPage({
   params,
@@ -17,7 +19,7 @@ export default async function EditPaymentPage({
   const payment = await prisma.payment.findUnique({
     where: { id: paymentId },
     include: {
-      lease: { include: { property: true, tenant: true } },
+      lease: { include: { property: { include: { building: true } }, tenant: true } },
       attachments: { orderBy: { createdAt: "desc" } },
     },
   });
@@ -32,11 +34,11 @@ export default async function EditPaymentPage({
     <div className="max-w-xl space-y-6">
       <div>
         <Link href={`/leases/${payment.leaseId}`} className="text-sm text-brand-600 hover:underline">
-          ← {payment.lease.property.name}
+          ← {leaseLocationName(payment.lease)}
         </Link>
         <h1 className="mt-1 text-2xl font-semibold text-stone-900">{t.leaseDetail.editPaymentTitle}</h1>
         <p className="mt-1 text-sm text-stone-500">
-          {payment.lease.tenant.firstName} {payment.lease.tenant.lastName}
+          {tenantDisplayName(payment.lease.tenant)}
         </p>
       </div>
 
