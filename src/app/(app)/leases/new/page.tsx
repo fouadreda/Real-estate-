@@ -2,6 +2,8 @@ import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { createLease } from "@/lib/actions/leases";
 import { requireUserWithDictionary } from "@/lib/auth";
+import { propertyLabel } from "@/lib/leaseLocation";
+import { tenantDisplayName } from "@/lib/tenantName";
 
 export default async function NewLeasePage({
   searchParams,
@@ -14,11 +16,21 @@ export default async function NewLeasePage({
   const [vacantProperties, selectedProperty, tenants] = await Promise.all([
     prisma.property.findMany({
       where: { status: "VACANT" },
+      include: { building: true },
       orderBy: { name: "asc" },
     }),
     propertyId ? prisma.property.findUnique({ where: { id: propertyId } }) : null,
     prisma.tenant.findMany({ orderBy: { lastName: "asc" } }),
   ]);
+
+  const unbuilt = vacantProperties.filter((p) => !p.building);
+  const byBuilding = new Map<string, typeof vacantProperties>();
+  for (const p of vacantProperties) {
+    if (!p.building) continue;
+    const list = byBuilding.get(p.building.name) ?? [];
+    list.push(p);
+    byBuilding.set(p.building.name, list);
+  }
 
   return (
     <div className="max-w-xl space-y-6">
@@ -41,10 +53,19 @@ export default async function NewLeasePage({
               <option value="" disabled>
                 {t.leaseNew.selectProperty}
               </option>
-              {vacantProperties.map((property) => (
+              {unbuilt.map((property) => (
                 <option key={property.id} value={property.id}>
                   {property.name} — {property.address}, {property.city}
                 </option>
+              ))}
+              {[...byBuilding.entries()].map(([buildingName, units]) => (
+                <optgroup key={buildingName} label={buildingName}>
+                  {units.map((property) => (
+                    <option key={property.id} value={property.id}>
+                      {propertyLabel(property)}
+                    </option>
+                  ))}
+                </optgroup>
               ))}
             </select>
           </div>
@@ -66,7 +87,7 @@ export default async function NewLeasePage({
                 </option>
                 {tenants.map((tenant) => (
                   <option key={tenant.id} value={tenant.id}>
-                    {tenant.firstName} {tenant.lastName}
+                    {tenantDisplayName(tenant)}
                   </option>
                 ))}
               </select>
@@ -80,7 +101,7 @@ export default async function NewLeasePage({
             </div>
             <div>
               <label className="label" htmlFor="endDate">{t.leaseNew.endDate}</label>
-              <input className="input" id="endDate" name="endDate" type="date" required />
+              <input className="input" id="endDate" name="endDate" type="date" placeholder={t.leaseEdit.openEndedHint} />
             </div>
           </div>
 
