@@ -4,13 +4,15 @@ import { prisma } from "@/lib/prisma";
 import { toDateInputValue } from "@/lib/format";
 import { updateLease } from "@/lib/actions/leases";
 import { requireUserWithDictionary } from "@/lib/auth";
+import { leaseLocationName } from "@/lib/leaseLocation";
+import { tenantDisplayName } from "@/lib/tenantName";
 
 export default async function EditLeasePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const { t } = await requireUserWithDictionary();
   const lease = await prisma.lease.findUnique({
     where: { id },
-    include: { tenant: true, property: true },
+    include: { tenant: true, property: { include: { building: true } } },
   });
   if (!lease) notFound();
 
@@ -20,11 +22,11 @@ export default async function EditLeasePage({ params }: { params: Promise<{ id: 
     <div className="max-w-xl space-y-6">
       <div>
         <Link href={`/leases/${lease.id}`} className="text-sm text-brand-600 hover:underline">
-          ← {lease.property.name}
+          ← {leaseLocationName(lease)}
         </Link>
         <h1 className="mt-1 text-2xl font-semibold text-stone-900">{t.leaseEdit.title}</h1>
         <p className="mt-1 text-sm text-stone-500">
-          {lease.tenant.firstName} {lease.tenant.lastName}
+          {tenantDisplayName(lease.tenant)}
         </p>
       </div>
 
@@ -48,8 +50,8 @@ export default async function EditLeasePage({ params }: { params: Promise<{ id: 
               id="endDate"
               name="endDate"
               type="date"
-              required
-              defaultValue={toDateInputValue(lease.endDate)}
+              defaultValue={lease.endDate ? toDateInputValue(lease.endDate) : ""}
+              placeholder={t.leaseEdit.openEndedHint}
             />
           </div>
         </div>
