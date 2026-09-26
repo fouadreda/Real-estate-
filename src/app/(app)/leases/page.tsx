@@ -2,6 +2,8 @@ import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { formatDate, formatMoney } from "@/lib/format";
 import { requireUserWithDictionary } from "@/lib/auth";
+import { leaseLocationName } from "@/lib/leaseLocation";
+import { tenantDisplayName } from "@/lib/tenantName";
 import Badge from "@/components/Badge";
 
 export default async function LeasesPage({
@@ -20,10 +22,12 @@ export default async function LeasesPage({
             { tenant: { company: { contains: q } } },
             { property: { name: { contains: q } } },
             { property: { city: { contains: q } } },
+            { property: { unitCode: { contains: q } } },
+            { property: { building: { name: { contains: q } } } },
           ],
         }
       : undefined,
-    include: { tenant: true, property: true },
+    include: { tenant: true, property: { include: { building: true } } },
     orderBy: { startDate: "desc" },
   });
 
@@ -81,20 +85,23 @@ export default async function LeasesPage({
                 <tr key={lease.id} className="hover:bg-stone-50">
                   <td className="px-5 py-3">
                     <Link href={`/leases/${lease.id}`} className="font-medium text-stone-900 hover:underline">
-                      {lease.tenant.firstName} {lease.tenant.lastName}
+                      {tenantDisplayName(lease.tenant)}
                     </Link>
                   </td>
                   <td className="px-5 py-3 text-stone-600">
-                    {lease.property.name}
+                    {leaseLocationName(lease)}
                   </td>
                   <td className="px-5 py-3 text-stone-600">
-                    {formatDate(lease.startDate, locale)} – {formatDate(lease.endDate, locale)}
+                    {formatDate(lease.startDate, locale)} – {lease.endDate ? formatDate(lease.endDate, locale) : t.leaseDetail.openEnded}
                   </td>
                   <td className="px-5 py-3 text-stone-600">
                     {formatMoney(lease.rentAmount, locale)} / {t.leaseNew.frequencyShort[lease.billingFrequency]}
                   </td>
                   <td className="px-5 py-3">
-                    <Badge status={lease.status} label={t.status[lease.status]} />
+                    <div className="flex items-center gap-1">
+                      {lease.needsReview && <Badge status="TODO" label={t.leaseDetail.needsReview} />}
+                      <Badge status={lease.status} label={t.status[lease.status]} />
+                    </div>
                   </td>
                 </tr>
               ))}
