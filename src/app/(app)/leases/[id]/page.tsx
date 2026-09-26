@@ -136,35 +136,37 @@ export default async function LeaseDetailPage({ params }: { params: Promise<{ id
               <div className="card text-sm text-stone-500">{t.leaseDetail.noPeriods}</div>
             ) : (
               <div className="card overflow-hidden p-0">
-                <table className="w-full text-sm">
-                  <thead className="border-b border-stone-200 bg-stone-50 text-left text-stone-500">
-                    <tr>
-                      <th className="px-5 py-3 font-medium">{t.leaseDetail.dueHeader}</th>
-                      <th className="px-5 py-3 font-medium">{t.leaseDetail.amountDueHeader}</th>
-                      <th className="px-5 py-3 font-medium">{t.leaseDetail.amountPaidHeader}</th>
-                      <th className="px-5 py-3 font-medium">{t.leaseDetail.balanceHeader}</th>
-                      <th className="px-5 py-3 font-medium">{t.leaseDetail.statusHeader}</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-stone-100">
-                    {ledger.periods.map((period) => (
-                      <tr key={period.index}>
-                        <td className="px-5 py-3 text-stone-600">{formatDate(period.dueDate, locale)}</td>
-                        <td className="px-5 py-3 text-stone-900">{formatMoney(period.amountDue, locale)}</td>
-                        <td className="px-5 py-3 text-stone-600">{formatMoney(period.amountAllocated, locale)}</td>
-                        <td className={`px-5 py-3 ${period.balance > 0 ? "font-medium text-red-600" : "text-stone-400"}`}>
-                          {formatMoney(period.balance, locale)}
-                        </td>
-                        <td className="px-5 py-3">
-                          <Badge
-                            status={period.isPaid ? "PAID" : period.isOverdue ? "LATE" : "PENDING"}
-                            label={period.isPaid ? t.status.PAID : period.isOverdue ? t.status.LATE : t.status.PENDING}
-                          />
-                        </td>
+                <div className="overflow-x-auto">
+                  <table className="w-full min-w-[640px] text-sm">
+                    <thead className="border-b border-stone-200 bg-stone-50 text-left text-stone-500">
+                      <tr>
+                        <th className="px-5 py-3 font-medium">{t.leaseDetail.dueHeader}</th>
+                        <th className="px-5 py-3 font-medium">{t.leaseDetail.amountDueHeader}</th>
+                        <th className="px-5 py-3 font-medium">{t.leaseDetail.amountPaidHeader}</th>
+                        <th className="px-5 py-3 font-medium">{t.leaseDetail.balanceHeader}</th>
+                        <th className="px-5 py-3 font-medium">{t.leaseDetail.statusHeader}</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody className="divide-y divide-stone-100">
+                      {ledger.periods.map((period) => (
+                        <tr key={period.index}>
+                          <td className="px-5 py-3 text-stone-600">{formatDate(period.dueDate, locale)}</td>
+                          <td className="px-5 py-3 text-stone-900">{formatMoney(period.amountDue, locale)}</td>
+                          <td className="px-5 py-3 text-stone-600">{formatMoney(period.amountAllocated, locale)}</td>
+                          <td className={`px-5 py-3 ${period.balance > 0 ? "font-medium text-red-600" : "text-stone-400"}`}>
+                            {formatMoney(period.balance, locale)}
+                          </td>
+                          <td className="px-5 py-3">
+                            <Badge
+                              status={period.isPaid ? "PAID" : period.isOverdue ? "LATE" : "PENDING"}
+                              label={period.isPaid ? t.status.PAID : period.isOverdue ? t.status.LATE : t.status.PENDING}
+                            />
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             )}
           </div>
@@ -175,51 +177,53 @@ export default async function LeaseDetailPage({ params }: { params: Promise<{ id
               <div className="card text-sm text-stone-500">{t.leaseDetail.noPayments}</div>
             ) : (
               <div className="card overflow-hidden p-0">
-                <table className="w-full text-sm">
-                  <thead className="border-b border-stone-200 bg-stone-50 text-left text-stone-500">
-                    <tr>
-                      <th className="px-5 py-3 font-medium">{t.leaseDetail.dateHeader}</th>
-                      <th className="px-5 py-3 font-medium">{t.leaseDetail.amount}</th>
-                      <th className="px-5 py-3 font-medium">{t.leaseDetail.kind}</th>
-                      <th className="px-5 py-3 font-medium">{t.leaseDetail.method}</th>
-                      <th className="px-5 py-3 font-medium">{t.leaseDetail.recordedByHeader}</th>
-                      <th className="px-5 py-3 font-medium"></th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-stone-100">
-                    {lease.payments.map((payment) => {
-                      const removePayment = deletePayment.bind(null, payment.id, lease.id);
-                      return (
-                        <tr key={payment.id}>
-                          <td className="px-5 py-3 text-stone-600">{formatDate(payment.date, locale)}</td>
-                          <td className="px-5 py-3 text-stone-900">
-                            {formatMoney(payment.amount, locale)}
-                            {!payment.confirmed && (
-                              <span className="ml-2"><Badge status="TODO" label={t.leaseDetail.unconfirmed} /></span>
-                            )}
-                          </td>
-                          <td className="px-5 py-3 text-stone-600">{t.status[payment.kind]}</td>
-                          <td className="px-5 py-3 text-stone-600">{payment.method ?? <span className="text-stone-400">—</span>}</td>
-                          <td className="px-5 py-3 text-stone-600">
-                            {payment.recordedBy?.name ?? <span className="text-stone-400">—</span>}
-                          </td>
-                          <td className="px-5 py-3 text-right">
-                            <div className="flex items-center justify-end gap-3">
-                              <Link href={`/leases/${lease.id}/payments/${payment.id}/edit`} className="text-sm text-brand-600 hover:underline">
-                                {t.common.edit}
-                              </Link>
-                              <form action={removePayment}>
-                                <button type="submit" className="text-sm text-red-600 hover:underline">
-                                  {t.common.delete}
-                                </button>
-                              </form>
-                            </div>
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
+                <div className="overflow-x-auto">
+                  <table className="w-full min-w-[720px] text-sm">
+                    <thead className="border-b border-stone-200 bg-stone-50 text-left text-stone-500">
+                      <tr>
+                        <th className="px-5 py-3 font-medium">{t.leaseDetail.dateHeader}</th>
+                        <th className="px-5 py-3 font-medium">{t.leaseDetail.amount}</th>
+                        <th className="px-5 py-3 font-medium">{t.leaseDetail.kind}</th>
+                        <th className="px-5 py-3 font-medium">{t.leaseDetail.method}</th>
+                        <th className="px-5 py-3 font-medium">{t.leaseDetail.recordedByHeader}</th>
+                        <th className="px-5 py-3 font-medium"></th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-stone-100">
+                      {lease.payments.map((payment) => {
+                        const removePayment = deletePayment.bind(null, payment.id, lease.id);
+                        return (
+                          <tr key={payment.id}>
+                            <td className="px-5 py-3 text-stone-600">{formatDate(payment.date, locale)}</td>
+                            <td className="px-5 py-3 text-stone-900">
+                              {formatMoney(payment.amount, locale)}
+                              {!payment.confirmed && (
+                                <span className="ml-2"><Badge status="TODO" label={t.leaseDetail.unconfirmed} /></span>
+                              )}
+                            </td>
+                            <td className="px-5 py-3 text-stone-600">{t.status[payment.kind]}</td>
+                            <td className="px-5 py-3 text-stone-600">{payment.method ?? <span className="text-stone-400">—</span>}</td>
+                            <td className="px-5 py-3 text-stone-600">
+                              {payment.recordedBy?.name ?? <span className="text-stone-400">—</span>}
+                            </td>
+                            <td className="px-5 py-3 text-right">
+                              <div className="flex items-center justify-end gap-3">
+                                <Link href={`/leases/${lease.id}/payments/${payment.id}/edit`} className="text-sm text-brand-600 hover:underline">
+                                  {t.common.edit}
+                                </Link>
+                                <form action={removePayment}>
+                                  <button type="submit" className="text-sm text-red-600 hover:underline">
+                                    {t.common.delete}
+                                  </button>
+                                </form>
+                              </div>
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             )}
           </div>
