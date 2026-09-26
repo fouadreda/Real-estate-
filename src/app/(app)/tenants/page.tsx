@@ -70,45 +70,47 @@ export default async function TenantsPage({
         </div>
       ) : (
         <div className="card overflow-hidden p-0">
-          <table className="w-full text-sm">
-            <thead className="border-b border-stone-200 bg-stone-50 text-left text-stone-500">
-              <tr>
-                <th className="px-5 py-3 font-medium">{t.tenants.nameHeader}</th>
-                <th className="px-5 py-3 font-medium">{t.tenants.contactHeader}</th>
-                <th className="px-5 py-3 font-medium">{t.tenants.currentPropertyHeader}</th>
-                <th className="px-5 py-3 font-medium">{t.tenants.statusHeader}</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-stone-100">
-              {tenants.map((tenant) => {
-                const lease = tenant.leases[0];
-                return (
-                  <tr key={tenant.id} className="hover:bg-stone-50">
-                    <td className="px-5 py-3">
-                      <Link href={`/tenants/${tenant.id}`} className="font-medium text-stone-900 hover:underline">
-                        {tenantDisplayName(tenant)}
-                      </Link>
-                      {tenant.company && (tenant.firstName || tenant.lastName) && (
-                        <div className="text-xs text-stone-400">{tenant.company}</div>
-                      )}
-                    </td>
-                    <td className="px-5 py-3 text-stone-600">
-                      {tenant.email && <div>{tenant.email}</div>}
-                      {tenant.phone && <div>{tenant.phone}</div>}
-                      {!tenant.email && !tenant.phone && <span className="text-stone-400">—</span>}
-                    </td>
-                    <td className="px-5 py-3 text-stone-600">
-                      {lease ? leaseLocationName(lease) : <span className="text-stone-400">—</span>}
-                    </td>
-                    <td className="px-5 py-3">
-                      <Badge status={lease ? "ACTIVE" : "PENDING"} label={lease ? t.status.ACTIVE : t.status.PENDING} />
-                      {!lease && <span className="ml-1 text-xs text-stone-400">{t.tenants.noActiveLease}</span>}
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[560px] text-sm">
+              <thead className="border-b border-stone-200 bg-stone-50 text-left text-stone-500">
+                <tr>
+                  <th className="px-5 py-3 font-medium">{t.tenants.nameHeader}</th>
+                  <th className="px-5 py-3 font-medium">{t.tenants.contactHeader}</th>
+                  <th className="px-5 py-3 font-medium">{t.tenants.currentPropertyHeader}</th>
+                  <th className="px-5 py-3 font-medium">{t.tenants.statusHeader}</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-stone-100">
+                {tenants.map((tenant) => {
+                  const lease = tenant.leases[0];
+                  return (
+                    <tr key={tenant.id} className="hover:bg-stone-50">
+                      <td className="px-5 py-3">
+                        <Link href={`/tenants/${tenant.id}`} className="font-medium text-stone-900 hover:underline">
+                          {tenantDisplayName(tenant)}
+                        </Link>
+                        {tenant.company && (tenant.firstName || tenant.lastName) && (
+                          <div className="text-xs text-stone-400">{tenant.company}</div>
+                        )}
+                      </td>
+                      <td className="px-5 py-3 text-stone-600">
+                        {tenant.email && <div>{tenant.email}</div>}
+                        {tenant.phone && <div>{tenant.phone}</div>}
+                        {!tenant.email && !tenant.phone && <span className="text-stone-400">—</span>}
+                      </td>
+                      <td className="px-5 py-3 text-stone-600">
+                        {lease ? leaseLocationName(lease) : <span className="text-stone-400">—</span>}
+                      </td>
+                      <td className="px-5 py-3">
+                        <Badge status={lease ? "ACTIVE" : "PENDING"} label={lease ? t.status.ACTIVE : t.status.PENDING} />
+                        {!lease && <span className="ml-1 text-xs text-stone-400">{t.tenants.noActiveLease}</span>}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
     </div>
