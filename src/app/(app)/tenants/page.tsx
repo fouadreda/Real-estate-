@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { requireUserWithDictionary } from "@/lib/auth";
+import { leaseLocationName } from "@/lib/leaseLocation";
+import { tenantDisplayName } from "@/lib/tenantName";
 import Badge from "@/components/Badge";
 
 export default async function TenantsPage({
@@ -22,7 +24,12 @@ export default async function TenantsPage({
           ],
         }
       : undefined,
-    include: { leases: { where: { status: "ACTIVE" }, include: { property: true } } },
+    include: {
+      leases: {
+        where: { status: "ACTIVE" },
+        include: { property: { include: { building: true } } },
+      },
+    },
     orderBy: { createdAt: "desc" },
   });
 
@@ -79,9 +86,11 @@ export default async function TenantsPage({
                   <tr key={tenant.id} className="hover:bg-stone-50">
                     <td className="px-5 py-3">
                       <Link href={`/tenants/${tenant.id}`} className="font-medium text-stone-900 hover:underline">
-                        {tenant.firstName} {tenant.lastName}
+                        {tenantDisplayName(tenant)}
                       </Link>
-                      {tenant.company && <div className="text-xs text-stone-400">{tenant.company}</div>}
+                      {tenant.company && (tenant.firstName || tenant.lastName) && (
+                        <div className="text-xs text-stone-400">{tenant.company}</div>
+                      )}
                     </td>
                     <td className="px-5 py-3 text-stone-600">
                       {tenant.email && <div>{tenant.email}</div>}
@@ -89,7 +98,7 @@ export default async function TenantsPage({
                       {!tenant.email && !tenant.phone && <span className="text-stone-400">—</span>}
                     </td>
                     <td className="px-5 py-3 text-stone-600">
-                      {lease ? lease.property.name : <span className="text-stone-400">—</span>}
+                      {lease ? leaseLocationName(lease) : <span className="text-stone-400">—</span>}
                     </td>
                     <td className="px-5 py-3">
                       <Badge status={lease ? "ACTIVE" : "PENDING"} label={lease ? t.status.ACTIVE : t.status.PENDING} />
