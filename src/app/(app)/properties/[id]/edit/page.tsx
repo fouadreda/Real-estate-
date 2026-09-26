@@ -7,7 +7,10 @@ import { requireUserWithDictionary } from "@/lib/auth";
 export default async function EditPropertyPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const { t } = await requireUserWithDictionary();
-  const property = await prisma.property.findUnique({ where: { id } });
+  const [property, buildings] = await Promise.all([
+    prisma.property.findUnique({ where: { id } }),
+    prisma.building.findMany({ orderBy: { name: "asc" } }),
+  ]);
   if (!property) notFound();
 
   const updatePropertyWithId = updateProperty.bind(null, property.id);
@@ -39,6 +42,37 @@ export default async function EditPropertyPage({ params }: { params: Promise<{ i
             <option value="OTHER">{t.status.OTHER}</option>
           </select>
         </div>
+
+        <div className="rounded-lg border border-stone-200 p-3">
+          <label className="label" htmlFor="buildingId">{t.propertyForm.building}</label>
+          <select className="input" id="buildingId" name="buildingId" defaultValue={property.buildingId ?? ""}>
+            <option value="">{t.propertyForm.noBuilding}</option>
+            {buildings.map((b) => (
+              <option key={b.id} value={b.id}>{b.name}</option>
+            ))}
+            <option value="__new__">{t.propertyForm.newBuilding}</option>
+          </select>
+          <p className="mt-1 text-xs text-stone-500">{t.propertyForm.buildingHint}</p>
+          <div className="mt-2 grid grid-cols-2 gap-3">
+            <input className="input" name="newBuildingName" placeholder={t.propertyForm.newBuildingName} />
+            <select className="input" name="newBuildingType" defaultValue="BUILDING">
+              <option value="BUILDING">{t.status.BUILDING}</option>
+              <option value="VILLA">{t.status.VILLA}</option>
+              <option value="WAREHOUSE_SITE">{t.status.WAREHOUSE_SITE}</option>
+            </select>
+          </div>
+          <div className="mt-2 grid grid-cols-2 gap-4">
+            <div>
+              <label className="label" htmlFor="floor">{t.units.floor}</label>
+              <input className="input" id="floor" name="floor" defaultValue={property.floor ?? ""} placeholder={t.units.floorPlaceholder} />
+            </div>
+            <div>
+              <label className="label" htmlFor="unitCode">{t.units.code}</label>
+              <input className="input" id="unitCode" name="unitCode" defaultValue={property.unitCode ?? ""} placeholder={t.units.codePlaceholder} />
+            </div>
+          </div>
+        </div>
+
         <div>
           <label className="label" htmlFor="address">{t.propertyForm.address}</label>
           <input className="input" id="address" name="address" required defaultValue={property.address} />
@@ -72,6 +106,10 @@ export default async function EditPropertyPage({ params }: { params: Promise<{ i
               defaultValue={property.price ?? ""}
             />
           </div>
+        </div>
+        <div>
+          <label className="label" htmlFor="areaLabel">{t.propertyForm.areaLabel}</label>
+          <input className="input" id="areaLabel" name="areaLabel" defaultValue={property.areaLabel ?? ""} placeholder={t.propertyForm.areaLabelPlaceholder} />
         </div>
         <div className="grid grid-cols-2 gap-4">
           <div>
