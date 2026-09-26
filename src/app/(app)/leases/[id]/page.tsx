@@ -4,10 +4,14 @@ import { prisma } from "@/lib/prisma";
 import { formatDate, formatMoney, toDateInputValue } from "@/lib/format";
 import { requireUserWithDictionary } from "@/lib/auth";
 import { computeLeaseLedger } from "@/lib/ledger";
+import { leaseLocationHref, leaseLocationName } from "@/lib/leaseLocation";
+import { tenantDisplayName } from "@/lib/tenantName";
 import Badge from "@/components/Badge";
 import { deleteLease, updateLeaseStatus } from "@/lib/actions/leases";
 import { createPayment, deletePayment } from "@/lib/actions/payments";
 import { deleteLeaseAttachment, uploadLeaseAttachment } from "@/lib/actions/attachments";
+import { createFollowUp } from "@/lib/actions/followUps";
+import { createRentReview, markRentReviewApplied, markRentReviewLetterSent } from "@/lib/actions/rentReviews";
 import AttachmentGallery from "@/components/AttachmentGallery";
 import type { LeaseStatus } from "@prisma/client";
 
@@ -18,9 +22,11 @@ export default async function LeaseDetailPage({ params }: { params: Promise<{ id
     where: { id },
     include: {
       tenant: true,
-      property: true,
+      property: { include: { building: true } },
       payments: { orderBy: { date: "desc" }, include: { recordedBy: true } },
       attachments: { orderBy: { createdAt: "desc" } },
+      followUps: { orderBy: { date: "desc" } },
+      rentReviews: { orderBy: { dueDate: "desc" } },
     },
   });
 
@@ -30,6 +36,8 @@ export default async function LeaseDetailPage({ params }: { params: Promise<{ id
   const createPaymentForLease = createPayment.bind(null, lease.id);
   const uploadDocumentForLease = uploadLeaseAttachment.bind(null, lease.id);
   const deleteDocumentForLease = deleteLeaseAttachment.bind(null, lease.id);
+  const createFollowUpForLease = createFollowUp.bind(null, lease.id);
+  const createRentReviewForLease = createRentReview.bind(null, lease.id);
   const now = new Date();
   const ledger = computeLeaseLedger(lease, lease.payments, now);
 
@@ -44,19 +52,23 @@ export default async function LeaseDetailPage({ params }: { params: Promise<{ id
         <div className="mt-1 flex items-start justify-between">
           <div>
             <h1 className="text-2xl font-semibold text-stone-900">
-              {lease.property.name}
+              <Link href={leaseLocationHref(lease)} className="hover:underline">
+                {leaseLocationName(lease)}
+              </Link>
             </h1>
             <p className="mt-1 text-sm text-stone-500">
               {t.leases.tenantHeader}:{" "}
               <Link href={`/tenants/${lease.tenantId}`} className="text-brand-600 hover:underline">
-                {lease.tenant.firstName} {lease.tenant.lastName}
+                {tenantDisplayName(lease.tenant)}
               </Link>
             </p>
             <p className="mt-1 text-sm text-stone-500">
-              {formatDate(lease.startDate, locale)} – {formatDate(lease.endDate, locale)} · {formatMoney(lease.rentAmount, locale)} / {t.leaseNew.frequencyShort[lease.billingFrequency]} · {t.leaseDetail.depositLabel} {formatMoney(lease.depositAmount, locale)}
+              {formatDate(lease.startDate, locale)} – {lease.endDate ? formatDate(lease.endDate, locale) : t.leaseDetail.openEnded} · {formatMoney(lease.rentAmount, locale)} / {t.leaseNew.frequencyShort[lease.billingFrequency]} · {t.leaseDetail.depositLabel} {formatMoney(lease.depositAmount, locale)}
+              {lease.depositLabel ? ` (${lease.depositLabel})` : ""}
             </p>
           </div>
           <div className="flex items-center gap-3">
+            {lease.needsReview && <Badge status="TODO" label={t.leaseDetail.needsReview} />}
             <Badge status={lease.status} label={t.status[lease.status]} />
             <Link href={`/leases/${lease.id}/edit`} className="btn-secondary">
               {t.leaseDetail.editButton}
@@ -66,6 +78,14 @@ export default async function LeaseDetailPage({ params }: { params: Promise<{ id
             </form>
           </div>
         </div>
+
+        {lease.needsReview && (
+          <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+            <strong>{t.leaseDetail.needsReview}</strong>
+            {lease.reviewReason ? `: ${lease.reviewReason}` : ""}
+            {t.leaseDetail.needsReviewHint}
+          </div>
+        )}
 
         <div className="mt-4 flex flex-wrap gap-2">
           {statusOptions.map((status) => {
@@ -160,6 +180,7 @@ export default async function LeaseDetailPage({ params }: { params: Promise<{ id
                     <tr>
                       <th className="px-5 py-3 font-medium">{t.leaseDetail.dateHeader}</th>
                       <th className="px-5 py-3 font-medium">{t.leaseDetail.amount}</th>
+                      <th className="px-5 py-3 font-medium">{t.leaseDetail.kind}</th>
                       <th className="px-5 py-3 font-medium">{t.leaseDetail.method}</th>
                       <th className="px-5 py-3 font-medium">{t.leaseDetail.recordedByHeader}</th>
                       <th className="px-5 py-3 font-medium"></th>
@@ -171,7 +192,13 @@ export default async function LeaseDetailPage({ params }: { params: Promise<{ id
                       return (
                         <tr key={payment.id}>
                           <td className="px-5 py-3 text-stone-600">{formatDate(payment.date, locale)}</td>
-                          <td className="px-5 py-3 text-stone-900">{formatMoney(payment.amount, locale)}</td>
+                          <td className="px-5 py-3 text-stone-900">
+                            {formatMoney(payment.amount, locale)}
+                            {!payment.confirmed && (
+                              <span className="ml-2"><Badge status="TODO" label={t.leaseDetail.unconfirmed} /></span>
+                            )}
+                          </td>
+                          <td className="px-5 py-3 text-stone-600">{t.status[payment.kind]}</td>
                           <td className="px-5 py-3 text-stone-600">{payment.method ?? <span className="text-stone-400">—</span>}</td>
                           <td className="px-5 py-3 text-stone-600">
                             {payment.recordedBy?.name ?? <span className="text-stone-400">—</span>}
@@ -195,6 +222,122 @@ export default async function LeaseDetailPage({ params }: { params: Promise<{ id
                 </table>
               </div>
             )}
+          </div>
+
+          <div className="space-y-4">
+            <h2 className="font-semibold text-stone-900">{t.leaseDetail.followUpsHeading}</h2>
+            {lease.followUps.length === 0 ? (
+              <div className="card text-sm text-stone-500">{t.leaseDetail.noFollowUps}</div>
+            ) : (
+              <div className="space-y-2">
+                {lease.followUps.map((f) => (
+                  <div key={f.id} className="card">
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <p className="text-sm font-medium text-stone-900">
+                          {formatDate(f.date, locale)} · {t.status[f.action]}
+                        </p>
+                        {f.response && <p className="mt-1 text-sm text-stone-600">{f.response}</p>}
+                        {f.promiseDate && (
+                          <p className="mt-1 text-sm text-stone-500">
+                            {t.leaseDetail.promised}: {formatDate(f.promiseDate, locale)}
+                            {f.promiseAmount ? ` · ${formatMoney(f.promiseAmount, locale)}` : ""}
+                          </p>
+                        )}
+                      </div>
+                      <Badge status={f.result} label={t.status[f.result]} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+            <form action={createFollowUpForLease} className="card space-y-3">
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="label" htmlFor="fu-date">{t.leaseDetail.dateHeader}</label>
+                  <input className="input" id="fu-date" name="date" type="date" required defaultValue={toDateInputValue(new Date())} />
+                </div>
+                <div>
+                  <label className="label" htmlFor="fu-action">{t.leaseDetail.followUpAction}</label>
+                  <select className="input" id="fu-action" name="action" defaultValue="CALL_VISIT">
+                    <option value="CALL_VISIT">{t.status.CALL_VISIT}</option>
+                    <option value="SMS_WHATSAPP">{t.status.SMS_WHATSAPP}</option>
+                    <option value="LETTER">{t.status.LETTER}</option>
+                    <option value="FORMAL_NOTICE">{t.status.FORMAL_NOTICE}</option>
+                    <option value="LAWYER">{t.status.LAWYER}</option>
+                  </select>
+                </div>
+              </div>
+              <div>
+                <label className="label" htmlFor="fu-response">{t.leaseDetail.response}</label>
+                <input className="input" id="fu-response" name="response" placeholder="Optional" />
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="label" htmlFor="fu-promiseDate">{t.leaseDetail.promiseDate}</label>
+                  <input className="input" id="fu-promiseDate" name="promiseDate" type="date" />
+                </div>
+                <div>
+                  <label className="label" htmlFor="fu-promiseAmount">{t.leaseDetail.promiseAmount}</label>
+                  <input className="input" id="fu-promiseAmount" name="promiseAmount" type="number" min="0" step="0.01" />
+                </div>
+              </div>
+              <button type="submit" className="btn-secondary w-full">{t.leaseDetail.logFollowUp}</button>
+            </form>
+          </div>
+
+          <div className="space-y-4">
+            <h2 className="font-semibold text-stone-900">{t.leaseRevision.heading}</h2>
+            {lease.rentReviews.length === 0 ? (
+              <div className="card text-sm text-stone-500">{t.leaseRevision.noneSet}</div>
+            ) : (
+              <div className="space-y-2">
+                {lease.rentReviews.map((r) => {
+                  const sendLetter = markRentReviewLetterSent.bind(null, r.id, lease.id);
+                  const applyReview = markRentReviewApplied.bind(null, r.id, lease.id);
+                  return (
+                    <div key={r.id} className="card">
+                      <div className="flex items-start justify-between">
+                        <div>
+                          <p className="text-sm font-medium text-stone-900">
+                            {formatDate(r.dueDate, locale)} · +{(r.rate * 100).toFixed(1)}%
+                          </p>
+                          <p className="mt-1 text-xs text-stone-500">
+                            {r.letterSentAt ? `${t.leaseRevision.letterSent} ${formatDate(r.letterSentAt, locale)}` : t.leaseRevision.letterNotSent}
+                            {r.appliedAt ? ` · ${t.leaseRevision.applied} ${formatDate(r.appliedAt, locale)}` : ""}
+                          </p>
+                        </div>
+                        <div className="flex gap-2">
+                          {!r.letterSentAt && (
+                            <form action={sendLetter}>
+                              <button type="submit" className="text-sm text-brand-600 hover:underline">{t.leaseRevision.markLetterSent}</button>
+                            </form>
+                          )}
+                          {!r.appliedAt && (
+                            <form action={applyReview}>
+                              <button type="submit" className="text-sm text-brand-600 hover:underline">{t.leaseRevision.markApplied}</button>
+                            </form>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+            <form action={createRentReviewForLease} className="card space-y-3">
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="label" htmlFor="rr-dueDate">{t.leaseRevision.nextRevisionDate}</label>
+                  <input className="input" id="rr-dueDate" name="dueDate" type="date" required />
+                </div>
+                <div>
+                  <label className="label" htmlFor="rr-rate">{t.leaseRevision.rate}</label>
+                  <input className="input" id="rr-rate" name="rate" type="number" min="0" step="0.1" required />
+                </div>
+              </div>
+              <button type="submit" className="btn-secondary w-full">{t.leaseRevision.schedule}</button>
+            </form>
           </div>
         </div>
 
