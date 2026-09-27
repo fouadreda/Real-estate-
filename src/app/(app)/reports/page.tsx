@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
-import { formatDate, formatMoney, toDateInputValue } from "@/lib/format";
+import { formatDate, formatMoney, formatMoneyForPdf, toDateInputValue } from "@/lib/format";
 import { requireUserWithDictionary } from "@/lib/auth";
 import {
   computeLeaseLedger,
@@ -236,10 +236,10 @@ export default async function ReportsPage({
               tenantDisplayName(lease.tenant),
               leaseLocationName(lease),
               oldestUnpaidDate ? formatDate(oldestUnpaidDate, locale) : "—",
-              formatMoney(unpaid, locale),
+              formatMoneyForPdf(unpaid),
             ])}
             totalLabel={t.reports.pdfTotalUnpaid}
-            totalValue={formatMoney(totalUnpaid, locale)}
+            totalValue={formatMoneyForPdf(totalUnpaid)}
             footer={pdfFooter}
           />
         </div>
@@ -293,13 +293,10 @@ export default async function ReportsPage({
                 formatDate(payment.date, locale),
                 tenantDisplayName(payment.lease.tenant),
                 leaseLocationName(payment.lease),
-                formatMoney(payment.amount, locale),
+                formatMoneyForPdf(payment.amount),
               ])}
               totalLabel={t.reports.pdfTotalReceived}
-              totalValue={formatMoney(
-                filteredPayments.reduce((sum, p) => sum + p.amount, 0),
-                locale,
-              )}
+              totalValue={formatMoneyForPdf(filteredPayments.reduce((sum, p) => sum + p.amount, 0))}
               footer={pdfFooter}
             />
           </div>
@@ -375,10 +372,10 @@ export default async function ReportsPage({
               expense.property.name,
               t.status[expense.category],
               expense.description ?? "—",
-              formatMoney(expense.amount, locale),
+              formatMoneyForPdf(expense.amount),
             ])}
             totalLabel={t.reports.pdfTotalExpenses}
-            totalValue={formatMoney(totalExpensesFiltered, locale)}
+            totalValue={formatMoneyForPdf(totalExpensesFiltered)}
             footer={pdfFooter}
           />
         </div>
