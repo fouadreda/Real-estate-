@@ -1,0 +1,5392 @@
+{
+ "reportDate": "2026-04-02",
+ "graceDays": 10,
+ "source": "rapport sci les cocotiers.docx2.xls",
+ "units": [
+  {
+   "id": "L001",
+   "building": "Immeuble Assigame",
+   "type": "Immeuble",
+   "floor": "RDC",
+   "code": "B1",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 350000
+  },
+  {
+   "id": "L002",
+   "building": "Immeuble Assigame",
+   "type": "Immeuble",
+   "floor": "RDC",
+   "code": "B2",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 350500
+  },
+  {
+   "id": "L003",
+   "building": "Immeuble Assigame",
+   "type": "Immeuble",
+   "floor": "RDC",
+   "code": "B3",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 350500
+  },
+  {
+   "id": "L004",
+   "building": "Immeuble Assigame",
+   "type": "Immeuble",
+   "floor": "RDC",
+   "code": "B4",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 275000
+  },
+  {
+   "id": "L005",
+   "building": "Immeuble Assigame",
+   "type": "Immeuble",
+   "floor": "RDC",
+   "code": "M1",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 151250
+  },
+  {
+   "id": "L006",
+   "building": "Immeuble Assigame",
+   "type": "Immeuble",
+   "floor": "RDC",
+   "code": "M2",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 137500
+  },
+  {
+   "id": "L007",
+   "building": "Immeuble Assigame",
+   "type": "Immeuble",
+   "floor": "RDC",
+   "code": "M3",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 151250
+  },
+  {
+   "id": "L008",
+   "building": "Immeuble Assigame",
+   "type": "Immeuble",
+   "floor": "RDC",
+   "code": "M4",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 137500
+  },
+  {
+   "id": "L009",
+   "building": "Immeuble Assigame",
+   "type": "Immeuble",
+   "floor": "RDC",
+   "code": "M5",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 151250
+  },
+  {
+   "id": "L010",
+   "building": "Immeuble Assigame",
+   "type": "Immeuble",
+   "floor": "RDC",
+   "code": "M6",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 70000
+  },
+  {
+   "id": "L011",
+   "building": "Immeuble Assigame",
+   "type": "Immeuble",
+   "floor": "RDC",
+   "code": "M7",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 110000
+  },
+  {
+   "id": "L012",
+   "building": "Immeuble Assigame",
+   "type": "Immeuble",
+   "floor": "RDC",
+   "code": "M8",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 121000
+  },
+  {
+   "id": "L013",
+   "building": "Immeuble Assigame",
+   "type": "Immeuble",
+   "floor": "RDC",
+   "code": "M9",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 121000
+  },
+  {
+   "id": "L014",
+   "building": "Immeuble Assigame",
+   "type": "Immeuble",
+   "floor": "RDC",
+   "code": "M10",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 121000
+  },
+  {
+   "id": "L015",
+   "building": "Immeuble Assigame",
+   "type": "Immeuble",
+   "floor": "RDC",
+   "code": "M11",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 121000
+  },
+  {
+   "id": "L016",
+   "building": "Immeuble Assigame",
+   "type": "Immeuble",
+   "floor": "R+1",
+   "code": "B5",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 110000
+  },
+  {
+   "id": "L017",
+   "building": "Immeuble Assigame",
+   "type": "Immeuble",
+   "floor": "R+1",
+   "code": "B6",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 100000
+  },
+  {
+   "id": "L018",
+   "building": "Immeuble Assigame",
+   "type": "Immeuble",
+   "floor": "R+1",
+   "code": "B7",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 110000
+  },
+  {
+   "id": "L019",
+   "building": "Immeuble Assigame",
+   "type": "Immeuble",
+   "floor": "R+1",
+   "code": "B8",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 110000
+  },
+  {
+   "id": "L020",
+   "building": "Immeuble Assigame",
+   "type": "Immeuble",
+   "floor": "R+1",
+   "code": "M12",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 80000
+  },
+  {
+   "id": "L021",
+   "building": "Immeuble Assigame",
+   "type": "Immeuble",
+   "floor": "R+1",
+   "code": "M13",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 90000
+  },
+  {
+   "id": "L022",
+   "building": "Immeuble Assigame",
+   "type": "Immeuble",
+   "floor": "R+1",
+   "code": "M14",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 90000
+  },
+  {
+   "id": "L023",
+   "building": "Immeuble Assigame",
+   "type": "Immeuble",
+   "floor": "R+1",
+   "code": "M15",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 80000
+  },
+  {
+   "id": "L024",
+   "building": "Immeuble Assigame",
+   "type": "Immeuble",
+   "floor": "R+1",
+   "code": "M16",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 90000
+  },
+  {
+   "id": "L025",
+   "building": "Immeuble Assigame",
+   "type": "Immeuble",
+   "floor": "R+1",
+   "code": "M18",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 70000
+  },
+  {
+   "id": "L026",
+   "building": "Immeuble Assigame",
+   "type": "Immeuble",
+   "floor": "R+1",
+   "code": "M19",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 70000
+  },
+  {
+   "id": "L027",
+   "building": "Immeuble Assigame",
+   "type": "Immeuble",
+   "floor": "R+1",
+   "code": "M20",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 70000
+  },
+  {
+   "id": "L028",
+   "building": "Immeuble Assigame",
+   "type": "Immeuble",
+   "floor": "R+1",
+   "code": "M21",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 70000
+  },
+  {
+   "id": "L029",
+   "building": "Immeuble Assigame",
+   "type": "Immeuble",
+   "floor": "R+1",
+   "code": "M22",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 70000
+  },
+  {
+   "id": "L030",
+   "building": "Immeuble Jean Paul II",
+   "type": "Immeuble",
+   "floor": "RDC",
+   "code": "B1+",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 100000
+  },
+  {
+   "id": "L031",
+   "building": "Immeuble Jean Paul II",
+   "type": "Immeuble",
+   "floor": "RDC",
+   "code": "B2+",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 300000
+  },
+  {
+   "id": "L032",
+   "building": "Immeuble Jean Paul II",
+   "type": "Immeuble",
+   "floor": "RDC",
+   "code": "B3+",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 300000
+  },
+  {
+   "id": "L033",
+   "building": "Immeuble Jean Paul II",
+   "type": "Immeuble",
+   "floor": "RDC",
+   "code": "B4+",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 300000
+  },
+  {
+   "id": "L034",
+   "building": "Immeuble Jean Paul II",
+   "type": "Immeuble",
+   "floor": "R+1",
+   "code": "STUP ME1",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 250000
+  },
+  {
+   "id": "L035",
+   "building": "Immeuble Jean Paul II",
+   "type": "Immeuble",
+   "floor": "R+1",
+   "code": "STUP ME2",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 250000
+  },
+  {
+   "id": "L036",
+   "building": "Immeuble Jean Paul II",
+   "type": "Immeuble",
+   "floor": "R+1",
+   "code": "STUG ME3",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 250000
+  },
+  {
+   "id": "L037",
+   "building": "Immeuble Jean Paul II",
+   "type": "Immeuble",
+   "floor": "R+1",
+   "code": "STU P4",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Vacant",
+   "askingRent": 150000
+  },
+  {
+   "id": "L038",
+   "building": "Immeuble Jean Paul II",
+   "type": "Immeuble",
+   "floor": "R+2",
+   "code": "2APP ME1",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 300000
+  },
+  {
+   "id": "L039",
+   "building": "Immeuble Jean Paul II",
+   "type": "Immeuble",
+   "floor": "R+2",
+   "code": "3APP ME1",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 250000
+  },
+  {
+   "id": "L040",
+   "building": "Immeuble Jean Paul II",
+   "type": "Immeuble",
+   "floor": "R+3",
+   "code": "3APP 2",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": null
+  },
+  {
+   "id": "L041",
+   "building": "Immeuble Jean Paul II",
+   "type": "Immeuble",
+   "floor": "R+3",
+   "code": "3APP 3",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 250000
+  },
+  {
+   "id": "L042",
+   "building": "Immeuble La Paix",
+   "type": "Immeuble",
+   "floor": "RDC",
+   "code": "B1++",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 300000
+  },
+  {
+   "id": "L043",
+   "building": "Immeuble La Paix",
+   "type": "Immeuble",
+   "floor": "RDC",
+   "code": "B2++",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 400000
+  },
+  {
+   "id": "L044",
+   "building": "Immeuble La Paix",
+   "type": "Immeuble",
+   "floor": "RDC",
+   "code": "B3++",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 385000
+  },
+  {
+   "id": "L045",
+   "building": "Immeuble La Paix",
+   "type": "Immeuble",
+   "floor": "RDC",
+   "code": "B4++",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 440000
+  },
+  {
+   "id": "L046",
+   "building": "Immeuble La Paix",
+   "type": "Immeuble",
+   "floor": "RDC",
+   "code": "B5++",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 2250000
+  },
+  {
+   "id": "L047",
+   "building": "Immeuble La Paix",
+   "type": "Immeuble",
+   "floor": "RDC",
+   "code": "B6++",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 700000
+  },
+  {
+   "id": "L048",
+   "building": "Immeuble La Paix",
+   "type": "Immeuble",
+   "floor": "RDC",
+   "code": "B7++",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 400000
+  },
+  {
+   "id": "L049",
+   "building": "Immeuble La Paix",
+   "type": "Immeuble",
+   "floor": "RDC",
+   "code": "B8++",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 3100000
+  },
+  {
+   "id": "L050",
+   "building": "Immeuble La Paix",
+   "type": "Immeuble",
+   "floor": "RDC",
+   "code": "2APP/RDC",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Vacant",
+   "askingRent": null
+  },
+  {
+   "id": "L051",
+   "building": "Immeuble La Paix",
+   "type": "Immeuble",
+   "floor": "R+1",
+   "code": "STU1 MER",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Vacant",
+   "askingRent": null
+  },
+  {
+   "id": "L052",
+   "building": "Immeuble La Paix",
+   "type": "Immeuble",
+   "floor": "R+1",
+   "code": "3APP1 MER",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Vacant",
+   "askingRent": null
+  },
+  {
+   "id": "L053",
+   "building": "Immeuble La Paix",
+   "type": "Immeuble",
+   "floor": "R+1",
+   "code": "3APP1 PAIX",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Vacant",
+   "askingRent": null
+  },
+  {
+   "id": "L054",
+   "building": "Immeuble La Paix",
+   "type": "Immeuble",
+   "floor": "R+1",
+   "code": "2 STUDIOS RDC",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Vacant",
+   "askingRent": null
+  },
+  {
+   "id": "L055",
+   "building": "Immeuble La Paix",
+   "type": "Immeuble",
+   "floor": "R+2",
+   "code": "STU2 MER",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 300000
+  },
+  {
+   "id": "L056",
+   "building": "Immeuble La Paix",
+   "type": "Immeuble",
+   "floor": "R+2",
+   "code": "3APP2 MER",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 1000000
+  },
+  {
+   "id": "L057",
+   "building": "Immeuble La Paix",
+   "type": "Immeuble",
+   "floor": "R+2",
+   "code": "3APP2 PAIX",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Vacant",
+   "askingRent": null
+  },
+  {
+   "id": "L058",
+   "building": "Immeuble La Paix",
+   "type": "Immeuble",
+   "floor": "R+3",
+   "code": "STU3 MER",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Vacant",
+   "askingRent": 350000
+  },
+  {
+   "id": "L059",
+   "building": "Immeuble La Paix",
+   "type": "Immeuble",
+   "floor": "R+3",
+   "code": "3APP3 MER",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Vacant",
+   "askingRent": null
+  },
+  {
+   "id": "L060",
+   "building": "Immeuble La Paix",
+   "type": "Immeuble",
+   "floor": "R+3",
+   "code": "3APP3 ME PAIX",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 800000
+  },
+  {
+   "id": "L061",
+   "building": "Villas",
+   "type": "Villa",
+   "floor": null,
+   "code": "VILLA CAISSE BODJONA RABI",
+   "areaLabel": "10a 7ca",
+   "areaM2": 1007,
+   "status": "Occupé",
+   "askingRent": 2000000
+  },
+  {
+   "id": "L062",
+   "building": "Villas",
+   "type": "Villa",
+   "floor": null,
+   "code": "VILLA ESPERANCE 133",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 1200000
+  },
+  {
+   "id": "L063",
+   "building": "Villas",
+   "type": "Villa",
+   "floor": null,
+   "code": "VILLA JUBILE 118 SONIPA RABI",
+   "areaLabel": "8a 65 ca",
+   "areaM2": 865,
+   "status": "Occupé",
+   "askingRent": 1300000
+  },
+  {
+   "id": "L064",
+   "building": "Villas",
+   "type": "Villa",
+   "floor": null,
+   "code": "VILLA JUBILE A80",
+   "areaLabel": "500,6 m2",
+   "areaM2": 500.6,
+   "status": "Occupé",
+   "askingRent": 1200000
+  },
+  {
+   "id": "L065",
+   "building": "Villas",
+   "type": "Villa",
+   "floor": null,
+   "code": "VILLA MILLENIUM",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 1500000
+  },
+  {
+   "id": "L066",
+   "building": "Villas",
+   "type": "Villa",
+   "floor": null,
+   "code": "VILLA 313",
+   "areaLabel": "100 m2",
+   "areaM2": 100,
+   "status": "Occupé",
+   "askingRent": 2000000
+  },
+  {
+   "id": "L067",
+   "building": "Villas",
+   "type": "Villa",
+   "floor": null,
+   "code": "VILLA AVEPOZO",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 400000
+  },
+  {
+   "id": "L068",
+   "building": "Villas",
+   "type": "Villa",
+   "floor": null,
+   "code": "VILLA HORIZON",
+   "areaLabel": "800 m2",
+   "areaM2": 800,
+   "status": "Occupé",
+   "askingRent": 1300000
+  },
+  {
+   "id": "L069",
+   "building": "Villas",
+   "type": "Villa",
+   "floor": null,
+   "code": "RESIDENCE COMPLEXE DE LOISIR KPESSI",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 2000000
+  },
+  {
+   "id": "L070",
+   "building": "Entrepôts",
+   "type": "Entrepôt",
+   "floor": null,
+   "code": "SITE PORT ENTREPOT N°1",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 13000000
+  },
+  {
+   "id": "L071",
+   "building": "Entrepôts",
+   "type": "Entrepôt",
+   "floor": null,
+   "code": "SITE PORT ENTREPOT N°2",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Vacant",
+   "askingRent": null
+  },
+  {
+   "id": "L072",
+   "building": "Entrepôts",
+   "type": "Entrepôt",
+   "floor": null,
+   "code": "SITE PORT ENTREPOT N°3",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 7500000
+  },
+  {
+   "id": "L073",
+   "building": "Entrepôts",
+   "type": "Entrepôt",
+   "floor": null,
+   "code": "ENTREPOT",
+   "areaLabel": "700 m2",
+   "areaM2": 700,
+   "status": "Occupé",
+   "askingRent": 1000000
+  },
+  {
+   "id": "L074",
+   "building": "Entrepôts",
+   "type": "Entrepôt",
+   "floor": null,
+   "code": "SITE AZAR ENTREPOT N°1",
+   "areaLabel": "2 251,08 m2",
+   "areaM2": 2251.08,
+   "status": "Vacant",
+   "askingRent": 4000000
+  },
+  {
+   "id": "L075",
+   "building": "Entrepôts",
+   "type": "Entrepôt",
+   "floor": null,
+   "code": "SITE AZAR ENTREPOT N°2",
+   "areaLabel": "1 792,33 m2",
+   "areaM2": 1792.33,
+   "status": "Vacant",
+   "askingRent": 3500000
+  },
+  {
+   "id": "L076",
+   "building": "Entrepôts",
+   "type": "Entrepôt",
+   "floor": null,
+   "code": "SITE AZAR ENTREPOT N°3",
+   "areaLabel": "2 900 m2",
+   "areaM2": 2900,
+   "status": "Occupé",
+   "askingRent": 5000000
+  },
+  {
+   "id": "L077",
+   "building": "Entrepôts",
+   "type": "Entrepôt",
+   "floor": null,
+   "code": "SITE DUCRO ENTREPOT N°1",
+   "areaLabel": "7 500 m2",
+   "areaM2": 7500,
+   "status": "Occupé",
+   "askingRent": 10265625
+  },
+  {
+   "id": "L078",
+   "building": "Entrepôts",
+   "type": "Entrepôt",
+   "floor": null,
+   "code": "SITE DUCRO ENTREPOT N°2",
+   "areaLabel": "2 200 m2",
+   "areaM2": 2200,
+   "status": "Occupé",
+   "askingRent": 3700000
+  },
+  {
+   "id": "L079",
+   "building": "Entrepôts",
+   "type": "Entrepôt",
+   "floor": null,
+   "code": "ENTREPOT",
+   "areaLabel": "2 172 m2",
+   "areaM2": 2172,
+   "status": "Occupé",
+   "askingRent": 5000000
+  },
+  {
+   "id": "L080",
+   "building": "Entrepôts",
+   "type": "Entrepôt",
+   "floor": null,
+   "code": "ENTREPOT RAMATOU 1",
+   "areaLabel": "2 200 m2",
+   "areaM2": 2200,
+   "status": "Occupé",
+   "askingRent": 3500000
+  },
+  {
+   "id": "L081",
+   "building": "Entrepôts",
+   "type": "Entrepôt",
+   "floor": null,
+   "code": "ENTREPOT RAMATOU 2",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 1500000
+  },
+  {
+   "id": "L082",
+   "building": "Entrepôts",
+   "type": "Entrepôt",
+   "floor": null,
+   "code": "ENTREPOT 1 VON FACE ABC",
+   "areaLabel": "2 200 m2",
+   "areaM2": 2200,
+   "status": "Occupé",
+   "askingRent": 5000000
+  },
+  {
+   "id": "L083",
+   "building": "Entrepôts",
+   "type": "Entrepôt",
+   "floor": null,
+   "code": "ENTREPOT 2 VON FACE ABC",
+   "areaLabel": "2 000 m2",
+   "areaM2": 2000,
+   "status": "Occupé",
+   "askingRent": 3500000
+  },
+  {
+   "id": "L084",
+   "building": "Entrepôts",
+   "type": "Entrepôt",
+   "floor": null,
+   "code": "ENTREPOT AKODESSEWA DERRIERE TDE",
+   "areaLabel": "1 500 m2",
+   "areaM2": 1500,
+   "status": "Occupé",
+   "askingRent": 3000000
+  },
+  {
+   "id": "L085",
+   "building": "Entrepôts",
+   "type": "Entrepôt",
+   "floor": null,
+   "code": "ENTREPOT VON FAN MILK à coté de LOCAMAT",
+   "areaLabel": "100 m2",
+   "areaM2": 100,
+   "status": "Vacant",
+   "askingRent": 500000
+  },
+  {
+   "id": "L086",
+   "building": "Entrepôts",
+   "type": "Entrepôt",
+   "floor": null,
+   "code": "ENTREPOT",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 3000000
+  },
+  {
+   "id": "L087",
+   "building": "Entrepôts",
+   "type": "Entrepôt",
+   "floor": null,
+   "code": "SITE ITP ENTREPOT N°1 MESANINE",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 5000000
+  },
+  {
+   "id": "L088",
+   "building": "Entrepôts",
+   "type": "Entrepôt",
+   "floor": null,
+   "code": "SITE ITP ENTREPOT N°2",
+   "areaLabel": "4 255 m2",
+   "areaM2": 4255,
+   "status": "Occupé",
+   "askingRent": 6500000
+  },
+  {
+   "id": "L089",
+   "building": "Entrepôts",
+   "type": "Entrepôt",
+   "floor": null,
+   "code": "SITE ITP ENTREPOT N°3",
+   "areaLabel": "4 160 m2",
+   "areaM2": 4160,
+   "status": "Occupé",
+   "askingRent": 6500000
+  },
+  {
+   "id": "L090",
+   "building": "Entrepôts",
+   "type": "Entrepôt",
+   "floor": null,
+   "code": "SITE SIVOP ENTREPOT N°1",
+   "areaLabel": "4 000 m2",
+   "areaM2": 4000,
+   "status": "Occupé",
+   "askingRent": 6000000
+  },
+  {
+   "id": "L091",
+   "building": "Entrepôts",
+   "type": "Entrepôt",
+   "floor": null,
+   "code": "SITE SIVOP ENTREPOT N°2 MESANINE",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 2500000
+  },
+  {
+   "id": "L092",
+   "building": "Entrepôts",
+   "type": "Entrepôt",
+   "floor": null,
+   "code": "ENTRPOT LEADER FOOD INDUSTRIE",
+   "areaLabel": "1 725 m2",
+   "areaM2": 1725,
+   "status": "Occupé",
+   "askingRent": 3000000
+  },
+  {
+   "id": "L093",
+   "building": "Entrepôts",
+   "type": "Entrepôt",
+   "floor": null,
+   "code": "ENTREPOT CACAVELI",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 388200
+  },
+  {
+   "id": "L094",
+   "building": "Entrepôts",
+   "type": "Entrepôt",
+   "floor": null,
+   "code": "ENTREPOT NYEKONAKPOE",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 500000
+  },
+  {
+   "id": "L095",
+   "building": "Entrepôts",
+   "type": "Entrepôt",
+   "floor": null,
+   "code": "ENTREPOT",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 500000
+  },
+  {
+   "id": "L096",
+   "building": "Entrepôts",
+   "type": "Entrepôt",
+   "floor": null,
+   "code": "ENTREPOT DERRIERE IMMEUBLE LA PAIX",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 428000
+  },
+  {
+   "id": "L097",
+   "building": "Entrepôts",
+   "type": "Entrepôt",
+   "floor": null,
+   "code": "ENTREPOT DERRIERE IMMEUBLE LA PAIX",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 428000
+  },
+  {
+   "id": "L098",
+   "building": "Entrepôts",
+   "type": "Entrepôt",
+   "floor": null,
+   "code": "ENTREPOT DERRIERE HOTEL SARAKAWA",
+   "areaLabel": "1 000 m2",
+   "areaM2": 1000,
+   "status": "Occupé",
+   "askingRent": 2000000
+  },
+  {
+   "id": "L099",
+   "building": "Entrepôts",
+   "type": "Entrepôt",
+   "floor": null,
+   "code": "NOUVEL ENTREPOT AKODESSEWA",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": null
+  },
+  {
+   "id": "L100",
+   "building": "Entrepôts",
+   "type": "Entrepôt",
+   "floor": null,
+   "code": "ENTREPOT PROFOOD",
+   "areaLabel": null,
+   "areaM2": null,
+   "status": "Occupé",
+   "askingRent": 2500000
+  }
+ ],
+ "tenants": [
+  {
+   "id": "T001",
+   "name": "KOUTOUKLUI DODJIVI",
+   "nameInReport": "Mr KOUTOUKLUI DODJIVI",
+   "representative": null,
+   "phone": "90 20 22 25",
+   "poBox": null
+  },
+  {
+   "id": "T002",
+   "name": "KANYI AYOKO",
+   "nameInReport": "Mme KANYI AYOKO",
+   "representative": null,
+   "phone": "90 09 80 37",
+   "poBox": null
+  },
+  {
+   "id": "T003",
+   "name": "EKADIS",
+   "nameInReport": "Ets EKADIS",
+   "representative": null,
+   "phone": "91 52 24 02",
+   "poBox": "BP 12891 Lomé-Togo"
+  },
+  {
+   "id": "T004",
+   "name": "AWOUGBLA ANOUMOU",
+   "nameInReport": "Mr AWOUGBLA Anoumou",
+   "representative": null,
+   "phone": "91 83 07 77",
+   "poBox": null
+  },
+  {
+   "id": "T005",
+   "name": "SAINTE ODETTE",
+   "nameInReport": "ETS SAINTE ODETTE",
+   "representative": null,
+   "phone": "90 19 90 17",
+   "poBox": null
+  },
+  {
+   "id": "T006",
+   "name": "DEFLY NICOLAS",
+   "nameInReport": "Mr DEFLY Nicolas",
+   "representative": null,
+   "phone": "90 16 16 64",
+   "poBox": null
+  },
+  {
+   "id": "T007",
+   "name": "ADJAYI AYETOBI",
+   "nameInReport": "Mme ADJAYI AYETOBI",
+   "representative": null,
+   "phone": "90 12 50 20",
+   "poBox": null
+  },
+  {
+   "id": "T008",
+   "name": "DAZARO AÏDA",
+   "nameInReport": "Mme DAZARO Aïda",
+   "representative": null,
+   "phone": "92 68 29 07",
+   "poBox": null
+  },
+  {
+   "id": "T009",
+   "name": "KONDO AFFI",
+   "nameInReport": "Mme KONDO AFFI",
+   "representative": null,
+   "phone": "90 34 61 25",
+   "poBox": null
+  },
+  {
+   "id": "T010",
+   "name": "TOP COSMETIQUE",
+   "nameInReport": "TOP COSMETIQUE / Mr JIHAD",
+   "representative": "Mr JIHAD",
+   "phone": "90 63 52 72",
+   "poBox": null
+  },
+  {
+   "id": "T011",
+   "name": "BOUKA A.ESSIVI",
+   "nameInReport": "Mme BOUKA A.ESSIVI",
+   "representative": null,
+   "phone": "91 55 98 83",
+   "poBox": null
+  },
+  {
+   "id": "T012",
+   "name": "NOMAGNON AMEYO",
+   "nameInReport": "Mme NOMAGNON AMEYO",
+   "representative": null,
+   "phone": "90 01 83 46",
+   "poBox": null
+  },
+  {
+   "id": "T013",
+   "name": "ZATOU ADJOVI",
+   "nameInReport": "Mme ZATOU ADJOVI",
+   "representative": null,
+   "phone": "90 03 18 94",
+   "poBox": null
+  },
+  {
+   "id": "T014",
+   "name": "DJANKALE AFI MAWUSI",
+   "nameInReport": "Mme DJANKALE Afi Mawusi / ETS KONU et Fils",
+   "representative": "ETS KONU et Fils",
+   "phone": "90 05 55 70",
+   "poBox": null
+  },
+  {
+   "id": "T015",
+   "name": "GAVI AGNES",
+   "nameInReport": "Mme GAVI AGNES",
+   "representative": null,
+   "phone": "90 94 04 40 / 97 14 13 40",
+   "poBox": null
+  },
+  {
+   "id": "T016",
+   "name": "OUMI YEL N'BASSE",
+   "nameInReport": "Mme OUMI YEL N'BASSE",
+   "representative": null,
+   "phone": "92 34 47 70",
+   "poBox": null
+  },
+  {
+   "id": "T017",
+   "name": "AL MORACH",
+   "nameInReport": "AL MORACH",
+   "representative": null,
+   "phone": null,
+   "poBox": null
+  },
+  {
+   "id": "T018",
+   "name": "BOKO EYAH",
+   "nameInReport": "Mme BOKO EYAH",
+   "representative": null,
+   "phone": "92 48 04 37 / 98 47 49 53",
+   "poBox": null
+  },
+  {
+   "id": "T019",
+   "name": "H.O.K.",
+   "nameInReport": "ETS H.O.K. / Mme ADJAYI Helen Oyenike",
+   "representative": "Mme ADJAYI Helen Oyenike",
+   "phone": "90 15 52 21",
+   "poBox": null
+  },
+  {
+   "id": "T020",
+   "name": "ABBEY STELLA",
+   "nameInReport": "Mme ABBEY STELLA",
+   "representative": null,
+   "phone": "90 39 48 17",
+   "poBox": null
+  },
+  {
+   "id": "T021",
+   "name": "SEHOVOH KANTÉ KOFFI RODRIGUE",
+   "nameInReport": "Mr SEHOVOH Kanté Koffi Rodrigue",
+   "representative": null,
+   "phone": "90 19 67 52",
+   "poBox": null
+  },
+  {
+   "id": "T022",
+   "name": "HAMMER GROUP",
+   "nameInReport": "HAMMER GROUP/ Mr TAÏROU A.",
+   "representative": "Mr TAÏROU A.",
+   "phone": "93 87 12 87",
+   "poBox": null
+  },
+  {
+   "id": "T023",
+   "name": "MAD_JEWELRY_F",
+   "nameInReport": "MAD_JEWELRY_F représentée par Mr THIAM AMDY ET NEOSOLARIS représentée par MAKANDA NDOMBASI",
+   "representative": "Mr THIAM AMDY ET NEOSOLARIS représentée par MAKANDA NDOMBASI",
+   "phone": null,
+   "poBox": null
+  },
+  {
+   "id": "T024",
+   "name": "CHEZ JOHNNY",
+   "nameInReport": "CHEZ JOHNNY représenté par Mr GHANDOUR AYMANE",
+   "representative": "Mr GHANDOUR AYMANE",
+   "phone": "91 31 77 77",
+   "poBox": null
+  },
+  {
+   "id": "T025",
+   "name": "EASY WIN",
+   "nameInReport": "ETS EASY WIN / Mme SHIJIA",
+   "representative": "Mme SHIJIA",
+   "phone": "92 32 25 50",
+   "poBox": null
+  },
+  {
+   "id": "T026",
+   "name": "MOUSTAPHA",
+   "nameInReport": "Mr MOUSTAPHA",
+   "representative": null,
+   "phone": null,
+   "poBox": null
+  },
+  {
+   "id": "T027",
+   "name": "AL MSSAN",
+   "nameInReport": "Mr AL MSSAN",
+   "representative": null,
+   "phone": null,
+   "poBox": null
+  },
+  {
+   "id": "T028",
+   "name": "ALI MOHAMAD MASRI",
+   "nameInReport": "Mr ALI MOHAMAD MASRI",
+   "representative": null,
+   "phone": null,
+   "poBox": null
+  },
+  {
+   "id": "T029",
+   "name": "MONZER",
+   "nameInReport": "Mr MONZER",
+   "representative": null,
+   "phone": null,
+   "poBox": null
+  },
+  {
+   "id": "T030",
+   "name": "GIT",
+   "nameInReport": "GIT",
+   "representative": null,
+   "phone": null,
+   "poBox": null
+  },
+  {
+   "id": "T031",
+   "name": "SMMT",
+   "nameInReport": "SMMT",
+   "representative": null,
+   "phone": null,
+   "poBox": null
+  },
+  {
+   "id": "T032",
+   "name": "CERVEAU STORE",
+   "nameInReport": "CERVEAU STORE / Mr DATHEY ÉTÉ AMEN",
+   "representative": "Mr DATHEY ÉTÉ AMEN",
+   "phone": null,
+   "poBox": null
+  },
+  {
+   "id": "T033",
+   "name": "TAVARES-AFONSO SHEILA SUELY",
+   "nameInReport": "TAVARES-AFONSO SHEILA SUELY",
+   "representative": null,
+   "phone": null,
+   "poBox": null
+  },
+  {
+   "id": "T034",
+   "name": "MOUNA FOOD CHOCO-LATTE SARLU",
+   "nameInReport": "ETS MOUNA FOOD CHOCO-LATTE SARLU",
+   "representative": null,
+   "phone": "93 40 90 87",
+   "poBox": null
+  },
+  {
+   "id": "T035",
+   "name": "SMART ALI",
+   "nameInReport": "SMART Mr ALI",
+   "representative": null,
+   "phone": null,
+   "poBox": null
+  },
+  {
+   "id": "T036",
+   "name": "BLUE BERRY TRAVEL SARL",
+   "nameInReport": "BLUE BERRY TRAVEL SARL",
+   "representative": null,
+   "phone": null,
+   "poBox": null
+  },
+  {
+   "id": "T037",
+   "name": "R-LOGISTIC",
+   "nameInReport": "R-LOGISTIC",
+   "representative": null,
+   "phone": null,
+   "poBox": null
+  },
+  {
+   "id": "T038",
+   "name": "MORENO TRADING",
+   "nameInReport": "SOCIETE MORENO TRADING/Mr MOHAMED TAREK",
+   "representative": "Mr MOHAMED TAREK",
+   "phone": null,
+   "poBox": null
+  },
+  {
+   "id": "T039",
+   "name": "UNICOM COMMODITIES SARL U",
+   "nameInReport": "SOCIETE UNICOM COMMODITIES SARL U",
+   "representative": null,
+   "phone": null,
+   "poBox": null
+  },
+  {
+   "id": "T040",
+   "name": "BRASSERIE DU BENIN",
+   "nameInReport": "BRASSERIE DU BENIN / Mr Thierry FERAUD",
+   "representative": "Mr Thierry FERAUD",
+   "phone": "22 25 16 84",
+   "poBox": null
+  },
+  {
+   "id": "T041",
+   "name": "KUMAR DILEEP",
+   "nameInReport": "Mr KUMAR DILEEP/SOCIETE PIA TOGO",
+   "representative": "SOCIETE PIA TOGO",
+   "phone": "70 99 24 13",
+   "poBox": null
+  },
+  {
+   "id": "T042",
+   "name": "KAROUT HUSSEIN",
+   "nameInReport": "Mr KAROUT HUSSEIN / RODIS COSMETIQUE",
+   "representative": "RODIS COSMETIQUE",
+   "phone": "93 23 73 13",
+   "poBox": null
+  },
+  {
+   "id": "T043",
+   "name": "SIRE",
+   "nameInReport": "Mr SIRE",
+   "representative": null,
+   "phone": "99 13 23 02",
+   "poBox": null
+  },
+  {
+   "id": "T044",
+   "name": "AMBASSADE DES USA AU TOGO",
+   "nameInReport": "AMBASSADE DES USA au TOGO",
+   "representative": null,
+   "phone": null,
+   "poBox": null
+  },
+  {
+   "id": "T045",
+   "name": "BANQUE ATLANTIQUE",
+   "nameInReport": "BANQUE ATLANTIQUE/ BABACAUH KOFFI KRA",
+   "representative": "BABACAUH KOFFI KRA",
+   "phone": null,
+   "poBox": null
+  },
+  {
+   "id": "T046",
+   "name": "ELLIPSE PROJECTS",
+   "nameInReport": "ELLIPSE PROJECTS/ALI KREICH",
+   "representative": "ALI KREICH",
+   "phone": null,
+   "poBox": null
+  },
+  {
+   "id": "T047",
+   "name": "RESIDENCE MOERIS",
+   "nameInReport": "RESIDENCE MOERIS",
+   "representative": null,
+   "phone": null,
+   "poBox": null
+  },
+  {
+   "id": "T048",
+   "name": "SORETRAP",
+   "nameInReport": "SORETRAP",
+   "representative": null,
+   "phone": null,
+   "poBox": null
+  },
+  {
+   "id": "T049",
+   "name": "TOGOTOLE SARL",
+   "nameInReport": "TOGOTOLE SARL",
+   "representative": null,
+   "phone": null,
+   "poBox": null
+  },
+  {
+   "id": "T050",
+   "name": "AFRIQUE CENTURY",
+   "nameInReport": "AFRIQUE CENTURY",
+   "representative": null,
+   "phone": "91 42 21 96",
+   "poBox": null
+  },
+  {
+   "id": "T051",
+   "name": "MAERSK LINE",
+   "nameInReport": "MAERSK LINE",
+   "representative": null,
+   "phone": null,
+   "poBox": null
+  },
+  {
+   "id": "T052",
+   "name": "SNG",
+   "nameInReport": "SNG",
+   "representative": null,
+   "phone": null,
+   "poBox": null
+  },
+  {
+   "id": "T053",
+   "name": "WEST AFRICA CHAIN MANUFACTURING",
+   "nameInReport": "WEST AFRICA CHAIN MANUFACTURING / Mr WEI JINYANG",
+   "representative": "Mr WEI JINYANG",
+   "phone": "90 81 38 73",
+   "poBox": null
+  },
+  {
+   "id": "T054",
+   "name": "SOTOPA",
+   "nameInReport": "SOTOPA",
+   "representative": null,
+   "phone": null,
+   "poBox": null
+  },
+  {
+   "id": "T055",
+   "name": "COCOLOMEX",
+   "nameInReport": "COCOLOMEX",
+   "representative": null,
+   "phone": "90 30 29 88",
+   "poBox": null
+  },
+  {
+   "id": "T056",
+   "name": "ETG",
+   "nameInReport": "ETG",
+   "representative": null,
+   "phone": null,
+   "poBox": null
+  },
+  {
+   "id": "T057",
+   "name": "LIU WEIJIAN",
+   "nameInReport": "LIU WEIJIAN",
+   "representative": null,
+   "phone": null,
+   "poBox": null
+  },
+  {
+   "id": "T058",
+   "name": "INTER FOOD",
+   "nameInReport": "INTER FOOD",
+   "representative": null,
+   "phone": null,
+   "poBox": null
+  },
+  {
+   "id": "T059",
+   "name": "AFRICA BIO COMMODITIES",
+   "nameInReport": "AFRICA BIO COMMODITIES",
+   "representative": null,
+   "phone": null,
+   "poBox": null
+  },
+  {
+   "id": "T060",
+   "name": "SEVEN FOOD",
+   "nameInReport": "SEVEN FOOD",
+   "representative": null,
+   "phone": null,
+   "poBox": null
+  },
+  {
+   "id": "T061",
+   "name": "SMART",
+   "nameInReport": "SMART",
+   "representative": null,
+   "phone": null,
+   "poBox": null
+  },
+  {
+   "id": "T062",
+   "name": "STATION TOTAL SALL",
+   "nameInReport": "STATION TOTAL Mme SALL",
+   "representative": null,
+   "phone": null,
+   "poBox": null
+  },
+  {
+   "id": "T063",
+   "name": "BUREAU DE TRANSIT FOI TRANS",
+   "nameInReport": "BUREAU DE TRANSIT FOI TRANS",
+   "representative": null,
+   "phone": null,
+   "poBox": null
+  },
+  {
+   "id": "T064",
+   "name": "CMA CGM",
+   "nameInReport": "CMA CGM",
+   "representative": null,
+   "phone": null,
+   "poBox": null
+  },
+  {
+   "id": "T065",
+   "name": "SOLEVA TOGO",
+   "nameInReport": "SOLEVA TOGO/ Mme ADEJOKE OYINBO",
+   "representative": "Mme ADEJOKE OYINBO",
+   "phone": "98 08 12 71",
+   "poBox": null
+  }
+ ],
+ "leases": [
+  {
+   "id": "B001",
+   "unitId": "L001",
+   "tenantId": "T001",
+   "startDate": "2025-02-01",
+   "rent": 350000,
+   "paidThrough": "2026-01-01",
+   "monthsUnpaid": 3,
+   "arrears": 1050000,
+   "status": "En retard",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": "a payé 3 mois ce 18/03/2026"
+  },
+  {
+   "id": "B002",
+   "unitId": "L002",
+   "tenantId": "T002",
+   "startDate": "2015-10-01",
+   "rent": 350500,
+   "paidThrough": "2025-02-01",
+   "monthsUnpaid": 14,
+   "arrears": 4907000,
+   "status": "En retard",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B003",
+   "unitId": "L003",
+   "tenantId": "T003",
+   "startDate": null,
+   "rent": 350500,
+   "paidThrough": "2025-06-01",
+   "monthsUnpaid": 10,
+   "arrears": 3505000,
+   "status": "En retard",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": "a payé 1 mois ce 20/02/2026"
+  },
+  {
+   "id": "B004",
+   "unitId": "L004",
+   "tenantId": "T004",
+   "startDate": "2021-01-01",
+   "rent": 275000,
+   "paidThrough": "2025-10-01",
+   "monthsUnpaid": 6,
+   "arrears": 1650000,
+   "status": "En retard",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": "a payé 3 mois ce 29/10/2025"
+  },
+  {
+   "id": "B005",
+   "unitId": "L005",
+   "tenantId": "T004",
+   "startDate": "2026-02-01",
+   "rent": 151250,
+   "paidThrough": "2026-04-01",
+   "monthsUnpaid": 0,
+   "arrears": 0,
+   "status": "Échéance proche",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B006",
+   "unitId": "L006",
+   "tenantId": "T005",
+   "startDate": "2016-12-12",
+   "rent": 137500,
+   "paidThrough": "2026-01-12",
+   "monthsUnpaid": 3,
+   "arrears": 412500,
+   "status": "En retard",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": "a payé 6 mois ce 06/01/2026"
+  },
+  {
+   "id": "B007",
+   "unitId": "L007",
+   "tenantId": "T006",
+   "startDate": "2025-09-01",
+   "rent": 151250,
+   "paidThrough": "2026-04-01",
+   "monthsUnpaid": 0,
+   "arrears": 0,
+   "status": "Échéance proche",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": "a payé 2 mois ce lundi 09/02/2026"
+  },
+  {
+   "id": "B008",
+   "unitId": "L008",
+   "tenantId": "T007",
+   "startDate": "2022-01-01",
+   "rent": 137500,
+   "paidThrough": "2026-04-01",
+   "monthsUnpaid": 0,
+   "arrears": 0,
+   "status": "Échéance proche",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B009",
+   "unitId": "L009",
+   "tenantId": "T003",
+   "startDate": "2015-04-01",
+   "rent": 151250,
+   "paidThrough": "2025-07-01",
+   "monthsUnpaid": 9,
+   "arrears": 1361250,
+   "status": "En retard",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": "a payé 1 mois ce 20/02/2026"
+  },
+  {
+   "id": "B010",
+   "unitId": "L010",
+   "tenantId": "T008",
+   "startDate": "2025-08-01",
+   "rent": 70000,
+   "paidThrough": "2026-02-01",
+   "monthsUnpaid": 2,
+   "arrears": 140000,
+   "status": "En retard",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B011",
+   "unitId": "L011",
+   "tenantId": "T009",
+   "startDate": "2022-06-27",
+   "rent": 110000,
+   "paidThrough": "2026-03-27",
+   "monthsUnpaid": 0,
+   "arrears": 0,
+   "status": "Échéance proche",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B012",
+   "unitId": "L012",
+   "tenantId": "T010",
+   "startDate": "2022-09-01",
+   "rent": 121000,
+   "paidThrough": "2025-01-01",
+   "monthsUnpaid": 15,
+   "arrears": 0,
+   "status": "À vérifier",
+   "needsReview": true,
+   "reviewReason": "Commentaire « a payé 1 an le 09/10/2025 » mais prochain paiement au 01/01/2025 : date non mise à jour ?",
+   "reportComment": "a payé 1 an ce 09/10/2025"
+  },
+  {
+   "id": "B013",
+   "unitId": "L013",
+   "tenantId": "T003",
+   "startDate": "2017-01-11",
+   "rent": 121000,
+   "paidThrough": "2025-07-11",
+   "monthsUnpaid": 9,
+   "arrears": 1089000,
+   "status": "En retard",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": "a payé 1 mois ce 20/02/2026"
+  },
+  {
+   "id": "B014",
+   "unitId": "L014",
+   "tenantId": "T006",
+   "startDate": "2025-03-01",
+   "rent": 121000,
+   "paidThrough": "2026-01-01",
+   "monthsUnpaid": 3,
+   "arrears": 363000,
+   "status": "En retard",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B015",
+   "unitId": "L015",
+   "tenantId": "T011",
+   "startDate": "2021-02-01",
+   "rent": 121000,
+   "paidThrough": "2025-06-01",
+   "monthsUnpaid": 10,
+   "arrears": 1210000,
+   "status": "En retard",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": "a payé 3 mois d'arriéré ce 18/03/2026 reste 94 000f qu'elle a promis completer sous peu"
+  },
+  {
+   "id": "B016",
+   "unitId": "L016",
+   "tenantId": "T002",
+   "startDate": "2018-01-26",
+   "rent": 110000,
+   "paidThrough": "2026-03-01",
+   "monthsUnpaid": 1,
+   "arrears": 110000,
+   "status": "En retard",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B017",
+   "unitId": "L017",
+   "tenantId": "T012",
+   "startDate": "2018-10-08",
+   "rent": 100000,
+   "paidThrough": "2026-04-08",
+   "monthsUnpaid": 0,
+   "arrears": 0,
+   "status": "Échéance proche",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B018",
+   "unitId": "L018",
+   "tenantId": "T013",
+   "startDate": "2016-05-12",
+   "rent": 110000,
+   "paidThrough": "2024-11-12",
+   "monthsUnpaid": 17,
+   "arrears": 1870000,
+   "status": "En retard",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": "a payé 2 mois d'arrieres ce 27/07/2025"
+  },
+  {
+   "id": "B019",
+   "unitId": "L019",
+   "tenantId": "T014",
+   "startDate": "2022-10-10",
+   "rent": 110000,
+   "paidThrough": "2026-04-10",
+   "monthsUnpaid": 0,
+   "arrears": 0,
+   "status": "Échéance proche",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B020",
+   "unitId": "L020",
+   "tenantId": "T015",
+   "startDate": "2018-10-29",
+   "rent": 80000,
+   "paidThrough": "2025-07-29",
+   "monthsUnpaid": 8,
+   "arrears": 640000,
+   "status": "En retard",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": "a payé 300 000 ce 06/01/2026"
+  },
+  {
+   "id": "B021",
+   "unitId": "L021",
+   "tenantId": "T016",
+   "startDate": "2016-01-20",
+   "rent": 90000,
+   "paidThrough": "2026-04-20",
+   "monthsUnpaid": 0,
+   "arrears": 0,
+   "status": "Échéance proche",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B022",
+   "unitId": "L022",
+   "tenantId": "T004",
+   "startDate": "2021-08-10",
+   "rent": 90000,
+   "paidThrough": "2025-10-10",
+   "monthsUnpaid": 6,
+   "arrears": 540000,
+   "status": "En retard",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": "a payé 3 mois ce 29/10/2025"
+  },
+  {
+   "id": "B023",
+   "unitId": "L023",
+   "tenantId": "T017",
+   "startDate": "2024-06-01",
+   "rent": 80000,
+   "paidThrough": "2025-12-01",
+   "monthsUnpaid": 4,
+   "arrears": 320000,
+   "status": "En retard",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B024",
+   "unitId": "L024",
+   "tenantId": "T002",
+   "startDate": "2020-10-01",
+   "rent": 90000,
+   "paidThrough": "2026-03-01",
+   "monthsUnpaid": 1,
+   "arrears": 90000,
+   "status": "En retard",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": "Dis qu'elle va payer apres avoir payer la boutique B2"
+  },
+  {
+   "id": "B025",
+   "unitId": "L025",
+   "tenantId": "T018",
+   "startDate": "2016-09-09",
+   "rent": 70000,
+   "paidThrough": "2026-05-09",
+   "monthsUnpaid": 0,
+   "arrears": 0,
+   "status": "À jour",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B026",
+   "unitId": "L026",
+   "tenantId": "T019",
+   "startDate": "2025-09-01",
+   "rent": 70000,
+   "paidThrough": "2026-05-01",
+   "monthsUnpaid": 0,
+   "arrears": 0,
+   "status": "Échéance proche",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B027",
+   "unitId": "L027",
+   "tenantId": "T020",
+   "startDate": "2021-12-15",
+   "rent": 70000,
+   "paidThrough": "2026-03-15",
+   "monthsUnpaid": 1,
+   "arrears": 70000,
+   "status": "En retard",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B028",
+   "unitId": "L028",
+   "tenantId": "T002",
+   "startDate": "2021-09-01",
+   "rent": 70000,
+   "paidThrough": "2026-03-01",
+   "monthsUnpaid": 1,
+   "arrears": 70000,
+   "status": "En retard",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B029",
+   "unitId": "L029",
+   "tenantId": "T021",
+   "startDate": "2020-10-04",
+   "rent": 70000,
+   "paidThrough": "2025-10-04",
+   "monthsUnpaid": 6,
+   "arrears": 420000,
+   "status": "En retard",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": "a payé 3 mois ce 29/12/2025"
+  },
+  {
+   "id": "B030",
+   "unitId": "L030",
+   "tenantId": "T022",
+   "startDate": "2025-11-01",
+   "rent": 100000,
+   "paidThrough": "2026-02-01",
+   "monthsUnpaid": 2,
+   "arrears": 200000,
+   "status": "En retard",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B031",
+   "unitId": "L031",
+   "tenantId": "T023",
+   "startDate": "2025-03-24",
+   "rent": 300000,
+   "paidThrough": "2026-03-24",
+   "monthsUnpaid": 0,
+   "arrears": 0,
+   "status": "Échéance proche",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B032",
+   "unitId": "L032",
+   "tenantId": "T024",
+   "startDate": "2022-10-01",
+   "rent": 300000,
+   "paidThrough": "2026-04-01",
+   "monthsUnpaid": 0,
+   "arrears": 0,
+   "status": "Échéance proche",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B033",
+   "unitId": "L033",
+   "tenantId": "T025",
+   "startDate": "2023-01-01",
+   "rent": 300000,
+   "paidThrough": "2026-04-01",
+   "monthsUnpaid": 0,
+   "arrears": 0,
+   "status": "Échéance proche",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B034",
+   "unitId": "L034",
+   "tenantId": "T026",
+   "startDate": "2025-11-01",
+   "rent": 250000,
+   "paidThrough": null,
+   "monthsUnpaid": null,
+   "arrears": 0,
+   "status": "À vérifier",
+   "needsReview": true,
+   "reviewReason": "Pas de caution, pas de date de prochain paiement.",
+   "reportComment": null
+  },
+  {
+   "id": "B035",
+   "unitId": "L035",
+   "tenantId": "T027",
+   "startDate": "2026-01-15",
+   "rent": 250000,
+   "paidThrough": "2026-04-15",
+   "monthsUnpaid": 0,
+   "arrears": 0,
+   "status": "À vérifier",
+   "needsReview": true,
+   "reviewReason": "Montant « 750 000F FCA » (faute de frappe), pas de libellé de caution.",
+   "reportComment": null
+  },
+  {
+   "id": "B036",
+   "unitId": "L036",
+   "tenantId": "T028",
+   "startDate": "2024-10-01",
+   "rent": 250000,
+   "paidThrough": "2026-03-01",
+   "monthsUnpaid": 1,
+   "arrears": 250000,
+   "status": "En retard",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B037",
+   "unitId": "L038",
+   "tenantId": "T029",
+   "startDate": "2025-01-01",
+   "rent": 300000,
+   "paidThrough": "2026-04-01",
+   "monthsUnpaid": 0,
+   "arrears": 0,
+   "status": "Échéance proche",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B038",
+   "unitId": "L039",
+   "tenantId": "T030",
+   "startDate": "2024-12-01",
+   "rent": 250000,
+   "paidThrough": null,
+   "monthsUnpaid": null,
+   "arrears": 0,
+   "status": "À vérifier",
+   "needsReview": true,
+   "reviewReason": "1 710 000 F pour 3 mois alors que le loyer est 250 000 F. Pas de date de prochain paiement.",
+   "reportComment": null
+  },
+  {
+   "id": "B039",
+   "unitId": "L040",
+   "tenantId": "T031",
+   "startDate": "2026-03-01",
+   "rent": null,
+   "paidThrough": null,
+   "monthsUnpaid": null,
+   "arrears": 0,
+   "status": "À vérifier",
+   "needsReview": true,
+   "reviewReason": "Loyer « 0 000F » : montant manquant.",
+   "reportComment": null
+  },
+  {
+   "id": "B040",
+   "unitId": "L041",
+   "tenantId": "T031",
+   "startDate": "2024-09-01",
+   "rent": 250000,
+   "paidThrough": null,
+   "monthsUnpaid": null,
+   "arrears": 0,
+   "status": "À vérifier",
+   "needsReview": true,
+   "reviewReason": "1 650 000 F pour 3 mois de caution à 250 000 F/mois : incohérent. Pas de date de prochain paiement.",
+   "reportComment": null
+  },
+  {
+   "id": "B041",
+   "unitId": "L042",
+   "tenantId": "T032",
+   "startDate": "2023-07-01",
+   "rent": 300000,
+   "paidThrough": "2026-02-01",
+   "monthsUnpaid": 2,
+   "arrears": 600000,
+   "status": "En retard",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B042",
+   "unitId": "L043",
+   "tenantId": "T033",
+   "startDate": "2024-12-01",
+   "rent": 400000,
+   "paidThrough": "2026-03-01",
+   "monthsUnpaid": 1,
+   "arrears": 400000,
+   "status": "En retard",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B043",
+   "unitId": "L044",
+   "tenantId": "T034",
+   "startDate": "2021-12-01",
+   "rent": 385000,
+   "paidThrough": "2026-03-01",
+   "monthsUnpaid": 1,
+   "arrears": 385000,
+   "status": "En retard",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B044",
+   "unitId": "L045",
+   "tenantId": "T034",
+   "startDate": "2021-12-01",
+   "rent": 440000,
+   "paidThrough": "2026-03-01",
+   "monthsUnpaid": 1,
+   "arrears": 440000,
+   "status": "En retard",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B045",
+   "unitId": "L046",
+   "tenantId": "T035",
+   "startDate": "2021-07-01",
+   "rent": 2250000,
+   "paidThrough": "2026-04-01",
+   "monthsUnpaid": 0,
+   "arrears": 0,
+   "status": "Échéance proche",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B046",
+   "unitId": "L047",
+   "tenantId": "T036",
+   "startDate": "2022-04-01",
+   "rent": 700000,
+   "paidThrough": "2026-01-01",
+   "monthsUnpaid": 3,
+   "arrears": 2100000,
+   "status": "En retard",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": "il ne dit rien quan je lui reclame le loyer il repond juste de rependre son bureau car à cause de nous le mur est taché"
+  },
+  {
+   "id": "B047",
+   "unitId": "L048",
+   "tenantId": "T032",
+   "startDate": "2025-12-01",
+   "rent": 400000,
+   "paidThrough": "2026-03-01",
+   "monthsUnpaid": 1,
+   "arrears": 400000,
+   "status": "En retard",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": "dis qu'il va payer la semaine du 07/04/2026"
+  },
+  {
+   "id": "B048",
+   "unitId": "L049",
+   "tenantId": "T037",
+   "startDate": "2024-06-01",
+   "rent": 3100000,
+   "paidThrough": "2026-04-01",
+   "monthsUnpaid": 0,
+   "arrears": 0,
+   "status": "Échéance proche",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B049",
+   "unitId": "L055",
+   "tenantId": "T038",
+   "startDate": "2025-06-01",
+   "rent": 300000,
+   "paidThrough": "2026-06-01",
+   "monthsUnpaid": 0,
+   "arrears": 0,
+   "status": "À jour",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B050",
+   "unitId": "L056",
+   "tenantId": "T038",
+   "startDate": "2025-02-01",
+   "rent": 1000000,
+   "paidThrough": "2026-08-01",
+   "monthsUnpaid": 0,
+   "arrears": 0,
+   "status": "À jour",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B051",
+   "unitId": "L060",
+   "tenantId": "T039",
+   "startDate": "2025-11-01",
+   "rent": 800000,
+   "paidThrough": null,
+   "monthsUnpaid": null,
+   "arrears": 0,
+   "status": "À vérifier",
+   "needsReview": true,
+   "reviewReason": "Pas de date de prochain paiement.",
+   "reportComment": null
+  },
+  {
+   "id": "B052",
+   "unitId": "L061",
+   "tenantId": "T040",
+   "startDate": "2021-09-01",
+   "rent": 2000000,
+   "paidThrough": "2026-03-01",
+   "monthsUnpaid": 1,
+   "arrears": 2000000,
+   "status": "En retard",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": "facture déposée"
+  },
+  {
+   "id": "B053",
+   "unitId": "L062",
+   "tenantId": "T041",
+   "startDate": "2024-04-01",
+   "rent": 1200000,
+   "paidThrough": "2026-04-01",
+   "monthsUnpaid": 0,
+   "arrears": 0,
+   "status": "Échéance proche",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": "facture deposée"
+  },
+  {
+   "id": "B054",
+   "unitId": "L063",
+   "tenantId": "T042",
+   "startDate": "2025-05-01",
+   "rent": 1300000,
+   "paidThrough": "2026-05-01",
+   "monthsUnpaid": 0,
+   "arrears": 0,
+   "status": "Échéance proche",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B055",
+   "unitId": "L064",
+   "tenantId": "T043",
+   "startDate": "2023-08-01",
+   "rent": 1200000,
+   "paidThrough": "2026-05-01",
+   "monthsUnpaid": 0,
+   "arrears": 0,
+   "status": "Échéance proche",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B056",
+   "unitId": "L065",
+   "tenantId": "T044",
+   "startDate": "2022-06-28",
+   "rent": 1500000,
+   "paidThrough": "2026-03-28",
+   "monthsUnpaid": 0,
+   "arrears": 0,
+   "status": "Échéance proche",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B057",
+   "unitId": "L066",
+   "tenantId": "T045",
+   "startDate": "2023-11-01",
+   "rent": 2000000,
+   "paidThrough": "2026-02-01",
+   "monthsUnpaid": 2,
+   "arrears": 0,
+   "status": "À vérifier",
+   "needsReview": true,
+   "reviewReason": "« 1 an de loyer » = 6 000 000 alors que le loyer est 2 000 000/mois.",
+   "reportComment": null
+  },
+  {
+   "id": "B058",
+   "unitId": "L067",
+   "tenantId": "T010",
+   "startDate": null,
+   "rent": 400000,
+   "paidThrough": "2021-05-01",
+   "monthsUnpaid": 59,
+   "arrears": 0,
+   "status": "À vérifier",
+   "needsReview": true,
+   "reviewReason": "Dernière échéance 01/05/2021 : ligne non mise à jour.",
+   "reportComment": null
+  },
+  {
+   "id": "B059",
+   "unitId": "L068",
+   "tenantId": "T046",
+   "startDate": "2025-05-01",
+   "rent": 1300000,
+   "paidThrough": "2026-05-01",
+   "monthsUnpaid": 0,
+   "arrears": 0,
+   "status": "Échéance proche",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B060",
+   "unitId": "L069",
+   "tenantId": "T047",
+   "startDate": "2025-08-01",
+   "rent": 2000000,
+   "paidThrough": "2026-02-01",
+   "monthsUnpaid": 2,
+   "arrears": 4000000,
+   "status": "En retard",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B061",
+   "unitId": "L070",
+   "tenantId": "T048",
+   "startDate": null,
+   "rent": 13000000,
+   "paidThrough": "2021-04-01",
+   "monthsUnpaid": 60,
+   "arrears": 0,
+   "status": "À vérifier",
+   "needsReview": true,
+   "reviewReason": "Loyer « 6 500 000 × 2 » ; échéance 2021 non mise à jour.",
+   "reportComment": null
+  },
+  {
+   "id": "B062",
+   "unitId": "L072",
+   "tenantId": "T031",
+   "startDate": null,
+   "rent": 7500000,
+   "paidThrough": "2021-04-01",
+   "monthsUnpaid": 60,
+   "arrears": 0,
+   "status": "À vérifier",
+   "needsReview": true,
+   "reviewReason": "Échéance 2021 non mise à jour.",
+   "reportComment": null
+  },
+  {
+   "id": "B063",
+   "unitId": "L073",
+   "tenantId": "T049",
+   "startDate": null,
+   "rent": 1000000,
+   "paidThrough": "2024-01-01",
+   "monthsUnpaid": 27,
+   "arrears": 0,
+   "status": "À vérifier",
+   "needsReview": true,
+   "reviewReason": null,
+   "reportComment": "FACTURE PREPAREE"
+  },
+  {
+   "id": "B064",
+   "unitId": "L076",
+   "tenantId": "T050",
+   "startDate": "2026-01-01",
+   "rent": 5000000,
+   "paidThrough": "2026-03-01",
+   "monthsUnpaid": 1,
+   "arrears": 5000000,
+   "status": "En retard",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B065",
+   "unitId": "L077",
+   "tenantId": "T051",
+   "startDate": null,
+   "rent": 10265625,
+   "paidThrough": "2022-02-01",
+   "monthsUnpaid": 50,
+   "arrears": 0,
+   "status": "À vérifier",
+   "needsReview": true,
+   "reviewReason": "Plus gros loyer du portefeuille ; échéance 2022 non mise à jour.",
+   "reportComment": null
+  },
+  {
+   "id": "B066",
+   "unitId": "L078",
+   "tenantId": "T052",
+   "startDate": "2024-07-01",
+   "rent": 3700000,
+   "paidThrough": "2025-07-01",
+   "monthsUnpaid": 9,
+   "arrears": 33300000,
+   "status": "En retard",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": "4 mois à payer depuis l'an 2023 par Alwalid"
+  },
+  {
+   "id": "B067",
+   "unitId": "L079",
+   "tenantId": "T053",
+   "startDate": "2019-07-01",
+   "rent": 5000000,
+   "paidThrough": "2026-07-01",
+   "monthsUnpaid": 0,
+   "arrears": 0,
+   "status": "À vérifier",
+   "needsReview": true,
+   "reviewReason": "« 1 an » = 36 000 000 alors que 12 × 5 000 000 = 60 000 000.",
+   "reportComment": null
+  },
+  {
+   "id": "B068",
+   "unitId": "L080",
+   "tenantId": "T050",
+   "startDate": "2023-09-01",
+   "rent": 3500000,
+   "paidThrough": "2026-04-01",
+   "monthsUnpaid": 0,
+   "arrears": 0,
+   "status": "Échéance proche",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B069",
+   "unitId": "L081",
+   "tenantId": "T054",
+   "startDate": "2025-06-01",
+   "rent": 1500000,
+   "paidThrough": "2025-07-01",
+   "monthsUnpaid": 9,
+   "arrears": 0,
+   "status": "À vérifier",
+   "needsReview": true,
+   "reviewReason": "Loyer 1 500 000 mais 3 mois = 10 500 000 : ligne copiée de Ramatou 1.",
+   "reportComment": null
+  },
+  {
+   "id": "B070",
+   "unitId": "L082",
+   "tenantId": "T055",
+   "startDate": "2024-10-01",
+   "rent": 5000000,
+   "paidThrough": "2026-04-01",
+   "monthsUnpaid": 0,
+   "arrears": 0,
+   "status": "Échéance proche",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B071",
+   "unitId": "L083",
+   "tenantId": "T056",
+   "startDate": "2025-09-01",
+   "rent": 3500000,
+   "paidThrough": "2026-07-01",
+   "monthsUnpaid": 0,
+   "arrears": 0,
+   "status": "À jour",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B072",
+   "unitId": "L084",
+   "tenantId": "T038",
+   "startDate": "2025-03-01",
+   "rent": 3000000,
+   "paidThrough": "2026-06-01",
+   "monthsUnpaid": 0,
+   "arrears": 0,
+   "status": "À jour",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B073",
+   "unitId": "L086",
+   "tenantId": "T057",
+   "startDate": "2021-10-15",
+   "rent": 3000000,
+   "paidThrough": "2026-04-15",
+   "monthsUnpaid": 0,
+   "arrears": 0,
+   "status": "Échéance proche",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B074",
+   "unitId": "L087",
+   "tenantId": "T058",
+   "startDate": "2025-07-01",
+   "rent": 5000000,
+   "paidThrough": "2025-07-01",
+   "monthsUnpaid": 9,
+   "arrears": 45000000,
+   "status": "En retard",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B075",
+   "unitId": "L088",
+   "tenantId": "T059",
+   "startDate": "2023-01-01",
+   "rent": 6500000,
+   "paidThrough": "2026-04-01",
+   "monthsUnpaid": 0,
+   "arrears": 0,
+   "status": "À vérifier",
+   "needsReview": true,
+   "reviewReason": "Montant « 26 096 00 000 » : faute de frappe.",
+   "reportComment": null
+  },
+  {
+   "id": "B076",
+   "unitId": "L089",
+   "tenantId": "T060",
+   "startDate": "2024-03-01",
+   "rent": 6500000,
+   "paidThrough": "2026-03-01",
+   "monthsUnpaid": 1,
+   "arrears": 6500000,
+   "status": "En retard",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B077",
+   "unitId": "L090",
+   "tenantId": "T030",
+   "startDate": "2023-04-01",
+   "rent": 6000000,
+   "paidThrough": "2026-01-01",
+   "monthsUnpaid": 3,
+   "arrears": 18000000,
+   "status": "En retard",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B078",
+   "unitId": "L091",
+   "tenantId": "T061",
+   "startDate": null,
+   "rent": 2500000,
+   "paidThrough": "2026-03-01",
+   "monthsUnpaid": 1,
+   "arrears": 2500000,
+   "status": "En retard",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": "a payé 3 mois ce10/12/2025"
+  },
+  {
+   "id": "B079",
+   "unitId": "L092",
+   "tenantId": "T061",
+   "startDate": "2025-11-01",
+   "rent": 3000000,
+   "paidThrough": "2026-05-01",
+   "monthsUnpaid": 0,
+   "arrears": 0,
+   "status": "Échéance proche",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B080",
+   "unitId": "L093",
+   "tenantId": "T062",
+   "startDate": null,
+   "rent": 388200,
+   "paidThrough": null,
+   "monthsUnpaid": null,
+   "arrears": 0,
+   "status": "À vérifier",
+   "needsReview": true,
+   "reviewReason": "5 ans payés d'avance (23 292 000 = 60 × 388 200), sans date d'échéance.",
+   "reportComment": null
+  },
+  {
+   "id": "B081",
+   "unitId": "L094",
+   "tenantId": "T052",
+   "startDate": null,
+   "rent": 500000,
+   "paidThrough": "2021-06-01",
+   "monthsUnpaid": 58,
+   "arrears": 0,
+   "status": "À vérifier",
+   "needsReview": true,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B082",
+   "unitId": "L095",
+   "tenantId": "T063",
+   "startDate": null,
+   "rent": 500000,
+   "paidThrough": "2021-09-01",
+   "monthsUnpaid": 55,
+   "arrears": 0,
+   "status": "À vérifier",
+   "needsReview": true,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B083",
+   "unitId": "L096",
+   "tenantId": "T064",
+   "startDate": "2019-12-01",
+   "rent": 428000,
+   "paidThrough": "2026-05-01",
+   "monthsUnpaid": 0,
+   "arrears": 0,
+   "status": "Échéance proche",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B084",
+   "unitId": "L097",
+   "tenantId": "T037",
+   "startDate": "2024-09-01",
+   "rent": 428000,
+   "paidThrough": "2026-03-01",
+   "monthsUnpaid": 1,
+   "arrears": 428000,
+   "status": "En retard",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B085",
+   "unitId": "L098",
+   "tenantId": "T065",
+   "startDate": "2022-10-01",
+   "rent": 2000000,
+   "paidThrough": "2025-10-01",
+   "monthsUnpaid": 6,
+   "arrears": 12000000,
+   "status": "En retard",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": null
+  },
+  {
+   "id": "B086",
+   "unitId": "L099",
+   "tenantId": "T031",
+   "startDate": null,
+   "rent": null,
+   "paidThrough": "2025-01-01",
+   "monthsUnpaid": null,
+   "arrears": 0,
+   "status": "À vérifier",
+   "needsReview": true,
+   "reviewReason": "Aucun loyer renseigné.",
+   "reportComment": null
+  },
+  {
+   "id": "B087",
+   "unitId": "L100",
+   "tenantId": "T052",
+   "startDate": "2024-04-01",
+   "rent": 2500000,
+   "paidThrough": "2025-05-01",
+   "monthsUnpaid": 11,
+   "arrears": 27500000,
+   "status": "En retard",
+   "needsReview": false,
+   "reviewReason": null,
+   "reportComment": "a payer 1 mois ce 24/03/2025"
+  }
+ ],
+ "payments": [
+  {
+   "date": null,
+   "leaseId": "B003",
+   "kind": "Caution",
+   "amount": 1500000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 06 mois de caution"
+  },
+  {
+   "date": null,
+   "leaseId": "B003",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 905000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": null,
+   "leaseId": "B058",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 1200000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": null,
+   "leaseId": "B061",
+   "kind": "Caution",
+   "amount": 26000000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 0 mois de caition"
+  },
+  {
+   "date": null,
+   "leaseId": "B062",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 7500000,
+   "monthsCovered": 1,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 01 mois de loyer"
+  },
+  {
+   "date": null,
+   "leaseId": "B078",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 7500000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": null,
+   "leaseId": "B080",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 23292000,
+   "monthsCovered": 5,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 05 ans de loyer"
+  },
+  {
+   "date": "2015-04-01",
+   "leaseId": "B009",
+   "kind": "Caution",
+   "amount": 900000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 06 mois de caution"
+  },
+  {
+   "date": "2015-04-01",
+   "leaseId": "B009",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 375000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2015-10-01",
+   "leaseId": "B002",
+   "kind": "Caution",
+   "amount": 1500000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 06 mois de caution"
+  },
+  {
+   "date": "2015-10-01",
+   "leaseId": "B002",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 905000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2016-01-20",
+   "leaseId": "B021",
+   "kind": "Caution",
+   "amount": 210000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de caution"
+  },
+  {
+   "date": "2016-01-20",
+   "leaseId": "B021",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 210000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2016-05-12",
+   "leaseId": "B018",
+   "kind": "Caution",
+   "amount": 270000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de caution"
+  },
+  {
+   "date": "2016-05-12",
+   "leaseId": "B018",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 270000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2016-09-09",
+   "leaseId": "B025",
+   "kind": "Caution",
+   "amount": 150000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de caution"
+  },
+  {
+   "date": "2016-09-09",
+   "leaseId": "B025",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 150000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2016-12-12",
+   "leaseId": "B006",
+   "kind": "Caution",
+   "amount": 375000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de caution"
+  },
+  {
+   "date": "2016-12-12",
+   "leaseId": "B006",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 375000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2017-01-11",
+   "leaseId": "B013",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 300000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2018-01-26",
+   "leaseId": "B016",
+   "kind": "Caution",
+   "amount": 270000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de caution"
+  },
+  {
+   "date": "2018-01-26",
+   "leaseId": "B016",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 270000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2018-10-08",
+   "leaseId": "B017",
+   "kind": "Caution",
+   "amount": 480000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 06 mois de caution"
+  },
+  {
+   "date": "2018-10-08",
+   "leaseId": "B017",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 240000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2018-10-29",
+   "leaseId": "B020",
+   "kind": "Caution",
+   "amount": 180000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de caution"
+  },
+  {
+   "date": "2018-10-29",
+   "leaseId": "B020",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 180000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2019-07-01",
+   "leaseId": "B067",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 36000000,
+   "monthsCovered": 1,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 01 an de loyer"
+  },
+  {
+   "date": "2019-12-01",
+   "leaseId": "B083",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 2343300,
+   "monthsCovered": 6,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 06 mois de loyer"
+  },
+  {
+   "date": "2020-10-01",
+   "leaseId": "B024",
+   "kind": "Caution",
+   "amount": 210000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de caution"
+  },
+  {
+   "date": "2020-10-01",
+   "leaseId": "B024",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 210000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2020-10-04",
+   "leaseId": "B029",
+   "kind": "Caution",
+   "amount": 150000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de caution"
+  },
+  {
+   "date": "2020-10-04",
+   "leaseId": "B029",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 100000,
+   "monthsCovered": 2,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 02  mois de loyer"
+  },
+  {
+   "date": "2021-01-01",
+   "leaseId": "B004",
+   "kind": "Caution",
+   "amount": 1650000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 06 mois de caution"
+  },
+  {
+   "date": "2021-01-01",
+   "leaseId": "B004",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 825000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2021-02-01",
+   "leaseId": "B015",
+   "kind": "Caution",
+   "amount": 600000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 06 mois de caution"
+  },
+  {
+   "date": "2021-02-01",
+   "leaseId": "B015",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 300000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2021-07-01",
+   "leaseId": "B045",
+   "kind": "Caution",
+   "amount": 4500000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de caution"
+  },
+  {
+   "date": "2021-07-01",
+   "leaseId": "B045",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 4500000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03mois de loyer"
+  },
+  {
+   "date": "2021-08-10",
+   "leaseId": "B022",
+   "kind": "Caution",
+   "amount": 420000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 06 mois de caution"
+  },
+  {
+   "date": "2021-08-10",
+   "leaseId": "B022",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 210000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2021-09-01",
+   "leaseId": "B028",
+   "kind": "Caution",
+   "amount": 300000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 06 mois de caution"
+  },
+  {
+   "date": "2021-09-01",
+   "leaseId": "B028",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 150000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03  mois de loyer"
+  },
+  {
+   "date": "2021-09-01",
+   "leaseId": "B052",
+   "kind": "Caution",
+   "amount": 6000000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de caution"
+  },
+  {
+   "date": "2021-09-01",
+   "leaseId": "B052",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 6000000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2021-10-15",
+   "leaseId": "B073",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 9000000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2021-12-01",
+   "leaseId": "B043",
+   "kind": "Caution",
+   "amount": 900000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de caution"
+  },
+  {
+   "date": "2021-12-01",
+   "leaseId": "B043",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 1155000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2021-12-01",
+   "leaseId": "B044",
+   "kind": "Caution",
+   "amount": 1200000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de caution"
+  },
+  {
+   "date": "2021-12-01",
+   "leaseId": "B044",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 1320000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2021-12-15",
+   "leaseId": "B027",
+   "kind": "Caution",
+   "amount": 300000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 06 mois de caution"
+  },
+  {
+   "date": "2021-12-15",
+   "leaseId": "B027",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 150000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03  mois de loyer"
+  },
+  {
+   "date": "2022-01-01",
+   "leaseId": "B008",
+   "kind": "Caution",
+   "amount": 750000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 06 mois de caution"
+  },
+  {
+   "date": "2022-01-01",
+   "leaseId": "B008",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 375000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2022-04-01",
+   "leaseId": "B046",
+   "kind": "Caution",
+   "amount": 1950000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de caution"
+  },
+  {
+   "date": "2022-04-01",
+   "leaseId": "B046",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 2100000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2022-06-27",
+   "leaseId": "B011",
+   "kind": "Caution",
+   "amount": 660000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 06 mois de caution"
+  },
+  {
+   "date": "2022-06-27",
+   "leaseId": "B011",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 330000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2022-06-28",
+   "leaseId": "B056",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 18000000,
+   "monthsCovered": 1,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 1an de loyer"
+  },
+  {
+   "date": "2022-09-01",
+   "leaseId": "B012",
+   "kind": "Caution",
+   "amount": 330000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de caution"
+  },
+  {
+   "date": "2022-09-01",
+   "leaseId": "B012",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 330000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2022-10-01",
+   "leaseId": "B032",
+   "kind": "Caution",
+   "amount": 900000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de caution"
+  },
+  {
+   "date": "2022-10-01",
+   "leaseId": "B032",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 900000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2022-10-01",
+   "leaseId": "B085",
+   "kind": "Caution",
+   "amount": 6000000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de caution"
+  },
+  {
+   "date": "2022-10-01",
+   "leaseId": "B085",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 18000000,
+   "monthsCovered": 9,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 09 mois de loyer"
+  },
+  {
+   "date": "2022-10-10",
+   "leaseId": "B019",
+   "kind": "Caution",
+   "amount": 600000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 06 mois de caution"
+  },
+  {
+   "date": "2022-10-10",
+   "leaseId": "B019",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 300000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2023-01-01",
+   "leaseId": "B033",
+   "kind": "Caution",
+   "amount": 900000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de caution"
+  },
+  {
+   "date": "2023-01-01",
+   "leaseId": "B033",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 900000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2023-01-01",
+   "leaseId": "B075",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 2609600000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2023-04-01",
+   "leaseId": "B077",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 36000000,
+   "monthsCovered": 6,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 06 mois de loyer"
+  },
+  {
+   "date": "2023-07-01",
+   "leaseId": "B041",
+   "kind": "Caution",
+   "amount": 900000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de caution"
+  },
+  {
+   "date": "2023-07-01",
+   "leaseId": "B041",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 900000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2023-08-01",
+   "leaseId": "B055",
+   "kind": "Caution",
+   "amount": 3600000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de caution"
+  },
+  {
+   "date": "2023-08-01",
+   "leaseId": "B055",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 3600000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2023-09-01",
+   "leaseId": "B068",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 10500000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2023-11-01",
+   "leaseId": "B057",
+   "kind": "Caution",
+   "amount": 6000000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 0 mois de caution"
+  },
+  {
+   "date": "2023-11-01",
+   "leaseId": "B057",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 6000000,
+   "monthsCovered": 1,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 01 an de loyer"
+  },
+  {
+   "date": "2024-03-01",
+   "leaseId": "B076",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 6500000,
+   "monthsCovered": 1,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 01 mois de loyer"
+  },
+  {
+   "date": "2024-04-01",
+   "leaseId": "B053",
+   "kind": "Caution",
+   "amount": 3600000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de caution"
+  },
+  {
+   "date": "2024-04-01",
+   "leaseId": "B053",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 3600000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2024-04-01",
+   "leaseId": "B087",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 5000000,
+   "monthsCovered": 2,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 02 mois de loyer"
+  },
+  {
+   "date": "2024-06-01",
+   "leaseId": "B023",
+   "kind": "Caution",
+   "amount": 240000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de caution"
+  },
+  {
+   "date": "2024-06-01",
+   "leaseId": "B023",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 240000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2024-06-01",
+   "leaseId": "B048",
+   "kind": "Caution",
+   "amount": 8700000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de caution"
+  },
+  {
+   "date": "2024-07-01",
+   "leaseId": "B066",
+   "kind": "Caution",
+   "amount": 3700000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 01 mois de caution"
+  },
+  {
+   "date": "2024-07-01",
+   "leaseId": "B066",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 18500000,
+   "monthsCovered": 5,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 05 mois de loyer"
+  },
+  {
+   "date": "2024-09-01",
+   "leaseId": "B040",
+   "kind": "Caution",
+   "amount": 1650000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de caution"
+  },
+  {
+   "date": "2024-09-01",
+   "leaseId": "B040",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 1650000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2024-09-01",
+   "leaseId": "B084",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 1171650,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2024-10-01",
+   "leaseId": "B036",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 250000,
+   "monthsCovered": 1,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 01 mois de loyer"
+  },
+  {
+   "date": "2024-10-01",
+   "leaseId": "B070",
+   "kind": "Caution",
+   "amount": 15000000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de caution"
+  },
+  {
+   "date": "2024-10-01",
+   "leaseId": "B070",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 15000000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2024-12-01",
+   "leaseId": "B038",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 1710000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2024-12-01",
+   "leaseId": "B042",
+   "kind": "Caution",
+   "amount": 1200000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de caution"
+  },
+  {
+   "date": "2024-12-01",
+   "leaseId": "B042",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 1200000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2025-02-01",
+   "leaseId": "B001",
+   "kind": "Caution",
+   "amount": 1050000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de caution"
+  },
+  {
+   "date": "2025-02-01",
+   "leaseId": "B001",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 2100000,
+   "monthsCovered": 6,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 06 mois de loyer"
+  },
+  {
+   "date": "2025-02-01",
+   "leaseId": "B050",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 6000000,
+   "monthsCovered": 6,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 06 mois de loyer"
+  },
+  {
+   "date": "2025-03-01",
+   "leaseId": "B014",
+   "kind": "Caution",
+   "amount": 363000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de caution"
+  },
+  {
+   "date": "2025-03-01",
+   "leaseId": "B014",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 363000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2025-03-01",
+   "leaseId": "B072",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 9000000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2025-03-24",
+   "leaseId": "B031",
+   "kind": "Caution",
+   "amount": 900000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de caution"
+  },
+  {
+   "date": "2025-03-24",
+   "leaseId": "B031",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 900000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2025-03-24",
+   "leaseId": "B087",
+   "kind": "Loyer",
+   "amount": 2500000,
+   "monthsCovered": 1,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": false,
+   "source": "Commentaire : a payer 1 mois ce 24/03/2025"
+  },
+  {
+   "date": "2025-05-01",
+   "leaseId": "B054",
+   "kind": "Caution",
+   "amount": 3900000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de caution"
+  },
+  {
+   "date": "2025-05-01",
+   "leaseId": "B054",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 3900000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2025-05-01",
+   "leaseId": "B059",
+   "kind": "Caution",
+   "amount": 3600000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de caution"
+  },
+  {
+   "date": "2025-05-01",
+   "leaseId": "B059",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 3600000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2025-06-01",
+   "leaseId": "B049",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 1800000,
+   "monthsCovered": 6,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 06 mois de loyer"
+  },
+  {
+   "date": "2025-06-01",
+   "leaseId": "B069",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 10500000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2025-07-01",
+   "leaseId": "B074",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 15000000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2025-07-27",
+   "leaseId": "B018",
+   "kind": "Arriérés",
+   "amount": 220000,
+   "monthsCovered": 2,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": false,
+   "source": "Commentaire : a payé 2 mois d'arrieres ce 27/07/2025"
+  },
+  {
+   "date": "2025-08-01",
+   "leaseId": "B010",
+   "kind": "Caution",
+   "amount": 210000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de caution"
+  },
+  {
+   "date": "2025-08-01",
+   "leaseId": "B010",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 210000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2025-08-01",
+   "leaseId": "B060",
+   "kind": "Caution",
+   "amount": 6000000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de caution"
+  },
+  {
+   "date": "2025-08-01",
+   "leaseId": "B060",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 12000000,
+   "monthsCovered": 6,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 06 mois de loyer"
+  },
+  {
+   "date": "2025-09-01",
+   "leaseId": "B007",
+   "kind": "Caution",
+   "amount": 453750,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de caution"
+  },
+  {
+   "date": "2025-09-01",
+   "leaseId": "B007",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 302500,
+   "monthsCovered": 2,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 02 mois de loyer"
+  },
+  {
+   "date": "2025-09-01",
+   "leaseId": "B026",
+   "kind": "Caution",
+   "amount": 210000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de caution"
+  },
+  {
+   "date": "2025-09-01",
+   "leaseId": "B026",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 140000,
+   "monthsCovered": 2,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 02 mois de loyer"
+  },
+  {
+   "date": "2025-09-01",
+   "leaseId": "B071",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 14000000,
+   "monthsCovered": 4,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 04 mois de loyer"
+  },
+  {
+   "date": "2025-10-09",
+   "leaseId": "B012",
+   "kind": "Loyer",
+   "amount": 121000,
+   "monthsCovered": 1,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": false,
+   "source": "Commentaire : a payé 1 an ce 09/10/2025"
+  },
+  {
+   "date": "2025-10-29",
+   "leaseId": "B004",
+   "kind": "Loyer",
+   "amount": 825000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": false,
+   "source": "Commentaire : a payé 3 mois ce 29/10/2025"
+  },
+  {
+   "date": "2025-10-29",
+   "leaseId": "B022",
+   "kind": "Loyer",
+   "amount": 270000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": false,
+   "source": "Commentaire : a payé 3 mois ce 29/10/2025"
+  },
+  {
+   "date": "2025-11-01",
+   "leaseId": "B030",
+   "kind": "Caution",
+   "amount": 300000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de caution"
+  },
+  {
+   "date": "2025-11-01",
+   "leaseId": "B030",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 300000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2025-11-01",
+   "leaseId": "B051",
+   "kind": "Caution",
+   "amount": 2400000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de caution"
+  },
+  {
+   "date": "2025-11-01",
+   "leaseId": "B051",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 2400000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2025-11-01",
+   "leaseId": "B079",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 9000000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2025-12-01",
+   "leaseId": "B047",
+   "kind": "Caution",
+   "amount": 1200000,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de caution"
+  },
+  {
+   "date": "2025-12-01",
+   "leaseId": "B047",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 1200000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2025-12-10",
+   "leaseId": "B078",
+   "kind": "Loyer",
+   "amount": 7500000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": false,
+   "source": "Commentaire : a payé 3 mois ce10/12/2025"
+  },
+  {
+   "date": "2025-12-29",
+   "leaseId": "B029",
+   "kind": "Loyer",
+   "amount": 210000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": false,
+   "source": "Commentaire : a payé 3 mois ce 29/12/2025"
+  },
+  {
+   "date": "2026-01-01",
+   "leaseId": "B064",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 17500000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois1/2 de loyer"
+  },
+  {
+   "date": "2026-01-06",
+   "leaseId": "B006",
+   "kind": "Loyer",
+   "amount": 825000,
+   "monthsCovered": 6,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": false,
+   "source": "Commentaire : a payé 6 mois ce 06/01/2026"
+  },
+  {
+   "date": "2026-01-06",
+   "leaseId": "B020",
+   "kind": "Loyer",
+   "amount": 24000000,
+   "monthsCovered": 300,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": false,
+   "source": "Commentaire : a payé 300 000 ce 06/01/2026"
+  },
+  {
+   "date": "2026-01-15",
+   "leaseId": "B035",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 750000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 03 mois de loyer"
+  },
+  {
+   "date": "2026-02-01",
+   "leaseId": "B005",
+   "kind": "Caution",
+   "amount": 453750,
+   "monthsCovered": null,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 3 mois de caution"
+  },
+  {
+   "date": "2026-02-01",
+   "leaseId": "B005",
+   "kind": "Loyer d'avance à l'entrée",
+   "amount": 302500,
+   "monthsCovered": 2,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": true,
+   "source": "Rapport : 2 mois de loyer"
+  },
+  {
+   "date": "2026-02-09",
+   "leaseId": "B007",
+   "kind": "Loyer",
+   "amount": 302500,
+   "monthsCovered": 2,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": false,
+   "source": "Commentaire : a payé 2 mois ce lundi 09/02/2026"
+  },
+  {
+   "date": "2026-02-20",
+   "leaseId": "B003",
+   "kind": "Loyer",
+   "amount": 350500,
+   "monthsCovered": 1,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": false,
+   "source": "Commentaire : a payé 1 mois ce 20/02/2026"
+  },
+  {
+   "date": "2026-02-20",
+   "leaseId": "B009",
+   "kind": "Loyer",
+   "amount": 151250,
+   "monthsCovered": 1,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": false,
+   "source": "Commentaire : a payé 1 mois ce 20/02/2026"
+  },
+  {
+   "date": "2026-02-20",
+   "leaseId": "B013",
+   "kind": "Loyer",
+   "amount": 121000,
+   "monthsCovered": 1,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": false,
+   "source": "Commentaire : a payé 1 mois ce 20/02/2026"
+  },
+  {
+   "date": "2026-03-18",
+   "leaseId": "B001",
+   "kind": "Loyer",
+   "amount": 1050000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": false,
+   "source": "Commentaire : a payé 3 mois ce 18/03/2026"
+  },
+  {
+   "date": "2026-03-18",
+   "leaseId": "B015",
+   "kind": "Arriérés",
+   "amount": 363000,
+   "monthsCovered": 3,
+   "receiptNo": null,
+   "method": null,
+   "confirmed": false,
+   "source": "Commentaire : a payé 3 mois d'arriéré ce 18/03/2026 reste 94 000f qu'elle a promis completer sous peu"
+  }
+ ],
+ "deposits": [
+  {
+   "leaseId": "B001",
+   "label": "03 mois de caution",
+   "amountHeld": 1050000
+  },
+  {
+   "leaseId": "B002",
+   "label": "06 mois de caution",
+   "amountHeld": 1500000
+  },
+  {
+   "leaseId": "B003",
+   "label": "06 mois de caution",
+   "amountHeld": 1500000
+  },
+  {
+   "leaseId": "B004",
+   "label": "06 mois de caution",
+   "amountHeld": 1650000
+  },
+  {
+   "leaseId": "B005",
+   "label": "3 mois de caution",
+   "amountHeld": 453750
+  },
+  {
+   "leaseId": "B006",
+   "label": "03 mois de caution",
+   "amountHeld": 375000
+  },
+  {
+   "leaseId": "B007",
+   "label": "03 mois de caution",
+   "amountHeld": 453750
+  },
+  {
+   "leaseId": "B008",
+   "label": "06 mois de caution",
+   "amountHeld": 750000
+  },
+  {
+   "leaseId": "B009",
+   "label": "06 mois de caution",
+   "amountHeld": 900000
+  },
+  {
+   "leaseId": "B010",
+   "label": "03 mois de caution",
+   "amountHeld": 210000
+  },
+  {
+   "leaseId": "B011",
+   "label": "06 mois de caution",
+   "amountHeld": 660000
+  },
+  {
+   "leaseId": "B012",
+   "label": "03 mois de caution",
+   "amountHeld": 330000
+  },
+  {
+   "leaseId": "B013",
+   "label": "pas de caution",
+   "amountHeld": 0
+  },
+  {
+   "leaseId": "B014",
+   "label": "03 mois de caution",
+   "amountHeld": 363000
+  },
+  {
+   "leaseId": "B015",
+   "label": "06 mois de caution",
+   "amountHeld": 600000
+  },
+  {
+   "leaseId": "B016",
+   "label": "03 mois de caution",
+   "amountHeld": 270000
+  },
+  {
+   "leaseId": "B017",
+   "label": "06 mois de caution",
+   "amountHeld": 480000
+  },
+  {
+   "leaseId": "B018",
+   "label": "03 mois de caution",
+   "amountHeld": 270000
+  },
+  {
+   "leaseId": "B019",
+   "label": "06 mois de caution",
+   "amountHeld": 600000
+  },
+  {
+   "leaseId": "B020",
+   "label": "03 mois de caution",
+   "amountHeld": 180000
+  },
+  {
+   "leaseId": "B021",
+   "label": "03 mois de caution",
+   "amountHeld": 210000
+  },
+  {
+   "leaseId": "B022",
+   "label": "06 mois de caution",
+   "amountHeld": 420000
+  },
+  {
+   "leaseId": "B023",
+   "label": "03 mois de caution",
+   "amountHeld": 240000
+  },
+  {
+   "leaseId": "B024",
+   "label": "03 mois de caution",
+   "amountHeld": 210000
+  },
+  {
+   "leaseId": "B025",
+   "label": "03 mois de caution",
+   "amountHeld": 150000
+  },
+  {
+   "leaseId": "B026",
+   "label": "03 mois de caution",
+   "amountHeld": 210000
+  },
+  {
+   "leaseId": "B027",
+   "label": "06 mois de caution",
+   "amountHeld": 300000
+  },
+  {
+   "leaseId": "B028",
+   "label": "06 mois de caution",
+   "amountHeld": 300000
+  },
+  {
+   "leaseId": "B029",
+   "label": "03 mois de caution",
+   "amountHeld": 150000
+  },
+  {
+   "leaseId": "B030",
+   "label": "03 mois de caution",
+   "amountHeld": 300000
+  },
+  {
+   "leaseId": "B031",
+   "label": "03 mois de caution",
+   "amountHeld": 900000
+  },
+  {
+   "leaseId": "B032",
+   "label": "03 mois de caution",
+   "amountHeld": 900000
+  },
+  {
+   "leaseId": "B033",
+   "label": "03 mois de caution",
+   "amountHeld": 900000
+  },
+  {
+   "leaseId": "B034",
+   "label": "pas de caution",
+   "amountHeld": 0
+  },
+  {
+   "leaseId": "B035",
+   "label": "Aucune caution",
+   "amountHeld": 0
+  },
+  {
+   "leaseId": "B036",
+   "label": "0 mois de caution",
+   "amountHeld": 0
+  },
+  {
+   "leaseId": "B037",
+   "label": "Aucune caution",
+   "amountHeld": 0
+  },
+  {
+   "leaseId": "B038",
+   "label": "0 mois de caution",
+   "amountHeld": 0
+  },
+  {
+   "leaseId": "B039",
+   "label": "03 mois de caution",
+   "amountHeld": 0
+  },
+  {
+   "leaseId": "B040",
+   "label": "03 mois de caution",
+   "amountHeld": 1650000
+  },
+  {
+   "leaseId": "B041",
+   "label": "03 mois de caution",
+   "amountHeld": 900000
+  },
+  {
+   "leaseId": "B042",
+   "label": "03 mois de caution",
+   "amountHeld": 1200000
+  },
+  {
+   "leaseId": "B043",
+   "label": "03 mois de caution",
+   "amountHeld": 900000
+  },
+  {
+   "leaseId": "B044",
+   "label": "03 mois de caution",
+   "amountHeld": 1200000
+  },
+  {
+   "leaseId": "B045",
+   "label": "03 mois de caution",
+   "amountHeld": 4500000
+  },
+  {
+   "leaseId": "B046",
+   "label": "03 mois de caution",
+   "amountHeld": 1950000
+  },
+  {
+   "leaseId": "B047",
+   "label": "03 mois de caution",
+   "amountHeld": 1200000
+  },
+  {
+   "leaseId": "B048",
+   "label": "03 mois de caution",
+   "amountHeld": 8700000
+  },
+  {
+   "leaseId": "B049",
+   "label": "0 mois de caution",
+   "amountHeld": 0
+  },
+  {
+   "leaseId": "B050",
+   "label": "0 mois de caution",
+   "amountHeld": 0
+  },
+  {
+   "leaseId": "B051",
+   "label": "03 mois de caution",
+   "amountHeld": 2400000
+  },
+  {
+   "leaseId": "B052",
+   "label": "03 mois de caution",
+   "amountHeld": 6000000
+  },
+  {
+   "leaseId": "B053",
+   "label": "03 mois de caution",
+   "amountHeld": 3600000
+  },
+  {
+   "leaseId": "B054",
+   "label": "03 mois de caution",
+   "amountHeld": 3900000
+  },
+  {
+   "leaseId": "B055",
+   "label": "03 mois de caution",
+   "amountHeld": 3600000
+  },
+  {
+   "leaseId": "B056",
+   "label": "0 mois de caution",
+   "amountHeld": 0
+  },
+  {
+   "leaseId": "B057",
+   "label": "0 mois de caution",
+   "amountHeld": 6000000
+  },
+  {
+   "leaseId": "B058",
+   "label": "03 mois de caution",
+   "amountHeld": 0
+  },
+  {
+   "leaseId": "B059",
+   "label": "03 mois de caution",
+   "amountHeld": 3600000
+  },
+  {
+   "leaseId": "B060",
+   "label": "03 mois de caution",
+   "amountHeld": 6000000
+  },
+  {
+   "leaseId": "B061",
+   "label": "0 mois de caition",
+   "amountHeld": 26000000
+  },
+  {
+   "leaseId": "B062",
+   "label": "Aucune caution",
+   "amountHeld": 0
+  },
+  {
+   "leaseId": "B063",
+   "label": "Aucune caution",
+   "amountHeld": 0
+  },
+  {
+   "leaseId": "B064",
+   "label": "Aucune caution",
+   "amountHeld": 0
+  },
+  {
+   "leaseId": "B065",
+   "label": "Aucune caution",
+   "amountHeld": 0
+  },
+  {
+   "leaseId": "B066",
+   "label": "01 mois de caution",
+   "amountHeld": 3700000
+  },
+  {
+   "leaseId": "B067",
+   "label": "Aucune caution",
+   "amountHeld": 0
+  },
+  {
+   "leaseId": "B068",
+   "label": "Aucune caution",
+   "amountHeld": 0
+  },
+  {
+   "leaseId": "B069",
+   "label": "03 mois de caution",
+   "amountHeld": 0
+  },
+  {
+   "leaseId": "B070",
+   "label": "03 mois de caution",
+   "amountHeld": 15000000
+  },
+  {
+   "leaseId": "B071",
+   "label": "0 mois de caution",
+   "amountHeld": 0
+  },
+  {
+   "leaseId": "B072",
+   "label": "0 mois de caution",
+   "amountHeld": 0
+  },
+  {
+   "leaseId": "B073",
+   "label": "Aucune caution",
+   "amountHeld": 0
+  },
+  {
+   "leaseId": "B074",
+   "label": "Aucune caution",
+   "amountHeld": 0
+  },
+  {
+   "leaseId": "B075",
+   "label": "Aucune caution",
+   "amountHeld": 0
+  },
+  {
+   "leaseId": "B076",
+   "label": "Aucune caution",
+   "amountHeld": 0
+  },
+  {
+   "leaseId": "B077",
+   "label": "Aucune caution",
+   "amountHeld": 0
+  },
+  {
+   "leaseId": "B078",
+   "label": "Aucune caution",
+   "amountHeld": 0
+  },
+  {
+   "leaseId": "B079",
+   "label": "Aucune caution",
+   "amountHeld": 0
+  },
+  {
+   "leaseId": "B080",
+   "label": "Aucune caution",
+   "amountHeld": 0
+  },
+  {
+   "leaseId": "B081",
+   "label": "Aucune caution",
+   "amountHeld": 0
+  },
+  {
+   "leaseId": "B082",
+   "label": "Aucune caution",
+   "amountHeld": 0
+  },
+  {
+   "leaseId": "B083",
+   "label": "Aucune caution",
+   "amountHeld": 0
+  },
+  {
+   "leaseId": "B084",
+   "label": "Aucune caution",
+   "amountHeld": 0
+  },
+  {
+   "leaseId": "B085",
+   "label": "03 mois de caution",
+   "amountHeld": 6000000
+  },
+  {
+   "leaseId": "B086",
+   "label": "03 mois de caution",
+   "amountHeld": 0
+  },
+  {
+   "leaseId": "B087",
+   "label": "Aucune caution",
+   "amountHeld": 0
+  }
+ ],
+ "followUps": [
+  {
+   "date": "2026-04-02",
+   "leaseId": "B015",
+   "action": "Appel / visite",
+   "response": "a payé 3 mois d'arriéré ce 18/03/2026 reste 94 000f qu'elle a promis completer sous peu",
+   "promiseDate": null,
+   "promiseAmount": 94000,
+   "result": "En attente"
+  },
+  {
+   "date": "2026-04-02",
+   "leaseId": "B024",
+   "action": "Appel / visite",
+   "response": "Dis qu'elle va payer apres avoir payer la boutique B2",
+   "promiseDate": null,
+   "promiseAmount": null,
+   "result": "En attente"
+  },
+  {
+   "date": "2026-04-02",
+   "leaseId": "B046",
+   "action": "Appel / visite",
+   "response": "il ne dit rien quan je lui reclame le loyer il repond juste de rependre son bureau car à cause de nous le mur est taché",
+   "promiseDate": null,
+   "promiseAmount": null,
+   "result": "En attente"
+  },
+  {
+   "date": "2026-04-02",
+   "leaseId": "B047",
+   "action": "Appel / visite",
+   "response": "dis qu'il va payer la semaine du 07/04/2026",
+   "promiseDate": "2026-04-07",
+   "promiseAmount": null,
+   "result": "En attente"
+  },
+  {
+   "date": "2026-04-02",
+   "leaseId": "B066",
+   "action": "Appel / visite",
+   "response": "4 mois à payer depuis l'an 2023 par Alwalid",
+   "promiseDate": null,
+   "promiseAmount": null,
+   "result": "En attente"
+  }
+ ],
+ "dataIssues": [
+  {
+   "ref": "B002",
+   "building": "Immeuble Assigame",
+   "code": "B2",
+   "tenant": "Mme KANYI AYOKO",
+   "problem": "Caution notée 6 mois = 1 500 000 mais 6 × 350 500 = 2 103 000 (caution payée à l'ancien loyer).",
+   "action": "Confirmer le montant réel",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "B003",
+   "building": "Immeuble Assigame",
+   "code": "B3",
+   "tenant": "Ets EKADIS",
+   "problem": "Pas de date de remise de clé.",
+   "action": "Vérifier et compléter",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "B012",
+   "building": "Immeuble Assigame",
+   "code": "M8",
+   "tenant": "TOP COSMETIQUE / Mr JIHAD",
+   "problem": "Commentaire « a payé 1 an le 09/10/2025 » mais prochain paiement au 01/01/2025 : date non mise à jour ?",
+   "action": "Confirmer la vraie date de dernier paiement",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "B013",
+   "building": "Immeuble Assigame",
+   "code": "M9",
+   "tenant": "Ets EKADIS",
+   "problem": "Aucune caution encaissée.",
+   "action": "Vérifier et compléter",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "B015",
+   "building": "Immeuble Assigame",
+   "code": "M11",
+   "tenant": "Mme BOUKA A.ESSIVI",
+   "problem": "Reste 94 000 F promis après le paiement du 18/03/2026.",
+   "action": "Vérifier et compléter",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "B023",
+   "building": "Immeuble Assigame",
+   "code": "M15",
+   "tenant": "AL MORACH",
+   "problem": "Pas de contact.",
+   "action": "Vérifier et compléter",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "B024",
+   "building": "Immeuble Assigame",
+   "code": "M16",
+   "tenant": "KANYI AYOKO",
+   "problem": "La locataire dit qu'elle paiera après avoir réglé B2.",
+   "action": "Vérifier et compléter",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "B034",
+   "building": "Immeuble Jean Paul II",
+   "code": "STUP ME1",
+   "tenant": "Mr MOUSTAPHA",
+   "problem": "Pas de caution, pas de date de prochain paiement.",
+   "action": "Vérifier et compléter",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "B035",
+   "building": "Immeuble Jean Paul II",
+   "code": "STUP ME2",
+   "tenant": "Mr AL MSSAN",
+   "problem": "Montant « 750 000F FCA » (faute de frappe), pas de libellé de caution.",
+   "action": "Confirmer le montant réel",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "B036",
+   "building": "Immeuble Jean Paul II",
+   "code": "STUG ME3",
+   "tenant": "Mr ALI MOHAMAD MASRI",
+   "problem": "Aucune caution encaissée.",
+   "action": "Vérifier et compléter",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "L037",
+   "building": "Immeuble Jean Paul II",
+   "code": "STU P4",
+   "tenant": "—",
+   "problem": "Marqué LIBRE mais avec caution et 4 mois de loyer en face.",
+   "action": "Vérifier et compléter",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "B037",
+   "building": "Immeuble Jean Paul II",
+   "code": "2APP ME1",
+   "tenant": "Mr MONZER",
+   "problem": "Ni caution ni versement renseignés.",
+   "action": "Vérifier et compléter",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "B038",
+   "building": "Immeuble Jean Paul II",
+   "code": "3APP ME1",
+   "tenant": "GIT",
+   "problem": "1 710 000 F pour 3 mois alors que le loyer est 250 000 F. Pas de date de prochain paiement.",
+   "action": "Confirmer le montant réel",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "B039",
+   "building": "Immeuble Jean Paul II",
+   "code": "3APP 2",
+   "tenant": "SMMT",
+   "problem": "Loyer « 0 000F » : montant manquant.",
+   "action": "Confirmer le montant réel",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "B040",
+   "building": "Immeuble Jean Paul II",
+   "code": "3APP 3",
+   "tenant": "SMMT",
+   "problem": "1 650 000 F pour 3 mois de caution à 250 000 F/mois : incohérent. Pas de date de prochain paiement.",
+   "action": "Confirmer le montant réel",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "B043",
+   "building": "Immeuble La Paix",
+   "code": "B3++",
+   "tenant": "ETS MOUNA FOOD CHOCO-LATTE SARLU",
+   "problem": "Caution 900 000 ≠ 3 × 385 000 = 1 155 000.",
+   "action": "Confirmer le montant réel",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "B044",
+   "building": "Immeuble La Paix",
+   "code": "B4++",
+   "tenant": "ETS MOUNA FOOD CHOCO-LATTE SARLU",
+   "problem": "Caution 1 200 000 ≠ 3 × 440 000 = 1 320 000.",
+   "action": "Confirmer le montant réel",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "B046",
+   "building": "Immeuble La Paix",
+   "code": "B6++",
+   "tenant": "BLUE BERRY TRAVEL SARL",
+   "problem": "Refuse de payer : demande de reprendre le bureau, mur taché.",
+   "action": "Vérifier et compléter",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "B047",
+   "building": "Immeuble La Paix",
+   "code": "B7++",
+   "tenant": "CERVEAU STORE / Mr DATHEY ÉTÉ AMEN",
+   "problem": "Promet de payer la semaine du 07/04/2026.",
+   "action": "Vérifier et compléter",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "B048",
+   "building": "Immeuble La Paix",
+   "code": "B8++",
+   "tenant": "R-LOGISTIC",
+   "problem": "Les 3 mois de loyer (8 700 000) sont saisis sur la ligne STU1 MER.",
+   "action": "Confirmer le montant réel",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "B049",
+   "building": "Immeuble La Paix",
+   "code": "STU2 MER",
+   "tenant": "SOCIETE MORENO TRADING/Mr MOHAMED TAREK",
+   "problem": "Aucune caution encaissée.",
+   "action": "Vérifier et compléter",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "B050",
+   "building": "Immeuble La Paix",
+   "code": "3APP2 MER",
+   "tenant": "SOCIETE MORENO TRADING/Mr MOHAMED TAREK",
+   "problem": "Aucune caution encaissée.",
+   "action": "Vérifier et compléter",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "B051",
+   "building": "Immeuble La Paix",
+   "code": "3APP3 ME PAIX",
+   "tenant": "SOCIETE UNICOM COMMODITIES SARL U",
+   "problem": "Pas de date de prochain paiement.",
+   "action": "Vérifier et compléter",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "B056",
+   "building": "Villas",
+   "code": "VILLA MILLENIUM",
+   "tenant": "AMBASSADE DES USA au TOGO",
+   "problem": "Paie à l'année, sans caution.",
+   "action": "Vérifier et compléter",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "B057",
+   "building": "Villas",
+   "code": "VILLA 313",
+   "tenant": "BANQUE ATLANTIQUE/ BABACAUH KOFFI KRA",
+   "problem": "« 1 an de loyer » = 6 000 000 alors que le loyer est 2 000 000/mois.",
+   "action": "Confirmer le montant réel",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "B058",
+   "building": "Villas",
+   "code": "VILLA AVEPOZO",
+   "tenant": "TOP COSMETIQUE",
+   "problem": "Dernière échéance 01/05/2021 : ligne non mise à jour.",
+   "action": "Confirmer la vraie date de dernier paiement",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "B059",
+   "building": "Villas",
+   "code": "VILLA HORIZON",
+   "tenant": "ELLIPSE PROJECTS/ALI KREICH",
+   "problem": "Caution 3 600 000 ≠ 3 × 1 300 000 = 3 900 000.",
+   "action": "Confirmer le montant réel",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "B061",
+   "building": "Entrepôts",
+   "code": "SITE PORT ENTREPOT N°1",
+   "tenant": "SORETRAP",
+   "problem": "Loyer « 6 500 000 × 2 » ; échéance 2021 non mise à jour.",
+   "action": "Confirmer la vraie date de dernier paiement",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "B062",
+   "building": "Entrepôts",
+   "code": "SITE PORT ENTREPOT N°3",
+   "tenant": "SMMT",
+   "problem": "Échéance 2021 non mise à jour.",
+   "action": "Confirmer la vraie date de dernier paiement",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "B063",
+   "building": "Entrepôts",
+   "code": "ENTREPOT",
+   "tenant": "TOGOTOLE SARL",
+   "problem": "Date « payé jusqu'au » 2024-01-01 non mise à jour.",
+   "action": "Confirmer la vraie date de dernier paiement",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "L074",
+   "building": "Entrepôts",
+   "code": "SITE AZAR ENTREPOT N°1",
+   "tenant": "ETG",
+   "problem": "Marqué LIBRE mais ETG toujours inscrit comme occupant.",
+   "action": "Vérifier et compléter",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "L075",
+   "building": "Entrepôts",
+   "code": "SITE AZAR ENTREPOT N°2",
+   "tenant": "—",
+   "problem": "Aucun occupant mais loyer et versements renseignés.",
+   "action": "Vérifier et compléter",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "B065",
+   "building": "Entrepôts",
+   "code": "SITE DUCRO ENTREPOT N°1",
+   "tenant": "MAERSK LINE",
+   "problem": "Plus gros loyer du portefeuille ; échéance 2022 non mise à jour.",
+   "action": "Confirmer la vraie date de dernier paiement",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "B066",
+   "building": "Entrepôts",
+   "code": "SITE DUCRO ENTREPOT N°2",
+   "tenant": "SNG",
+   "problem": "« 4 mois à payer depuis l'an 2023 par Alwalid ».",
+   "action": "Vérifier et compléter",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "B067",
+   "building": "Entrepôts",
+   "code": "ENTREPOT",
+   "tenant": "WEST AFRICA CHAIN MANUFACTURING / Mr WEI JINYANG",
+   "problem": "« 1 an » = 36 000 000 alors que 12 × 5 000 000 = 60 000 000.",
+   "action": "Confirmer le montant réel",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "B069",
+   "building": "Entrepôts",
+   "code": "ENTREPOT RAMATOU 2",
+   "tenant": "SOTOPA",
+   "problem": "Loyer 1 500 000 mais 3 mois = 10 500 000 : ligne copiée de Ramatou 1.",
+   "action": "Confirmer le montant réel",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "L085",
+   "building": "Entrepôts",
+   "code": "ENTREPOT VON FAN MILK à coté de LOCAMAT",
+   "tenant": "SOCIETE FAS AGRIC",
+   "problem": "Locataire parti, RÉCLAME SA CAUTION de 4 500 000 F (dette envers le locataire).",
+   "action": "Confirmer le montant réel",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "B075",
+   "building": "Entrepôts",
+   "code": "SITE ITP ENTREPOT N°2",
+   "tenant": "AFRICA BIO COMMODITIES",
+   "problem": "Montant « 26 096 00 000 » : faute de frappe.",
+   "action": "Confirmer le montant réel",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "B078",
+   "building": "Entrepôts",
+   "code": "SITE SIVOP ENTREPOT N°2 MESANINE",
+   "tenant": "SMART",
+   "problem": "A payé 3 mois le 10/12/2025.",
+   "action": "Vérifier et compléter",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "B080",
+   "building": "Entrepôts",
+   "code": "ENTREPOT CACAVELI",
+   "tenant": "STATION TOTAL Mme SALL",
+   "problem": "5 ans payés d'avance (23 292 000 = 60 × 388 200), sans date d'échéance.",
+   "action": "Vérifier et compléter",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "B081",
+   "building": "Entrepôts",
+   "code": "ENTREPOT NYEKONAKPOE",
+   "tenant": "SNG",
+   "problem": "Date « payé jusqu'au » 2021-06-01 non mise à jour.",
+   "action": "Confirmer la vraie date de dernier paiement",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "B082",
+   "building": "Entrepôts",
+   "code": "ENTREPOT",
+   "tenant": "BUREAU DE TRANSIT FOI TRANS",
+   "problem": "Date « payé jusqu'au » 2021-09-01 non mise à jour.",
+   "action": "Confirmer la vraie date de dernier paiement",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "B083",
+   "building": "Entrepôts",
+   "code": "ENTREPOT DERRIERE IMMEUBLE LA PAIX",
+   "tenant": "CMA CGM",
+   "problem": "6 mois = 2 343 300 au lieu de 2 568 000 (retenue fiscale ?).",
+   "action": "Vérifier et compléter",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "B086",
+   "building": "Entrepôts",
+   "code": "NOUVEL ENTREPOT AKODESSEWA",
+   "tenant": "SMMT",
+   "problem": "Aucun loyer renseigné.",
+   "action": "Vérifier et compléter",
+   "owner": null,
+   "status": "À faire"
+  },
+  {
+   "ref": "B087",
+   "building": "Entrepôts",
+   "code": "ENTREPOT PROFOOD",
+   "tenant": "SNG",
+   "problem": "Commentaire : a payé 1 mois le 24/03/2025.",
+   "action": "Vérifier et compléter",
+   "owner": null,
+   "status": "À faire"
+  }
+ ],
+ "expected": {
+  "units": 100,
+  "occupied": 87,
+  "tenants": 65,
+  "leases": 87,
+  "monthlyRent": 130663575,
+  "arrearsExcludingReview": 180820750,
+  "needsReview": 20,
+  "depositsHeld": 125785500
+ }
+}
