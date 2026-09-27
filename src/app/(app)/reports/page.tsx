@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
-import { formatDate, formatMoney } from "@/lib/format";
+import { formatDate, formatMoney, toDateInputValue } from "@/lib/format";
 import { requireUserWithDictionary } from "@/lib/auth";
 import {
   computeLeaseLedger,
@@ -13,14 +13,18 @@ import {
 import { leaseLocationName } from "@/lib/leaseLocation";
 import { tenantDisplayName } from "@/lib/tenantName";
 import Badge from "@/components/Badge";
+import ExportPdfButton from "@/components/ExportPdfButton";
+import type { BuildingType } from "@prisma/client";
+
+const BUILDING_TYPES: BuildingType[] = ["BUILDING", "VILLA", "WAREHOUSE_SITE"];
 
 export default async function ReportsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ from?: string; to?: string }>;
+  searchParams: Promise<{ from?: string; to?: string; type?: string }>;
 }) {
   const { t, locale } = await requireUserWithDictionary();
-  const { from: fromParam, to: toParam } = await searchParams;
+  const { from: fromParam, to: toParam, type: typeParam } = await searchParams;
   const now = new Date();
   const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
   const monthEnd = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59, 999);
@@ -29,8 +33,10 @@ export default async function ReportsPage({
   const rangeTo = toParam ? new Date(`${toParam}T23:59:59.999`) : null;
   const hasFilter = Boolean(rangeFrom || rangeTo);
   const asOf = rangeTo ?? now;
+  const selectedType =
+    typeParam && (BUILDING_TYPES as string[]).includes(typeParam) ? (typeParam as BuildingType) : null;
 
-  const [leasesAll, payments, expenses] = await Promise.all([
+  const [leasesAll, paymentsAll, expensesAll] = await Promise.all([
     prisma.lease.findMany({
       where: { status: { not: "PENDING" } },
       include: { tenant: true, property: { include: { building: true } }, payments: true },
@@ -39,11 +45,18 @@ export default async function ReportsPage({
       include: { lease: { include: { tenant: true, property: { include: { building: true } } } } },
       orderBy: { date: "desc" },
     }),
-    prisma.expense.findMany({ include: { property: true }, orderBy: { date: "desc" } }),
+    prisma.expense.findMany({ include: { property: { include: { building: true } } }, orderBy: { date: "desc" } }),
   ]);
 
-  const needsReviewCount = leasesAll.filter((l) => l.needsReview).length;
-  const leases = leasesAll.filter((l) => !l.needsReview);
+  const matchesType = (buildingType: BuildingType | null | undefined) =>
+    !selectedType || buildingType === selectedType;
+
+  const payments = paymentsAll.filter((p) => matchesType(p.lease.property.building?.type));
+  const expenses = expensesAll.filter((e) => matchesType(e.property.building?.type));
+  const leasesInType = leasesAll.filter((l) => matchesType(l.property.building?.type));
+
+  const needsReviewCount = leasesInType.filter((l) => l.needsReview).length;
+  const leases = leasesInType.filter((l) => !l.needsReview);
 
   const revenueThisMonth = leases
     .filter((l) => leaseActiveInRange(l, monthStart, monthEnd))
@@ -93,6 +106,26 @@ export default async function ReportsPage({
     return acc;
   }, {});
 
+  function typeHref(type: BuildingType | null) {
+    const params = new URLSearchParams();
+    if (fromParam) params.set("from", fromParam);
+    if (toParam) params.set("to", toParam);
+    if (type) params.set("type", type);
+    const qs = params.toString();
+    return qs ? `/reports?${qs}` : "/reports";
+  }
+
+  const typeLabel = selectedType ? t.status[selectedType] : t.reports.allTypes;
+  const fromLabel = rangeFrom ? formatDate(rangeFrom, locale) : null;
+  const toLabel = rangeTo ? formatDate(rangeTo, locale) : null;
+  const filterSummary = [
+    fromLabel && toLabel ? `${t.reports.dateFrom} ${fromLabel} ${t.reports.dateTo.toLowerCase()} ${toLabel}` : fromLabel ? `${t.reports.dateFrom} ${fromLabel}` : toLabel ? `${t.reports.dateTo} ${toLabel}` : null,
+    typeLabel,
+  ]
+    .filter(Boolean)
+    .join(" · ");
+  const pdfFooter = t.reports.pdfGeneratedOn(formatDate(now, locale));
+
   return (
     <div className="space-y-8">
       <div>
@@ -102,6 +135,7 @@ export default async function ReportsPage({
 
       <div className="card space-y-3">
         <form action="/reports" method="GET" className="flex flex-wrap items-end gap-3">
+          {selectedType && <input type="hidden" name="type" value={selectedType} />}
           <div>
             <label className="label" htmlFor="from">{t.reports.dateFrom}</label>
             <input className="input" type="date" id="from" name="from" defaultValue={fromParam ?? ""} />
@@ -112,11 +146,31 @@ export default async function ReportsPage({
           </div>
           <button type="submit" className="btn-secondary">{t.reports.applyFilter}</button>
           {hasFilter && (
-            <Link href="/reports" className="text-sm text-stone-500 hover:underline">
+            <Link href={typeHref(selectedType)} className="text-sm text-stone-500 hover:underline">
               {t.reports.clearFilter}
             </Link>
           )}
         </form>
+        <div>
+          <p className="label mb-1">{t.reports.propertyType}</p>
+          <div className="flex flex-wrap gap-2">
+            <Link
+              href={typeHref(null)}
+              className={`badge ${selectedType ? "bg-stone-100 text-stone-600" : "bg-brand-600 text-white"}`}
+            >
+              {t.reports.allTypes}
+            </Link>
+            {BUILDING_TYPES.map((type) => (
+              <Link
+                key={type}
+                href={typeHref(type)}
+                className={`badge ${selectedType === type ? "bg-brand-600 text-white" : "bg-stone-100 text-stone-600"}`}
+              >
+                {t.status[type]}
+              </Link>
+            ))}
+          </div>
+        </div>
         <p className="text-xs text-stone-500">{t.reports.filterHint}</p>
       </div>
 
@@ -170,7 +224,25 @@ export default async function ReportsPage({
       </div>
 
       <div>
-        <h2 className="mb-4 font-semibold text-stone-900">{t.reports.unpaidHeading(arRows.length)}</h2>
+        <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
+          <h2 className="font-semibold text-stone-900">{t.reports.unpaidHeading(arRows.length)}</h2>
+          <ExportPdfButton
+            label={t.reports.exportPdf}
+            fileName={`impayes-${toDateInputValue(now)}.pdf`}
+            docTitle={t.reports.pdfUnpaidTitle}
+            subtitle={filterSummary}
+            columns={[t.reports.tenantHeader, t.reports.propertyHeader, t.reports.oldestDueHeader, t.reports.amountHeader]}
+            rows={arRows.map(({ lease, unpaid, oldestUnpaidDate }) => [
+              tenantDisplayName(lease.tenant),
+              leaseLocationName(lease),
+              oldestUnpaidDate ? formatDate(oldestUnpaidDate, locale) : "—",
+              formatMoney(unpaid, locale),
+            ])}
+            totalLabel={t.reports.pdfTotalUnpaid}
+            totalValue={formatMoney(totalUnpaid, locale)}
+            footer={pdfFooter}
+          />
+        </div>
         {arRows.length === 0 ? (
           <div className="card text-sm text-stone-500">{t.reports.allPaid}</div>
         ) : (
@@ -209,7 +281,28 @@ export default async function ReportsPage({
 
       <div className="grid gap-6 lg:grid-cols-3">
         <div className="lg:col-span-2 space-y-4">
-          <h2 className="font-semibold text-stone-900">{t.reports.cashLogHeading(filteredPayments.length)}</h2>
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <h2 className="font-semibold text-stone-900">{t.reports.cashLogHeading(filteredPayments.length)}</h2>
+            <ExportPdfButton
+              label={t.reports.exportPdf}
+              fileName={`paiements-${toDateInputValue(now)}.pdf`}
+              docTitle={t.reports.pdfPaymentsTitle}
+              subtitle={filterSummary}
+              columns={[t.reports.dueHeader, t.reports.tenantHeader, t.reports.propertyHeader, t.reports.amountHeader]}
+              rows={filteredPayments.map((payment) => [
+                formatDate(payment.date, locale),
+                tenantDisplayName(payment.lease.tenant),
+                leaseLocationName(payment.lease),
+                formatMoney(payment.amount, locale),
+              ])}
+              totalLabel={t.reports.pdfTotalReceived}
+              totalValue={formatMoney(
+                filteredPayments.reduce((sum, p) => sum + p.amount, 0),
+                locale,
+              )}
+              footer={pdfFooter}
+            />
+          </div>
           {filteredPayments.length === 0 ? (
             <div className="card text-sm text-stone-500">{t.reports.noPayments}</div>
           ) : (
@@ -263,7 +356,32 @@ export default async function ReportsPage({
       </div>
 
       <div className="space-y-4">
-        <h2 className="font-semibold text-stone-900">{t.reports.expenseReportHeading(filteredExpenses.length)}</h2>
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <h2 className="font-semibold text-stone-900">{t.reports.expenseReportHeading(filteredExpenses.length)}</h2>
+          <ExportPdfButton
+            label={t.reports.exportPdf}
+            fileName={`depenses-${toDateInputValue(now)}.pdf`}
+            docTitle={t.reports.pdfExpensesTitle}
+            subtitle={filterSummary}
+            columns={[
+              t.expenses.dateHeader,
+              t.expenses.propertyHeader,
+              t.expenses.categoryHeader,
+              t.expenses.descriptionHeader,
+              t.expenses.amountHeader,
+            ]}
+            rows={filteredExpenses.map((expense) => [
+              formatDate(expense.date, locale),
+              expense.property.name,
+              t.status[expense.category],
+              expense.description ?? "—",
+              formatMoney(expense.amount, locale),
+            ])}
+            totalLabel={t.reports.pdfTotalExpenses}
+            totalValue={formatMoney(totalExpensesFiltered, locale)}
+            footer={pdfFooter}
+          />
+        </div>
         {filteredExpenses.length === 0 ? (
           <div className="card text-sm text-stone-500">{t.reports.noExpenses}</div>
         ) : (
