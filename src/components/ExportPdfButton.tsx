@@ -9,6 +9,7 @@ export default function ExportPdfButton({
   subtitle,
   columns,
   rows,
+  amountColumnIndex,
   totalLabel,
   totalValue,
   footer,
@@ -19,31 +20,42 @@ export default function ExportPdfButton({
   subtitle: string;
   columns: string[];
   rows: string[][];
+  /** Column that holds a formatted money value — right-aligned and given a fixed width so it never wraps. Defaults to the last column. */
+  amountColumnIndex?: number;
   totalLabel?: string;
   totalValue?: string;
   footer: string;
 }) {
   const [busy, setBusy] = useState(false);
+  const moneyCol = amountColumnIndex ?? columns.length - 1;
 
   async function handleExport() {
     setBusy(true);
     try {
       const [{ jsPDF }, { autoTable }] = await Promise.all([import("jspdf"), import("jspdf-autotable")]);
-      const doc = new jsPDF({ orientation: columns.length > 4 ? "landscape" : "portrait", unit: "pt" });
+      const landscape = columns.length > 4;
+      const doc = new jsPDF({ orientation: landscape ? "landscape" : "portrait", unit: "pt" });
+      const pageWidth = doc.internal.pageSize.getWidth();
 
       doc.setFontSize(16);
+      doc.setTextColor(30, 30, 30);
       doc.text(docTitle, 40, 44);
       doc.setFontSize(10);
       doc.setTextColor(110, 110, 110);
       doc.text(subtitle, 40, 62);
+      doc.setDrawColor(225, 222, 214);
+      doc.line(40, 72, pageWidth - 40, 72);
 
       autoTable(doc, {
-        startY: 78,
+        startY: 84,
         head: [columns],
         body: rows,
-        styles: { fontSize: 9, cellPadding: 6 },
-        headStyles: { fillColor: [69, 90, 69], textColor: 255 },
+        styles: { fontSize: 9, cellPadding: 7, valign: "middle", overflow: "linebreak" },
+        headStyles: { fillColor: [69, 90, 69], textColor: 255, fontStyle: "bold" },
         alternateRowStyles: { fillColor: [246, 245, 240] },
+        columnStyles: {
+          [moneyCol]: { halign: "right", cellWidth: 100, fontStyle: "bold" },
+        },
         margin: { left: 40, right: 40 },
       });
 
@@ -52,7 +64,9 @@ export default function ExportPdfButton({
       if (totalLabel && totalValue) {
         doc.setFontSize(11);
         doc.setTextColor(30, 30, 30);
-        doc.text(`${totalLabel}: ${totalValue}`, 40, finalY + 24);
+        doc.setFont("helvetica", "bold");
+        doc.text(`${totalLabel}: ${totalValue}`, pageWidth - 40, finalY + 26, { align: "right" });
+        doc.setFont("helvetica", "normal");
       }
 
       const pageCount = doc.getNumberOfPages();
