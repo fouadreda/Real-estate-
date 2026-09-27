@@ -7,6 +7,18 @@ export function formatMoney(amount: number, locale = "en-US"): string {
   }).format(amount);
 }
 
+/**
+ * Same output as formatMoney but grouped with plain ASCII spaces instead of
+ * Intl's narrow no-break space — jsPDF's built-in fonts have no glyph for
+ * that character and silently mangle it, so PDF exports use this instead.
+ */
+export function formatMoneyForPdf(amount: number): string {
+  const rounded = Math.round(amount);
+  const sign = rounded < 0 ? "-" : "";
+  const grouped = Math.abs(rounded).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  return `${sign}${grouped} XOF`;
+}
+
 export function formatDate(date: Date | string, locale = "en-US"): string {
   const d = typeof date === "string" ? new Date(date) : date;
   return new Intl.DateTimeFormat(locale, {
