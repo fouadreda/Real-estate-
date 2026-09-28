@@ -6,6 +6,7 @@ import { requireUserWithDictionary } from "@/lib/auth";
 import { propertyLabel } from "@/lib/leaseLocation";
 import { tenantDisplayName } from "@/lib/tenantName";
 import Badge from "@/components/Badge";
+import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
 import { deleteProperty } from "@/lib/actions/properties";
 
 export default async function PropertyDetailPage({ params }: { params: Promise<{ id: string }> }) {
@@ -86,7 +87,9 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
               {t.propertyDetail.editButton}
             </Link>
             <form action={deletePropertyWithId}>
-              <button type="submit" className="btn-danger">{t.propertyDetail.deleteButton}</button>
+              <ConfirmSubmitButton confirmMessage={t.common.confirmDelete} className="btn-danger">
+                {t.propertyDetail.deleteButton}
+              </ConfirmSubmitButton>
             </form>
           </div>
         </div>
