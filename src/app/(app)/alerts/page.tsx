@@ -11,8 +11,9 @@ import Badge from "@/components/Badge";
 export default async function AlertsPage() {
   const { t, locale } = await requireUserWithDictionary();
   const now = new Date();
-  const in30Days = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000);
+  const in90Days = new Date(now.getTime() + 90 * 24 * 60 * 60 * 1000);
   const in60Days = new Date(now.getTime() + 60 * 24 * 60 * 60 * 1000);
+  const CRITICAL_OVERDUE_DAYS = 90;
 
   const [leases, expiringLeasesAll, reviewsDueAll, brokenPromisesAll, needsReviewLeasesAll, dismissed] =
     await Promise.all([
@@ -26,7 +27,7 @@ export default async function AlertsPage() {
         },
       }),
       prisma.lease.findMany({
-        where: { status: "ACTIVE", endDate: { not: null, lte: in30Days } },
+        where: { status: "ACTIVE", endDate: { not: null, lte: in90Days } },
         include: { tenant: true, property: { include: { building: true } } },
         orderBy: { endDate: "asc" },
       }),
@@ -50,11 +51,15 @@ export default async function AlertsPage() {
   const dismissedKeys = new Set(dismissed.map((d) => `${d.kind}:${d.refId}:${d.context}`));
   const isDismissed = (kind: string, refId: string, context: string) => dismissedKeys.has(`${kind}:${refId}:${context}`);
 
-  const overdue = leases
+  const overdueAll = leases
     .map((lease) => ({ lease, ledger: computeLeaseLedger(lease, lease.payments, now) }))
     .filter(({ ledger }) => ledger.oldestUnpaidDate !== null && ledger.oldestUnpaidDate < now)
     .filter(({ lease, ledger }) => !isDismissed("OVERDUE", lease.id, ledger.oldestUnpaidDate!.toISOString()))
+    .map((row) => ({ ...row, daysLate: -daysUntil(row.ledger.oldestUnpaidDate!) }))
     .sort((a, b) => (a.ledger.oldestUnpaidDate!.getTime() - b.ledger.oldestUnpaidDate!.getTime()));
+
+  const criticalOverdue = overdueAll.filter((r) => r.daysLate >= CRITICAL_OVERDUE_DAYS);
+  const overdue = overdueAll.filter((r) => r.daysLate < CRITICAL_OVERDUE_DAYS);
 
   const expiringLeases = expiringLeasesAll.filter(
     (lease) => !isDismissed("EXPIRING", lease.id, lease.endDate!.toISOString()),
@@ -66,6 +71,7 @@ export default async function AlertsPage() {
   );
 
   const hasAlerts =
+    criticalOverdue.length > 0 ||
     overdue.length > 0 ||
     expiringLeases.length > 0 ||
     reviewsDue.length > 0 ||
@@ -83,11 +89,48 @@ export default async function AlertsPage() {
         <div className="card text-sm text-stone-500">{t.alerts.none}</div>
       )}
 
+      {criticalOverdue.length > 0 && (
+        <div>
+          <h2 className="mb-4 font-semibold text-stone-900">{t.alerts.criticalOverdueHeading(criticalOverdue.length)}</h2>
+          <div className="space-y-3">
+            {criticalOverdue.map(({ lease, ledger, daysLate }) => {
+              const dismiss = dismissAlert.bind(null, "OVERDUE", lease.id, ledger.oldestUnpaidDate!.toISOString());
+              return (
+                <div key={lease.id} className="card border-red-300 bg-red-100/60">
+                  <div className="flex items-start justify-between gap-3">
+                    <Link href={`/leases/${lease.id}`} className="min-w-0 flex-1 hover:underline">
+                      <p className="font-medium text-stone-900">
+                        {tenantDisplayName(lease.tenant)}
+                      </p>
+                      <p className="text-sm text-stone-500">
+                        {leaseLocationName(lease)}
+                      </p>
+                      <p className="mt-1 text-sm font-medium text-red-700">
+                        {t.alerts.dueOverdue(formatDate(ledger.oldestUnpaidDate!, locale), daysLate)}
+                      </p>
+                    </Link>
+                    <div className="shrink-0 text-right">
+                      <p className="font-semibold text-stone-900">{formatMoney(ledger.unpaid, locale)}</p>
+                      <Badge status="TERMINATED" label={t.alerts.criticalBadge} />
+                      <form action={dismiss} className="mt-2">
+                        <button type="submit" className="text-xs text-stone-500 hover:underline">
+                          {t.alerts.dismiss}
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
       {overdue.length > 0 && (
         <div>
           <h2 className="mb-4 font-semibold text-stone-900">{t.alerts.overdueHeading(overdue.length)}</h2>
           <div className="space-y-3">
-            {overdue.map(({ lease, ledger }) => {
+            {overdue.map(({ lease, ledger, daysLate }) => {
               const dismiss = dismissAlert.bind(null, "OVERDUE", lease.id, ledger.oldestUnpaidDate!.toISOString());
               return (
                 <div key={lease.id} className="card border-red-100 bg-red-50/40">
@@ -100,7 +143,7 @@ export default async function AlertsPage() {
                         {leaseLocationName(lease)}
                       </p>
                       <p className="mt-1 text-sm text-red-600">
-                        {t.alerts.dueOverdue(formatDate(ledger.oldestUnpaidDate!, locale), Math.abs(daysUntil(ledger.oldestUnpaidDate!)))}
+                        {t.alerts.dueOverdue(formatDate(ledger.oldestUnpaidDate!, locale), daysLate)}
                       </p>
                     </Link>
                     <div className="shrink-0 text-right">
