@@ -7,6 +7,7 @@ export const en = {
     delete: "Delete",
     search: "Search",
     noResults: "No results match your search.",
+    confirmDelete: "Delete permanently? This cannot be undone.",
   },
   nav: {
     dashboard: "Dashboard",
@@ -248,6 +249,7 @@ export const en = {
     statusHeader: "Status",
     kind: "Kind",
     unconfirmed: "To verify",
+    confirmedLabel: "Confirmed (counts toward rent totals)",
     editPaymentTitle: "Edit payment",
     recordPaymentHeading: "Record payment",
     recordPaymentHint: "Payments are applied automatically to the oldest unpaid rent first. Paying more than what's due leaves the rest as an advance credit.",
@@ -275,6 +277,8 @@ export const en = {
     promiseAmount: "Promise amount",
     promised: "Promised",
     logFollowUp: "Log follow-up",
+    markPaid: "Mark paid",
+    markBroken: "Mark broken",
   },
   leaseEdit: {
     title: "Edit lease",

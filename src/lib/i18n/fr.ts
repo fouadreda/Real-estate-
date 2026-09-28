@@ -9,6 +9,7 @@ export const fr: typeof en = {
     delete: "Supprimer",
     search: "Rechercher",
     noResults: "Aucun résultat pour cette recherche.",
+    confirmDelete: "Supprimer définitivement ? Cette action est irréversible.",
   },
   nav: {
     dashboard: "Tableau de bord",
@@ -244,6 +245,7 @@ export const fr: typeof en = {
     statusHeader: "Statut",
     kind: "Type",
     unconfirmed: "À vérifier",
+    confirmedLabel: "Confirmé (compte dans les totaux de loyer)",
     editPaymentTitle: "Modifier le paiement",
     recordPaymentHeading: "Enregistrer un paiement",
     recordPaymentHint: "Les paiements sont automatiquement affectés d'abord au loyer impayé le plus ancien. Un paiement supérieur au montant dû laisse le reste en crédit d'avance.",
@@ -271,6 +273,8 @@ export const fr: typeof en = {
     promiseAmount: "Montant promis",
     promised: "Promis",
     logFollowUp: "Enregistrer la relance",
+    markPaid: "Marquer payé",
+    markBroken: "Marquer rompu",
   },
   leaseEdit: {
     title: "Modifier le bail",
