@@ -39,7 +39,12 @@ export default async function ReportsPage({
   const [leasesAll, paymentsAll, expensesAll] = await Promise.all([
     prisma.lease.findMany({
       where: { status: { not: "PENDING" } },
-      include: { tenant: true, property: { include: { building: true } }, payments: true },
+      include: {
+        tenant: true,
+        property: { include: { building: true } },
+        payments: true,
+        rentReviews: { where: { appliedAt: { not: null } } },
+      },
     }),
     prisma.payment.findMany({
       include: { lease: { include: { tenant: true, property: { include: { building: true } } } } },
