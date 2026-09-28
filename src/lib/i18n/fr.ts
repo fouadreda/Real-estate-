@@ -378,6 +378,7 @@ export const fr: typeof en = {
     revisionDue: (date: string) => `Prochaine révision : ${date}`,
     brokenPromisesHeading: (n: number) => `Promesses de paiement non tenues (${n})`,
     needsReviewHeading: (n: number) => `Baux à vérifier (${n})`,
+    dismiss: "Rejeter",
   },
   dataQuality: {
     title: "Qualité des données",

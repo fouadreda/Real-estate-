@@ -382,6 +382,7 @@ export const en = {
     revisionDue: (date: string) => `Next revision: ${date}`,
     brokenPromisesHeading: (n: number) => `Broken payment promises (${n})`,
     needsReviewHeading: (n: number) => `Leases to verify (${n})`,
+    dismiss: "Dismiss",
   },
   dataQuality: {
     title: "Data quality",
