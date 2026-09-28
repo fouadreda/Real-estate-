@@ -34,11 +34,11 @@ export default async function PropertiesPage({
         ...(q
           ? {
               OR: [
-                { name: { contains: q } },
-                { address: { contains: q } },
-                { city: { contains: q } },
-                { unitCode: { contains: q } },
-                { building: { name: { contains: q } } },
+                { name: { contains: q, mode: "insensitive" } },
+                { address: { contains: q, mode: "insensitive" } },
+                { city: { contains: q, mode: "insensitive" } },
+                { unitCode: { contains: q, mode: "insensitive" } },
+                { building: { name: { contains: q, mode: "insensitive" } } },
               ],
             }
           : {}),
