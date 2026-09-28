@@ -66,6 +66,16 @@ export default function Nav({
           </Link>
         </nav>
 
+        <form action="/search" method="GET" className="hidden lg:block">
+          <input
+            className="input h-9 w-40 xl:w-56"
+            type="search"
+            name="q"
+            placeholder={nav.searchPlaceholder}
+            aria-label={nav.searchPlaceholder}
+          />
+        </form>
+
         <div className="hidden items-center gap-3 lg:flex">
           <Link href="/settings" className="flex items-center gap-2 rounded-lg py-1 pl-1 pr-2 hover:bg-stone-100">
             <Avatar name={user.name} size="sm" />
@@ -109,6 +119,15 @@ export default function Nav({
 
       {open && (
         <nav className="border-t border-stone-200 px-4 py-3 lg:hidden">
+          <form action="/search" method="GET" className="mb-3">
+            <input
+              className="input"
+              type="search"
+              name="q"
+              placeholder={nav.searchPlaceholder}
+              aria-label={nav.searchPlaceholder}
+            />
+          </form>
           <ul className="space-y-0.5">
             {[...links, { href: "/alerts", label: nav.alerts }, { href: "/settings", label: nav.settings }].map(
               (link) => (
