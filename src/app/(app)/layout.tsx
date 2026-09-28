@@ -24,7 +24,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
     prisma.lease.findMany({
       where: {
         status: "ACTIVE",
-        endDate: { not: null, lte: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000) },
+        endDate: { not: null, lte: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000) },
       },
       select: { id: true, endDate: true },
     }),
