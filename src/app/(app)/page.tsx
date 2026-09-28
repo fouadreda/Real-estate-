@@ -20,7 +20,12 @@ export default async function DashboardPage() {
       }),
       prisma.lease.findMany({
         where: { status: { not: "PENDING" }, needsReview: false },
-        include: { tenant: true, property: { include: { building: true } }, payments: true },
+        include: {
+          tenant: true,
+          property: { include: { building: true } },
+          payments: true,
+          rentReviews: { where: { appliedAt: { not: null } } },
+        },
       }),
       prisma.lease.findMany({
         where: {

@@ -18,6 +18,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
         rentAmount: true,
         billingFrequency: true,
         payments: { select: { amount: true, kind: true, confirmed: true, date: true } },
+        rentReviews: { where: { appliedAt: { not: null } }, select: { dueDate: true, rate: true, appliedAt: true } },
       },
     }),
     prisma.lease.findMany({
