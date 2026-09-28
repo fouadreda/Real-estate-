@@ -17,13 +17,13 @@ export default async function LeasesPage({
     where: q
       ? {
           OR: [
-            { tenant: { firstName: { contains: q } } },
-            { tenant: { lastName: { contains: q } } },
-            { tenant: { company: { contains: q } } },
-            { property: { name: { contains: q } } },
-            { property: { city: { contains: q } } },
-            { property: { unitCode: { contains: q } } },
-            { property: { building: { name: { contains: q } } } },
+            { tenant: { firstName: { contains: q, mode: "insensitive" } } },
+            { tenant: { lastName: { contains: q, mode: "insensitive" } } },
+            { tenant: { company: { contains: q, mode: "insensitive" } } },
+            { property: { name: { contains: q, mode: "insensitive" } } },
+            { property: { city: { contains: q, mode: "insensitive" } } },
+            { property: { unitCode: { contains: q, mode: "insensitive" } } },
+            { property: { building: { name: { contains: q, mode: "insensitive" } } } },
           ],
         }
       : undefined,
