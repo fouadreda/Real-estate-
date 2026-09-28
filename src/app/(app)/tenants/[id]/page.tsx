@@ -17,7 +17,11 @@ export default async function TenantDetailPage({ params }: { params: Promise<{ i
     where: { id },
     include: {
       leases: {
-        include: { property: { include: { building: true } }, payments: true },
+        include: {
+          property: { include: { building: true } },
+          payments: true,
+          rentReviews: { where: { appliedAt: { not: null } } },
+        },
         orderBy: { startDate: "desc" },
       },
     },
