@@ -5,6 +5,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { requireUser } from "@/lib/auth";
 import { attachFileToPayment } from "@/lib/actions/attachments";
+import type { PaymentKind } from "@prisma/client";
 
 function readPaymentFields(formData: FormData) {
   const amount = Number(formData.get("amount") ?? 0);
@@ -24,7 +25,7 @@ export async function createPayment(leaseId: string, formData: FormData) {
   const data = readPaymentFields(formData);
 
   const payment = await prisma.payment.create({
-    data: { ...data, leaseId, recordedById: user.id },
+    data: { ...data, leaseId, recordedById: user.id, kind: "RENT", confirmed: true },
   });
 
   const file = formData.get("file");
@@ -39,8 +40,10 @@ export async function createPayment(leaseId: string, formData: FormData) {
 
 export async function updatePayment(paymentId: string, leaseId: string, formData: FormData) {
   const data = readPaymentFields(formData);
+  const kind = String(formData.get("kind") ?? "RENT") as PaymentKind;
+  const confirmed = formData.get("confirmed") === "on";
 
-  await prisma.payment.update({ where: { id: paymentId }, data });
+  await prisma.payment.update({ where: { id: paymentId }, data: { ...data, kind, confirmed } });
 
   revalidatePath(`/leases/${leaseId}`);
   revalidatePath("/reports");
