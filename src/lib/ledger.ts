@@ -58,6 +58,12 @@ export interface LeaseLedger {
   oldestUnpaidDate: Date | null;
 }
 
+interface RentReviewLike {
+  dueDate: Date;
+  rate: number;
+  appliedAt?: Date | null;
+}
+
 interface LeaseLike {
   startDate: Date;
   endDate: Date | null;
@@ -65,6 +71,8 @@ interface LeaseLike {
   ledgerStartDate?: Date | null;
   rentAmount: number;
   billingFrequency: BillingFrequency;
+  /** Applied rent reviews, used to bill each period at the rent that was actually in effect on its due date. */
+  rentReviews?: RentReviewLike[];
 }
 
 interface PaymentLike {
@@ -75,6 +83,23 @@ interface PaymentLike {
 }
 
 const RENT_LIKE_KINDS: PaymentKind[] = ["RENT", "ARREARS"];
+
+/**
+ * `lease.rentAmount` only ever holds the current rent — applying a review multiplies
+ * it in place with no history kept. Reconstructs the rent in effect on `date` by
+ * undoing (dividing out) every applied review whose effective date is still in the
+ * future relative to `date`, most recent first.
+ */
+function rentAmountAt(currentRentAmount: number, appliedReviews: RentReviewLike[], date: Date): number {
+  const future = appliedReviews
+    .filter((r) => r.appliedAt && r.dueDate > date)
+    .sort((a, b) => b.dueDate.getTime() - a.dueDate.getTime());
+  let amount = currentRentAmount;
+  for (const review of future) {
+    amount = amount / (1 + review.rate);
+  }
+  return amount;
+}
 
 /**
  * Computes rent accrued to date, total paid, and a FIFO allocation of
@@ -107,10 +132,11 @@ export function computeLeaseLedger(
   );
   const totalPaid = rentPayments.reduce((sum, p) => sum + p.amount, 0);
 
+  const appliedReviews = lease.rentReviews ?? [];
   let pool = totalPaid;
   let oldestUnpaidDate: Date | null = null;
   const periods: LedgerPeriod[] = elapsedDates.map((dueDate, index) => {
-    const amountDue = lease.rentAmount;
+    const amountDue = rentAmountAt(lease.rentAmount, appliedReviews, dueDate);
     const amountAllocated = Math.min(Math.max(pool, 0), amountDue);
     pool -= amountAllocated;
     const balance = amountDue - amountAllocated;
@@ -127,7 +153,7 @@ export function computeLeaseLedger(
     };
   });
 
-  const totalAccrued = elapsedDates.length * lease.rentAmount;
+  const totalAccrued = periods.reduce((sum, p) => sum + p.amountDue, 0);
   const balance = totalAccrued - totalPaid;
   const unpaid = Math.max(balance, 0);
   const advance = Math.max(-balance, 0);
