@@ -7,11 +7,12 @@ import { computeLeaseLedger } from "@/lib/ledger";
 import { leaseLocationHref, leaseLocationName } from "@/lib/leaseLocation";
 import { tenantDisplayName } from "@/lib/tenantName";
 import Badge from "@/components/Badge";
+import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
 import { deleteLease, updateLeaseStatus } from "@/lib/actions/leases";
 import { createPayment, deletePayment } from "@/lib/actions/payments";
 import { deleteLeaseAttachment, uploadLeaseAttachment } from "@/lib/actions/attachments";
-import { createFollowUp } from "@/lib/actions/followUps";
-import { createRentReview, markRentReviewApplied, markRentReviewLetterSent } from "@/lib/actions/rentReviews";
+import { createFollowUp, deleteFollowUp, updateFollowUpResult } from "@/lib/actions/followUps";
+import { createRentReview, deleteRentReview, markRentReviewApplied, markRentReviewLetterSent } from "@/lib/actions/rentReviews";
 import AttachmentGallery from "@/components/AttachmentGallery";
 import type { LeaseStatus } from "@prisma/client";
 
@@ -74,7 +75,9 @@ export default async function LeaseDetailPage({ params }: { params: Promise<{ id
               {t.leaseDetail.editButton}
             </Link>
             <form action={deleteLeaseWithId}>
-              <button type="submit" className="btn-danger">{t.leaseDetail.deleteButton}</button>
+              <ConfirmSubmitButton confirmMessage={t.common.confirmDelete} className="btn-danger">
+                {t.leaseDetail.deleteButton}
+              </ConfirmSubmitButton>
             </form>
           </div>
         </div>
@@ -212,9 +215,9 @@ export default async function LeaseDetailPage({ params }: { params: Promise<{ id
                                   {t.common.edit}
                                 </Link>
                                 <form action={removePayment}>
-                                  <button type="submit" className="text-sm text-red-600 hover:underline">
+                                  <ConfirmSubmitButton confirmMessage={t.common.confirmDelete} className="text-sm text-red-600 hover:underline">
                                     {t.common.delete}
-                                  </button>
+                                  </ConfirmSubmitButton>
                                 </form>
                               </div>
                             </td>
@@ -234,25 +237,47 @@ export default async function LeaseDetailPage({ params }: { params: Promise<{ id
               <div className="card text-sm text-stone-500">{t.leaseDetail.noFollowUps}</div>
             ) : (
               <div className="space-y-2">
-                {lease.followUps.map((f) => (
-                  <div key={f.id} className="card">
-                    <div className="flex items-start justify-between">
-                      <div>
-                        <p className="text-sm font-medium text-stone-900">
-                          {formatDate(f.date, locale)} · {t.status[f.action]}
-                        </p>
-                        {f.response && <p className="mt-1 text-sm text-stone-600">{f.response}</p>}
-                        {f.promiseDate && (
-                          <p className="mt-1 text-sm text-stone-500">
-                            {t.leaseDetail.promised}: {formatDate(f.promiseDate, locale)}
-                            {f.promiseAmount ? ` · ${formatMoney(f.promiseAmount, locale)}` : ""}
+                {lease.followUps.map((f) => {
+                  const removeFollowUp = deleteFollowUp.bind(null, f.id, lease.id);
+                  const markPaid = updateFollowUpResult.bind(null, f.id, lease.id, "PAID");
+                  const markBroken = updateFollowUpResult.bind(null, f.id, lease.id, "BROKEN");
+                  return (
+                    <div key={f.id} className="card">
+                      <div className="flex items-start justify-between">
+                        <div>
+                          <p className="text-sm font-medium text-stone-900">
+                            {formatDate(f.date, locale)} · {t.status[f.action]}
                           </p>
-                        )}
+                          {f.response && <p className="mt-1 text-sm text-stone-600">{f.response}</p>}
+                          {f.promiseDate && (
+                            <p className="mt-1 text-sm text-stone-500">
+                              {t.leaseDetail.promised}: {formatDate(f.promiseDate, locale)}
+                              {f.promiseAmount ? ` · ${formatMoney(f.promiseAmount, locale)}` : ""}
+                            </p>
+                          )}
+                        </div>
+                        <div className="flex shrink-0 flex-col items-end gap-2">
+                          <Badge status={f.result} label={t.status[f.result]} />
+                          {f.result === "PENDING" && (
+                            <div className="flex gap-2">
+                              <form action={markPaid}>
+                                <button type="submit" className="text-xs text-brand-600 hover:underline">{t.leaseDetail.markPaid}</button>
+                              </form>
+                              <form action={markBroken}>
+                                <button type="submit" className="text-xs text-red-600 hover:underline">{t.leaseDetail.markBroken}</button>
+                              </form>
+                            </div>
+                          )}
+                          <form action={removeFollowUp}>
+                            <ConfirmSubmitButton confirmMessage={t.common.confirmDelete} className="text-xs text-stone-500 hover:underline">
+                              {t.common.delete}
+                            </ConfirmSubmitButton>
+                          </form>
+                        </div>
                       </div>
-                      <Badge status={f.result} label={t.status[f.result]} />
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             )}
             <form action={createFollowUpForLease} className="card space-y-3">
@@ -299,6 +324,7 @@ export default async function LeaseDetailPage({ params }: { params: Promise<{ id
                 {lease.rentReviews.map((r) => {
                   const sendLetter = markRentReviewLetterSent.bind(null, r.id, lease.id);
                   const applyReview = markRentReviewApplied.bind(null, r.id, lease.id);
+                  const removeReview = deleteRentReview.bind(null, r.id, lease.id);
                   return (
                     <div key={r.id} className="card">
                       <div className="flex items-start justify-between">
@@ -311,7 +337,7 @@ export default async function LeaseDetailPage({ params }: { params: Promise<{ id
                             {r.appliedAt ? ` · ${t.leaseRevision.applied} ${formatDate(r.appliedAt, locale)}` : ""}
                           </p>
                         </div>
-                        <div className="flex gap-2">
+                        <div className="flex flex-wrap items-center justify-end gap-2">
                           {!r.letterSentAt && (
                             <form action={sendLetter}>
                               <button type="submit" className="text-sm text-brand-600 hover:underline">{t.leaseRevision.markLetterSent}</button>
@@ -322,6 +348,11 @@ export default async function LeaseDetailPage({ params }: { params: Promise<{ id
                               <button type="submit" className="text-sm text-brand-600 hover:underline">{t.leaseRevision.markApplied}</button>
                             </form>
                           )}
+                          <form action={removeReview}>
+                            <ConfirmSubmitButton confirmMessage={t.common.confirmDelete} className="text-sm text-red-600 hover:underline">
+                              {t.common.delete}
+                            </ConfirmSubmitButton>
+                          </form>
                         </div>
                       </div>
                     </div>
