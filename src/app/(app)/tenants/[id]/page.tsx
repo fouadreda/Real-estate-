@@ -7,6 +7,7 @@ import { leaseLocationName } from "@/lib/leaseLocation";
 import { tenantDisplayName } from "@/lib/tenantName";
 import { computeLeaseLedger } from "@/lib/ledger";
 import Badge from "@/components/Badge";
+import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
 import { deleteTenant } from "@/lib/actions/tenants";
 
 export default async function TenantDetailPage({ params }: { params: Promise<{ id: string }> }) {
@@ -71,7 +72,9 @@ export default async function TenantDetailPage({ params }: { params: Promise<{ i
               {t.tenantDetail.editButton}
             </Link>
             <form action={deleteTenantWithId}>
-              <button type="submit" className="btn-danger">{t.tenantDetail.deleteButton}</button>
+              <ConfirmSubmitButton confirmMessage={t.common.confirmDelete} className="btn-danger">
+                {t.tenantDetail.deleteButton}
+              </ConfirmSubmitButton>
             </form>
           </div>
         </div>
