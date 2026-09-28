@@ -90,6 +90,13 @@ export default function Nav({
         </div>
 
         <div className="flex items-center gap-2 lg:hidden">
+          <Link
+            href="/search"
+            className="rounded-lg p-2 text-stone-600 hover:bg-stone-100"
+            aria-label={nav.searchPlaceholder}
+          >
+            <SearchIcon />
+          </Link>
           {alertCount > 0 && (
             <Link
               href="/alerts"
@@ -166,6 +173,15 @@ function CloseIcon() {
   return (
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
       <path d="M6 6l12 12M18 6L6 18" />
+    </svg>
+  );
+}
+
+function SearchIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="11" cy="11" r="7" />
+      <path d="m21 21-4.35-4.35" />
     </svg>
   );
 }
