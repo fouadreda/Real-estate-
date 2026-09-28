@@ -3,6 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { formatDate, formatMoney } from "@/lib/format";
 import { requireUserWithDictionary } from "@/lib/auth";
 import Badge from "@/components/Badge";
+import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
 import { deleteExpense } from "@/lib/actions/expenses";
 
 export default async function ExpensesPage() {
@@ -76,9 +77,9 @@ export default async function ExpensesPage() {
                             {t.common.edit}
                           </Link>
                           <form action={removeExpense}>
-                            <button type="submit" className="text-sm text-red-600 hover:underline">
+                            <ConfirmSubmitButton confirmMessage={t.common.confirmDelete} className="text-sm text-red-600 hover:underline">
                               {t.common.delete}
-                            </button>
+                            </ConfirmSubmitButton>
                           </form>
                         </div>
                       </td>
