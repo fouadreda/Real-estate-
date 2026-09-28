@@ -14,17 +14,35 @@ import { leaseLocationName } from "@/lib/leaseLocation";
 import { tenantDisplayName } from "@/lib/tenantName";
 import Badge from "@/components/Badge";
 import ExportPdfButton from "@/components/ExportPdfButton";
-import type { BuildingType } from "@prisma/client";
+import type { BuildingType, ExpenseCategory } from "@prisma/client";
 
 const BUILDING_TYPES: BuildingType[] = ["BUILDING", "VILLA", "WAREHOUSE_SITE"];
+const EXPENSE_CATEGORIES: ExpenseCategory[] = [
+  "MAINTENANCE",
+  "SALES_SERVICE_FEES",
+  "TRANSPORT_COMMS",
+  "OFFICE_SUPPLIES",
+  "SALARY",
+  "SITE_STAFF",
+  "TAXES",
+  "UTILITIES",
+  "OFFICE_EQUIPMENT",
+  "REPAIRS",
+  "INSURANCE",
+  "MANAGEMENT_FEE",
+  "OTHER",
+];
+const LEASE_STATUS_FILTERS = ["unpaid", "paid", "all"] as const;
+type LeaseStatusFilter = (typeof LEASE_STATUS_FILTERS)[number];
 
 export default async function ReportsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ from?: string; to?: string; type?: string }>;
+  searchParams: Promise<{ from?: string; to?: string; type?: string; category?: string; status?: string }>;
 }) {
   const { t, locale } = await requireUserWithDictionary();
-  const { from: fromParam, to: toParam, type: typeParam } = await searchParams;
+  const { from: fromParam, to: toParam, type: typeParam, category: categoryParam, status: statusParam } =
+    await searchParams;
   const now = new Date();
   const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
   const monthEnd = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59, 999);
@@ -35,6 +53,13 @@ export default async function ReportsPage({
   const asOf = rangeTo ?? now;
   const selectedType =
     typeParam && (BUILDING_TYPES as string[]).includes(typeParam) ? (typeParam as BuildingType) : null;
+  const selectedCategory =
+    categoryParam && (EXPENSE_CATEGORIES as string[]).includes(categoryParam)
+      ? (categoryParam as ExpenseCategory)
+      : null;
+  const selectedStatus: LeaseStatusFilter = (LEASE_STATUS_FILTERS as readonly string[]).includes(statusParam ?? "")
+    ? (statusParam as LeaseStatusFilter)
+    : "unpaid";
 
   const [leasesAll, paymentsAll, expensesAll] = await Promise.all([
     prisma.lease.findMany({
@@ -57,7 +82,9 @@ export default async function ReportsPage({
     !selectedType || buildingType === selectedType;
 
   const payments = paymentsAll.filter((p) => matchesType(p.lease.property.building?.type));
-  const expenses = expensesAll.filter((e) => matchesType(e.property.building?.type));
+  const expenses = expensesAll.filter(
+    (e) => matchesType(e.property.building?.type) && (!selectedCategory || e.category === selectedCategory),
+  );
   const leasesInType = leasesAll.filter((l) => matchesType(l.property.building?.type));
 
   const needsReviewCount = leasesInType.filter((l) => l.needsReview).length;
@@ -80,23 +107,30 @@ export default async function ReportsPage({
   const aging = emptyAgingBuckets();
   let totalUnpaid = 0;
   let totalAdvance = 0;
-  const arRows: { lease: (typeof leases)[number]; unpaid: number; oldestUnpaidDate: Date | null }[] = [];
+  const leaseRows: { lease: (typeof leases)[number]; unpaid: number; oldestUnpaidDate: Date | null; isPaid: boolean }[] =
+    [];
 
   for (const lease of leases) {
     const ledger = computeLeaseLedger(lease, lease.payments, asOf);
     totalUnpaid += ledger.unpaid;
     totalAdvance += ledger.advance;
-    if (ledger.unpaid > 0.005) {
-      arRows.push({ lease, unpaid: ledger.unpaid, oldestUnpaidDate: ledger.oldestUnpaidDate });
+    const isPaid = ledger.unpaid <= 0.005;
+    if (!isPaid) {
       for (const period of ledger.periods) {
         if (period.balance > 0.005) {
           addToAgingBuckets(aging, Math.max(daysBetween(period.dueDate, asOf), 0), period.balance);
         }
       }
     }
+    leaseRows.push({ lease, unpaid: ledger.unpaid, oldestUnpaidDate: ledger.oldestUnpaidDate, isPaid });
   }
 
-  arRows.sort((a, b) => (a.oldestUnpaidDate?.getTime() ?? 0) - (b.oldestUnpaidDate?.getTime() ?? 0));
+  leaseRows.sort((a, b) => (a.oldestUnpaidDate?.getTime() ?? 0) - (b.oldestUnpaidDate?.getTime() ?? 0));
+
+  const arRows = leaseRows.filter((row) => {
+    if (selectedStatus === "all") return true;
+    return selectedStatus === "paid" ? row.isPaid : !row.isPaid;
+  });
 
   const filteredPayments = payments.filter(
     (p) => (!rangeFrom || p.date >= rangeFrom) && (!rangeTo || p.date <= rangeTo),
@@ -111,21 +145,38 @@ export default async function ReportsPage({
     return acc;
   }, {});
 
-  function typeHref(type: BuildingType | null) {
+  function buildHref(overrides: { type?: BuildingType | null; status?: LeaseStatusFilter | null }) {
     const params = new URLSearchParams();
     if (fromParam) params.set("from", fromParam);
     if (toParam) params.set("to", toParam);
-    if (type) params.set("type", type);
+    if (selectedCategory) params.set("category", selectedCategory);
+    const nextType = "type" in overrides ? overrides.type : selectedType;
+    const nextStatus = "status" in overrides ? overrides.status : selectedStatus;
+    if (nextType) params.set("type", nextType);
+    if (nextStatus && nextStatus !== "unpaid") params.set("status", nextStatus);
+    const qs = params.toString();
+    return qs ? `/reports?${qs}` : "/reports";
+  }
+
+  // Drops date range and category, keeps the type/status badge selections — used by "Clear filter".
+  function clearFilterHref() {
+    const params = new URLSearchParams();
+    if (selectedType) params.set("type", selectedType);
+    if (selectedStatus !== "unpaid") params.set("status", selectedStatus);
     const qs = params.toString();
     return qs ? `/reports?${qs}` : "/reports";
   }
 
   const typeLabel = selectedType ? t.status[selectedType] : t.reports.allTypes;
+  const categoryLabel = selectedCategory ? t.status[selectedCategory] : null;
+  const statusLabel =
+    selectedStatus === "paid" ? t.reports.statusPaid : selectedStatus === "all" ? t.reports.statusAll : t.reports.statusUnpaid;
   const fromLabel = rangeFrom ? formatDate(rangeFrom, locale) : null;
   const toLabel = rangeTo ? formatDate(rangeTo, locale) : null;
   const filterSummary = [
     fromLabel && toLabel ? `${t.reports.dateFrom} ${fromLabel} ${t.reports.dateTo.toLowerCase()} ${toLabel}` : fromLabel ? `${t.reports.dateFrom} ${fromLabel}` : toLabel ? `${t.reports.dateTo} ${toLabel}` : null,
     typeLabel,
+    categoryLabel,
   ]
     .filter(Boolean)
     .join(" · ");
@@ -141,6 +192,7 @@ export default async function ReportsPage({
       <div className="card space-y-3">
         <form action="/reports" method="GET" className="flex flex-wrap items-end gap-3">
           {selectedType && <input type="hidden" name="type" value={selectedType} />}
+          {selectedStatus !== "unpaid" && <input type="hidden" name="status" value={selectedStatus} />}
           <div>
             <label className="label" htmlFor="from">{t.reports.dateFrom}</label>
             <input className="input" type="date" id="from" name="from" defaultValue={fromParam ?? ""} />
@@ -149,9 +201,20 @@ export default async function ReportsPage({
             <label className="label" htmlFor="to">{t.reports.dateTo}</label>
             <input className="input" type="date" id="to" name="to" defaultValue={toParam ?? ""} />
           </div>
+          <div>
+            <label className="label" htmlFor="category">{t.reports.categoryFilter}</label>
+            <select className="input" id="category" name="category" defaultValue={selectedCategory ?? ""}>
+              <option value="">{t.reports.allCategories}</option>
+              {EXPENSE_CATEGORIES.map((category) => (
+                <option key={category} value={category}>
+                  {t.status[category]}
+                </option>
+              ))}
+            </select>
+          </div>
           <button type="submit" className="btn-secondary">{t.reports.applyFilter}</button>
-          {hasFilter && (
-            <Link href={typeHref(selectedType)} className="text-sm text-stone-500 hover:underline">
+          {(hasFilter || selectedCategory) && (
+            <Link href={clearFilterHref()} className="text-sm text-stone-500 hover:underline">
               {t.reports.clearFilter}
             </Link>
           )}
@@ -160,7 +223,7 @@ export default async function ReportsPage({
           <p className="label mb-1">{t.reports.propertyType}</p>
           <div className="flex flex-wrap gap-2">
             <Link
-              href={typeHref(null)}
+              href={buildHref({ type: null })}
               className={`badge ${selectedType ? "bg-stone-100 text-stone-600" : "bg-brand-600 text-white"}`}
             >
               {t.reports.allTypes}
@@ -168,10 +231,24 @@ export default async function ReportsPage({
             {BUILDING_TYPES.map((type) => (
               <Link
                 key={type}
-                href={typeHref(type)}
+                href={buildHref({ type })}
                 className={`badge ${selectedType === type ? "bg-brand-600 text-white" : "bg-stone-100 text-stone-600"}`}
               >
                 {t.status[type]}
+              </Link>
+            ))}
+          </div>
+        </div>
+        <div>
+          <p className="label mb-1">{t.reports.statusFilter}</p>
+          <div className="flex flex-wrap gap-2">
+            {LEASE_STATUS_FILTERS.map((status) => (
+              <Link
+                key={status}
+                href={buildHref({ status })}
+                className={`badge ${selectedStatus === status ? "bg-brand-600 text-white" : "bg-stone-100 text-stone-600"}`}
+              >
+                {status === "paid" ? t.reports.statusPaid : status === "all" ? t.reports.statusAll : t.reports.statusUnpaid}
               </Link>
             ))}
           </div>
@@ -230,40 +307,57 @@ export default async function ReportsPage({
 
       <div>
         <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
-          <h2 className="font-semibold text-stone-900">{t.reports.unpaidHeading(arRows.length)}</h2>
+          <h2 className="font-semibold text-stone-900">
+            {selectedStatus === "paid"
+              ? t.reports.paidHeading(arRows.length)
+              : selectedStatus === "all"
+                ? t.reports.allLeasesHeading(arRows.length)
+                : t.reports.unpaidHeading(arRows.length)}
+          </h2>
           <ExportPdfButton
             label={t.reports.exportPdf}
-            fileName={`impayes-${toDateInputValue(now)}.pdf`}
-            docTitle={t.reports.pdfUnpaidTitle}
-            subtitle={filterSummary}
-            columns={[t.reports.tenantHeader, t.reports.propertyHeader, t.reports.oldestDueHeader, t.reports.amountHeader]}
-            rows={arRows.map(({ lease, unpaid, oldestUnpaidDate }) => [
+            fileName={`baux-${selectedStatus}-${toDateInputValue(now)}.pdf`}
+            docTitle={
+              selectedStatus === "paid"
+                ? t.reports.pdfPaidTitle
+                : selectedStatus === "all"
+                  ? t.reports.pdfAllLeasesTitle
+                  : t.reports.pdfUnpaidTitle
+            }
+            subtitle={[filterSummary, statusLabel].filter(Boolean).join(" · ")}
+            columns={[t.reports.tenantHeader, t.reports.propertyHeader, t.reports.statusHeader, t.reports.oldestDueHeader, t.reports.amountHeader]}
+            rows={arRows.map(({ lease, unpaid, oldestUnpaidDate, isPaid }) => [
               tenantDisplayName(lease.tenant),
               leaseLocationName(lease),
+              isPaid ? t.reports.statusPaid : t.reports.statusUnpaid,
               oldestUnpaidDate ? formatDate(oldestUnpaidDate, locale) : "—",
               formatMoneyForPdf(unpaid),
             ])}
+            amountColumnIndex={4}
             totalLabel={t.reports.pdfTotalUnpaid}
             totalValue={formatMoneyForPdf(totalUnpaid)}
             footer={pdfFooter}
           />
         </div>
         {arRows.length === 0 ? (
-          <div className="card text-sm text-stone-500">{t.reports.allPaid}</div>
+          <div className="card text-sm text-stone-500">
+            {selectedStatus === "unpaid" ? t.reports.allPaid : t.reports.noneMatchStatus}
+          </div>
         ) : (
           <div className="card overflow-hidden p-0">
             <div className="overflow-x-auto">
-              <table className="w-full min-w-[560px] text-sm">
+              <table className="w-full min-w-[620px] text-sm">
                 <thead className="border-b border-stone-200 bg-stone-50 text-left text-stone-500">
                   <tr>
                     <th className="px-5 py-3 font-medium">{t.reports.tenantHeader}</th>
                     <th className="px-5 py-3 font-medium">{t.reports.propertyHeader}</th>
+                    <th className="px-5 py-3 font-medium">{t.reports.statusHeader}</th>
                     <th className="px-5 py-3 font-medium">{t.reports.oldestDueHeader}</th>
                     <th className="px-5 py-3 font-medium">{t.reports.amountHeader}</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-stone-100">
-                  {arRows.map(({ lease, unpaid, oldestUnpaidDate }) => (
+                  {arRows.map(({ lease, unpaid, oldestUnpaidDate, isPaid }) => (
                     <tr key={lease.id}>
                       <td className="px-5 py-3">
                         <Link href={`/leases/${lease.id}`} className="font-medium text-stone-900 hover:underline">
@@ -271,10 +365,15 @@ export default async function ReportsPage({
                         </Link>
                       </td>
                       <td className="px-5 py-3 text-stone-600">{leaseLocationName(lease)}</td>
+                      <td className="px-5 py-3">
+                        <Badge status={isPaid ? "PAID" : "LATE"} label={isPaid ? t.reports.statusPaid : t.reports.statusUnpaid} />
+                      </td>
                       <td className="px-5 py-3 text-stone-600">
                         {oldestUnpaidDate ? formatDate(oldestUnpaidDate, locale) : "—"}
                       </td>
-                      <td className="px-5 py-3 font-medium text-red-600">{formatMoney(unpaid, locale)}</td>
+                      <td className={`px-5 py-3 font-medium ${isPaid ? "text-emerald-600" : "text-red-600"}`}>
+                        {formatMoney(unpaid, locale)}
+                      </td>
                     </tr>
                   ))}
                 </tbody>
