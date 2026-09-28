@@ -72,9 +72,24 @@ export default async function EditPaymentPage({
           <input className="input" id="method" name="method" defaultValue={payment.method ?? ""} />
         </div>
         <div>
+          <label className="label" htmlFor="kind">{t.leaseDetail.kind}</label>
+          <select className="input" id="kind" name="kind" defaultValue={payment.kind}>
+            <option value="RENT">{t.status.RENT}</option>
+            <option value="ARREARS">{t.status.ARREARS}</option>
+            <option value="ADVANCE_AT_ENTRY">{t.status.ADVANCE_AT_ENTRY}</option>
+            <option value="DEPOSIT">{t.status.DEPOSIT}</option>
+            <option value="DEPOSIT_REFUND">{t.status.DEPOSIT_REFUND}</option>
+            <option value="OTHER">{t.status.OTHER}</option>
+          </select>
+        </div>
+        <div>
           <label className="label" htmlFor="notes">{t.leaseDetail.notes}</label>
           <input className="input" id="notes" name="notes" defaultValue={payment.notes ?? ""} />
         </div>
+        <label className="flex items-center gap-2 text-sm text-stone-700">
+          <input type="checkbox" name="confirmed" defaultChecked={payment.confirmed} className="h-4 w-4 rounded border-stone-300" />
+          {t.leaseDetail.confirmedLabel}
+        </label>
         <div className="flex gap-3 pt-2">
           <button type="submit" className="btn-primary">{t.common.save}</button>
           <Link href={`/leases/${payment.leaseId}`} className="btn-secondary">{t.common.cancel}</Link>
