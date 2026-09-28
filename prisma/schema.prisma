@@ -100,19 +100,28 @@ enum IssueStatus {
   FIXED
 }
 
+enum AlertKind {
+  OVERDUE
+  EXPIRING
+  REVISION
+  BROKEN_PROMISE
+  NEEDS_REVIEW
+}
+
 model User {
-  id           String       @id @default(cuid())
-  name         String
-  email        String       @unique
-  passwordHash String
-  role         Role         @default(MANAGER)
-  language     Language     @default(EN)
-  sessions     Session[]
-  expenses     Expense[]
-  payments     Payment[]
-  attachments  Attachment[]
-  createdAt    DateTime     @default(now())
-  updatedAt    DateTime     @updatedAt
+  id              String           @id @default(cuid())
+  name            String
+  email           String           @unique
+  passwordHash    String
+  role            Role             @default(MANAGER)
+  language        Language         @default(EN)
+  sessions        Session[]
+  expenses        Expense[]
+  payments        Payment[]
+  attachments     Attachment[]
+  dismissedAlerts DismissedAlert[]
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
 }
 
 model Session {
@@ -301,4 +310,20 @@ model DataIssue {
   owner      String?
   status     IssueStatus @default(TODO)
   createdAt  DateTime    @default(now())
+}
+
+/// Marks one alert-feed entry as dismissed by a manager. `context` carries a value that
+/// changes when the underlying situation changes (e.g. the oldest unpaid due date), so a
+/// dismissed alert naturally reappears if the tenant falls behind again rather than being
+/// hidden forever.
+model DismissedAlert {
+  id            String    @id @default(cuid())
+  kind          AlertKind
+  refId         String
+  context       String
+  dismissedAt   DateTime  @default(now())
+  dismissedBy   User?     @relation(fields: [dismissedById], references: [id], onDelete: SetNull)
+  dismissedById String?
+
+  @@unique([kind, refId, context])
 }
