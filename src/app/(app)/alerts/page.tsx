@@ -18,7 +18,12 @@ export default async function AlertsPage() {
     await Promise.all([
       prisma.lease.findMany({
         where: { status: { not: "PENDING" }, needsReview: false },
-        include: { tenant: true, property: { include: { building: true } }, payments: true },
+        include: {
+          tenant: true,
+          property: { include: { building: true } },
+          payments: true,
+          rentReviews: { where: { appliedAt: { not: null } } },
+        },
       }),
       prisma.lease.findMany({
         where: { status: "ACTIVE", endDate: { not: null, lte: in30Days } },
