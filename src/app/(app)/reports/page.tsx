@@ -140,6 +140,7 @@ export default async function ReportsPage({
   );
 
   const totalExpensesFiltered = filteredExpenses.reduce((sum, e) => sum + e.amount, 0);
+  const totalPaymentsFiltered = filteredPayments.reduce((sum, p) => sum + p.amount, 0);
   const expensesByCategory = filteredExpenses.reduce<Record<string, number>>((acc, e) => {
     acc[e.category] = (acc[e.category] ?? 0) + e.amount;
     return acc;
@@ -386,7 +387,12 @@ export default async function ReportsPage({
       <div className="grid gap-6 lg:grid-cols-3">
         <div className="lg:col-span-2 space-y-4">
           <div className="flex flex-wrap items-center justify-between gap-2">
-            <h2 className="font-semibold text-stone-900">{t.reports.cashLogHeading(filteredPayments.length)}</h2>
+            <div>
+              <h2 className="font-semibold text-stone-900">{t.reports.cashLogHeading(filteredPayments.length)}</h2>
+              <p className="text-xs text-stone-500">
+                {formatMoney(totalPaymentsFiltered, locale)} {hasFilter ? t.reports.selectedPeriod : t.reports.allTime}
+              </p>
+            </div>
             <ExportPdfButton
               label={t.reports.exportPdf}
               fileName={`paiements-${toDateInputValue(now)}.pdf`}
@@ -400,7 +406,7 @@ export default async function ReportsPage({
                 formatMoneyForPdf(payment.amount),
               ])}
               totalLabel={t.reports.pdfTotalReceived}
-              totalValue={formatMoneyForPdf(filteredPayments.reduce((sum, p) => sum + p.amount, 0))}
+              totalValue={formatMoneyForPdf(totalPaymentsFiltered)}
               footer={pdfFooter}
             />
           </div>
