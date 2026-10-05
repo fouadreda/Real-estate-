@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { formatDate, formatMoney, toDateInputValue } from "@/lib/format";
 import { requireUserWithDictionary } from "@/lib/auth";
-import { computeLeaseLedger } from "@/lib/ledger";
+import { cashAmount, computeLeaseLedger } from "@/lib/ledger";
 import { leaseLocationHref, leaseLocationName } from "@/lib/leaseLocation";
 import { tenantDisplayName } from "@/lib/tenantName";
 import Badge from "@/components/Badge";
@@ -14,10 +14,19 @@ import { deleteLeaseAttachment, uploadLeaseAttachment } from "@/lib/actions/atta
 import { createFollowUp, deleteFollowUp, updateFollowUpResult } from "@/lib/actions/followUps";
 import { createRentReview, deleteRentReview, markRentReviewApplied, markRentReviewLetterSent } from "@/lib/actions/rentReviews";
 import AttachmentGallery from "@/components/AttachmentGallery";
-import type { LeaseStatus } from "@prisma/client";
+import type { LeaseStatus, PaymentKind } from "@prisma/client";
 
-export default async function LeaseDetailPage({ params }: { params: Promise<{ id: string }> }) {
+const PAYMENT_KINDS: PaymentKind[] = ["RENT", "ARREARS", "ADVANCE_AT_ENTRY", "DEPOSIT", "DEPOSIT_REFUND", "OTHER"];
+
+export default async function LeaseDetailPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ kind?: string }>;
+}) {
   const { id } = await params;
+  const { kind: kindParam } = await searchParams;
   const { t, locale } = await requireUserWithDictionary();
   const lease = await prisma.lease.findUnique({
     where: { id },
@@ -41,6 +50,19 @@ export default async function LeaseDetailPage({ params }: { params: Promise<{ id
   const createRentReviewForLease = createRentReview.bind(null, lease.id);
   const now = new Date();
   const ledger = computeLeaseLedger(lease, lease.payments, now);
+
+  const depositInCashbook = lease.payments
+    .filter((p) => p.confirmed && (p.kind === "DEPOSIT" || p.kind === "DEPOSIT_REFUND"))
+    .reduce((sum, p) => sum + cashAmount(p), 0);
+  const depositStillToRecord = Math.max(lease.depositAmount - depositInCashbook, 0);
+  const preselectedKind: PaymentKind =
+    kindParam && (PAYMENT_KINDS as string[]).includes(kindParam) ? (kindParam as PaymentKind) : "RENT";
+  const defaultPaymentAmount =
+    preselectedKind === "DEPOSIT"
+      ? depositStillToRecord || lease.depositAmount || ""
+      : ledger.unpaid > 0
+        ? ledger.unpaid
+        : lease.rentAmount;
 
   const statusOptions: LeaseStatus[] = ["ACTIVE", "PENDING", "ENDED", "TERMINATED"];
 
@@ -67,6 +89,19 @@ export default async function LeaseDetailPage({ params }: { params: Promise<{ id
               {formatDate(lease.startDate, locale)} – {lease.endDate ? formatDate(lease.endDate, locale) : t.leaseDetail.openEnded} · {formatMoney(lease.rentAmount, locale)} / {t.leaseNew.frequencyShort[lease.billingFrequency]} · {t.leaseDetail.depositLabel} {formatMoney(lease.depositAmount, locale)}
               {lease.depositLabel ? ` (${lease.depositLabel})` : ""}
             </p>
+            {(lease.depositAmount > 0 || depositInCashbook !== 0) && (
+              <p className="mt-1 text-sm text-stone-500">
+                {t.leaseDetail.depositInCashbook(formatMoney(depositInCashbook, locale))}
+                {depositStillToRecord > 0 && (
+                  <>
+                    {" · "}
+                    <Link href={`/leases/${lease.id}?kind=DEPOSIT#record-payment`} className="text-brand-600 hover:underline">
+                      {t.leaseDetail.recordDeposit}
+                    </Link>
+                  </>
+                )}
+              </p>
+            )}
           </div>
           <div className="flex items-center gap-3">
             {lease.needsReview && <Badge status="TODO" label={t.leaseDetail.needsReview} />}
@@ -376,9 +411,19 @@ export default async function LeaseDetailPage({ params }: { params: Promise<{ id
           </div>
         </div>
 
-        <div className="card h-fit">
+        <div id="record-payment" className="card h-fit scroll-mt-4">
           <h2 className="mb-4 font-semibold text-stone-900">{t.leaseDetail.recordPaymentHeading}</h2>
           <form action={createPaymentForLease} className="space-y-3">
+            <div>
+              <label className="label" htmlFor="kind">{t.leaseDetail.kind}</label>
+              <select className="input" id="kind" name="kind" defaultValue={preselectedKind}>
+                {PAYMENT_KINDS.map((kind) => (
+                  <option key={kind} value={kind}>
+                    {t.status[kind]}
+                  </option>
+                ))}
+              </select>
+            </div>
             <div>
               <label className="label" htmlFor="amount">{t.leaseDetail.amount}</label>
               <input
@@ -389,7 +434,7 @@ export default async function LeaseDetailPage({ params }: { params: Promise<{ id
                 min="0.01"
                 step="0.01"
                 required
-                defaultValue={ledger.unpaid > 0 ? ledger.unpaid : lease.rentAmount}
+                defaultValue={defaultPaymentAmount}
               />
             </div>
             <div>
@@ -416,6 +461,7 @@ export default async function LeaseDetailPage({ params }: { params: Promise<{ id
               <p className="mt-1 text-xs text-stone-500">{t.leaseDetail.attachmentHint}</p>
             </div>
             <p className="text-xs text-stone-500">{t.leaseDetail.recordPaymentHint}</p>
+            <p className="text-xs text-stone-500">{t.leaseDetail.nonRentHint}</p>
             <button type="submit" className="btn-primary w-full">{t.leaseDetail.addPayment}</button>
           </form>
         </div>
