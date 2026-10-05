@@ -101,6 +101,11 @@ function rentAmountAt(currentRentAmount: number, appliedReviews: RentReviewLike[
   return amount;
 }
 
+/** Signed cash effect of a payment: a deposit refund leaves the cashbook, everything else enters it. */
+export function cashAmount(payment: { amount: number; kind: PaymentKind }): number {
+  return payment.kind === "DEPOSIT_REFUND" ? -payment.amount : payment.amount;
+}
+
 /**
  * Computes rent accrued to date, total paid, and a FIFO allocation of
  * payments across billing periods (oldest period paid first).
