@@ -3,6 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { formatDate, formatMoney, formatMoneyForPdf, toDateInputValue } from "@/lib/format";
 import { requireUserWithDictionary } from "@/lib/auth";
 import {
+  cashAmount,
   computeLeaseLedger,
   monthlyEquivalentRent,
   leaseActiveInRange,
@@ -102,7 +103,7 @@ export default async function ReportsPage({
 
   const cashCollectedThisMonth = payments
     .filter((p) => p.date >= monthStart && p.date <= monthEnd)
-    .reduce((sum, p) => sum + p.amount, 0);
+    .reduce((sum, p) => sum + cashAmount(p), 0);
 
   const aging = emptyAgingBuckets();
   let totalUnpaid = 0;
@@ -140,7 +141,13 @@ export default async function ReportsPage({
   );
 
   const totalExpensesFiltered = filteredExpenses.reduce((sum, e) => sum + e.amount, 0);
-  const totalPaymentsFiltered = filteredPayments.reduce((sum, p) => sum + p.amount, 0);
+  const totalPaymentsFiltered = filteredPayments.reduce((sum, p) => sum + cashAmount(p), 0);
+  const depositsReceivedFiltered = filteredPayments
+    .filter((p) => p.kind === "DEPOSIT")
+    .reduce((sum, p) => sum + p.amount, 0);
+  const depositsRefundedFiltered = filteredPayments
+    .filter((p) => p.kind === "DEPOSIT_REFUND")
+    .reduce((sum, p) => sum + p.amount, 0);
   const expensesByCategory = filteredExpenses.reduce<Record<string, number>>((acc, e) => {
     acc[e.category] = (acc[e.category] ?? 0) + e.amount;
     return acc;
@@ -391,6 +398,8 @@ export default async function ReportsPage({
               <h2 className="font-semibold text-stone-900">{t.reports.cashLogHeading(filteredPayments.length)}</h2>
               <p className="text-xs text-stone-500">
                 {formatMoney(totalPaymentsFiltered, locale)} {hasFilter ? t.reports.selectedPeriod : t.reports.allTime}
+                {depositsReceivedFiltered > 0 && ` · ${t.reports.includesDeposits(formatMoney(depositsReceivedFiltered, locale))}`}
+                {depositsRefundedFiltered > 0 && ` · ${t.reports.lessRefunds(formatMoney(depositsRefundedFiltered, locale))}`}
               </p>
             </div>
             <ExportPdfButton
@@ -398,12 +407,19 @@ export default async function ReportsPage({
               fileName={`paiements-${toDateInputValue(now)}.pdf`}
               docTitle={t.reports.pdfPaymentsTitle}
               subtitle={filterSummary}
-              columns={[t.reports.dueHeader, t.reports.tenantHeader, t.reports.propertyHeader, t.reports.amountHeader]}
+              columns={[
+                t.reports.dueHeader,
+                t.reports.tenantHeader,
+                t.reports.propertyHeader,
+                t.leaseDetail.kind,
+                t.reports.amountHeader,
+              ]}
               rows={filteredPayments.map((payment) => [
                 formatDate(payment.date, locale),
                 tenantDisplayName(payment.lease.tenant),
                 leaseLocationName(payment.lease),
-                formatMoneyForPdf(payment.amount),
+                t.status[payment.kind],
+                formatMoneyForPdf(cashAmount(payment)),
               ])}
               totalLabel={t.reports.pdfTotalReceived}
               totalValue={formatMoneyForPdf(totalPaymentsFiltered)}
@@ -415,11 +431,12 @@ export default async function ReportsPage({
           ) : (
             <div className="card overflow-hidden p-0">
               <div className="overflow-x-auto">
-                <table className="w-full min-w-[420px] text-sm">
+                <table className="w-full min-w-[520px] text-sm">
                   <thead className="border-b border-stone-200 bg-stone-50 text-left text-stone-500">
                     <tr>
                       <th className="px-5 py-3 font-medium">{t.reports.dueHeader}</th>
                       <th className="px-5 py-3 font-medium">{t.reports.tenantHeader}</th>
+                      <th className="px-5 py-3 font-medium">{t.leaseDetail.kind}</th>
                       <th className="px-5 py-3 font-medium">{t.reports.amountHeader}</th>
                     </tr>
                   </thead>
@@ -430,7 +447,12 @@ export default async function ReportsPage({
                         <td className="px-5 py-3 text-stone-900">
                           {tenantDisplayName(payment.lease.tenant)}
                         </td>
-                        <td className="px-5 py-3 text-stone-600">{formatMoney(payment.amount, locale)}</td>
+                        <td className="px-5 py-3">
+                          <Badge status={payment.kind} label={t.status[payment.kind]} />
+                        </td>
+                        <td className={`px-5 py-3 ${payment.kind === "DEPOSIT_REFUND" ? "text-red-600" : "text-stone-600"}`}>
+                          {formatMoney(cashAmount(payment), locale)}
+                        </td>
                       </tr>
                     ))}
                   </tbody>
