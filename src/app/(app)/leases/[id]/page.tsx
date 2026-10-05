@@ -110,7 +110,12 @@ export default async function LeaseDetailPage({
               {t.leaseDetail.editButton}
             </Link>
             <form action={deleteLeaseWithId}>
-              <ConfirmSubmitButton confirmMessage={t.common.confirmDelete} className="btn-danger">
+              <ConfirmSubmitButton
+                confirmMessage={t.common.confirmDelete}
+                confirmLabel={t.common.confirmDeleteYes}
+                cancelLabel={t.common.cancel}
+                className="btn-danger"
+              >
                 {t.leaseDetail.deleteButton}
               </ConfirmSubmitButton>
             </form>
@@ -250,7 +255,12 @@ export default async function LeaseDetailPage({
                                   {t.common.edit}
                                 </Link>
                                 <form action={removePayment}>
-                                  <ConfirmSubmitButton confirmMessage={t.common.confirmDelete} className="text-sm text-red-600 hover:underline">
+                                  <ConfirmSubmitButton
+                              confirmMessage={t.common.confirmDelete}
+                              confirmLabel={t.common.confirmDeleteYes}
+                              cancelLabel={t.common.cancel}
+                              className="text-sm text-red-600 hover:underline"
+                            >
                                     {t.common.delete}
                                   </ConfirmSubmitButton>
                                 </form>
@@ -304,7 +314,12 @@ export default async function LeaseDetailPage({
                             </div>
                           )}
                           <form action={removeFollowUp}>
-                            <ConfirmSubmitButton confirmMessage={t.common.confirmDelete} className="text-xs text-stone-500 hover:underline">
+                            <ConfirmSubmitButton
+                              confirmMessage={t.common.confirmDelete}
+                              confirmLabel={t.common.confirmDeleteYes}
+                              cancelLabel={t.common.cancel}
+                              className="text-xs text-stone-500 hover:underline"
+                            >
                               {t.common.delete}
                             </ConfirmSubmitButton>
                           </form>
@@ -384,7 +399,12 @@ export default async function LeaseDetailPage({
                             </form>
                           )}
                           <form action={removeReview}>
-                            <ConfirmSubmitButton confirmMessage={t.common.confirmDelete} className="text-sm text-red-600 hover:underline">
+                            <ConfirmSubmitButton
+                              confirmMessage={t.common.confirmDelete}
+                              confirmLabel={t.common.confirmDeleteYes}
+                              cancelLabel={t.common.cancel}
+                              className="text-sm text-red-600 hover:underline"
+                            >
                               {t.common.delete}
                             </ConfirmSubmitButton>
                           </form>
