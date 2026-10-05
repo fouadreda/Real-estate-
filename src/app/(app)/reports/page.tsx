@@ -11,7 +11,7 @@ import {
   addToAgingBuckets,
   daysBetween,
 } from "@/lib/ledger";
-import { leaseLocationName } from "@/lib/leaseLocation";
+import { leaseLocationName, propertyLabel } from "@/lib/leaseLocation";
 import { tenantDisplayName } from "@/lib/tenantName";
 import Badge from "@/components/Badge";
 import ExportPdfButton from "@/components/ExportPdfButton";
@@ -152,6 +152,36 @@ export default async function ReportsPage({
     acc[e.category] = (acc[e.category] ?? 0) + e.amount;
     return acc;
   }, {});
+
+  const CASHBOOK_SCREEN_ROWS = 50;
+  const cashEntries = [
+    ...filteredPayments.map((p) => {
+      const isRefund = p.kind === "DEPOSIT_REFUND";
+      return {
+        id: `p-${p.id}`,
+        date: p.date,
+        description: tenantDisplayName(p.lease.tenant),
+        property: leaseLocationName(p.lease),
+        kind: p.kind as string,
+        kindLabel: t.status[p.kind],
+        inflow: isRefund ? 0 : p.amount,
+        outflow: isRefund ? p.amount : 0,
+      };
+    }),
+    ...filteredExpenses.map((e) => ({
+      id: `e-${e.id}`,
+      date: e.date,
+      description: e.description ?? t.status[e.category],
+      property: propertyLabel(e.property),
+      kind: e.category as string,
+      kindLabel: t.status[e.category],
+      inflow: 0,
+      outflow: e.amount,
+    })),
+  ].sort((a, b) => b.date.getTime() - a.date.getTime());
+  const totalInflow = cashEntries.reduce((sum, e) => sum + e.inflow, 0);
+  const totalOutflow = cashEntries.reduce((sum, e) => sum + e.outflow, 0);
+  const netCash = totalInflow - totalOutflow;
 
   function buildHref(overrides: { type?: BuildingType | null; status?: LeaseStatusFilter | null }) {
     const params = new URLSearchParams();
@@ -388,6 +418,102 @@ export default async function ReportsPage({
               </table>
             </div>
           </div>
+        )}
+      </div>
+
+      <div className="space-y-4">
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <h2 className="font-semibold text-stone-900">{t.reports.cashbookHeading}</h2>
+            <p className="text-xs text-stone-500">{t.reports.cashbookHint}</p>
+          </div>
+          <ExportPdfButton
+            label={t.reports.exportPdf}
+            fileName={`caisse-${toDateInputValue(now)}.pdf`}
+            docTitle={t.reports.cashbookHeading}
+            subtitle={filterSummary}
+            columns={[
+              t.reports.dueHeader,
+              t.expenses.descriptionHeader,
+              t.reports.propertyHeader,
+              t.leaseDetail.kind,
+              t.reports.inflow,
+              t.reports.outflow,
+            ]}
+            rows={cashEntries.map((entry) => [
+              formatDate(entry.date, locale),
+              entry.description,
+              entry.property,
+              entry.kindLabel,
+              entry.inflow > 0 ? formatMoneyForPdf(entry.inflow) : "",
+              entry.outflow > 0 ? formatMoneyForPdf(entry.outflow) : "",
+            ])}
+            amountColumnIndexes={[4, 5]}
+            totals={[
+              { label: t.reports.inflow, value: formatMoneyForPdf(totalInflow) },
+              { label: t.reports.outflow, value: formatMoneyForPdf(totalOutflow) },
+              { label: t.reports.netCash, value: formatMoneyForPdf(netCash) },
+            ]}
+            footer={pdfFooter}
+          />
+        </div>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <div className="stat-tile">
+            <p className="stat-label">{t.reports.inflow}</p>
+            <p className="stat-value text-emerald-600">{formatMoney(totalInflow, locale)}</p>
+          </div>
+          <div className="stat-tile">
+            <p className="stat-label">{t.reports.outflow}</p>
+            <p className="stat-value text-red-600">{formatMoney(totalOutflow, locale)}</p>
+          </div>
+          <div className="stat-tile">
+            <p className="stat-label">{t.reports.netCash}</p>
+            <p className={`stat-value ${netCash >= 0 ? "text-emerald-600" : "text-red-600"}`}>
+              {formatMoney(netCash, locale)}
+            </p>
+          </div>
+        </div>
+        {cashEntries.length === 0 ? (
+          <div className="card text-sm text-stone-500">{t.reports.cashbookEmpty}</div>
+        ) : (
+          <div className="card overflow-hidden p-0">
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[720px] text-sm">
+                <thead className="border-b border-stone-200 bg-stone-50 text-left text-stone-500">
+                  <tr>
+                    <th className="px-5 py-3 font-medium">{t.reports.dueHeader}</th>
+                    <th className="px-5 py-3 font-medium">{t.expenses.descriptionHeader}</th>
+                    <th className="px-5 py-3 font-medium">{t.leaseDetail.kind}</th>
+                    <th className="px-5 py-3 text-right font-medium">{t.reports.inflow}</th>
+                    <th className="px-5 py-3 text-right font-medium">{t.reports.outflow}</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-stone-100">
+                  {cashEntries.slice(0, CASHBOOK_SCREEN_ROWS).map((entry) => (
+                    <tr key={entry.id}>
+                      <td className="px-5 py-3 text-stone-600">{formatDate(entry.date, locale)}</td>
+                      <td className="px-5 py-3">
+                        <p className="text-stone-900">{entry.description}</p>
+                        <p className="text-xs text-stone-500">{entry.property}</p>
+                      </td>
+                      <td className="px-5 py-3">
+                        <Badge status={entry.kind} label={entry.kindLabel} />
+                      </td>
+                      <td className="px-5 py-3 text-right font-medium text-emerald-600">
+                        {entry.inflow > 0 ? formatMoney(entry.inflow, locale) : ""}
+                      </td>
+                      <td className="px-5 py-3 text-right font-medium text-red-600">
+                        {entry.outflow > 0 ? formatMoney(entry.outflow, locale) : ""}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+        {cashEntries.length > CASHBOOK_SCREEN_ROWS && (
+          <p className="text-xs text-stone-500">{t.reports.cashbookShowing(CASHBOOK_SCREEN_ROWS, cashEntries.length)}</p>
         )}
       </div>
 
