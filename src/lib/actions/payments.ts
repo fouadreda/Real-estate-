@@ -20,12 +20,20 @@ function readPaymentFields(formData: FormData) {
   return { amount, date, method, notes };
 }
 
+const PAYMENT_KINDS: PaymentKind[] = ["RENT", "ARREARS", "ADVANCE_AT_ENTRY", "DEPOSIT", "DEPOSIT_REFUND", "OTHER"];
+
+function readKind(formData: FormData): PaymentKind {
+  const kind = String(formData.get("kind") ?? "RENT");
+  return (PAYMENT_KINDS as string[]).includes(kind) ? (kind as PaymentKind) : "RENT";
+}
+
 export async function createPayment(leaseId: string, formData: FormData) {
   const user = await requireUser();
   const data = readPaymentFields(formData);
+  const kind = readKind(formData);
 
   const payment = await prisma.payment.create({
-    data: { ...data, leaseId, recordedById: user.id, kind: "RENT", confirmed: true },
+    data: { ...data, leaseId, recordedById: user.id, kind, confirmed: true },
   });
 
   const file = formData.get("file");
@@ -40,7 +48,7 @@ export async function createPayment(leaseId: string, formData: FormData) {
 
 export async function updatePayment(paymentId: string, leaseId: string, formData: FormData) {
   const data = readPaymentFields(formData);
-  const kind = String(formData.get("kind") ?? "RENT") as PaymentKind;
+  const kind = readKind(formData);
   const confirmed = formData.get("confirmed") === "on";
 
   await prisma.payment.update({ where: { id: paymentId }, data: { ...data, kind, confirmed } });
