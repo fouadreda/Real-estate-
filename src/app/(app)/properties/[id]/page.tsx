@@ -87,7 +87,12 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
               {t.propertyDetail.editButton}
             </Link>
             <form action={deletePropertyWithId}>
-              <ConfirmSubmitButton confirmMessage={t.common.confirmDelete} className="btn-danger">
+              <ConfirmSubmitButton
+                confirmMessage={t.common.confirmDelete}
+                confirmLabel={t.common.confirmDeleteYes}
+                cancelLabel={t.common.cancel}
+                className="btn-danger"
+              >
                 {t.propertyDetail.deleteButton}
               </ConfirmSubmitButton>
             </form>
