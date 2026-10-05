@@ -10,8 +10,10 @@ export default function ExportPdfButton({
   columns,
   rows,
   amountColumnIndex,
+  amountColumnIndexes,
   totalLabel,
   totalValue,
+  totals,
   footer,
 }: {
   label: string;
@@ -22,12 +24,17 @@ export default function ExportPdfButton({
   rows: string[][];
   /** Column that holds a formatted money value — right-aligned and given a fixed width so it never wraps. Defaults to the last column. */
   amountColumnIndex?: number;
+  /** Several money columns (e.g. inflow and outflow); takes precedence over amountColumnIndex. */
+  amountColumnIndexes?: number[];
   totalLabel?: string;
   totalValue?: string;
+  /** Several total lines, stacked under the table; takes precedence over totalLabel/totalValue. */
+  totals?: { label: string; value: string }[];
   footer: string;
 }) {
   const [busy, setBusy] = useState(false);
-  const moneyCol = amountColumnIndex ?? columns.length - 1;
+  const moneyCols = amountColumnIndexes ?? [amountColumnIndex ?? columns.length - 1];
+  const totalLines = totals ?? (totalLabel && totalValue ? [{ label: totalLabel, value: totalValue }] : []);
 
   async function handleExport() {
     setBusy(true);
@@ -53,19 +60,26 @@ export default function ExportPdfButton({
         styles: { fontSize: 9, cellPadding: 7, valign: "middle", overflow: "linebreak" },
         headStyles: { fillColor: [69, 90, 69], textColor: 255, fontStyle: "bold" },
         alternateRowStyles: { fillColor: [246, 245, 240] },
-        columnStyles: {
-          [moneyCol]: { halign: "right", cellWidth: 100, fontStyle: "bold" },
-        },
+        columnStyles: Object.fromEntries(
+          moneyCols.map((col) => [col, { halign: "right" as const, cellWidth: 100, fontStyle: "bold" as const }]),
+        ),
         margin: { left: 40, right: 40 },
+        didParseCell: (data) => {
+          if (data.section === "head" && moneyCols.includes(data.column.index)) {
+            data.cell.styles.halign = "right";
+          }
+        },
       });
 
       const finalY = (doc as unknown as { lastAutoTable: { finalY: number } }).lastAutoTable.finalY;
 
-      if (totalLabel && totalValue) {
+      if (totalLines.length > 0) {
         doc.setFontSize(11);
         doc.setTextColor(30, 30, 30);
         doc.setFont("helvetica", "bold");
-        doc.text(`${totalLabel}: ${totalValue}`, pageWidth - 40, finalY + 26, { align: "right" });
+        totalLines.forEach((line, i) => {
+          doc.text(`${line.label}: ${line.value}`, pageWidth - 40, finalY + 26 + i * 16, { align: "right" });
+        });
         doc.setFont("helvetica", "normal");
       }
 
