@@ -10,6 +10,7 @@ export const fr: typeof en = {
     search: "Rechercher",
     noResults: "Aucun résultat pour cette recherche.",
     confirmDelete: "Supprimer définitivement ? Cette action est irréversible.",
+    confirmDeleteYes: "Oui, supprimer",
   },
   nav: {
     dashboard: "Tableau de bord",

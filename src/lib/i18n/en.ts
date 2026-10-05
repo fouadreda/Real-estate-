@@ -8,6 +8,7 @@ export const en = {
     search: "Search",
     noResults: "No results match your search.",
     confirmDelete: "Delete permanently? This cannot be undone.",
+    confirmDeleteYes: "Yes, delete",
   },
   nav: {
     dashboard: "Dashboard",
