@@ -129,11 +129,18 @@ export function computeLeaseLedger(
   const allDates = leasePeriods(billingStart, end, lease.billingFrequency);
   const elapsedDates = allDates.filter((d) => d <= cutoff);
 
+  // Payments before the billing start are ignored only when it was set explicitly at import
+  // (that older history is already settled). Without it the lease start is the real start,
+  // so anything paid earlier is an advance. Compared by calendar month, so a payment made
+  // a few days before a mid-month start still counts.
+  const paymentsFrom = lease.ledgerStartDate
+    ? new Date(Date.UTC(billingStart.getUTCFullYear(), billingStart.getUTCMonth(), 1))
+    : null;
   const rentPayments = payments.filter(
     (p) =>
       (p.confirmed ?? true) &&
       (p.kind === undefined || RENT_LIKE_KINDS.includes(p.kind)) &&
-      (p.date === undefined || p.date >= billingStart),
+      (p.date === undefined || paymentsFrom === null || p.date >= paymentsFrom),
   );
   const totalPaid = rentPayments.reduce((sum, p) => sum + p.amount, 0);
 
