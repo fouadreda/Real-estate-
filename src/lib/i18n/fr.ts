@@ -343,6 +343,12 @@ export const fr: typeof en = {
   reports: {
     title: "Rapports",
     subtitle: "Compte de résultat, créances clients et encaissements pour l'ensemble du portefeuille.",
+    monthlyHeading: "Récapitulatif mensuel",
+    monthlyHintFiltered: "Entrées, dépenses et solde mois par mois pour les dates choisies.",
+    monthlyHintYear: (year: number) => `Entrées, dépenses et solde mois par mois pour ${year}. Choisissez des dates ci-dessus pour une autre période.`,
+    monthlyEmpty: "Rien d'enregistré pour cette période.",
+    monthHeader: "Mois",
+    totalLabel: "Total",
     thisMonthHeading: "Ce mois-ci",
     rightNowHeading: "En ce moment",
     revenueEarned: "Revenu généré",

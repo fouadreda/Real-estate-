@@ -347,6 +347,12 @@ export const en = {
   reports: {
     title: "Reports",
     subtitle: "Income statement, accounts receivable, and cash collection across the portfolio.",
+    monthlyHeading: "Monthly summary",
+    monthlyHintFiltered: "Cash in, expenses and balance month by month for the selected dates.",
+    monthlyHintYear: (year: number) => `Cash in, expenses and balance month by month for ${year}. Pick dates above to look at another period.`,
+    monthlyEmpty: "Nothing recorded for this period.",
+    monthHeader: "Month",
+    totalLabel: "Total",
     thisMonthHeading: "This month",
     rightNowHeading: "Right now",
     revenueEarned: "Revenue earned",
