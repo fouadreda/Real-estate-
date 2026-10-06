@@ -23,6 +23,7 @@ export const IMPORT_BUILDINGS = dataset.buildings.map((b) => {
     units: unitUids.size,
     leases: leases.length,
     payments: leases.reduce((sum, l) => sum + l.payments.length, 0),
+    expenses: dataset.expenses.filter((e) => e.building === b.key).length,
   };
 });
 
@@ -44,6 +45,9 @@ export type SyncCounts = {
   paymentsRemoved: number;
   paymentsRedated: number;
   reviewsCreated: number;
+  expensesCreated: number;
+  expensesSkipped: number;
+  expensesRemoved: number;
   followUpsCreated: number;
   issuesCreated: number;
 };
@@ -106,7 +110,7 @@ export async function syncBuilding(
   const counts: SyncCounts = {
     propertiesCreated: 0, propertiesUpdated: 0, tenantsCreated: 0, tenantsUpdated: 0,
     leasesCreated: 0, leasesUpdated: 0, leasesEnded: 0, paymentsCreated: 0, paymentsSkipped: 0, paymentsRemoved: 0, paymentsRedated: 0,
-    reviewsCreated: 0, followUpsCreated: 0, issuesCreated: 0,
+    reviewsCreated: 0, expensesCreated: 0, expensesSkipped: 0, expensesRemoved: 0, followUpsCreated: 0, issuesCreated: 0,
   };
   const notes: string[] = [];
 
@@ -426,6 +430,67 @@ export async function syncBuilding(
             counts.leasesEnded++;
             notes.push(
               `${tenantKey(old.tenant)} (${u.unitCode}) is no longer the tenant in the new register: its lease was closed on ${ymd(endDate)} (history kept).`,
+            );
+          }
+        }
+
+        // ---------------------------------------------------------------- expenses
+        // Booked on the first unit of the building (as before). Matching ignores which unit of the
+        // building an existing expense sits on, so the April import's expenses are recognised.
+        const dsExpenses = dataset.expenses.filter((e) => e.building === buildingKey);
+        if (dsExpenses.length > 0) {
+          const anchorId = propDbId.get((dataset.anchors as Record<string, string>)[buildingKey]);
+          if (!anchorId) throw new Error(`No anchor unit for ${buildingKey}`);
+          const buildingPropIds = [...new Set([...propDbId.values(), ...existingProps.map((p) => p.id)])];
+          const existingExp = await tx.expense.findMany({
+            where: { propertyId: { in: buildingPropIds } },
+            include: { attachments: { select: { id: true } } },
+          });
+          const expPool = new Map<string, typeof existingExp>();
+          for (const x of existingExp) {
+            const k = `${ymd(x.date)}|${Math.round(x.amount)}|${x.category}`;
+            expPool.set(k, [...(expPool.get(k) ?? []), x]);
+          }
+          const expConsumed = new Set<string>();
+          const expCreate: Prisma.ExpenseCreateManyInput[] = [];
+          for (const e of dsExpenses) {
+            const k = `${e.date}|${Math.round(e.amount)}|${e.category}`;
+            const hit = (expPool.get(k) ?? []).find((x) => !expConsumed.has(x.id));
+            if (hit) {
+              expConsumed.add(hit.id);
+              counts.expensesSkipped++;
+              continue;
+            }
+            expCreate.push({
+              propertyId: anchorId,
+              category: e.category as Prisma.ExpenseCreateManyInput["category"],
+              amount: e.amount,
+              date: d(e.date)!,
+              description: e.description,
+            });
+          }
+          if (expCreate.length > 0) {
+            await tx.expense.createMany({ data: expCreate });
+            counts.expensesCreated += expCreate.length;
+          }
+          const expYearStart = new Date("2026-01-01T00:00:00Z");
+          const expYearEnd = new Date("2027-01-01T00:00:00Z");
+          const expLeftovers = existingExp.filter(
+            (x) =>
+              !expConsumed.has(x.id) &&
+              x.date >= expYearStart &&
+              x.date < expYearEnd &&
+              x.recordedById === null &&
+              x.attachments.length === 0,
+          );
+          if (options.replaceOld) {
+            for (const x of expLeftovers) {
+              await tx.expense.delete({ where: { id: x.id } });
+              counts.expensesRemoved++;
+            }
+          } else if (expLeftovers.length > 0) {
+            notes.push(
+              `${bMeta.name}: ${expLeftovers.length} older 2026 expense(s) from the April import are not in the statements — tick "replace" to clean them up, otherwise they may be counted twice.`,
             );
           }
         }
