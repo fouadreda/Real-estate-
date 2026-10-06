@@ -13,11 +13,15 @@ export function monthsPerPeriod(frequency: BillingFrequency): number {
   return MONTHS_PER_PERIOD[frequency];
 }
 
+/** Dates are stored at UTC midnight, so month arithmetic is done in UTC — it must not depend on the server's time zone. */
 function addMonths(date: Date, months: number): Date {
   const d = new Date(date);
-  d.setMonth(d.getMonth() + months);
+  d.setUTCMonth(d.getUTCMonth() + months);
   return d;
 }
+
+/** Statement amounts are sometimes a few francs short; a balance this small counts as settled. */
+const PAID_TOLERANCE = 100;
 
 /** Due dates for every billing period of the lease, from start to end. */
 export function leasePeriods(startDate: Date, endDate: Date, frequency: BillingFrequency): Date[] {
@@ -152,7 +156,7 @@ export function computeLeaseLedger(
     const amountAllocated = Math.min(Math.max(pool, 0), amountDue);
     pool -= amountAllocated;
     const balance = amountDue - amountAllocated;
-    const isPaid = balance <= 0.005;
+    const isPaid = balance <= PAID_TOLERANCE;
     if (!isPaid && oldestUnpaidDate === null) oldestUnpaidDate = dueDate;
     return {
       index,
@@ -167,8 +171,8 @@ export function computeLeaseLedger(
 
   const totalAccrued = periods.reduce((sum, p) => sum + p.amountDue, 0);
   const balance = totalAccrued - totalPaid;
-  const unpaid = Math.max(balance, 0);
-  const advance = Math.max(-balance, 0);
+  const unpaid = balance > PAID_TOLERANCE ? balance : 0;
+  const advance = -balance > PAID_TOLERANCE ? -balance : 0;
 
   return { periods, totalAccrued, totalPaid, balance, unpaid, advance, oldestUnpaidDate };
 }
