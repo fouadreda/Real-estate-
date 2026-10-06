@@ -5,7 +5,7 @@ import { runImport } from "@/lib/actions/importData";
 import type { SyncResult } from "@/lib/import2026/sync";
 import type { Dictionary } from "@/lib/i18n";
 
-type Building = { key: string; name: string; units: number; leases: number; payments: number };
+type Building = { key: string; name: string; units: number; leases: number; payments: number; expenses: number };
 type Row = { state: "idle" | "running" | "done" | "error"; result?: SyncResult; error?: string; applied?: boolean };
 
 export default function ImportRunner({ buildings, labels }: { buildings: Building[]; labels: Omit<Dictionary["importer"], "registerDate"> }) {
@@ -92,13 +92,14 @@ export default function ImportRunner({ buildings, labels }: { buildings: Buildin
 
       <div className="card overflow-hidden p-0">
         <div className="overflow-x-auto">
-          <table className="w-full min-w-[720px] text-sm">
+          <table className="w-full min-w-[780px] text-sm">
             <thead className="border-b border-stone-200 bg-stone-50 text-left text-stone-500">
               <tr>
                 <th className="px-5 py-3 font-medium">{labels.buildingHeader}</th>
                 <th className="px-5 py-3 font-medium">{labels.unitsHeader}</th>
                 <th className="px-5 py-3 font-medium">{labels.leasesHeader}</th>
                 <th className="px-5 py-3 font-medium">{labels.paymentsHeader}</th>
+                <th className="px-5 py-3 font-medium">{labels.expensesHeader}</th>
                 <th className="px-5 py-3 font-medium">{labels.statusHeader}</th>
               </tr>
             </thead>
@@ -112,6 +113,7 @@ export default function ImportRunner({ buildings, labels }: { buildings: Buildin
                     <td className="px-5 py-3 text-stone-600">{b.units}</td>
                     <td className="px-5 py-3 text-stone-600">{b.leases}</td>
                     <td className="px-5 py-3 text-stone-600">{b.payments}</td>
+                    <td className="px-5 py-3 text-stone-600">{b.expenses}</td>
                     <td className="px-5 py-3 text-stone-600">
                       {!row && <span className="text-stone-400">{labels.pending}</span>}
                       {row?.state === "running" && labels.running}
@@ -133,6 +135,10 @@ export default function ImportRunner({ buildings, labels }: { buildings: Buildin
                             {labels.payments}: {c.paymentsCreated} {labels.created} · {c.paymentsSkipped} {labels.skipped}
                             {c.paymentsRemoved > 0 ? ` · ${c.paymentsRemoved} ${labels.removed}` : ""}
                             {c.paymentsRedated > 0 ? ` · ${c.paymentsRedated} ${labels.redated}` : ""}
+                          </li>
+                          <li>
+                            {labels.expenses}: {c.expensesCreated} {labels.created} · {c.expensesSkipped} {labels.skipped}
+                            {c.expensesRemoved > 0 ? ` · ${c.expensesRemoved} ${labels.removed}` : ""}
                           </li>
                           <li>{labels.reviews}: {c.reviewsCreated} · {labels.followUps}: {c.followUpsCreated} · {labels.issues}: {c.issuesCreated}</li>
                         </ul>
