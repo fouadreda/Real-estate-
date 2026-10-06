@@ -183,6 +183,32 @@ export default async function ReportsPage({
   const totalOutflow = cashEntries.reduce((sum, e) => sum + e.outflow, 0);
   const netCash = totalInflow - totalOutflow;
 
+  // Month-by-month summary: the selected period, or the current calendar year when no dates are chosen
+  // (older entries such as deposits filed at a lease start in 2021 would otherwise add many empty-looking rows).
+  const summaryEntries = hasFilter
+    ? cashEntries
+    : cashEntries.filter((e) => e.date.getUTCFullYear() === now.getFullYear());
+  const monthlyTotals = new Map<string, { inflow: number; outflow: number }>();
+  for (const entry of summaryEntries) {
+    const key = `${entry.date.getUTCFullYear()}-${String(entry.date.getUTCMonth() + 1).padStart(2, "0")}`;
+    const bucket = monthlyTotals.get(key) ?? { inflow: 0, outflow: 0 };
+    bucket.inflow += entry.inflow;
+    bucket.outflow += entry.outflow;
+    monthlyTotals.set(key, bucket);
+  }
+  const monthLabel = new Intl.DateTimeFormat(locale, { month: "long", year: "numeric", timeZone: "UTC" });
+  const monthlyRows = [...monthlyTotals.entries()]
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([key, v]) => ({
+      key,
+      label: monthLabel.format(new Date(`${key}-01T00:00:00Z`)),
+      inflow: v.inflow,
+      outflow: v.outflow,
+      net: v.inflow - v.outflow,
+    }));
+  const monthlyInflow = monthlyRows.reduce((sum, r) => sum + r.inflow, 0);
+  const monthlyOutflow = monthlyRows.reduce((sum, r) => sum + r.outflow, 0);
+
   function buildHref(overrides: { type?: BuildingType | null; status?: LeaseStatusFilter | null }) {
     const params = new URLSearchParams();
     if (fromParam) params.set("from", fromParam);
@@ -294,8 +320,81 @@ export default async function ReportsPage({
         <p className="text-xs text-stone-500">{t.reports.filterHint}</p>
       </div>
 
+      <div className="space-y-3">
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <h2 className="font-semibold text-stone-900">{t.reports.monthlyHeading}</h2>
+            <p className="text-xs text-stone-500">
+              {hasFilter ? t.reports.monthlyHintFiltered : t.reports.monthlyHintYear(now.getFullYear())}
+            </p>
+          </div>
+          {monthlyRows.length > 0 && (
+            <ExportPdfButton
+              label={t.reports.exportPdf}
+              fileName={`recap-mensuel-${toDateInputValue(now)}.pdf`}
+              docTitle={t.reports.monthlyHeading}
+              subtitle={filterSummary || String(now.getFullYear())}
+              columns={[t.reports.monthHeader, t.reports.inflow, t.reports.outflow, t.reports.netCash]}
+              rows={monthlyRows.map((r) => [
+                r.label,
+                formatMoneyForPdf(r.inflow),
+                formatMoneyForPdf(r.outflow),
+                formatMoneyForPdf(r.net),
+              ])}
+              amountColumnIndexes={[1, 2, 3]}
+              totals={[
+                { label: t.reports.inflow, value: formatMoneyForPdf(monthlyInflow) },
+                { label: t.reports.outflow, value: formatMoneyForPdf(monthlyOutflow) },
+                { label: t.reports.netCash, value: formatMoneyForPdf(monthlyInflow - monthlyOutflow) },
+              ]}
+              footer={pdfFooter}
+            />
+          )}
+        </div>
+        {monthlyRows.length === 0 ? (
+          <div className="card text-sm text-stone-500">{t.reports.monthlyEmpty}</div>
+        ) : (
+          <div className="card overflow-hidden p-0">
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[520px] text-sm">
+                <thead className="border-b border-stone-200 bg-stone-50 text-left text-stone-500">
+                  <tr>
+                    <th className="px-5 py-3 font-medium">{t.reports.monthHeader}</th>
+                    <th className="px-5 py-3 text-right font-medium">{t.reports.inflow}</th>
+                    <th className="px-5 py-3 text-right font-medium">{t.reports.outflow}</th>
+                    <th className="px-5 py-3 text-right font-medium">{t.reports.netCash}</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-stone-100">
+                  {monthlyRows.map((r) => (
+                    <tr key={r.key}>
+                      <td className="px-5 py-3 capitalize text-stone-900">{r.label}</td>
+                      <td className="px-5 py-3 text-right text-emerald-700">{formatMoney(r.inflow, locale)}</td>
+                      <td className="px-5 py-3 text-right text-red-600">{formatMoney(r.outflow, locale)}</td>
+                      <td className={`px-5 py-3 text-right font-medium ${r.net >= 0 ? "text-stone-900" : "text-red-600"}`}>
+                        {formatMoney(r.net, locale)}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+                <tfoot className="border-t border-stone-200 bg-stone-50 font-medium text-stone-900">
+                  <tr>
+                    <td className="px-5 py-3">{t.reports.totalLabel}</td>
+                    <td className="px-5 py-3 text-right">{formatMoney(monthlyInflow, locale)}</td>
+                    <td className="px-5 py-3 text-right">{formatMoney(monthlyOutflow, locale)}</td>
+                    <td className="px-5 py-3 text-right">{formatMoney(monthlyInflow - monthlyOutflow, locale)}</td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+        )}
+      </div>
+
       <div>
-        <h2 className="mb-3 text-xs font-medium uppercase tracking-wide text-stone-400">{t.reports.thisMonthHeading}</h2>
+        <h2 className="mb-3 text-xs font-medium uppercase tracking-wide text-stone-400">
+          {t.reports.thisMonthHeading} — {monthLabel.format(now)}
+        </h2>
         <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
           <div className="stat-tile">
             <p className="stat-label">{t.reports.revenueEarned}</p>
