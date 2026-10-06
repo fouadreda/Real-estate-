@@ -1,0 +1,7567 @@
+{
+ "generatedAt": "2026-10-06",
+ "registerAsOf": "2026-09-28",
+ "sources": [
+  "rapport cocotier modifié 2026.docx2.xls",
+  "ETAT MENSUEL DES RECETTES DES ENTREPÔTS ANNEE 2027.xlsx",
+  "ETAT MENSUEL DES RECETTES DES SHOW ROOMS+BOUTIQUES AKODESSEWA ANNEE 2026.xlsx",
+  "ETAT MENSUEL DES RECETTES DES VILLAS ANNEE 2028.xlsx",
+  "ETAT MENSUEL DES RECETTES IMMEUBLE DE LA PAIX ANNEE 2028.xlsx",
+  "ETAT MENSUEL DES RECETTES IMMEUBLE DU GRAND MARCHE ANNEE 2028.xlsx",
+  "ETAT MENSUEL DES RECETTES IMMEUBLE JEAN PAUL II ANNEE 2028.xlsx"
+ ],
+ "buildings": [
+  {
+   "key": "assigame",
+   "name": "Immeuble Assigame",
+   "type": "BUILDING"
+  },
+  {
+   "key": "jp2",
+   "name": "Immeuble Jean Paul II",
+   "type": "BUILDING"
+  },
+  {
+   "key": "paix",
+   "name": "Immeuble La Paix",
+   "type": "BUILDING"
+  },
+  {
+   "key": "villas",
+   "name": "Villas",
+   "type": "VILLA"
+  },
+  {
+   "key": "entrepots",
+   "name": "Entrepôts",
+   "type": "WAREHOUSE_SITE"
+  },
+  {
+   "key": "showrooms",
+   "name": "Show Rooms + Boutiques Akodessewa",
+   "type": "WAREHOUSE_SITE"
+  }
+ ],
+ "units": [
+  {
+   "uid": "assigame:B1",
+   "building": "assigame",
+   "buildingName": "Immeuble Assigame",
+   "floor": "RDC",
+   "unitCode": "B1",
+   "name": "Immeuble Assigame · B1",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 350000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "assigame:B2",
+   "building": "assigame",
+   "buildingName": "Immeuble Assigame",
+   "floor": "RDC",
+   "unitCode": "B2",
+   "name": "Immeuble Assigame · B2",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 350000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "assigame:B3",
+   "building": "assigame",
+   "buildingName": "Immeuble Assigame",
+   "floor": "RDC",
+   "unitCode": "B3",
+   "name": "Immeuble Assigame · B3",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 350000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "assigame:B4",
+   "building": "assigame",
+   "buildingName": "Immeuble Assigame",
+   "floor": "RDC",
+   "unitCode": "B4",
+   "name": "Immeuble Assigame · B4",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 275000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "assigame:M1",
+   "building": "assigame",
+   "buildingName": "Immeuble Assigame",
+   "floor": "RDC",
+   "unitCode": "M1",
+   "name": "Immeuble Assigame · M1",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 151250.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "assigame:M2",
+   "building": "assigame",
+   "buildingName": "Immeuble Assigame",
+   "floor": "RDC",
+   "unitCode": "M2",
+   "name": "Immeuble Assigame · M2",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 137500.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "assigame:M3",
+   "building": "assigame",
+   "buildingName": "Immeuble Assigame",
+   "floor": "RDC",
+   "unitCode": "M3",
+   "name": "Immeuble Assigame · M3",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 151250.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "assigame:M4",
+   "building": "assigame",
+   "buildingName": "Immeuble Assigame",
+   "floor": "RDC",
+   "unitCode": "M4",
+   "name": "Immeuble Assigame · M4",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 137500.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "assigame:M5",
+   "building": "assigame",
+   "buildingName": "Immeuble Assigame",
+   "floor": "RDC",
+   "unitCode": "M5",
+   "name": "Immeuble Assigame · M5",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 151250.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "assigame:M6",
+   "building": "assigame",
+   "buildingName": "Immeuble Assigame",
+   "floor": "RDC",
+   "unitCode": "M6",
+   "name": "Immeuble Assigame · M6",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 70000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "assigame:M7",
+   "building": "assigame",
+   "buildingName": "Immeuble Assigame",
+   "floor": "RDC",
+   "unitCode": "M7",
+   "name": "Immeuble Assigame · M7",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 110000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "assigame:M8",
+   "building": "assigame",
+   "buildingName": "Immeuble Assigame",
+   "floor": "RDC",
+   "unitCode": "M8",
+   "name": "Immeuble Assigame · M8",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 121000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "assigame:M9",
+   "building": "assigame",
+   "buildingName": "Immeuble Assigame",
+   "floor": "RDC",
+   "unitCode": "M9",
+   "name": "Immeuble Assigame · M9",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 121000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "assigame:M10",
+   "building": "assigame",
+   "buildingName": "Immeuble Assigame",
+   "floor": "RDC",
+   "unitCode": "M10",
+   "name": "Immeuble Assigame · M10",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 121000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "assigame:M11",
+   "building": "assigame",
+   "buildingName": "Immeuble Assigame",
+   "floor": "RDC",
+   "unitCode": "M11",
+   "name": "Immeuble Assigame · M11",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 121000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "assigame:B5",
+   "building": "assigame",
+   "buildingName": "Immeuble Assigame",
+   "floor": "R+1",
+   "unitCode": "B5",
+   "name": "Immeuble Assigame · B5",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 110000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "assigame:B6",
+   "building": "assigame",
+   "buildingName": "Immeuble Assigame",
+   "floor": "R+1",
+   "unitCode": "B6",
+   "name": "Immeuble Assigame · B6",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 100000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "assigame:B7",
+   "building": "assigame",
+   "buildingName": "Immeuble Assigame",
+   "floor": "R+1",
+   "unitCode": "B7",
+   "name": "Immeuble Assigame · B7",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 110000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "assigame:B8",
+   "building": "assigame",
+   "buildingName": "Immeuble Assigame",
+   "floor": "R+1",
+   "unitCode": "B8",
+   "name": "Immeuble Assigame · B8",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 110000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "assigame:M12",
+   "building": "assigame",
+   "buildingName": "Immeuble Assigame",
+   "floor": "R+1",
+   "unitCode": "M12",
+   "name": "Immeuble Assigame · M12",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 80000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "assigame:M13",
+   "building": "assigame",
+   "buildingName": "Immeuble Assigame",
+   "floor": "R+1",
+   "unitCode": "M13",
+   "name": "Immeuble Assigame · M13",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 90000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "assigame:M14",
+   "building": "assigame",
+   "buildingName": "Immeuble Assigame",
+   "floor": "R+1",
+   "unitCode": "M14",
+   "name": "Immeuble Assigame · M14",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 90000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "assigame:M15",
+   "building": "assigame",
+   "buildingName": "Immeuble Assigame",
+   "floor": "R+1",
+   "unitCode": "M15",
+   "name": "Immeuble Assigame · M15",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 80000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "assigame:M16",
+   "building": "assigame",
+   "buildingName": "Immeuble Assigame",
+   "floor": "R+1",
+   "unitCode": "M16",
+   "name": "Immeuble Assigame · M16",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 90000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "assigame:M18",
+   "building": "assigame",
+   "buildingName": "Immeuble Assigame",
+   "floor": "R+1",
+   "unitCode": "M18",
+   "name": "Immeuble Assigame · M18",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 70000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "assigame:M19",
+   "building": "assigame",
+   "buildingName": "Immeuble Assigame",
+   "floor": "R+1",
+   "unitCode": "M19",
+   "name": "Immeuble Assigame · M19",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 70000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "assigame:M20",
+   "building": "assigame",
+   "buildingName": "Immeuble Assigame",
+   "floor": "R+1",
+   "unitCode": "M20",
+   "name": "Immeuble Assigame · M20",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 60000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "assigame:M21",
+   "building": "assigame",
+   "buildingName": "Immeuble Assigame",
+   "floor": "R+1",
+   "unitCode": "M21",
+   "name": "Immeuble Assigame · M21",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 70000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "assigame:M22",
+   "building": "assigame",
+   "buildingName": "Immeuble Assigame",
+   "floor": "R+1",
+   "unitCode": "M22",
+   "name": "Immeuble Assigame · M22",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 70000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "jp2:B1",
+   "building": "jp2",
+   "buildingName": "Immeuble Jean Paul II",
+   "floor": "RDC",
+   "unitCode": "B1+",
+   "name": "Immeuble Jean Paul II · B1+",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 100000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "jp2:B2",
+   "building": "jp2",
+   "buildingName": "Immeuble Jean Paul II",
+   "floor": "RDC",
+   "unitCode": "B2+",
+   "name": "Immeuble Jean Paul II · B2+",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 300000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "jp2:B3",
+   "building": "jp2",
+   "buildingName": "Immeuble Jean Paul II",
+   "floor": "RDC",
+   "unitCode": "B3+",
+   "name": "Immeuble Jean Paul II · B3+",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 330000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "jp2:B4",
+   "building": "jp2",
+   "buildingName": "Immeuble Jean Paul II",
+   "floor": "RDC",
+   "unitCode": "B4+",
+   "name": "Immeuble Jean Paul II · B4+",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 330000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "jp2:STUP ME1",
+   "building": "jp2",
+   "buildingName": "Immeuble Jean Paul II",
+   "floor": "R+1",
+   "unitCode": "STUP ME1",
+   "name": "Immeuble Jean Paul II · STUP ME1",
+   "category": "APARTMENT",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 250000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "jp2:STUP ME2",
+   "building": "jp2",
+   "buildingName": "Immeuble Jean Paul II",
+   "floor": "R+1",
+   "unitCode": "STUP ME2",
+   "name": "Immeuble Jean Paul II · STUP ME2",
+   "category": "APARTMENT",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 250000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "jp2:STUG ME3",
+   "building": "jp2",
+   "buildingName": "Immeuble Jean Paul II",
+   "floor": "R+1",
+   "unitCode": "STUG ME3",
+   "name": "Immeuble Jean Paul II · STUG ME3",
+   "category": "APARTMENT",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 250000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "jp2:STU P4",
+   "building": "jp2",
+   "buildingName": "Immeuble Jean Paul II",
+   "floor": "R+1",
+   "unitCode": "STU P4",
+   "name": "Immeuble Jean Paul II · STU P4",
+   "category": "APARTMENT",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 150000.0,
+   "status": "VACANT",
+   "legacyCodes": []
+  },
+  {
+   "uid": "jp2:2APP ME1",
+   "building": "jp2",
+   "buildingName": "Immeuble Jean Paul II",
+   "floor": "R+2",
+   "unitCode": "2APP ME1",
+   "name": "Immeuble Jean Paul II · 2APP ME1",
+   "category": "APARTMENT",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 300000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "jp2:3APP ME1",
+   "building": "jp2",
+   "buildingName": "Immeuble Jean Paul II",
+   "floor": "R+2",
+   "unitCode": "3APP ME1",
+   "name": "Immeuble Jean Paul II · 3APP ME1",
+   "category": "APARTMENT",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 250000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "jp2:3APP 2",
+   "building": "jp2",
+   "buildingName": "Immeuble Jean Paul II",
+   "floor": "R+3",
+   "unitCode": "3APP 2",
+   "name": "Immeuble Jean Paul II · 3APP 2",
+   "category": "APARTMENT",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 250000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "jp2:3APP 3",
+   "building": "jp2",
+   "buildingName": "Immeuble Jean Paul II",
+   "floor": "R+3",
+   "unitCode": "3APP 3",
+   "name": "Immeuble Jean Paul II · 3APP 3",
+   "category": "APARTMENT",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 250000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "paix:B1",
+   "building": "paix",
+   "buildingName": "Immeuble La Paix",
+   "floor": "RDC",
+   "unitCode": "B1++",
+   "name": "Immeuble La Paix · B1++",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 300000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "paix:B2",
+   "building": "paix",
+   "buildingName": "Immeuble La Paix",
+   "floor": "RDC",
+   "unitCode": "B2++",
+   "name": "Immeuble La Paix · B2++",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 400000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "paix:B3",
+   "building": "paix",
+   "buildingName": "Immeuble La Paix",
+   "floor": "RDC",
+   "unitCode": "B3++",
+   "name": "Immeuble La Paix · B3++",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 385000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "paix:B4",
+   "building": "paix",
+   "buildingName": "Immeuble La Paix",
+   "floor": "RDC",
+   "unitCode": "B4++",
+   "name": "Immeuble La Paix · B4++",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 440000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "paix:B5",
+   "building": "paix",
+   "buildingName": "Immeuble La Paix",
+   "floor": "RDC",
+   "unitCode": "B5++",
+   "name": "Immeuble La Paix · B5++",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 2250000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "paix:B6",
+   "building": "paix",
+   "buildingName": "Immeuble La Paix",
+   "floor": "RDC",
+   "unitCode": "B6++",
+   "name": "Immeuble La Paix · B6++",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 700000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "paix:B7",
+   "building": "paix",
+   "buildingName": "Immeuble La Paix",
+   "floor": "RDC",
+   "unitCode": "B7++",
+   "name": "Immeuble La Paix · B7++",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 400000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "paix:B8",
+   "building": "paix",
+   "buildingName": "Immeuble La Paix",
+   "floor": "RDC",
+   "unitCode": "B8++",
+   "name": "Immeuble La Paix · B8++",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 3100000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "paix:2APP RDC",
+   "building": "paix",
+   "buildingName": "Immeuble La Paix",
+   "floor": "RDC",
+   "unitCode": "2APP/RDC",
+   "name": "Immeuble La Paix · 2APP/RDC",
+   "category": "APARTMENT",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": null,
+   "status": "VACANT",
+   "legacyCodes": []
+  },
+  {
+   "uid": "paix:STU1 MER",
+   "building": "paix",
+   "buildingName": "Immeuble La Paix",
+   "floor": "R+1",
+   "unitCode": "STU1 MER",
+   "name": "Immeuble La Paix · STU1 MER",
+   "category": "APARTMENT",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": null,
+   "status": "VACANT",
+   "legacyCodes": []
+  },
+  {
+   "uid": "paix:3APP1 MER",
+   "building": "paix",
+   "buildingName": "Immeuble La Paix",
+   "floor": "R+1",
+   "unitCode": "3APP1 MER",
+   "name": "Immeuble La Paix · 3APP1 MER",
+   "category": "APARTMENT",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": null,
+   "status": "VACANT",
+   "legacyCodes": []
+  },
+  {
+   "uid": "paix:3APP1 PAIX",
+   "building": "paix",
+   "buildingName": "Immeuble La Paix",
+   "floor": "R+1",
+   "unitCode": "3APP1 PAIX",
+   "name": "Immeuble La Paix · 3APP1 PAIX",
+   "category": "APARTMENT",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": null,
+   "status": "VACANT",
+   "legacyCodes": []
+  },
+  {
+   "uid": "paix:2 STUDIOS RDC",
+   "building": "paix",
+   "buildingName": "Immeuble La Paix",
+   "floor": "R+1",
+   "unitCode": "2 STUDIOS RDC",
+   "name": "Immeuble La Paix · 2 STUDIOS RDC",
+   "category": "APARTMENT",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": null,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "paix:STU2 MER",
+   "building": "paix",
+   "buildingName": "Immeuble La Paix",
+   "floor": "R+2",
+   "unitCode": "STU2 MER",
+   "name": "Immeuble La Paix · STU2 MER",
+   "category": "APARTMENT",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 300000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "paix:3APP2 MER",
+   "building": "paix",
+   "buildingName": "Immeuble La Paix",
+   "floor": "R+2",
+   "unitCode": "3APP2 MER",
+   "name": "Immeuble La Paix · 3APP2 MER",
+   "category": "APARTMENT",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 1000000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "paix:3APP ME 2 PAIX",
+   "building": "paix",
+   "buildingName": "Immeuble La Paix",
+   "floor": "R+2",
+   "unitCode": "3APP ME 2 PAIX",
+   "name": "Immeuble La Paix · 3APP ME 2 PAIX",
+   "category": "APARTMENT",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 800000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": [
+    "3APP2 PAIX"
+   ]
+  },
+  {
+   "uid": "paix:STU ME 3 MER",
+   "building": "paix",
+   "buildingName": "Immeuble La Paix",
+   "floor": "R+3",
+   "unitCode": "STU ME 3 MER",
+   "name": "Immeuble La Paix · STU ME 3 MER",
+   "category": "APARTMENT",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 400000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": [
+    "STU3 MER"
+   ]
+  },
+  {
+   "uid": "paix:3APP ME 3 MER",
+   "building": "paix",
+   "buildingName": "Immeuble La Paix",
+   "floor": "R+3",
+   "unitCode": "3APP ME 3 MER",
+   "name": "Immeuble La Paix · 3APP ME 3 MER",
+   "category": "APARTMENT",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 800000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": [
+    "3APP3 MER"
+   ]
+  },
+  {
+   "uid": "paix:3APP3 ME PAIX",
+   "building": "paix",
+   "buildingName": "Immeuble La Paix",
+   "floor": "R+3",
+   "unitCode": "3APP3 ME PAIX",
+   "name": "Immeuble La Paix · 3APP3 ME PAIX",
+   "category": "APARTMENT",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 800000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "villas:VILLA CAISSE BODJONA RABI",
+   "building": "villas",
+   "buildingName": "Villas",
+   "floor": null,
+   "unitCode": "VILLA CAISSE BODJONA RABI",
+   "name": "Villas · VILLA CAISSE BODJONA RABI",
+   "category": "VILLA",
+   "areaM2": null,
+   "areaLabel": "10a 7ca",
+   "askingRent": 2000000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "villas:VILLA ESPERANCE 133",
+   "building": "villas",
+   "buildingName": "Villas",
+   "floor": null,
+   "unitCode": "VILLA ESPERANCE 133",
+   "name": "Villas · VILLA ESPERANCE 133",
+   "category": "VILLA",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 1200000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "villas:VILLA JUBILE 118 SONIPA RABI",
+   "building": "villas",
+   "buildingName": "Villas",
+   "floor": null,
+   "unitCode": "VILLA JUBILE 118 SONIPA RABI",
+   "name": "Villas · VILLA JUBILE 118 SONIPA RABI",
+   "category": "VILLA",
+   "areaM2": null,
+   "areaLabel": "8a 65 ca",
+   "askingRent": 1300000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "villas:VILLA JUBILE A80",
+   "building": "villas",
+   "buildingName": "Villas",
+   "floor": null,
+   "unitCode": "VILLA JUBILE A80",
+   "name": "Villas · VILLA JUBILE A80",
+   "category": "VILLA",
+   "areaM2": 500.6,
+   "areaLabel": null,
+   "askingRent": 1200000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "villas:VILLA MILLENIUM",
+   "building": "villas",
+   "buildingName": "Villas",
+   "floor": null,
+   "unitCode": "VILLA MILLENIUM",
+   "name": "Villas · VILLA MILLENIUM",
+   "category": "VILLA",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 1500000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "villas:VILLA 313",
+   "building": "villas",
+   "buildingName": "Villas",
+   "floor": null,
+   "unitCode": "VILLA 313",
+   "name": "Villas · VILLA 313",
+   "category": "VILLA",
+   "areaM2": 100.0,
+   "areaLabel": null,
+   "askingRent": 2000000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "villas:VILLA AVEPOZO",
+   "building": "villas",
+   "buildingName": "Villas",
+   "floor": null,
+   "unitCode": "VILLA AVEPOZO",
+   "name": "Villas · VILLA AVEPOZO",
+   "category": "VILLA",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 400000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "villas:VILLA HORIZON",
+   "building": "villas",
+   "buildingName": "Villas",
+   "floor": null,
+   "unitCode": "VILLA HORIZON",
+   "name": "Villas · VILLA HORIZON",
+   "category": "VILLA",
+   "areaM2": 800.0,
+   "areaLabel": null,
+   "askingRent": 1300000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "villas:RESIDENCE COMPLEXE DE LOISIR KPESSI",
+   "building": "villas",
+   "buildingName": "Villas",
+   "floor": null,
+   "unitCode": "RESIDENCE COMPLEXE DE LOISIR KPESSI",
+   "name": "Villas · RESIDENCE COMPLEXE DE LOISIR KPESSI",
+   "category": "VILLA",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 2000000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "entrepots:SITE PORT ENTREPOT N 1",
+   "building": "entrepots",
+   "buildingName": "Entrepôts",
+   "floor": null,
+   "unitCode": "SITE PORT ENTREPOT N°1",
+   "name": "Entrepôts · SITE PORT ENTREPOT N°1",
+   "category": "WAREHOUSE",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 13000000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "entrepots:SITE PORT ENTREPOT N 2",
+   "building": "entrepots",
+   "buildingName": "Entrepôts",
+   "floor": null,
+   "unitCode": "SITE PORT ENTREPOT N°2",
+   "name": "Entrepôts · SITE PORT ENTREPOT N°2",
+   "category": "WAREHOUSE",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": null,
+   "status": "VACANT",
+   "legacyCodes": []
+  },
+  {
+   "uid": "entrepots:SITE PORT ENTREPOT N 3",
+   "building": "entrepots",
+   "buildingName": "Entrepôts",
+   "floor": null,
+   "unitCode": "SITE PORT ENTREPOT N°3",
+   "name": "Entrepôts · SITE PORT ENTREPOT N°3",
+   "category": "WAREHOUSE",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 7500000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "entrepots:ENTREPOT:TOGOTOLE SARL",
+   "building": "entrepots",
+   "buildingName": "Entrepôts",
+   "floor": null,
+   "unitCode": "ENTREPOT",
+   "name": "Entrepôts · ENTREPOT (Togotole Sarl)",
+   "category": "WAREHOUSE",
+   "areaM2": 700.0,
+   "areaLabel": null,
+   "askingRent": 1000000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "entrepots:SITE AZAR ENTREPOT N 1",
+   "building": "entrepots",
+   "buildingName": "Entrepôts",
+   "floor": null,
+   "unitCode": "SITE AZAR ENTREPOT N°1",
+   "name": "Entrepôts · SITE AZAR ENTREPOT N°1",
+   "category": "WAREHOUSE",
+   "areaM2": 2251.08,
+   "areaLabel": null,
+   "askingRent": 4000000.0,
+   "status": "VACANT",
+   "legacyCodes": []
+  },
+  {
+   "uid": "entrepots:SITE AZAR ENTREPOT N 2",
+   "building": "entrepots",
+   "buildingName": "Entrepôts",
+   "floor": null,
+   "unitCode": "SITE AZAR ENTREPOT N°2",
+   "name": "Entrepôts · SITE AZAR ENTREPOT N°2",
+   "category": "WAREHOUSE",
+   "areaM2": 1792.33,
+   "areaLabel": null,
+   "askingRent": 3000000.0,
+   "status": "VACANT",
+   "legacyCodes": []
+  },
+  {
+   "uid": "entrepots:SITE AZAR ENTREPOT N 3",
+   "building": "entrepots",
+   "buildingName": "Entrepôts",
+   "floor": null,
+   "unitCode": "SITE AZAR ENTREPOT N°3",
+   "name": "Entrepôts · SITE AZAR ENTREPOT N°3",
+   "category": "WAREHOUSE",
+   "areaM2": 2900.0,
+   "areaLabel": null,
+   "askingRent": 3500000.0,
+   "status": "VACANT",
+   "legacyCodes": []
+  },
+  {
+   "uid": "entrepots:SITE DUCRO ENTREPOT N 1",
+   "building": "entrepots",
+   "buildingName": "Entrepôts",
+   "floor": null,
+   "unitCode": "SITE DUCRO ENTREPOT N°1",
+   "name": "Entrepôts · SITE DUCRO ENTREPOT N°1",
+   "category": "WAREHOUSE",
+   "areaM2": 7500.0,
+   "areaLabel": null,
+   "askingRent": 10265625.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "entrepots:SITE DUCRO ENTREPOT N 2",
+   "building": "entrepots",
+   "buildingName": "Entrepôts",
+   "floor": null,
+   "unitCode": "SITE DUCRO ENTREPOT N°2",
+   "name": "Entrepôts · SITE DUCRO ENTREPOT N°2",
+   "category": "WAREHOUSE",
+   "areaM2": 2200.0,
+   "areaLabel": null,
+   "askingRent": 3500000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "entrepots:ENTREPOT:WEST AFRICA CHAIN MANUFACTURING",
+   "building": "entrepots",
+   "buildingName": "Entrepôts",
+   "floor": null,
+   "unitCode": "ENTREPOT",
+   "name": "Entrepôts · ENTREPOT (West Africa Chain Manufacturing)",
+   "category": "WAREHOUSE",
+   "areaM2": 2172.0,
+   "areaLabel": null,
+   "askingRent": 5000000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "entrepots:ENTREPOT RAMATOU 1",
+   "building": "entrepots",
+   "buildingName": "Entrepôts",
+   "floor": null,
+   "unitCode": "ENTREPOT RAMATOU 1",
+   "name": "Entrepôts · ENTREPOT RAMATOU 1",
+   "category": "WAREHOUSE",
+   "areaM2": 2200.0,
+   "areaLabel": null,
+   "askingRent": 6000000.0,
+   "status": "VACANT",
+   "legacyCodes": []
+  },
+  {
+   "uid": "entrepots:ENTREPOT RAMATOU 2",
+   "building": "entrepots",
+   "buildingName": "Entrepôts",
+   "floor": null,
+   "unitCode": "ENTREPOT RAMATOU 2",
+   "name": "Entrepôts · ENTREPOT RAMATOU 2",
+   "category": "WAREHOUSE",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 1500000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "entrepots:ENTREPOT 1 VON FACE ABC",
+   "building": "entrepots",
+   "buildingName": "Entrepôts",
+   "floor": null,
+   "unitCode": "ENTREPOT 1 VON FACE ABC",
+   "name": "Entrepôts · ENTREPOT 1 VON FACE ABC",
+   "category": "WAREHOUSE",
+   "areaM2": 2200.0,
+   "areaLabel": null,
+   "askingRent": 5000000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "entrepots:ENTREPOT 2 VON FACE ABC",
+   "building": "entrepots",
+   "buildingName": "Entrepôts",
+   "floor": null,
+   "unitCode": "ENTREPOT 2 VON FACE ABC",
+   "name": "Entrepôts · ENTREPOT 2 VON FACE ABC",
+   "category": "WAREHOUSE",
+   "areaM2": 2000.0,
+   "areaLabel": null,
+   "askingRent": 3500000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "entrepots:ENTREPOT AKODESSEWA DERRIERE TDE",
+   "building": "entrepots",
+   "buildingName": "Entrepôts",
+   "floor": null,
+   "unitCode": "ENTREPOT AKODESSEWA DERRIERE TDE",
+   "name": "Entrepôts · ENTREPOT AKODESSEWA DERRIERE TDE",
+   "category": "WAREHOUSE",
+   "areaM2": 1500.0,
+   "areaLabel": null,
+   "askingRent": 3000000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "entrepots:ENTREPOT VON FAN MILK A COTE DE LOCAMAT",
+   "building": "entrepots",
+   "buildingName": "Entrepôts",
+   "floor": null,
+   "unitCode": "ENTREPOT VON FAN MILK à coté de LOCAMAT",
+   "name": "Entrepôts · ENTREPOT VON FAN MILK à coté de LOCAMAT",
+   "category": "WAREHOUSE",
+   "areaM2": 4000.0,
+   "areaLabel": null,
+   "askingRent": 10000000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "entrepots:ENTREPOT:LIU WEIJIAN",
+   "building": "entrepots",
+   "buildingName": "Entrepôts",
+   "floor": null,
+   "unitCode": "ENTREPOT",
+   "name": "Entrepôts · ENTREPOT (Liu Weijian)",
+   "category": "WAREHOUSE",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 3000000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "entrepots:SITE ITP ENTREPOT N 1 MESANINE",
+   "building": "entrepots",
+   "buildingName": "Entrepôts",
+   "floor": null,
+   "unitCode": "SITE ITP ENTREPOT N°1 MESANINE",
+   "name": "Entrepôts · SITE ITP ENTREPOT N°1 MESANINE",
+   "category": "WAREHOUSE",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 5000000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "entrepots:SITE ITP ENTREPOT N 2",
+   "building": "entrepots",
+   "buildingName": "Entrepôts",
+   "floor": null,
+   "unitCode": "SITE ITP ENTREPOT N°2",
+   "name": "Entrepôts · SITE ITP ENTREPOT N°2",
+   "category": "WAREHOUSE",
+   "areaM2": 4255.0,
+   "areaLabel": null,
+   "askingRent": 6500000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "entrepots:SITE ITP ENTREPOT N 3",
+   "building": "entrepots",
+   "buildingName": "Entrepôts",
+   "floor": null,
+   "unitCode": "SITE ITP ENTREPOT N°3",
+   "name": "Entrepôts · SITE ITP ENTREPOT N°3",
+   "category": "WAREHOUSE",
+   "areaM2": 4160.0,
+   "areaLabel": null,
+   "askingRent": 6500000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "entrepots:SITE SIVOP ENTREPOT N 1",
+   "building": "entrepots",
+   "buildingName": "Entrepôts",
+   "floor": null,
+   "unitCode": "SITE SIVOP ENTREPOT N°1",
+   "name": "Entrepôts · SITE SIVOP ENTREPOT N°1",
+   "category": "WAREHOUSE",
+   "areaM2": 4000.0,
+   "areaLabel": null,
+   "askingRent": 6000000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "entrepots:SITE SIVOP ENTREPOT N 2 MESANINE",
+   "building": "entrepots",
+   "buildingName": "Entrepôts",
+   "floor": null,
+   "unitCode": "SITE SIVOP ENTREPOT N°2 MESANINE",
+   "name": "Entrepôts · SITE SIVOP ENTREPOT N°2 MESANINE",
+   "category": "WAREHOUSE",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 2750000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "entrepots:ENTRPOT LEADER FOOD INDUSTRIE",
+   "building": "entrepots",
+   "buildingName": "Entrepôts",
+   "floor": null,
+   "unitCode": "ENTRPOT LEADER FOOD INDUSTRIE",
+   "name": "Entrepôts · ENTRPOT LEADER FOOD INDUSTRIE",
+   "category": "WAREHOUSE",
+   "areaM2": 1725.0,
+   "areaLabel": null,
+   "askingRent": 3000000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "entrepots:ENTREPOT CACAVELI",
+   "building": "entrepots",
+   "buildingName": "Entrepôts",
+   "floor": null,
+   "unitCode": "ENTREPOT CACAVELI",
+   "name": "Entrepôts · ENTREPOT CACAVELI",
+   "category": "WAREHOUSE",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 388200.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "entrepots:ENTREPOT NYEKONAKPOE",
+   "building": "entrepots",
+   "buildingName": "Entrepôts",
+   "floor": null,
+   "unitCode": "ENTREPOT NYEKONAKPOE",
+   "name": "Entrepôts · ENTREPOT NYEKONAKPOE",
+   "category": "WAREHOUSE",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 500000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "entrepots:ENTREPOT:BUREAU DE TRANSIT FOI TRANS",
+   "building": "entrepots",
+   "buildingName": "Entrepôts",
+   "floor": null,
+   "unitCode": "ENTREPOT",
+   "name": "Entrepôts · ENTREPOT (Bureau De Transit Foi Trans)",
+   "category": "WAREHOUSE",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 500000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "entrepots:ENTREPOT DERRIERE IMMEUBLE LA PAIX:CMA CGM",
+   "building": "entrepots",
+   "buildingName": "Entrepôts",
+   "floor": null,
+   "unitCode": "ENTREPOT DERRIERE IMMEUBLE LA PAIX",
+   "name": "Entrepôts · ENTREPOT DERRIERE IMMEUBLE LA PAIX (Cma Cgm)",
+   "category": "WAREHOUSE",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 390550.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "entrepots:ENTREPOT DERRIERE IMMEUBLE LA PAIX:R LOGISTIC",
+   "building": "entrepots",
+   "buildingName": "Entrepôts",
+   "floor": null,
+   "unitCode": "ENTREPOT DERRIERE IMMEUBLE LA PAIX",
+   "name": "Entrepôts · ENTREPOT DERRIERE IMMEUBLE LA PAIX (R-Logistic)",
+   "category": "WAREHOUSE",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 390550.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "entrepots:ENTREPOT DERRIERE HOTEL SARAKAWA",
+   "building": "entrepots",
+   "buildingName": "Entrepôts",
+   "floor": null,
+   "unitCode": "ENTREPOT DERRIERE HOTEL SARAKAWA",
+   "name": "Entrepôts · ENTREPOT DERRIERE HOTEL SARAKAWA",
+   "category": "WAREHOUSE",
+   "areaM2": 1000.0,
+   "areaLabel": null,
+   "askingRent": 2200000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "entrepots:NOUVEL ENTREPOT AKODESSEWA",
+   "building": "entrepots",
+   "buildingName": "Entrepôts",
+   "floor": null,
+   "unitCode": "NOUVEL ENTREPOT AKODESSEWA",
+   "name": "Entrepôts · NOUVEL ENTREPOT AKODESSEWA",
+   "category": "WAREHOUSE",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 5000000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "entrepots:ENTREPOT PROFOOD",
+   "building": "entrepots",
+   "buildingName": "Entrepôts",
+   "floor": null,
+   "unitCode": "ENTREPOT PROFOOD",
+   "name": "Entrepôts · ENTREPOT PROFOOD",
+   "category": "WAREHOUSE",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": 2500000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "entrepots:ENTREPOT IMS",
+   "building": "entrepots",
+   "buildingName": "Entrepôts",
+   "floor": null,
+   "unitCode": "ENTREPOT IMS",
+   "name": "Entrepôts · ENTREPOT IMS",
+   "category": "WAREHOUSE",
+   "areaM2": 4000.0,
+   "areaLabel": null,
+   "askingRent": 10000000.0,
+   "status": "VACANT",
+   "legacyCodes": []
+  },
+  {
+   "uid": "showrooms:SHOW ROOM1 SITE1",
+   "building": "showrooms",
+   "buildingName": "Show Rooms + Boutiques Akodessewa",
+   "floor": null,
+   "unitCode": "SHOW ROOM1 SITE1",
+   "name": "Show Rooms + Boutiques Akodessewa · SHOW ROOM1 SITE1",
+   "category": "COMMERCIAL",
+   "areaM2": 615.0,
+   "areaLabel": null,
+   "askingRent": 2500000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "showrooms:SHOW ROOM2 SITE1",
+   "building": "showrooms",
+   "buildingName": "Show Rooms + Boutiques Akodessewa",
+   "floor": null,
+   "unitCode": "SHOW ROOM2 SITE1",
+   "name": "Show Rooms + Boutiques Akodessewa · SHOW ROOM2 SITE1",
+   "category": "COMMERCIAL",
+   "areaM2": 626.0,
+   "areaLabel": null,
+   "askingRent": 2500000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "showrooms:SHOW ROOM1 SITE2",
+   "building": "showrooms",
+   "buildingName": "Show Rooms + Boutiques Akodessewa",
+   "floor": null,
+   "unitCode": "SHOW ROOM1 SITE2",
+   "name": "Show Rooms + Boutiques Akodessewa · SHOW ROOM1 SITE2",
+   "category": "COMMERCIAL",
+   "areaM2": 505.0,
+   "areaLabel": null,
+   "askingRent": 2525000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "showrooms:SHOW ROOM2 SITE2",
+   "building": "showrooms",
+   "buildingName": "Show Rooms + Boutiques Akodessewa",
+   "floor": null,
+   "unitCode": "SHOW ROOM2 SITE2",
+   "name": "Show Rooms + Boutiques Akodessewa · SHOW ROOM2 SITE2",
+   "category": "COMMERCIAL",
+   "areaM2": 500.0,
+   "areaLabel": null,
+   "askingRent": 2500000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "showrooms:SHOW ROOM3 SITE2",
+   "building": "showrooms",
+   "buildingName": "Show Rooms + Boutiques Akodessewa",
+   "floor": null,
+   "unitCode": "SHOW ROOM3 SITE2",
+   "name": "Show Rooms + Boutiques Akodessewa · SHOW ROOM3 SITE2",
+   "category": "COMMERCIAL",
+   "areaM2": 456.0,
+   "areaLabel": null,
+   "askingRent": 2280000.0,
+   "status": "OCCUPIED",
+   "legacyCodes": []
+  },
+  {
+   "uid": "showrooms:B1 SITE3",
+   "building": "showrooms",
+   "buildingName": "Show Rooms + Boutiques Akodessewa",
+   "floor": null,
+   "unitCode": "B1 SITE3",
+   "name": "Show Rooms + Boutiques Akodessewa · B1 SITE3",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": null,
+   "status": "VACANT",
+   "legacyCodes": []
+  },
+  {
+   "uid": "showrooms:B2 SITE3",
+   "building": "showrooms",
+   "buildingName": "Show Rooms + Boutiques Akodessewa",
+   "floor": null,
+   "unitCode": "B2 SITE3",
+   "name": "Show Rooms + Boutiques Akodessewa · B2 SITE3",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": null,
+   "status": "VACANT",
+   "legacyCodes": []
+  },
+  {
+   "uid": "showrooms:B3 SITE3",
+   "building": "showrooms",
+   "buildingName": "Show Rooms + Boutiques Akodessewa",
+   "floor": null,
+   "unitCode": "B3 SITE3",
+   "name": "Show Rooms + Boutiques Akodessewa · B3 SITE3",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": null,
+   "status": "VACANT",
+   "legacyCodes": []
+  },
+  {
+   "uid": "showrooms:B4 SITE3",
+   "building": "showrooms",
+   "buildingName": "Show Rooms + Boutiques Akodessewa",
+   "floor": null,
+   "unitCode": "B4 SITE3",
+   "name": "Show Rooms + Boutiques Akodessewa · B4 SITE3",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": null,
+   "status": "VACANT",
+   "legacyCodes": []
+  },
+  {
+   "uid": "showrooms:B5 SITE3",
+   "building": "showrooms",
+   "buildingName": "Show Rooms + Boutiques Akodessewa",
+   "floor": null,
+   "unitCode": "B5 SITE3",
+   "name": "Show Rooms + Boutiques Akodessewa · B5 SITE3",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": null,
+   "status": "VACANT",
+   "legacyCodes": []
+  },
+  {
+   "uid": "showrooms:B6 SITE3",
+   "building": "showrooms",
+   "buildingName": "Show Rooms + Boutiques Akodessewa",
+   "floor": null,
+   "unitCode": "B6 SITE3",
+   "name": "Show Rooms + Boutiques Akodessewa · B6 SITE3",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": null,
+   "status": "VACANT",
+   "legacyCodes": []
+  },
+  {
+   "uid": "showrooms:B7 SITE3",
+   "building": "showrooms",
+   "buildingName": "Show Rooms + Boutiques Akodessewa",
+   "floor": null,
+   "unitCode": "B7 SITE3",
+   "name": "Show Rooms + Boutiques Akodessewa · B7 SITE3",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": null,
+   "status": "VACANT",
+   "legacyCodes": []
+  },
+  {
+   "uid": "showrooms:B8 SITE3",
+   "building": "showrooms",
+   "buildingName": "Show Rooms + Boutiques Akodessewa",
+   "floor": null,
+   "unitCode": "B8 SITE3",
+   "name": "Show Rooms + Boutiques Akodessewa · B8 SITE3",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": null,
+   "status": "VACANT",
+   "legacyCodes": []
+  },
+  {
+   "uid": "showrooms:B9 SITE3",
+   "building": "showrooms",
+   "buildingName": "Show Rooms + Boutiques Akodessewa",
+   "floor": null,
+   "unitCode": "B9 SITE3",
+   "name": "Show Rooms + Boutiques Akodessewa · B9 SITE3",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": null,
+   "status": "VACANT",
+   "legacyCodes": []
+  },
+  {
+   "uid": "showrooms:B10 SITE3",
+   "building": "showrooms",
+   "buildingName": "Show Rooms + Boutiques Akodessewa",
+   "floor": null,
+   "unitCode": "B10 SITE3",
+   "name": "Show Rooms + Boutiques Akodessewa · B10 SITE3",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": null,
+   "status": "VACANT",
+   "legacyCodes": []
+  },
+  {
+   "uid": "showrooms:B11 SITE3",
+   "building": "showrooms",
+   "buildingName": "Show Rooms + Boutiques Akodessewa",
+   "floor": null,
+   "unitCode": "B11 SITE3",
+   "name": "Show Rooms + Boutiques Akodessewa · B11 SITE3",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": null,
+   "status": "VACANT",
+   "legacyCodes": []
+  },
+  {
+   "uid": "showrooms:M1 SITE3",
+   "building": "showrooms",
+   "buildingName": "Show Rooms + Boutiques Akodessewa",
+   "floor": null,
+   "unitCode": "M1 SITE3",
+   "name": "Show Rooms + Boutiques Akodessewa · M1 SITE3",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": null,
+   "status": "VACANT",
+   "legacyCodes": []
+  },
+  {
+   "uid": "showrooms:M2 SITE3",
+   "building": "showrooms",
+   "buildingName": "Show Rooms + Boutiques Akodessewa",
+   "floor": null,
+   "unitCode": "M2 SITE3",
+   "name": "Show Rooms + Boutiques Akodessewa · M2 SITE3",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": null,
+   "status": "VACANT",
+   "legacyCodes": []
+  },
+  {
+   "uid": "showrooms:M3 SITE3",
+   "building": "showrooms",
+   "buildingName": "Show Rooms + Boutiques Akodessewa",
+   "floor": null,
+   "unitCode": "M3 SITE3",
+   "name": "Show Rooms + Boutiques Akodessewa · M3 SITE3",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": null,
+   "status": "VACANT",
+   "legacyCodes": []
+  },
+  {
+   "uid": "showrooms:M4 SITE3",
+   "building": "showrooms",
+   "buildingName": "Show Rooms + Boutiques Akodessewa",
+   "floor": null,
+   "unitCode": "M4 SITE3",
+   "name": "Show Rooms + Boutiques Akodessewa · M4 SITE3",
+   "category": "SHOP",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": null,
+   "status": "VACANT",
+   "legacyCodes": []
+  },
+  {
+   "uid": "paix:charges",
+   "building": "paix",
+   "buildingName": "Immeuble La Paix",
+   "floor": null,
+   "unitCode": "Charges collectées",
+   "name": "Immeuble La Paix · Charges collectées (électricité / entretien)",
+   "category": "OTHER",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": null,
+   "status": "MAINTENANCE",
+   "legacyCodes": []
+  },
+  {
+   "uid": "assigame:charges",
+   "building": "assigame",
+   "buildingName": "Immeuble Assigame",
+   "floor": null,
+   "unitCode": "Charges collectées",
+   "name": "Immeuble Assigame · Charges collectées (électricité / entretien)",
+   "category": "OTHER",
+   "areaM2": null,
+   "areaLabel": null,
+   "askingRent": null,
+   "status": "MAINTENANCE",
+   "legacyCodes": []
+  }
+ ],
+ "tenants": [
+  {
+   "tid": "T001",
+   "name": "KOUTOUKLUI DODJIVI",
+   "representative": null,
+   "phone": "90 20 22 25",
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T002",
+   "name": "KANYI AYOKO",
+   "representative": null,
+   "phone": "90 09 80 37",
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T003",
+   "name": "EKADIS",
+   "representative": null,
+   "phone": "91 52 24 02",
+   "poBox": "BP 12891 Lomé-Togo",
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T004",
+   "name": "AWOUGBLA ANOUMOU",
+   "representative": null,
+   "phone": "91 83 07 77",
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T005",
+   "name": "SAINTE ODETTE",
+   "representative": null,
+   "phone": "90 19 90 17",
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T006",
+   "name": "DEFLY NICOLAS",
+   "representative": null,
+   "phone": "90 16 16 64",
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T007",
+   "name": "ADJAYI AYETOBI",
+   "representative": null,
+   "phone": "90 12 50 20",
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T008",
+   "name": "DAZARO AÏDA",
+   "representative": null,
+   "phone": "92 68 29 07",
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T009",
+   "name": "KONDO AFFI",
+   "representative": null,
+   "phone": "90 34 61 25",
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T010",
+   "name": "TOP COSMETIQUE",
+   "representative": "Mr JIHAD",
+   "phone": "90 63 52 72",
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T011",
+   "name": "BOUKA A.ESSIVI",
+   "representative": null,
+   "phone": "91 55 98 83",
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T012",
+   "name": "NOMAGNON AMEYO",
+   "representative": null,
+   "phone": "90 01 83 46",
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T013",
+   "name": "ZATOU ADJOVI",
+   "representative": null,
+   "phone": "90 03 18 94",
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T014",
+   "name": "DJANKALE AFI MAWUSI",
+   "representative": "ETS KONU et Fils",
+   "phone": "90 05 55 70",
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T015",
+   "name": "GAVI AGNES",
+   "representative": null,
+   "phone": "90 94 04 40 / 97 14 13 40",
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T016",
+   "name": "OUMI YEL N'BASSE",
+   "representative": null,
+   "phone": "92 34 47 70",
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T017",
+   "name": "AL MORACH",
+   "representative": null,
+   "phone": null,
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T018",
+   "name": "BOKO EYAH",
+   "representative": null,
+   "phone": "92 48 04 37 / 98 47 49 53",
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T019",
+   "name": "H.O.K.",
+   "representative": "Mme ADJAYI Helen Oyenike",
+   "phone": "90 15 52 21",
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T020",
+   "name": "ABBEY STELLA",
+   "representative": null,
+   "phone": "90 39 48 17",
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T021",
+   "name": "SEHOVOH KANTÉ KOFFI RODRIGUE",
+   "representative": null,
+   "phone": "90 19 67 52",
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T022",
+   "name": "HAMMER GROUP",
+   "representative": "Mr TAÏROU A.",
+   "phone": "93 87 12 87",
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T023",
+   "name": "MAD_JEWELRY_F",
+   "representative": "Mr THIAM AMDY ET NEOSOLARIS représentée par MAKANDA NDOMBASI",
+   "phone": null,
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T024",
+   "name": "CHEZ JOHNNY",
+   "representative": "Mr GHANDOUR AYMANE",
+   "phone": "91 31 77 77",
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T025",
+   "name": "EASY WIN",
+   "representative": "Mme SHIJIA",
+   "phone": "92 32 25 50",
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T026",
+   "name": "MOUSTAPHA",
+   "representative": null,
+   "phone": null,
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T027",
+   "name": "AL MSSAN",
+   "representative": null,
+   "phone": null,
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T028",
+   "name": "ALI MOHAMAD MASRI",
+   "representative": null,
+   "phone": null,
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T029",
+   "name": "MONZER",
+   "representative": null,
+   "phone": null,
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T030",
+   "name": "GIT",
+   "representative": null,
+   "phone": null,
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T031",
+   "name": "SMMT",
+   "representative": null,
+   "phone": null,
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T032",
+   "name": "CERVEAU STORE",
+   "representative": "Mr DATHEY ÉTÉ AMEN",
+   "phone": null,
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T033",
+   "name": "TAVARES-AFONSO SHEILA SUELY",
+   "representative": null,
+   "phone": null,
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T034",
+   "name": "MOUNA FOOD CHOCO-LATTE SARLU",
+   "representative": null,
+   "phone": "93 40 90 87",
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T035",
+   "name": "SMART ALI",
+   "representative": null,
+   "phone": null,
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T036",
+   "name": "BLUE BERRY TRAVEL SARL",
+   "representative": null,
+   "phone": null,
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T037",
+   "name": "R-LOGISTIC",
+   "representative": null,
+   "phone": null,
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T038",
+   "name": "MORENO TRADING",
+   "representative": "Mr MOHAMED TAREK",
+   "phone": null,
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T039",
+   "name": "SEVENFOOD",
+   "representative": null,
+   "phone": null,
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T040",
+   "name": "INTERFOOD",
+   "representative": null,
+   "phone": null,
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T041",
+   "name": "AFRICA BIO COMMODITIES",
+   "representative": null,
+   "phone": null,
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T042",
+   "name": "UNICOM COMMODITIES SARL U",
+   "representative": null,
+   "phone": null,
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T043",
+   "name": "BRASSERIE DU BENIN",
+   "representative": "Mr Thierry FERAUD",
+   "phone": "22 25 16 84",
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T044",
+   "name": "KUMAR DILEEP",
+   "representative": "SOCIETE PIA TOGO",
+   "phone": "70 99 24 13",
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T045",
+   "name": "KAROUT HUSSEIN",
+   "representative": "RODIS COSMETIQUE",
+   "phone": "93 23 73 13",
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T046",
+   "name": "SIRE",
+   "representative": null,
+   "phone": "99 13 23 02",
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T047",
+   "name": "AMBASSADE DES USA AU TOGO",
+   "representative": null,
+   "phone": null,
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T048",
+   "name": "BANQUE ATLANTIQUE",
+   "representative": "BABACAUH KOFFI KRA",
+   "phone": null,
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T049",
+   "name": "ELLIPSE PROJECTS",
+   "representative": "ALI KREICH",
+   "phone": null,
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T050",
+   "name": "RESIDENCE MOERIS",
+   "representative": null,
+   "phone": null,
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T051",
+   "name": "SORETRAP",
+   "representative": null,
+   "phone": null,
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T052",
+   "name": "TOGOTOLE SARL",
+   "representative": null,
+   "phone": null,
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T053",
+   "name": "AFRIQUE CENTURY",
+   "representative": null,
+   "phone": null,
+   "poBox": null,
+   "notes": "Nom dans le registre du 28/09/2026 : INTERPARCK",
+   "aliases": []
+  },
+  {
+   "tid": "T054",
+   "name": "MAERSK LINE",
+   "representative": null,
+   "phone": null,
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T055",
+   "name": "SNG",
+   "representative": "ABC",
+   "phone": null,
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T056",
+   "name": "WEST AFRICA CHAIN MANUFACTURING",
+   "representative": "Mr WEI JINYANG",
+   "phone": "90 81 38 73",
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T057",
+   "name": "PALMAIRA",
+   "representative": "representée par Mr EL MOHAMAD HUSSEINI",
+   "phone": null,
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T058",
+   "name": "SOTOPA",
+   "representative": null,
+   "phone": null,
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T059",
+   "name": "COCOLOMEX",
+   "representative": null,
+   "phone": "90 30 29 88",
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T060",
+   "name": "ETG",
+   "representative": null,
+   "phone": null,
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T061",
+   "name": "LIU WEIJIAN",
+   "representative": null,
+   "phone": null,
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T062",
+   "name": "INTER FOOD",
+   "representative": null,
+   "phone": null,
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T063",
+   "name": "SEVEN FOOD",
+   "representative": null,
+   "phone": null,
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T064",
+   "name": "SMART SARAKAWA",
+   "representative": null,
+   "phone": null,
+   "poBox": null,
+   "notes": null,
+   "aliases": [
+    "SMART"
+   ]
+  },
+  {
+   "tid": "T065",
+   "name": "SMART VIVALAIT",
+   "representative": null,
+   "phone": null,
+   "poBox": null,
+   "notes": null,
+   "aliases": [
+    "SMART"
+   ]
+  },
+  {
+   "tid": "T066",
+   "name": "STATION TOTAL SALL",
+   "representative": null,
+   "phone": null,
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T067",
+   "name": "BUREAU DE TRANSIT FOI TRANS",
+   "representative": null,
+   "phone": null,
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T068",
+   "name": "CMA CGM",
+   "representative": null,
+   "phone": null,
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T069",
+   "name": "SOLEVA TOGO",
+   "representative": "SUN KING TOGO",
+   "phone": "98 08 12 71",
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T070",
+   "name": "EUROPARTS",
+   "representative": null,
+   "phone": "90 02 31 25",
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T071",
+   "name": "ATLAS MOTORS LIMITED",
+   "representative": null,
+   "phone": null,
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T072",
+   "name": "AMSPEC TOGO SARL U",
+   "representative": null,
+   "phone": "97 11 11 11",
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T073",
+   "name": "LUI XIANGHUI",
+   "representative": null,
+   "phone": "90 62 88 88",
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T074",
+   "name": "CHEN AFRICA",
+   "representative": "Mr Samson GOUDJO",
+   "phone": "72 28 20 02",
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T075",
+   "name": "LABEL D'OR",
+   "representative": null,
+   "phone": null,
+   "poBox": null,
+   "notes": null,
+   "aliases": []
+  },
+  {
+   "tid": "T076",
+   "name": "LOCATAIRES — IMMEUBLE LA PAIX",
+   "representative": null,
+   "phone": null,
+   "poBox": null,
+   "notes": "Regroupe les charges collectées auprès des locataires (électricité, frais d'entretien) : ce ne sont pas des loyers.",
+   "aliases": []
+  },
+  {
+   "tid": "T077",
+   "name": "LOCATAIRES — IMMEUBLE ASSIGAME",
+   "representative": null,
+   "phone": null,
+   "poBox": null,
+   "notes": "Regroupe les charges collectées auprès des locataires (électricité, frais d'entretien) : ce ne sont pas des loyers.",
+   "aliases": []
+  }
+ ],
+ "leases": [
+  {
+   "lid": "B001",
+   "uid": "assigame:B1",
+   "tid": "T001",
+   "tenantName": "KOUTOUKLUI DODJIVI",
+   "startDate": "2025-02-01",
+   "endDate": null,
+   "rent": 350000.0,
+   "depositAmount": 1050000.0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2025-10-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2027-02-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-03-01",
+     "amount": 1050000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/10/2025 au 31/12/2025"
+    },
+    {
+     "date": "2026-09-01",
+     "amount": 1400000.0,
+     "kind": "RENT",
+     "monthsCovered": 4,
+     "notes": "Payement de 4 mois de loyer du 01/01/2026 au 30/04/2026"
+    },
+    {
+     "date": "2025-02-01",
+     "amount": 1050000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 03 mois de caution"
+    },
+    {
+     "date": "2025-02-01",
+     "amount": 2100000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 6,
+     "notes": "Rapport : 06 mois de loyer"
+    }
+   ],
+   "followUps": [
+    {
+     "date": "2026-09-28",
+     "response": "a payé 4 mois ce 03/09/2026"
+    }
+   ]
+  },
+  {
+   "lid": "B002",
+   "uid": "assigame:B2",
+   "tid": "T002",
+   "tenantName": "KANYI AYOKO",
+   "startDate": "2015-10-01",
+   "endDate": null,
+   "rent": 350000.0,
+   "depositAmount": 1500000.0,
+   "depositLabel": "06 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2025-08-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2027-10-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-01-01",
+     "amount": 1500000.0,
+     "kind": "RENT",
+     "monthsCovered": 6,
+     "notes": "Payement de solde loyer de 5 mois du 01/08/2025 au 30/01/2026"
+    },
+    {
+     "date": "2026-05-01",
+     "amount": 1050000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/02/2026 au 30/04/2026"
+    },
+    {
+     "date": "2026-09-01",
+     "amount": 1050000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/05/2026 au 31/07/2026"
+    },
+    {
+     "date": "2015-10-01",
+     "amount": 1500000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 06 mois de caution"
+    },
+    {
+     "date": "2015-10-01",
+     "amount": 905000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": [
+    {
+     "date": "2026-09-28",
+     "response": "a payé 3 mois ce 25/09/2026"
+    }
+   ]
+  },
+  {
+   "lid": "B003",
+   "uid": "assigame:B3",
+   "tid": "T003",
+   "tenantName": "EKADIS",
+   "startDate": "2014-10-01",
+   "endDate": null,
+   "rent": 350000.0,
+   "depositAmount": 1500000.0,
+   "depositLabel": "06 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2025-05-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2027-10-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-02-01",
+     "amount": 350000.0,
+     "kind": "RENT",
+     "monthsCovered": 1,
+     "notes": "Payement d'un (1) mois de loyer du 01/05/2025 au 31/05/2025"
+    },
+    {
+     "date": "2026-04-01",
+     "amount": 350000.0,
+     "kind": "RENT",
+     "monthsCovered": 1,
+     "notes": "Payement d'un (1) mois de loyer du 01/06/2025 au 30/06/2025"
+    },
+    {
+     "date": "2026-07-01",
+     "amount": 500000.0,
+     "kind": "ARREARS",
+     "monthsCovered": null,
+     "notes": "Depôt pour payement d'arrièré de loyer de 01/07/2025 au 31/07/2026"
+    },
+    {
+     "date": "2026-09-01",
+     "amount": 1600000.0,
+     "kind": "ARREARS",
+     "monthsCovered": null,
+     "notes": "SOLDE ANNEE 2025"
+    },
+    {
+     "date": "2014-10-01",
+     "amount": 1500000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 06 mois de caution"
+    },
+    {
+     "date": "2014-10-01",
+     "amount": 905000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": [
+    {
+     "date": "2026-09-28",
+     "response": "a payé 1 600 000 ce 11/09/2026. a soldé l'année 2025"
+    }
+   ]
+  },
+  {
+   "lid": "B004",
+   "uid": "assigame:B4",
+   "tid": "T004",
+   "tenantName": "AWOUGBLA ANOUMOU",
+   "startDate": "2021-01-01",
+   "endDate": null,
+   "rent": 275000.0,
+   "depositAmount": 1650000.0,
+   "depositLabel": "06 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2025-10-10",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2027-01-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-04-01",
+     "amount": 1050000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de solde loyer de 3 mois du 10/10/2025 au 09/01/2026"
+    },
+    {
+     "date": "2021-01-01",
+     "amount": 1650000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 06 mois de caution"
+    },
+    {
+     "date": "2021-01-01",
+     "amount": 825000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": [
+    {
+     "date": "2026-09-28",
+     "response": "a payé 3 mois ce 24/04/2026"
+    }
+   ]
+  },
+  {
+   "lid": "B005",
+   "uid": "assigame:M1",
+   "tid": "T004",
+   "tenantName": "AWOUGBLA ANOUMOU",
+   "startDate": "2026-02-01",
+   "endDate": null,
+   "rent": 151250.0,
+   "depositAmount": 302500.0,
+   "depositLabel": "02 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": null,
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2028-02-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-02-01",
+     "amount": 302500.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": 2,
+     "notes": "2 mois de caution (inclus dans : Location de magasin Payement de 2 mois de caution et de 3 mois de loyer du 01/02/2026 au 31/03/2026)"
+    },
+    {
+     "date": "2026-02-01",
+     "amount": 453750.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Location de magasin Payement de 2 mois de caution et de 3 mois de loyer du 01/02/2026 au 31/03/2026"
+    },
+    {
+     "date": "2026-09-01",
+     "amount": 605000.0,
+     "kind": "RENT",
+     "monthsCovered": 4,
+     "notes": "Payement de 4 mois de loyer du 01/04/2026 au 31/07/2026"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B006",
+   "uid": "assigame:M2",
+   "tid": "T005",
+   "tenantName": "SAINTE ODETTE",
+   "startDate": "2016-12-12",
+   "endDate": null,
+   "rent": 151250.0,
+   "depositAmount": 375000.0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2025-07-12",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2027-12-12",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-01-01",
+     "amount": 907500.0,
+     "kind": "RENT",
+     "monthsCovered": 6,
+     "notes": "Payement de 6 mois de loyer du 12/07/2025 au 11/01/2026"
+    },
+    {
+     "date": "2026-06-01",
+     "amount": 453750.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 12/01/2026 au 11/04/2026"
+    },
+    {
+     "date": "2016-12-12",
+     "amount": 375000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 03 mois de caution"
+    },
+    {
+     "date": "2016-12-12",
+     "amount": 375000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": [
+    {
+     "date": "2026-09-28",
+     "response": "a payé 3 mois ce 05/06/2026"
+    }
+   ]
+  },
+  {
+   "lid": "B007",
+   "uid": "assigame:M3",
+   "tid": "T006",
+   "tenantName": "DEFLY NICOLAS",
+   "startDate": "2025-09-01",
+   "endDate": null,
+   "rent": 151250.0,
+   "depositAmount": 453750.0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2025-11-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2027-09-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-02-01",
+     "amount": 302500.0,
+     "kind": "RENT",
+     "monthsCovered": 2,
+     "notes": "Payement de 2 mois de loyer du 01/11/2025 au 31/12/2025"
+    },
+    {
+     "date": "2026-06-01",
+     "amount": 453750.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/01/2026 au 31/03/2026"
+    },
+    {
+     "date": "2026-07-01",
+     "amount": 453750.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/04/2026 au 30/06/2026"
+    },
+    {
+     "date": "2025-09-01",
+     "amount": 453750.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 03 mois de caution"
+    },
+    {
+     "date": "2025-09-01",
+     "amount": 302500.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 2,
+     "notes": "Rapport : 02 mois de loyer"
+    }
+   ],
+   "followUps": [
+    {
+     "date": "2026-09-28",
+     "response": "a payé 3 mois ce 15/07/2026"
+    }
+   ]
+  },
+  {
+   "lid": "B008",
+   "uid": "assigame:M4",
+   "tid": "T007",
+   "tenantName": "ADJAYI AYETOBI",
+   "startDate": "2022-01-01",
+   "endDate": null,
+   "rent": 137500.0,
+   "depositAmount": 750000.0,
+   "depositLabel": "06 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2026-04-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2027-01-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-02-01",
+     "amount": 412500.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/04/2026 au 30/06/2026"
+    },
+    {
+     "date": "2026-04-01",
+     "amount": 412500.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/04/2026 au 30/06/2026"
+    },
+    {
+     "date": "2026-07-01",
+     "amount": 412500.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/04/2026 au 30/06/2026"
+    },
+    {
+     "date": "2022-01-01",
+     "amount": 750000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 06 mois de caution"
+    },
+    {
+     "date": "2022-01-01",
+     "amount": 375000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B009",
+   "uid": "assigame:M5",
+   "tid": "T003",
+   "tenantName": "EKADIS",
+   "startDate": "2015-04-01",
+   "endDate": null,
+   "rent": 151250.0,
+   "depositAmount": 900000.0,
+   "depositLabel": "06 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2025-06-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2027-04-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-02-01",
+     "amount": 151250.0,
+     "kind": "RENT",
+     "monthsCovered": 1,
+     "notes": "Payement d'un (1) mois de loyer du 01/05/2025 au 31/06/2025"
+    },
+    {
+     "date": "2026-04-01",
+     "amount": 302500.0,
+     "kind": "RENT",
+     "monthsCovered": 2,
+     "notes": "Payement de 2 mois de loyer du 01/07/2025 au 31/08/2025"
+    },
+    {
+     "date": "2026-07-01",
+     "amount": 500000.0,
+     "kind": "ARREARS",
+     "monthsCovered": null,
+     "notes": "Depôt pour payement d'arrièré de loyer de 01/09/2025 au 31/10/2026"
+    },
+    {
+     "date": "2026-09-01",
+     "amount": 89000.0,
+     "kind": "ARREARS",
+     "monthsCovered": null,
+     "notes": "SOLDE ANNEE 2025"
+    },
+    {
+     "date": "2015-04-01",
+     "amount": 900000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 06 mois de caution"
+    },
+    {
+     "date": "2015-04-01",
+     "amount": 375000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": [
+    {
+     "date": "2026-09-28",
+     "response": "a payé 89 000 ce 11/09/2026 et le reliquat de 16000 resté au niveau du payemet de loyer de M9 en juillet fait que l'année 2025 est soldé"
+    }
+   ]
+  },
+  {
+   "lid": "B010",
+   "uid": "assigame:M6",
+   "tid": "T008",
+   "tenantName": "DAZARO AÏDA",
+   "startDate": "2025-08-01",
+   "endDate": null,
+   "rent": 70000.0,
+   "depositAmount": 210000.0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2026-02-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2027-08-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-04-01",
+     "amount": 210000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/02/2026 au 30/04/2026"
+    },
+    {
+     "date": "2026-07-01",
+     "amount": 210000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/05/2026 au 31/07/2026"
+    },
+    {
+     "date": "2025-08-01",
+     "amount": 210000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 03 mois de caution"
+    },
+    {
+     "date": "2025-08-01",
+     "amount": 210000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B011",
+   "uid": "assigame:M7",
+   "tid": "T009",
+   "tenantName": "KONDO AFFI",
+   "startDate": "2022-06-27",
+   "endDate": null,
+   "rent": 121000.0,
+   "depositAmount": 660000.0,
+   "depositLabel": "06 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2025-12-27",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2027-06-27",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-01-01",
+     "amount": 363000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 27/12/2025 au 26/03/2026"
+    },
+    {
+     "date": "2026-05-01",
+     "amount": 363000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 27/03/2026 au 26/06/2026"
+    },
+    {
+     "date": "2026-08-01",
+     "amount": 363000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 27/06/2026 au 26/09/2026"
+    },
+    {
+     "date": "2022-06-27",
+     "amount": 660000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 06 mois de caution"
+    },
+    {
+     "date": "2022-06-27",
+     "amount": 330000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B012",
+   "uid": "assigame:M8",
+   "tid": "T010",
+   "tenantName": "TOP COSMETIQUE",
+   "startDate": "2022-09-01",
+   "endDate": null,
+   "rent": 121000.0,
+   "depositAmount": 330000.0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2025-01-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2027-09-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-06-01",
+     "amount": 2178000.0,
+     "kind": "RENT",
+     "monthsCovered": 18,
+     "notes": "Payement de 18 mois de loyer du 01/01/2025 au 30/06/2026"
+    },
+    {
+     "date": "2022-09-01",
+     "amount": 330000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 03 mois de caution"
+    },
+    {
+     "date": "2022-09-01",
+     "amount": 330000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B013",
+   "uid": "assigame:M9",
+   "tid": "T003",
+   "tenantName": "EKADIS",
+   "startDate": "2017-01-11",
+   "endDate": null,
+   "rent": 121000.0,
+   "depositAmount": 0,
+   "depositLabel": "pas de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2025-06-11",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2027-01-11",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-02-01",
+     "amount": 121000.0,
+     "kind": "RENT",
+     "monthsCovered": 1,
+     "notes": "Payement d'un (1) mois de loyer du 11/06/2025 au 11/07/2025"
+    },
+    {
+     "date": "2026-04-01",
+     "amount": 242000.0,
+     "kind": "RENT",
+     "monthsCovered": 2,
+     "notes": "Payement de 2 mois de loyer du 11/07/2025 au 10/09/2025"
+    },
+    {
+     "date": "2026-07-01",
+     "amount": 500000.0,
+     "kind": "ARREARS",
+     "monthsCovered": null,
+     "notes": "Depôt pour payement d'arrièré de loyer de 11/09/2025 au 10/10/2026"
+    },
+    {
+     "date": "2017-01-11",
+     "amount": 300000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": [
+    {
+     "date": "2026-09-28",
+     "response": "année soldé. Elle a payé 500 000 ce 24/07/2025 et a un reliquat de 16000 qui sera ajouté au payement de M5"
+    }
+   ]
+  },
+  {
+   "lid": "B014",
+   "uid": "assigame:M10",
+   "tid": "T006",
+   "tenantName": "DEFLY NICOLAS",
+   "startDate": "2025-03-01",
+   "endDate": null,
+   "rent": 121000.0,
+   "depositAmount": 363000.0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2026-01-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2027-03-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-04-01",
+     "amount": 363000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/01/2026 au 31/03/2026"
+    },
+    {
+     "date": "2026-07-01",
+     "amount": 363000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/04/2026 au 30/06/2026"
+    },
+    {
+     "date": "2025-03-01",
+     "amount": 363000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 03 mois de caution"
+    },
+    {
+     "date": "2025-03-01",
+     "amount": 363000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": [
+    {
+     "date": "2026-09-28",
+     "response": "a payé 3 mois ce 15/07/2026"
+    }
+   ]
+  },
+  {
+   "lid": "B015",
+   "uid": "assigame:M11",
+   "tid": "T011",
+   "tenantName": "BOUKA A.ESSIVI",
+   "startDate": "2021-02-01",
+   "endDate": null,
+   "rent": 121000.0,
+   "depositAmount": 600000.0,
+   "depositLabel": "06 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2025-04-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2027-02-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-03-01",
+     "amount": 242000.0,
+     "kind": "RENT",
+     "monthsCovered": 2,
+     "notes": "Payement de 2 mois de loyer du 01/04/2025 au 31/05/2025"
+    },
+    {
+     "date": "2026-04-01",
+     "amount": 269000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de solde de loyer de 3 mois du 01/06/2025 au 31/08/2025"
+    },
+    {
+     "date": "2021-02-01",
+     "amount": 600000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 06 mois de caution"
+    },
+    {
+     "date": "2021-02-01",
+     "amount": 300000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": [
+    {
+     "date": "2026-09-28",
+     "response": "a fait un depot de 200 000 ce 05/08/2026"
+    }
+   ]
+  },
+  {
+   "lid": "B016",
+   "uid": "assigame:B5",
+   "tid": "T002",
+   "tenantName": "KANYI AYOKO",
+   "startDate": "2018-01-01",
+   "endDate": null,
+   "rent": 110000.0,
+   "depositAmount": 270000.0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2025-09-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2027-01-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-02-01",
+     "amount": 660000.0,
+     "kind": "RENT",
+     "monthsCovered": 6,
+     "notes": "Payement de 6 mois de loyer du 01/09/2025 au 28/02/2026"
+    },
+    {
+     "date": "2026-06-01",
+     "amount": 330000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/03/2026 au 31/05/2026"
+    },
+    {
+     "date": "2026-09-01",
+     "amount": 330000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/06/2026 au 31/08/2026"
+    },
+    {
+     "date": "2018-01-01",
+     "amount": 270000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 03 mois de caution"
+    },
+    {
+     "date": "2018-01-01",
+     "amount": 270000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": [
+    {
+     "date": "2026-09-28",
+     "response": "a payé 3 mois ce 25/09/2026"
+    }
+   ]
+  },
+  {
+   "lid": "B017",
+   "uid": "assigame:B6",
+   "tid": "T012",
+   "tenantName": "NOMAGNON AMEYO",
+   "startDate": "2018-10-08",
+   "endDate": null,
+   "rent": 100000.0,
+   "depositAmount": 480000.0,
+   "depositLabel": "06 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2026-01-08",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2027-10-08",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-03-01",
+     "amount": 300000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 08/01/2026 au 07/04/2026"
+    },
+    {
+     "date": "2026-05-01",
+     "amount": 300000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 08/04/2026 au 07/07/2026"
+    },
+    {
+     "date": "2026-08-01",
+     "amount": 300000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 08/07/2026 au 07/10/2026"
+    },
+    {
+     "date": "2018-10-08",
+     "amount": 480000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 06 mois de caution"
+    },
+    {
+     "date": "2018-10-08",
+     "amount": 240000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B018",
+   "uid": "assigame:B7",
+   "tid": "T013",
+   "tenantName": "ZATOU ADJOVI",
+   "startDate": "2016-05-12",
+   "endDate": null,
+   "rent": 110000.0,
+   "depositAmount": 270000.0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2026-02-12",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [],
+   "payments": [
+    {
+     "date": "2026-06-01",
+     "amount": 300000.0,
+     "kind": "ARREARS",
+     "monthsCovered": null,
+     "notes": "Dépôt pour payement d'arriére de loyer"
+    },
+    {
+     "date": "2016-05-12",
+     "amount": 270000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 03 mois de caution"
+    },
+    {
+     "date": "2016-05-12",
+     "amount": 270000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": [
+    {
+     "date": "2026-09-28",
+     "response": "a fait un dépôt de 300 000"
+    }
+   ]
+  },
+  {
+   "lid": "B019",
+   "uid": "assigame:B8",
+   "tid": "T014",
+   "tenantName": "DJANKALE AFI MAWUSI",
+   "startDate": "2022-10-10",
+   "endDate": null,
+   "rent": 110000.0,
+   "depositAmount": 600000.0,
+   "depositLabel": "06 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2026-01-10",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2027-10-10",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-02-01",
+     "amount": 330000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de solde loyer de 3 mois du 10/01/2026 au 09/04/2026"
+    },
+    {
+     "date": "2026-04-01",
+     "amount": 330000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de solde loyer de 3 mois du 10/04/2026 au 09/07/2026"
+    },
+    {
+     "date": "2026-07-01",
+     "amount": 330000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de solde loyer de 3 mois du 10/07/2026 au 09/10/2026"
+    },
+    {
+     "date": "2022-10-10",
+     "amount": 600000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 06 mois de caution"
+    },
+    {
+     "date": "2022-10-10",
+     "amount": 300000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B020",
+   "uid": "assigame:M12",
+   "tid": "T015",
+   "tenantName": "GAVI AGNES",
+   "startDate": "2018-10-29",
+   "endDate": null,
+   "rent": 80000.0,
+   "depositAmount": 180000.0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2025-07-29",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2027-07-29",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-01-01",
+     "amount": 300000.0,
+     "kind": "RENT",
+     "monthsCovered": 6,
+     "notes": "Payement partiel de 6 mois de loyer du 29/07/2025 au 28/01/2026"
+    },
+    {
+     "date": "2026-06-01",
+     "amount": 500000.0,
+     "kind": "RENT",
+     "monthsCovered": 6,
+     "notes": "Payement partiel de 6 mois de loyer du 29/01/2026 au 28/07/2026"
+    },
+    {
+     "date": "2026-09-01",
+     "amount": 60000.0,
+     "kind": "RENT",
+     "monthsCovered": 1,
+     "notes": "Payement de solde de loyer d'un (1) mois de loyer du 29/07/2026 au 28/08/2026"
+    },
+    {
+     "date": "2018-10-29",
+     "amount": 180000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 03 mois de caution"
+    },
+    {
+     "date": "2018-10-29",
+     "amount": 180000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": [
+    {
+     "date": "2026-09-28",
+     "response": "a payé 6 mois de loyeé et a un reliquat de 20 000 avec la sci"
+    }
+   ]
+  },
+  {
+   "lid": "B021",
+   "uid": "assigame:M13",
+   "tid": "T016",
+   "tenantName": "OUMI YEL N'BASSE",
+   "startDate": "2016-01-20",
+   "endDate": null,
+   "rent": 90000.0,
+   "depositAmount": 210000.0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2026-01-20",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2027-01-20",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-03-01",
+     "amount": 270000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 20/01/2026 au 19/04/2026"
+    },
+    {
+     "date": "2026-08-01",
+     "amount": 270000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 20/04/2026 au 19/07/2026"
+    },
+    {
+     "date": "2016-01-20",
+     "amount": 210000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 03 mois de caution"
+    },
+    {
+     "date": "2016-01-20",
+     "amount": 210000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": [
+    {
+     "date": "2026-09-28",
+     "response": "a payé 3 mois ce 28/08/2026"
+    }
+   ]
+  },
+  {
+   "lid": "B022",
+   "uid": "assigame:M14",
+   "tid": "T004",
+   "tenantName": "AWOUGBLA ANOUMOU",
+   "startDate": "2021-08-10",
+   "endDate": null,
+   "rent": 90000.0,
+   "depositAmount": 420000.0,
+   "depositLabel": "06 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2025-10-10",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2027-08-10",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-04-01",
+     "amount": 270000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de solde loyer de 3 mois du 10/10/2025 au 09/01/2026"
+    },
+    {
+     "date": "2026-09-01",
+     "amount": 810000.0,
+     "kind": "RENT",
+     "monthsCovered": 9,
+     "notes": "Payement de 9 mois de loyer du 10/01/2026 au 09/10/2026"
+    },
+    {
+     "date": "2021-08-10",
+     "amount": 420000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 06 mois de caution"
+    },
+    {
+     "date": "2021-08-10",
+     "amount": 270000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": [
+    {
+     "date": "2026-09-28",
+     "response": "a payé 9 mois ce 03/09/2026"
+    }
+   ]
+  },
+  {
+   "lid": "B023",
+   "uid": "assigame:M15",
+   "tid": "T017",
+   "tenantName": "AL MORACH",
+   "startDate": "2024-06-01",
+   "endDate": null,
+   "rent": 80000.0,
+   "depositAmount": 240000.0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2025-12-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2027-06-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-04-01",
+     "amount": 480000.0,
+     "kind": "RENT",
+     "monthsCovered": 6,
+     "notes": "Payement de 6 mois de loyer du 01/12/2025 au 31/05/2026"
+    },
+    {
+     "date": "2024-06-01",
+     "amount": 240000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 03 mois de caution"
+    },
+    {
+     "date": "2024-06-01",
+     "amount": 240000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": [
+    {
+     "date": "2026-09-28",
+     "response": "dis qu'il va me faire signe bientôt"
+    }
+   ]
+  },
+  {
+   "lid": "B024",
+   "uid": "assigame:M16",
+   "tid": "T002",
+   "tenantName": "KANYI AYOKO",
+   "startDate": "2020-10-01",
+   "endDate": null,
+   "rent": 90000.0,
+   "depositAmount": 210000.0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2025-09-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2026-03-01",
+     "rate": 0.125,
+     "applied": true
+    },
+    {
+     "dueDate": "2027-12-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-02-01",
+     "amount": 480000.0,
+     "kind": "RENT",
+     "monthsCovered": 6,
+     "notes": "Payement de 6 mois de loyer du 01/09/2025 au 28/02/2026"
+    },
+    {
+     "date": "2026-06-01",
+     "amount": 270000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/03/2026 au 31/05/2026"
+    },
+    {
+     "date": "2026-09-01",
+     "amount": 270000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/06/2026 au 31/08/2026"
+    },
+    {
+     "date": "2020-10-01",
+     "amount": 210000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 03 mois de caution"
+    },
+    {
+     "date": "2020-10-01",
+     "amount": 210000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": [
+    {
+     "date": "2026-09-28",
+     "response": "a payé 3 mois ce 25/09/2026"
+    }
+   ]
+  },
+  {
+   "lid": "B025",
+   "uid": "assigame:M18",
+   "tid": "T018",
+   "tenantName": "BOKO EYAH",
+   "startDate": "2016-09-09",
+   "endDate": null,
+   "rent": 70000.0,
+   "depositAmount": 150000.0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2025-11-09",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2027-09-09",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-01-01",
+     "amount": 210000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 09/11/2025 au 08/02/2026"
+    },
+    {
+     "date": "2026-03-01",
+     "amount": 210000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de solde loyer de 3 mois du 09/02/2026 au 08/05/2026"
+    },
+    {
+     "date": "2026-07-01",
+     "amount": 210000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de solde loyer de 3 mois du 09/05/2026 au 08/08/2026"
+    },
+    {
+     "date": "2016-09-09",
+     "amount": 150000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 03 mois de caution"
+    },
+    {
+     "date": "2016-09-09",
+     "amount": 150000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B026",
+   "uid": "assigame:M19",
+   "tid": "T019",
+   "tenantName": "H.O.K.",
+   "startDate": "2025-09-01",
+   "endDate": null,
+   "rent": 70000.0,
+   "depositAmount": 210000.0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2026-02-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2027-09-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-02-01",
+     "amount": 210000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/02/2026 au 30/04/2026"
+    },
+    {
+     "date": "2026-06-01",
+     "amount": 210000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/05/2026 au 31/07/2026"
+    },
+    {
+     "date": "2025-09-01",
+     "amount": 210000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 03 mois de caution"
+    },
+    {
+     "date": "2025-09-01",
+     "amount": 140000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 2,
+     "notes": "Rapport : 02 mois de loyer"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B027",
+   "uid": "assigame:M20",
+   "tid": "T020",
+   "tenantName": "ABBEY STELLA",
+   "startDate": "2022-12-15",
+   "endDate": null,
+   "rent": 60000.0,
+   "depositAmount": 300000.0,
+   "depositLabel": "06 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2026-03-15",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2026-12-15",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-04-01",
+     "amount": 180000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 15/03/2026 au 14/06/2026"
+    },
+    {
+     "date": "2026-06-01",
+     "amount": 180000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 15/06/2026 au 14/09/2026"
+    },
+    {
+     "date": "2022-12-15",
+     "amount": 300000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 06 mois de caution"
+    },
+    {
+     "date": "2022-12-15",
+     "amount": 150000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B028",
+   "uid": "assigame:M21",
+   "tid": "T002",
+   "tenantName": "KANYI AYOKO",
+   "startDate": "2021-09-01",
+   "endDate": null,
+   "rent": 70000.0,
+   "depositAmount": 300000.0,
+   "depositLabel": "06 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2025-09-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2027-09-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-02-01",
+     "amount": 420000.0,
+     "kind": "RENT",
+     "monthsCovered": 6,
+     "notes": "Payement de 6 mois de loyer du 01/09/2025 au 28/02/2026"
+    },
+    {
+     "date": "2026-06-01",
+     "amount": 210000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/03/2026 au 31/05/2026"
+    },
+    {
+     "date": "2026-09-01",
+     "amount": 210000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/06/2026 au 31/08/2026"
+    },
+    {
+     "date": "2021-09-01",
+     "amount": 300000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 06 mois de caution"
+    },
+    {
+     "date": "2021-09-01",
+     "amount": 150000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": [
+    {
+     "date": "2026-09-28",
+     "response": "a payé 3 mois ce 25/09/2026"
+    }
+   ]
+  },
+  {
+   "lid": "B029",
+   "uid": "assigame:M22",
+   "tid": "T021",
+   "tenantName": "SEHOVOH KANTÉ KOFFI RODRIGUE",
+   "startDate": "2020-10-04",
+   "endDate": null,
+   "rent": 70000.0,
+   "depositAmount": 150000.0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2025-10-04",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2027-10-04",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-04-01",
+     "amount": 420000.0,
+     "kind": "RENT",
+     "monthsCovered": 6,
+     "notes": "Payement de 6 mois de loyer du 04/10/2025 au 03/10/2025"
+    },
+    {
+     "date": "2020-10-04",
+     "amount": 150000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 03 mois de caution"
+    },
+    {
+     "date": "2020-10-04",
+     "amount": 100000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 2,
+     "notes": "Rapport : 02 mois de loyer"
+    }
+   ],
+   "followUps": [
+    {
+     "date": "2026-09-28",
+     "response": "a payé 6 mois ce 24/04/2026"
+    }
+   ]
+  },
+  {
+   "lid": "B030",
+   "uid": "jp2:B1",
+   "tid": "T022",
+   "tenantName": "HAMMER GROUP",
+   "startDate": "2025-11-01",
+   "endDate": null,
+   "rent": 100000.0,
+   "depositAmount": 300000.0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2026-02-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2027-11-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-04-01",
+     "amount": 300000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 01/02/2026 au 30/04/2026"
+    },
+    {
+     "date": "2026-06-01",
+     "amount": 300000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 01/05/2026 au 31/07/2026"
+    },
+    {
+     "date": "2025-11-01",
+     "amount": 300000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 03 mois de caution"
+    },
+    {
+     "date": "2025-11-01",
+     "amount": 300000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B031",
+   "uid": "jp2:B2",
+   "tid": "T023",
+   "tenantName": "MAD_JEWELRY_F",
+   "startDate": "2025-03-24",
+   "endDate": null,
+   "rent": 300000.0,
+   "depositAmount": 900000.0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2025-12-24",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2027-03-24",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-01-01",
+     "amount": 900000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 24/12/2025 au 23/03/2026"
+    },
+    {
+     "date": "2026-04-01",
+     "amount": 900000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 24/03/2026 au 23/06/2026"
+    },
+    {
+     "date": "2026-09-01",
+     "amount": 1200000.0,
+     "kind": "RENT",
+     "monthsCovered": 4,
+     "notes": "Payement de loyer de 4 mois du 24/06/2026 au 23/10/2026"
+    },
+    {
+     "date": "2025-03-24",
+     "amount": 900000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 03 mois de caution"
+    },
+    {
+     "date": "2025-03-24",
+     "amount": 900000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B032",
+   "uid": "jp2:B3",
+   "tid": "T024",
+   "tenantName": "CHEZ JOHNNY",
+   "startDate": "2022-10-01",
+   "endDate": null,
+   "rent": 330000.0,
+   "depositAmount": 900000.0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2026-01-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2027-01-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-01-01",
+     "amount": 990000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 01/01/2026 au 31/03/2026"
+    },
+    {
+     "date": "2026-04-01",
+     "amount": 990000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 01/04/2026 au 30/06/2026"
+    },
+    {
+     "date": "2026-07-01",
+     "amount": 990000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 01/07/2026 au 30/09/2026"
+    },
+    {
+     "date": "2022-10-01",
+     "amount": 900000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 03 mois de caution"
+    },
+    {
+     "date": "2022-10-01",
+     "amount": 990000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B033",
+   "uid": "jp2:B4",
+   "tid": "T025",
+   "tenantName": "EASY WIN",
+   "startDate": "2023-01-01",
+   "endDate": null,
+   "rent": 330000.0,
+   "depositAmount": 900000.0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2026-01-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2027-01-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-01-01",
+     "amount": 990000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 01/01/2026 au 31/03/2026"
+    },
+    {
+     "date": "2026-04-01",
+     "amount": 990000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 01/04/2026 au 30/06/2026"
+    },
+    {
+     "date": "2026-07-01",
+     "amount": 990000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 01/07/2026 au 30/09/2026"
+    },
+    {
+     "date": "2023-01-01",
+     "amount": 900000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 03 mois de caution"
+    },
+    {
+     "date": "2023-01-01",
+     "amount": 990000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B034",
+   "uid": "jp2:STUP ME1",
+   "tid": "T026",
+   "tenantName": "MOUSTAPHA",
+   "startDate": "2025-11-01",
+   "endDate": null,
+   "rent": 250000.0,
+   "depositAmount": 0,
+   "depositLabel": "pas de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2026-01-01",
+   "needsReview": true,
+   "reviewReason": "Aucun paiement dans les relevés 2026 ; prochain paiement du registre au 01/01/2026 : impayé réel ou ligne non mise à jour ?",
+   "reviews": [],
+   "payments": [],
+   "followUps": []
+  },
+  {
+   "lid": "B035",
+   "uid": "jp2:STUP ME2",
+   "tid": "T027",
+   "tenantName": "AL MSSAN",
+   "startDate": "2026-01-15",
+   "endDate": null,
+   "rent": 250000.0,
+   "depositAmount": 0,
+   "depositLabel": null,
+   "status": "ACTIVE",
+   "ledgerStartDate": null,
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [],
+   "payments": [
+    {
+     "date": "2026-02-01",
+     "amount": 750000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Location de studio Payement de 3 mois de loyer du 15/01/2026 au 14/04/2026"
+    },
+    {
+     "date": "2026-05-01",
+     "amount": 750000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 15/04/2026 au 14/07/2026"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B036",
+   "uid": "jp2:STUG ME3",
+   "tid": "T028",
+   "tenantName": "ALI MOHAMAD MASRI",
+   "startDate": "2024-10-01",
+   "endDate": null,
+   "rent": 250000.0,
+   "depositAmount": 0,
+   "depositLabel": "0 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2025-12-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2026-10-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-01-01",
+     "amount": 250000.0,
+     "kind": "RENT",
+     "monthsCovered": 1,
+     "notes": "Payement de loyer d'un (1) mois du 01/12/2025 au 31/12/2025"
+    },
+    {
+     "date": "2026-03-01",
+     "amount": 500000.0,
+     "kind": "RENT",
+     "monthsCovered": 2,
+     "notes": "Payement de loyer de 2 mois du 01/01/2026 au 28/02/2026"
+    },
+    {
+     "date": "2026-04-01",
+     "amount": 250000.0,
+     "kind": "RENT",
+     "monthsCovered": 1,
+     "notes": "Payement de loyer d'un (1) mois du 01/03/2026 au 31/03/2026"
+    },
+    {
+     "date": "2026-06-01",
+     "amount": 500000.0,
+     "kind": "RENT",
+     "monthsCovered": 2,
+     "notes": "Payement de loyer de 2 mois du 01/04/2026 au 31/05/2026"
+    },
+    {
+     "date": "2026-07-01",
+     "amount": 250000.0,
+     "kind": "RENT",
+     "monthsCovered": 1,
+     "notes": "Payement de loyer d'un (1) mois du 01/06/2026 au 30/06/2026"
+    },
+    {
+     "date": "2024-10-01",
+     "amount": 250000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 1,
+     "notes": "Rapport : 01 mois de loyer"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B037",
+   "uid": "jp2:2APP ME1",
+   "tid": "T029",
+   "tenantName": "MONZER",
+   "startDate": "2026-01-01",
+   "endDate": null,
+   "rent": 300000.0,
+   "depositAmount": 0,
+   "depositLabel": null,
+   "status": "ACTIVE",
+   "ledgerStartDate": null,
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [],
+   "payments": [
+    {
+     "date": "2026-01-01",
+     "amount": 300000.0,
+     "kind": "RENT",
+     "monthsCovered": 1,
+     "notes": "Payement de loyer d'un (1) mois du 01/01/2026 au 31/01/2026"
+    },
+    {
+     "date": "2026-02-01",
+     "amount": 300000.0,
+     "kind": "RENT",
+     "monthsCovered": 1,
+     "notes": "Payement de loyer d'un (1) mois du 01/02/2026 au 28/02/2026"
+    },
+    {
+     "date": "2026-03-01",
+     "amount": 300000.0,
+     "kind": "RENT",
+     "monthsCovered": 1,
+     "notes": "Payement de loyer d'un (1) mois du 01/03/2026 au 31/03/2026"
+    },
+    {
+     "date": "2026-04-01",
+     "amount": 300000.0,
+     "kind": "RENT",
+     "monthsCovered": 1,
+     "notes": "Payement de loyer d'un (1) mois du 01/04/2026 au 30/04/2026"
+    },
+    {
+     "date": "2026-05-01",
+     "amount": 300000.0,
+     "kind": "RENT",
+     "monthsCovered": 1,
+     "notes": "Payement de loyer d'un (1) mois du 01/05/2026 au 31/05/2026"
+    },
+    {
+     "date": "2026-06-01",
+     "amount": 300000.0,
+     "kind": "RENT",
+     "monthsCovered": 1,
+     "notes": "Payement de loyer d'un (1) mois du 01/06/2026 au 30/06/2026"
+    },
+    {
+     "date": "2026-07-01",
+     "amount": 300000.0,
+     "kind": "RENT",
+     "monthsCovered": 1,
+     "notes": "Payement de loyer d'un (1) mois du 01/07/2026 au 31/07/2026"
+    },
+    {
+     "date": "2026-08-01",
+     "amount": 300000.0,
+     "kind": "RENT",
+     "monthsCovered": 1,
+     "notes": "Payement de loyer d'un (1) mois du 01/08/2026 au 31/08/2026"
+    },
+    {
+     "date": "2026-09-01",
+     "amount": 300000.0,
+     "kind": "RENT",
+     "monthsCovered": 1,
+     "notes": "Payement de loyer d'un (1) mois du 01/09/2026 au 30/09/2026"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B038",
+   "uid": "jp2:3APP ME1",
+   "tid": "T030",
+   "tenantName": "GIT",
+   "startDate": "2024-12-01",
+   "endDate": null,
+   "rent": 250000.0,
+   "depositAmount": 0,
+   "depositLabel": "0 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2026-01-01",
+   "needsReview": true,
+   "reviewReason": "Aucun paiement dans les relevés 2026 ; prochain paiement du registre au 01/01/2026 : impayé réel ou ligne non mise à jour ?",
+   "reviews": [],
+   "payments": [],
+   "followUps": []
+  },
+  {
+   "lid": "B039",
+   "uid": "jp2:3APP 2",
+   "tid": "T031",
+   "tenantName": "SMMT",
+   "startDate": "2026-03-01",
+   "endDate": null,
+   "rent": 250000.0,
+   "depositAmount": 0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": null,
+   "needsReview": true,
+   "reviewReason": "Aucun paiement dans les relevés 2026 ; prochain paiement du registre au 01/01/2026 : impayé réel ou ligne non mise à jour ?",
+   "reviews": [],
+   "payments": [],
+   "followUps": []
+  },
+  {
+   "lid": "B040",
+   "uid": "jp2:3APP 3",
+   "tid": "T031",
+   "tenantName": "SMMT",
+   "startDate": "2024-09-01",
+   "endDate": null,
+   "rent": 250000.0,
+   "depositAmount": 0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2026-01-01",
+   "needsReview": true,
+   "reviewReason": "Aucun paiement dans les relevés 2026 ; prochain paiement du registre au 01/01/2026 : impayé réel ou ligne non mise à jour ?",
+   "reviews": [],
+   "payments": [],
+   "followUps": []
+  },
+  {
+   "lid": "B041",
+   "uid": "paix:B1",
+   "tid": "T032",
+   "tenantName": "CERVEAU STORE",
+   "startDate": "2023-07-01",
+   "endDate": null,
+   "rent": 330000.0,
+   "depositAmount": 900000.0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2026-02-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2026-05-01",
+     "rate": 0.1,
+     "applied": true
+    },
+    {
+     "dueDate": "2028-01-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-04-01",
+     "amount": 900000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/02/2026 au 30/04/2026"
+    },
+    {
+     "date": "2026-07-01",
+     "amount": 990000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/05/2026 au 31/07/2026"
+    },
+    {
+     "date": "2023-07-01",
+     "amount": 900000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 03 mois de caution"
+    },
+    {
+     "date": "2023-07-01",
+     "amount": 900000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": [
+    {
+     "date": "2026-09-28",
+     "response": "a payé 3 mois ce 15/07/2026"
+    }
+   ]
+  },
+  {
+   "lid": "B042",
+   "uid": "paix:B2",
+   "tid": "T033",
+   "tenantName": "TAVARES-AFONSO SHEILA SUELY",
+   "startDate": "2024-12-01",
+   "endDate": null,
+   "rent": 400000.0,
+   "depositAmount": 1200000.0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2025-12-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2026-12-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-01-01",
+     "amount": 1200000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/12/2025 au 28/02/2026"
+    },
+    {
+     "date": "2026-05-01",
+     "amount": 1200000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/03/2026 au 31/05/2026"
+    },
+    {
+     "date": "2026-07-01",
+     "amount": 1200000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/06/2026 au 31/08/2026"
+    },
+    {
+     "date": "2024-12-01",
+     "amount": 1200000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 03 mois de caution"
+    },
+    {
+     "date": "2024-12-01",
+     "amount": 1200000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": [
+    {
+     "date": "2026-09-28",
+     "response": "a payé 3 mois ce 15/07/2026"
+    }
+   ]
+  },
+  {
+   "lid": "B043",
+   "uid": "paix:B3",
+   "tid": "T034",
+   "tenantName": "MOUNA FOOD CHOCO-LATTE SARLU",
+   "startDate": "2021-12-01",
+   "endDate": null,
+   "rent": 385000.0,
+   "depositAmount": 900000.0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2025-12-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2026-12-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-02-01",
+     "amount": 1155000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/12/2025 au 28/02/2026"
+    },
+    {
+     "date": "2026-05-01",
+     "amount": 1155000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/03/2026 au 31/05/2026"
+    },
+    {
+     "date": "2026-08-01",
+     "amount": 1155000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/06/2026 au 31/08/2026"
+    },
+    {
+     "date": "2021-12-01",
+     "amount": 900000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 03 mois de caution"
+    },
+    {
+     "date": "2021-12-01",
+     "amount": 1155000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": [
+    {
+     "date": "2026-09-28",
+     "response": "a payé 3 mois ce 28/05/2026"
+    }
+   ]
+  },
+  {
+   "lid": "B044",
+   "uid": "paix:B4",
+   "tid": "T034",
+   "tenantName": "MOUNA FOOD CHOCO-LATTE SARLU",
+   "startDate": "2021-12-01",
+   "endDate": null,
+   "rent": 440000.0,
+   "depositAmount": 1200000.0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2025-12-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2026-12-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-02-01",
+     "amount": 1320000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/12/2025 au 28/02/2026"
+    },
+    {
+     "date": "2026-05-01",
+     "amount": 1320000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/03/2026 au 31/05/2026"
+    },
+    {
+     "date": "2026-08-01",
+     "amount": 1320000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/06/2026 au 31/08/2026"
+    },
+    {
+     "date": "2021-12-01",
+     "amount": 1200000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 03 mois de caution"
+    },
+    {
+     "date": "2021-12-01",
+     "amount": 1320000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": [
+    {
+     "date": "2026-09-28",
+     "response": "a payé 3 mois ce 28/05/2026"
+    }
+   ]
+  },
+  {
+   "lid": "B045",
+   "uid": "paix:B5",
+   "tid": "T035",
+   "tenantName": "SMART ALI",
+   "startDate": "2021-07-01",
+   "endDate": null,
+   "rent": 2250000.0,
+   "depositAmount": 4500000.0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2026-01-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2028-01-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-03-01",
+     "amount": 6750000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/01/2026 au 31/03/2026"
+    },
+    {
+     "date": "2026-06-01",
+     "amount": 6750000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/04/2026 au 30/06/2026"
+    },
+    {
+     "date": "2026-09-01",
+     "amount": 6750000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/07/2026 au 30/09/2026"
+    },
+    {
+     "date": "2021-07-01",
+     "amount": 4500000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 03 mois de caution"
+    },
+    {
+     "date": "2021-07-01",
+     "amount": 4500000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03mois de loyer"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B046",
+   "uid": "paix:B6",
+   "tid": "T036",
+   "tenantName": "BLUE BERRY TRAVEL SARL",
+   "startDate": "2022-04-01",
+   "endDate": null,
+   "rent": 700000.0,
+   "depositAmount": 1950000.0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2026-01-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2027-01-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-04-01",
+     "amount": 2100000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/01/2026 au 31/03/2026"
+    },
+    {
+     "date": "2026-06-01",
+     "amount": 2100000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/04/2026 au 30/06/2026"
+    },
+    {
+     "date": "2026-07-01",
+     "amount": 2100000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/07/2026 au 30/09/2026"
+    },
+    {
+     "date": "2022-04-01",
+     "amount": 1950000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 03 mois de caution"
+    },
+    {
+     "date": "2022-04-01",
+     "amount": 2100000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": [
+    {
+     "date": "2026-09-28",
+     "response": "a payé 3 mois ce 15/07/2026"
+    }
+   ]
+  },
+  {
+   "lid": "B047",
+   "uid": "paix:B7",
+   "tid": "T032",
+   "tenantName": "CERVEAU STORE",
+   "startDate": "2025-12-01",
+   "endDate": null,
+   "rent": 400000.0,
+   "depositAmount": 1200000.0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2026-03-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2027-12-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-04-01",
+     "amount": 1200000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/03/2026 au 31/05/2026"
+    },
+    {
+     "date": "2026-07-01",
+     "amount": 1200000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/06/2026 au 31/08/2026"
+    },
+    {
+     "date": "2025-12-01",
+     "amount": 1200000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 03 mois de caution"
+    },
+    {
+     "date": "2025-12-01",
+     "amount": 1200000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": [
+    {
+     "date": "2026-09-28",
+     "response": "a payé 3 mois ce 15/07/2026"
+    }
+   ]
+  },
+  {
+   "lid": "B048",
+   "uid": "paix:B8",
+   "tid": "T037",
+   "tenantName": "R-LOGISTIC",
+   "startDate": "2024-06-01",
+   "endDate": null,
+   "rent": 3100000.0,
+   "depositAmount": 8700000.0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2025-10-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2026-04-01",
+     "rate": 0.069,
+     "applied": true
+    },
+    {
+     "dueDate": "2028-06-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-01-01",
+     "amount": 8700000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/10/2025 au 31/12/2025"
+    },
+    {
+     "date": "2026-03-01",
+     "amount": 8700000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/01/2026 au 31/03/2026"
+    },
+    {
+     "date": "2026-06-01",
+     "amount": 9300000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/04/2026 au 30/06/2026"
+    },
+    {
+     "date": "2026-09-01",
+     "amount": 800000.0,
+     "kind": "OTHER",
+     "monthsCovered": null,
+     "notes": "collecte des frais d'entretien mois de janvier à août 2026 chez r logistic versé sur le compte sci bia"
+    },
+    {
+     "date": "2024-06-01",
+     "amount": 8700000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 03 mois de caution"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B049",
+   "uid": "paix:STU2 MER",
+   "tid": "T038",
+   "tenantName": "MORENO TRADING",
+   "startDate": "2025-06-01",
+   "endDate": null,
+   "rent": 300000.0,
+   "depositAmount": 0,
+   "depositLabel": "0 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2026-06-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2027-06-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-06-01",
+     "amount": 1800000.0,
+     "kind": "RENT",
+     "monthsCovered": 6,
+     "notes": "Payement de 6 mois de loyer du 01/06/2025 au 30/11/2026"
+    },
+    {
+     "date": "2025-06-01",
+     "amount": 1800000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 6,
+     "notes": "Rapport : 06 mois de loyer"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B050",
+   "uid": "paix:3APP2 MER",
+   "tid": "T038",
+   "tenantName": "MORENO TRADING",
+   "startDate": "2025-02-01",
+   "endDate": null,
+   "rent": 1000000.0,
+   "depositAmount": 0,
+   "depositLabel": "0 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2026-02-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2027-02-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-02-01",
+     "amount": 6000000.0,
+     "kind": "RENT",
+     "monthsCovered": 6,
+     "notes": "Payement de 6 mois de loyer du 01/02/2026 au 31/07/2026"
+    },
+    {
+     "date": "2026-08-01",
+     "amount": 6000000.0,
+     "kind": "RENT",
+     "monthsCovered": 6,
+     "notes": "Payement de 6 mois de loyer du 01/08/2026 au 31/01/2027"
+    },
+    {
+     "date": "2025-02-01",
+     "amount": 6000000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 6,
+     "notes": "Rapport : 06 mois de loyer"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B051",
+   "uid": "paix:3APP ME 2 PAIX",
+   "tid": "T039",
+   "tenantName": "SEVENFOOD",
+   "startDate": "2026-05-01",
+   "endDate": null,
+   "rent": 800000.0,
+   "depositAmount": 0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": null,
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2028-05-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-06-01",
+     "amount": 1600000.0,
+     "kind": "RENT",
+     "monthsCovered": 2,
+     "notes": "Payement de 2 mois de loyer du 01/05/2026 au 30/06/2026"
+    },
+    {
+     "date": "2026-08-01",
+     "amount": 2400000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/07/2026 au 30/09/2026"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B052",
+   "uid": "paix:STU ME 3 MER",
+   "tid": "T040",
+   "tenantName": "INTERFOOD",
+   "startDate": "2026-05-01",
+   "endDate": null,
+   "rent": 400000.0,
+   "depositAmount": 0,
+   "depositLabel": "0 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": null,
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2028-05-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-06-01",
+     "amount": 800000.0,
+     "kind": "RENT",
+     "monthsCovered": 2,
+     "notes": "Payement de 2 mois de loyer du 01/05/2026 au 30/06/2026"
+    },
+    {
+     "date": "2026-08-01",
+     "amount": 1200000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/07/2026 au 30/09/2026"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B053",
+   "uid": "paix:3APP ME 3 MER",
+   "tid": "T041",
+   "tenantName": "AFRICA BIO COMMODITIES",
+   "startDate": "2026-05-01",
+   "endDate": null,
+   "rent": 800000.0,
+   "depositAmount": 0,
+   "depositLabel": "0 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": null,
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2028-05-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-06-01",
+     "amount": 1600000.0,
+     "kind": "RENT",
+     "monthsCovered": 2,
+     "notes": "Payement de 2 mois de loyer du 01/05/2026 au 30/06/2026"
+    },
+    {
+     "date": "2026-08-01",
+     "amount": 2400000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/07/2026 au 30/09/2026"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B054",
+   "uid": "paix:3APP3 ME PAIX",
+   "tid": "T042",
+   "tenantName": "UNICOM COMMODITIES SARL U",
+   "startDate": "2025-11-01",
+   "endDate": null,
+   "rent": 800000.0,
+   "depositAmount": 2400000.0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2026-02-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2026-05-01",
+     "rate": 0.0667,
+     "applied": true
+    },
+    {
+     "dueDate": "2027-11-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-04-01",
+     "amount": 150000.0,
+     "kind": "OTHER",
+     "monthsCovered": null,
+     "notes": "Frais d'entretien (inclus dans : Payement de 3 mois de loyer du 01/02/2026 au 30/04/2026 et 3 mois de frais d'entretien 01/01/2026 au 31/03/2026(150 000))"
+    },
+    {
+     "date": "2026-04-01",
+     "amount": 2250000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/02/2026 au 30/04/2026 et 3 mois de frais d'entretien 01/01/2026 au 31/03/2026(150 000)"
+    },
+    {
+     "date": "2026-07-01",
+     "amount": 350000.0,
+     "kind": "OTHER",
+     "monthsCovered": null,
+     "notes": "Frais d'entretien (inclus dans : Payement de 6 mois de loyer du 01/05/2026 au 31/10/2026 et 7 mois de frais d'entretien 01/04/2026 au 31/10/2026(350 000))"
+    },
+    {
+     "date": "2026-07-01",
+     "amount": 4800000.0,
+     "kind": "RENT",
+     "monthsCovered": 6,
+     "notes": "Payement de 6 mois de loyer du 01/05/2026 au 31/10/2026 et 7 mois de frais d'entretien 01/04/2026 au 31/10/2026(350 000)"
+    },
+    {
+     "date": "2025-11-01",
+     "amount": 2400000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 03 mois de caution"
+    },
+    {
+     "date": "2025-11-01",
+     "amount": 2400000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": [
+    {
+     "date": "2026-09-28",
+     "response": "ont dis qu'ils vont payer sous peu"
+    }
+   ]
+  },
+  {
+   "lid": "B055",
+   "uid": "villas:VILLA CAISSE BODJONA RABI",
+   "tid": "T043",
+   "tenantName": "BRASSERIE DU BENIN",
+   "startDate": "2021-09-01",
+   "endDate": null,
+   "rent": 2000000.0,
+   "depositAmount": 6000000.0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2025-12-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2028-09-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-02-01",
+     "amount": 6000000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/12/2025 au 28/02/2026"
+    },
+    {
+     "date": "2026-06-01",
+     "amount": 6000000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/03/2026 au 31/05/2026"
+    },
+    {
+     "date": "2021-09-01",
+     "amount": 6000000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 03 mois de caution"
+    },
+    {
+     "date": "2021-09-01",
+     "amount": 6000000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": [
+    {
+     "date": "2026-09-28",
+     "response": "facture déposée"
+    }
+   ]
+  },
+  {
+   "lid": "B056",
+   "uid": "villas:VILLA ESPERANCE 133",
+   "tid": "T044",
+   "tenantName": "KUMAR DILEEP",
+   "startDate": "2024-04-01",
+   "endDate": null,
+   "rent": 1200000.0,
+   "depositAmount": 3600000.0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2026-01-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [],
+   "payments": [
+    {
+     "date": "2026-03-01",
+     "amount": 3600000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/01/2026 au 31/03/2026"
+    },
+    {
+     "date": "2024-04-01",
+     "amount": 3600000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 03 mois de caution"
+    },
+    {
+     "date": "2024-04-01",
+     "amount": 3600000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": [
+    {
+     "date": "2026-09-28",
+     "response": "facture deposée"
+    }
+   ]
+  },
+  {
+   "lid": "B057",
+   "uid": "villas:VILLA JUBILE 118 SONIPA RABI",
+   "tid": "T045",
+   "tenantName": "KAROUT HUSSEIN",
+   "startDate": "2025-05-01",
+   "endDate": null,
+   "rent": 1300000.0,
+   "depositAmount": 3900000.0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2026-02-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [],
+   "payments": [
+    {
+     "date": "2026-02-01",
+     "amount": 3900000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/02/2026 au 30/04/2026"
+    },
+    {
+     "date": "2025-05-01",
+     "amount": 3900000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 03 mois de caution"
+    },
+    {
+     "date": "2025-05-01",
+     "amount": 3900000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": [
+    {
+     "date": "2026-09-28",
+     "response": "a dis que le nouveau propriétaire est venu prendre le loyer"
+    }
+   ]
+  },
+  {
+   "lid": "B058",
+   "uid": "villas:VILLA JUBILE A80",
+   "tid": "T046",
+   "tenantName": "SIRE",
+   "startDate": "2023-08-01",
+   "endDate": null,
+   "rent": 1320000.0,
+   "depositAmount": 3600000.0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2026-01-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2027-08-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-01-01",
+     "amount": 1320000.0,
+     "kind": "RENT",
+     "monthsCovered": 1,
+     "notes": "Payement d'un (1) mois de loyer du 01/01/2026 au 31/01/2026"
+    },
+    {
+     "date": "2026-02-01",
+     "amount": 1320000.0,
+     "kind": "RENT",
+     "monthsCovered": 1,
+     "notes": "Payement d'un (1) mois de loyer du 01/02/2026 au 28/02/2026"
+    },
+    {
+     "date": "2026-03-01",
+     "amount": 1320000.0,
+     "kind": "RENT",
+     "monthsCovered": 1,
+     "notes": "Payement d'un (1) mois de loyer du 01/03/2026 au 31/03/2026"
+    },
+    {
+     "date": "2026-04-01",
+     "amount": 1320000.0,
+     "kind": "RENT",
+     "monthsCovered": 1,
+     "notes": "Payement d'un (1) mois de loyer du 01/04/2026 au 30/04/2026"
+    },
+    {
+     "date": "2026-05-01",
+     "amount": 1320000.0,
+     "kind": "RENT",
+     "monthsCovered": 1,
+     "notes": "Payement d'un (1) mois de loyer du 01/05/2026 au 31/05/2026"
+    },
+    {
+     "date": "2026-06-01",
+     "amount": 1320000.0,
+     "kind": "RENT",
+     "monthsCovered": 1,
+     "notes": "Payement d'un (1) mois de loyer du 01/06/2026 au 30/06/2026"
+    },
+    {
+     "date": "2026-07-01",
+     "amount": 1320000.0,
+     "kind": "RENT",
+     "monthsCovered": 1,
+     "notes": "Payement d'un (1) mois de loyer du 01/07/2026 au 31/07/2026"
+    },
+    {
+     "date": "2026-08-01",
+     "amount": 1320000.0,
+     "kind": "RENT",
+     "monthsCovered": 1,
+     "notes": "Payement d'un (1) mois de loyer du 01/08/2026 au 31/08/2026"
+    },
+    {
+     "date": "2026-09-01",
+     "amount": 1320000.0,
+     "kind": "RENT",
+     "monthsCovered": 1,
+     "notes": "Payement d'un (1) mois de loyer du 01/09/2026 au 30/09/2026"
+    },
+    {
+     "date": "2023-08-01",
+     "amount": 3600000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 03 mois de caution"
+    },
+    {
+     "date": "2023-08-01",
+     "amount": 3600000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B059",
+   "uid": "villas:VILLA MILLENIUM",
+   "tid": "T047",
+   "tenantName": "AMBASSADE DES USA AU TOGO",
+   "startDate": "2022-06-28",
+   "endDate": null,
+   "rent": 1500000.0,
+   "depositAmount": 0,
+   "depositLabel": "0 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2026-03-28",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2027-06-28",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-03-01",
+     "amount": 4500000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 28/03/2026 au 27/06/2026"
+    },
+    {
+     "date": "2026-06-01",
+     "amount": 4500000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 28/06/2026 au 27/09/2026"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B060",
+   "uid": "villas:VILLA 313",
+   "tid": "T048",
+   "tenantName": "BANQUE ATLANTIQUE",
+   "startDate": "2023-11-01",
+   "endDate": null,
+   "rent": 2300000.0,
+   "depositAmount": 0,
+   "depositLabel": "0 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2025-11-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2026-02-01",
+     "rate": 0.15,
+     "applied": true
+    },
+    {
+     "dueDate": "2027-11-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-02-01",
+     "amount": 6000000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/11/2025 au 31/01/2026"
+    },
+    {
+     "date": "2026-06-01",
+     "amount": 6900000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/02/2026 au 30/04/2026"
+    },
+    {
+     "date": "2026-08-01",
+     "amount": 6900000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/05/2026 au 31/07/2026"
+    },
+    {
+     "date": "2026-09-01",
+     "amount": 6900000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/08/2026 au 31/10/2026"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B061",
+   "uid": "villas:VILLA AVEPOZO",
+   "tid": "T010",
+   "tenantName": "TOP COSMETIQUE",
+   "startDate": "2021-05-01",
+   "endDate": null,
+   "rent": 400000.0,
+   "depositAmount": 0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": null,
+   "needsReview": true,
+   "reviewReason": "Aucun paiement dans les relevés 2026 ; prochain paiement du registre au 01/05/2021 : impayé réel ou ligne non mise à jour ?",
+   "reviews": [],
+   "payments": [],
+   "followUps": []
+  },
+  {
+   "lid": "B062",
+   "uid": "villas:VILLA HORIZON",
+   "tid": "T049",
+   "tenantName": "ELLIPSE PROJECTS",
+   "startDate": "2025-05-01",
+   "endDate": null,
+   "rent": 1300000.0,
+   "depositAmount": 3600000.0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2026-02-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2027-05-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-03-01",
+     "amount": 3900000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/02/2026 au 30/04/2026"
+    },
+    {
+     "date": "2026-06-01",
+     "amount": 3900000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/05/2026 au 31/07/2026"
+    },
+    {
+     "date": "2026-09-01",
+     "amount": 3900000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de 3 mois de loyer du 01/08/2026 au 31/10/2026"
+    },
+    {
+     "date": "2025-05-01",
+     "amount": 3600000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 03 mois de caution"
+    },
+    {
+     "date": "2025-05-01",
+     "amount": 3600000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B063",
+   "uid": "villas:RESIDENCE COMPLEXE DE LOISIR KPESSI",
+   "tid": "T050",
+   "tenantName": "RESIDENCE MOERIS",
+   "startDate": "2025-08-01",
+   "endDate": null,
+   "rent": 2000000.0,
+   "depositAmount": 6000000.0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2026-02-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [],
+   "payments": [
+    {
+     "date": "2026-04-01",
+     "amount": 12000000.0,
+     "kind": "RENT",
+     "monthsCovered": 6,
+     "notes": "Payement de 6 mois de loyer du 01/02/2026 au 31/07/2026"
+    },
+    {
+     "date": "2025-08-01",
+     "amount": 6000000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 03 mois de caution"
+    },
+    {
+     "date": "2025-08-01",
+     "amount": 12000000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 6,
+     "notes": "Rapport : 06 mois de loyer"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B064",
+   "uid": "entrepots:SITE PORT ENTREPOT N 1",
+   "tid": "T051",
+   "tenantName": "SORETRAP",
+   "startDate": "2021-04-01",
+   "endDate": null,
+   "rent": 13000000.0,
+   "depositAmount": 0,
+   "depositLabel": "0 mois de caition",
+   "status": "ACTIVE",
+   "ledgerStartDate": null,
+   "needsReview": true,
+   "reviewReason": "Aucun paiement dans les relevés 2026 ; prochain paiement du registre au 01/04/2021 : impayé réel ou ligne non mise à jour ?",
+   "reviews": [],
+   "payments": [],
+   "followUps": []
+  },
+  {
+   "lid": "B065",
+   "uid": "entrepots:SITE PORT ENTREPOT N 3",
+   "tid": "T031",
+   "tenantName": "SMMT",
+   "startDate": "2021-04-01",
+   "endDate": null,
+   "rent": 7500000.0,
+   "depositAmount": 0,
+   "depositLabel": null,
+   "status": "ACTIVE",
+   "ledgerStartDate": null,
+   "needsReview": true,
+   "reviewReason": "Aucun paiement dans les relevés 2026 ; prochain paiement du registre au 01/04/2021 : impayé réel ou ligne non mise à jour ?",
+   "reviews": [],
+   "payments": [],
+   "followUps": []
+  },
+  {
+   "lid": "B066",
+   "uid": "entrepots:ENTREPOT:TOGOTOLE SARL",
+   "tid": "T052",
+   "tenantName": "TOGOTOLE SARL",
+   "startDate": "2021-07-01",
+   "endDate": null,
+   "rent": 1000000.0,
+   "depositAmount": 0,
+   "depositLabel": null,
+   "status": "ACTIVE",
+   "ledgerStartDate": "2027-01-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [],
+   "payments": [],
+   "followUps": []
+  },
+  {
+   "lid": "B067",
+   "uid": "entrepots:SITE AZAR ENTREPOT N 2",
+   "tid": "T053",
+   "tenantName": "AFRIQUE CENTURY",
+   "startDate": "2026-05-01",
+   "endDate": "2026-06-30",
+   "rent": 3000000.0,
+   "depositAmount": 0,
+   "depositLabel": "0 mois de caution",
+   "status": "ENDED",
+   "ledgerStartDate": null,
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [],
+   "payments": [
+    {
+     "date": "2026-06-01",
+     "amount": 6000000.0,
+     "kind": "RENT",
+     "monthsCovered": 2,
+     "notes": "Payement de loyer de 2 mois du 01/05/2026 au 30/06/2026"
+    }
+   ],
+   "followUps": [
+    {
+     "date": "2026-09-28",
+     "response": "a payé 2 mois mai et juin 2026 et a libéré fin juin"
+    }
+   ]
+  },
+  {
+   "lid": "B068",
+   "uid": "entrepots:SITE AZAR ENTREPOT N 3",
+   "tid": "T053",
+   "tenantName": "AFRIQUE CENTURY",
+   "startDate": "2025-12-01",
+   "endDate": "2026-04-30",
+   "rent": 3500000.0,
+   "depositAmount": 0,
+   "depositLabel": "0 mois de caution",
+   "status": "ENDED",
+   "ledgerStartDate": null,
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [],
+   "payments": [
+    {
+     "date": "2026-02-01",
+     "amount": 14000000.0,
+     "kind": "RENT",
+     "monthsCovered": 4,
+     "notes": "Payement de loyer de 4 mois du 01/12/2025 au 31/03/2026"
+    },
+    {
+     "date": "2026-06-01",
+     "amount": 3500000.0,
+     "kind": "RENT",
+     "monthsCovered": 1,
+     "notes": "Payement de loyer d'un (1) mois du 01/04/2026 au 30/04/2026"
+    }
+   ],
+   "followUps": [
+    {
+     "date": "2026-09-28",
+     "response": "a payé l mois d'avril 2026 et a libéré"
+    }
+   ]
+  },
+  {
+   "lid": "B069",
+   "uid": "entrepots:SITE DUCRO ENTREPOT N 1",
+   "tid": "T054",
+   "tenantName": "MAERSK LINE",
+   "startDate": "2022-02-01",
+   "endDate": null,
+   "rent": 10265625.0,
+   "depositAmount": 0,
+   "depositLabel": null,
+   "status": "ACTIVE",
+   "ledgerStartDate": null,
+   "needsReview": true,
+   "reviewReason": "Aucun paiement dans les relevés 2026 ; prochain paiement du registre au 01/02/2022 : impayé réel ou ligne non mise à jour ?",
+   "reviews": [],
+   "payments": [],
+   "followUps": []
+  },
+  {
+   "lid": "B070",
+   "uid": "entrepots:SITE DUCRO ENTREPOT N 2",
+   "tid": "T055",
+   "tenantName": "SNG",
+   "startDate": "2025-07-01",
+   "endDate": null,
+   "rent": 3500000.0,
+   "depositAmount": 0,
+   "depositLabel": "00 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": null,
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [],
+   "payments": [
+    {
+     "date": "2026-04-01",
+     "amount": 10500000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 01/07/2025 au 30/09/2025"
+    },
+    {
+     "date": "2026-05-01",
+     "amount": 10500000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 01/10/2025 au 31/12/2025"
+    },
+    {
+     "date": "2026-06-01",
+     "amount": 10500000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 01/01/2026 au 31/03/2026"
+    },
+    {
+     "date": "2026-07-01",
+     "amount": 10500000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 01/04/2026 au 30/06/2026"
+    }
+   ],
+   "followUps": [
+    {
+     "date": "2026-09-28",
+     "response": "4 mois à payer depuis l'an 2023 par Alwalid"
+    }
+   ]
+  },
+  {
+   "lid": "B071",
+   "uid": "entrepots:ENTREPOT:WEST AFRICA CHAIN MANUFACTURING",
+   "tid": "T056",
+   "tenantName": "WEST AFRICA CHAIN MANUFACTURING",
+   "startDate": "2019-07-01",
+   "endDate": null,
+   "rent": 5000000.0,
+   "depositAmount": 0,
+   "depositLabel": null,
+   "status": "ACTIVE",
+   "ledgerStartDate": "2026-07-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2028-07-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-07-01",
+     "amount": 60000000.0,
+     "kind": "RENT",
+     "monthsCovered": 12,
+     "notes": "Payement de loyer d'1 an du 01/07/2026 au 30/06/2027"
+    },
+    {
+     "date": "2019-07-01",
+     "amount": 36000000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 12,
+     "notes": "Rapport : 01 an de loyer"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B072",
+   "uid": "entrepots:ENTREPOT RAMATOU 1",
+   "tid": "T057",
+   "tenantName": "PALMAIRA",
+   "startDate": "2026-11-01",
+   "endDate": null,
+   "rent": 6000000.0,
+   "depositAmount": 18000000.0,
+   "depositLabel": "03 mois de caution",
+   "status": "PENDING",
+   "ledgerStartDate": null,
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [],
+   "payments": [],
+   "followUps": []
+  },
+  {
+   "lid": "B073",
+   "uid": "entrepots:ENTREPOT RAMATOU 2",
+   "tid": "T058",
+   "tenantName": "SOTOPA",
+   "startDate": "2025-06-01",
+   "endDate": null,
+   "rent": 1500000.0,
+   "depositAmount": 0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2025-07-01",
+   "needsReview": true,
+   "reviewReason": "« 03 mois de loyer » = 10 500 000 F alors que le loyer est de 1 500 000 F : ligne probablement copiée de Ramatou 1.",
+   "reviews": [],
+   "payments": [],
+   "followUps": []
+  },
+  {
+   "lid": "B074",
+   "uid": "entrepots:ENTREPOT 1 VON FACE ABC",
+   "tid": "T059",
+   "tenantName": "COCOLOMEX",
+   "startDate": "2024-10-01",
+   "endDate": null,
+   "rent": 5000000.0,
+   "depositAmount": 15000000.0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2026-01-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2026-10-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-01-01",
+     "amount": 15000000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 01/01/2026 au 31/03/2026"
+    },
+    {
+     "date": "2026-04-01",
+     "amount": 15000000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 01/04/2026 au 30/06/2026"
+    },
+    {
+     "date": "2026-07-01",
+     "amount": 15000000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 01/07/2026 au 30/09/2026"
+    },
+    {
+     "date": "2024-10-01",
+     "amount": 15000000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 03 mois de caution"
+    },
+    {
+     "date": "2024-10-01",
+     "amount": 15000000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B075",
+   "uid": "entrepots:ENTREPOT 2 VON FACE ABC",
+   "tid": "T060",
+   "tenantName": "ETG",
+   "startDate": "2025-09-01",
+   "endDate": null,
+   "rent": 3500000.0,
+   "depositAmount": 0,
+   "depositLabel": "0 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2026-01-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2027-09-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-02-01",
+     "amount": 21000000.0,
+     "kind": "RENT",
+     "monthsCovered": 6,
+     "notes": "Payement de loyer de 6 mois du 01/01/2026 au 30/06/2026"
+    },
+    {
+     "date": "2025-09-01",
+     "amount": 14000000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 4,
+     "notes": "Rapport : 04 mois de loyer"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B076",
+   "uid": "entrepots:ENTREPOT AKODESSEWA DERRIERE TDE",
+   "tid": "T038",
+   "tenantName": "MORENO TRADING",
+   "startDate": "2025-03-01",
+   "endDate": null,
+   "rent": 3000000.0,
+   "depositAmount": 0,
+   "depositLabel": "0 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2026-03-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2027-03-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-03-01",
+     "amount": 9000000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 01/03/2026 au 31/05/2026"
+    },
+    {
+     "date": "2026-06-01",
+     "amount": 9000000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 01/06/2026 au 31/08/2026"
+    },
+    {
+     "date": "2026-09-01",
+     "amount": 9000000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 01/09/2026 au 30/11/2026"
+    },
+    {
+     "date": "2025-03-01",
+     "amount": 9000000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B077",
+   "uid": "entrepots:ENTREPOT VON FAN MILK A COTE DE LOCAMAT",
+   "tid": "T031",
+   "tenantName": "SMMT",
+   "startDate": "2026-04-01",
+   "endDate": null,
+   "rent": 10000000.0,
+   "depositAmount": 0,
+   "depositLabel": "0 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": null,
+   "needsReview": true,
+   "reviewReason": "Aucune date de prochain paiement dans le registre et aucun paiement dans les relevés 2026.",
+   "reviews": [],
+   "payments": [],
+   "followUps": []
+  },
+  {
+   "lid": "B078",
+   "uid": "entrepots:ENTREPOT:LIU WEIJIAN",
+   "tid": "T061",
+   "tenantName": "LIU WEIJIAN",
+   "startDate": "2021-10-15",
+   "endDate": null,
+   "rent": 3000000.0,
+   "depositAmount": 0,
+   "depositLabel": null,
+   "status": "ACTIVE",
+   "ledgerStartDate": "2026-01-15",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2027-10-15",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-01-01",
+     "amount": 9000000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 15/01/2026 au 14/04/2026"
+    },
+    {
+     "date": "2026-04-01",
+     "amount": 9000000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 15/04/2026 au 14/07/2026"
+    },
+    {
+     "date": "2026-08-01",
+     "amount": 9000000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 15/07/2026 au 14/10/2026"
+    },
+    {
+     "date": "2021-10-15",
+     "amount": 9000000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B079",
+   "uid": "entrepots:SITE ITP ENTREPOT N 1 MESANINE",
+   "tid": "T062",
+   "tenantName": "INTER FOOD",
+   "startDate": "2025-07-01",
+   "endDate": null,
+   "rent": 5000000.0,
+   "depositAmount": 0,
+   "depositLabel": null,
+   "status": "ACTIVE",
+   "ledgerStartDate": null,
+   "needsReview": true,
+   "reviewReason": "Aucun paiement dans les relevés 2026 ; prochain paiement du registre au 01/07/2025 : impayé réel ou ligne non mise à jour ?",
+   "reviews": [],
+   "payments": [
+    {
+     "date": "2025-07-01",
+     "amount": 15000000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B080",
+   "uid": "entrepots:SITE ITP ENTREPOT N 2",
+   "tid": "T041",
+   "tenantName": "AFRICA BIO COMMODITIES",
+   "startDate": "2023-01-01",
+   "endDate": null,
+   "rent": 6500000.0,
+   "depositAmount": 0,
+   "depositLabel": null,
+   "status": "ACTIVE",
+   "ledgerStartDate": "2026-01-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [],
+   "payments": [
+    {
+     "date": "2026-02-01",
+     "amount": 19500000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 01/01/2026 au 31/03/2026"
+    },
+    {
+     "date": "2026-04-01",
+     "amount": 19500000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 01/04/2026 au 30/06/2026"
+    },
+    {
+     "date": "2026-07-01",
+     "amount": 19500000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 01/07/2026 au 30/09/2026"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B081",
+   "uid": "entrepots:SITE ITP ENTREPOT N 3",
+   "tid": "T063",
+   "tenantName": "SEVEN FOOD",
+   "startDate": "2024-03-01",
+   "endDate": null,
+   "rent": 6500000.0,
+   "depositAmount": 0,
+   "depositLabel": null,
+   "status": "ACTIVE",
+   "ledgerStartDate": "2026-01-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [],
+   "payments": [
+    {
+     "date": "2026-03-01",
+     "amount": 13000000.0,
+     "kind": "RENT",
+     "monthsCovered": 2,
+     "notes": "Payement de loyer de 2 mois du 01/01/2026 au 28/02/2026"
+    },
+    {
+     "date": "2026-05-01",
+     "amount": 13000000.0,
+     "kind": "RENT",
+     "monthsCovered": 2,
+     "notes": "Payement de loyer de 2 mois du 01/03/2026 au 30/04/2026"
+    },
+    {
+     "date": "2026-06-01",
+     "amount": 13000000.0,
+     "kind": "RENT",
+     "monthsCovered": 2,
+     "notes": "Payement de loyer de 2 mois du 01/05/2026 au 30/06/2026"
+    },
+    {
+     "date": "2026-07-01",
+     "amount": 18000000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 01/07/2026 au 30/09/2026"
+    },
+    {
+     "date": "2024-03-01",
+     "amount": 6500000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 1,
+     "notes": "Rapport : 01 mois de loyer"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B082",
+   "uid": "entrepots:SITE SIVOP ENTREPOT N 1",
+   "tid": "T030",
+   "tenantName": "GIT",
+   "startDate": "2023-04-01",
+   "endDate": null,
+   "rent": 6000000.0,
+   "depositAmount": 0,
+   "depositLabel": null,
+   "status": "ACTIVE",
+   "ledgerStartDate": "2026-01-01",
+   "needsReview": true,
+   "reviewReason": "Aucun paiement dans les relevés 2026 ; prochain paiement du registre au 01/01/2026 : impayé réel ou ligne non mise à jour ?",
+   "reviews": [],
+   "payments": [
+    {
+     "date": "2023-04-01",
+     "amount": 36000000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 6,
+     "notes": "Rapport : 06 mois de loyer"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B083",
+   "uid": "entrepots:SITE SIVOP ENTREPOT N 2 MESANINE",
+   "tid": "T064",
+   "tenantName": "SMART SARAKAWA",
+   "startDate": "2024-01-01",
+   "endDate": null,
+   "rent": 2750000.0,
+   "depositAmount": 0,
+   "depositLabel": null,
+   "status": "ACTIVE",
+   "ledgerStartDate": "2025-12-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2026-03-01",
+     "rate": 0.1,
+     "applied": true
+    },
+    {
+     "dueDate": "2028-01-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-03-01",
+     "amount": 7500000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 01/12/2025 au 28/02/2026"
+    },
+    {
+     "date": "2026-06-01",
+     "amount": 8250000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 01/03/2026 au 31/05/2026"
+    },
+    {
+     "date": "2026-09-01",
+     "amount": 8250000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 01/06/2026 au 31/08/2026"
+    },
+    {
+     "date": "2024-01-01",
+     "amount": 7500000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": [
+    {
+     "date": "2026-09-28",
+     "response": "a payé 3 mois ce 08/09/2026"
+    }
+   ]
+  },
+  {
+   "lid": "B084",
+   "uid": "entrepots:ENTRPOT LEADER FOOD INDUSTRIE",
+   "tid": "T065",
+   "tenantName": "SMART VIVALAIT",
+   "startDate": "2025-11-01",
+   "endDate": null,
+   "rent": 3000000.0,
+   "depositAmount": 0,
+   "depositLabel": null,
+   "status": "ACTIVE",
+   "ledgerStartDate": "2026-02-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2027-11-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-03-01",
+     "amount": 9000000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 01/02/2026 au 30/04/2026"
+    },
+    {
+     "date": "2026-06-01",
+     "amount": 9000000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 01/05/2026 au 31/07/2026"
+    },
+    {
+     "date": "2026-09-01",
+     "amount": 9000000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 01/08/2026 au 31/10/2026"
+    },
+    {
+     "date": "2025-11-01",
+     "amount": 9000000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B085",
+   "uid": "entrepots:ENTREPOT CACAVELI",
+   "tid": "T066",
+   "tenantName": "STATION TOTAL SALL",
+   "startDate": "2026-01-01",
+   "endDate": null,
+   "rent": 388200.0,
+   "depositAmount": 0,
+   "depositLabel": null,
+   "status": "ACTIVE",
+   "ledgerStartDate": null,
+   "needsReview": true,
+   "reviewReason": "5 ans de loyer payés d'avance (23 292 000 F = 60 × 388 200 F), sans date de début ni d'échéance.",
+   "reviews": [],
+   "payments": [],
+   "followUps": []
+  },
+  {
+   "lid": "B086",
+   "uid": "entrepots:ENTREPOT NYEKONAKPOE",
+   "tid": "T055",
+   "tenantName": "SNG",
+   "startDate": "2021-06-01",
+   "endDate": null,
+   "rent": 500000.0,
+   "depositAmount": 0,
+   "depositLabel": null,
+   "status": "ACTIVE",
+   "ledgerStartDate": null,
+   "needsReview": true,
+   "reviewReason": "Aucun paiement dans les relevés 2026 ; prochain paiement du registre au 01/06/2021 : impayé réel ou ligne non mise à jour ?",
+   "reviews": [],
+   "payments": [],
+   "followUps": []
+  },
+  {
+   "lid": "B087",
+   "uid": "entrepots:ENTREPOT:BUREAU DE TRANSIT FOI TRANS",
+   "tid": "T067",
+   "tenantName": "BUREAU DE TRANSIT FOI TRANS",
+   "startDate": "2021-09-01",
+   "endDate": null,
+   "rent": 500000.0,
+   "depositAmount": 0,
+   "depositLabel": null,
+   "status": "ACTIVE",
+   "ledgerStartDate": null,
+   "needsReview": true,
+   "reviewReason": "Aucun paiement dans les relevés 2026 ; prochain paiement du registre au 01/09/2021 : impayé réel ou ligne non mise à jour ?",
+   "reviews": [],
+   "payments": [],
+   "followUps": []
+  },
+  {
+   "lid": "B088",
+   "uid": "entrepots:ENTREPOT DERRIERE IMMEUBLE LA PAIX:CMA CGM",
+   "tid": "T068",
+   "tenantName": "CMA CGM",
+   "startDate": "2019-12-01",
+   "endDate": null,
+   "rent": 390550.0,
+   "depositAmount": 0,
+   "depositLabel": null,
+   "status": "ACTIVE",
+   "ledgerStartDate": "2025-12-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2027-06-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-02-01",
+     "amount": 2343300.0,
+     "kind": "RENT",
+     "monthsCovered": 6,
+     "notes": "Payement de loyer de 6 mois du 01/12/2025 au 31/05/2026"
+    },
+    {
+     "date": "2026-07-01",
+     "amount": 2343300.0,
+     "kind": "RENT",
+     "monthsCovered": 6,
+     "notes": "Payement de loyer de 6 mois du 01/6/2026 au 30/11/2026"
+    },
+    {
+     "date": "2019-12-01",
+     "amount": 2343300.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 6,
+     "notes": "Rapport : 06 mois de loyer"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B089",
+   "uid": "entrepots:ENTREPOT DERRIERE IMMEUBLE LA PAIX:R LOGISTIC",
+   "tid": "T037",
+   "tenantName": "R-LOGISTIC",
+   "startDate": "2024-09-01",
+   "endDate": null,
+   "rent": 390550.0,
+   "depositAmount": 0,
+   "depositLabel": null,
+   "status": "ACTIVE",
+   "ledgerStartDate": "2025-10-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2026-10-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-01-01",
+     "amount": 1171650.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 01/10/2025 au 31/12/2025"
+    },
+    {
+     "date": "2026-03-01",
+     "amount": 1171650.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 01/01/2026 au 31/03/2026"
+    },
+    {
+     "date": "2026-06-01",
+     "amount": 1171650.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 01/04/2026 au 30/06/2026"
+    },
+    {
+     "date": "2024-09-01",
+     "amount": 1171650.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B090",
+   "uid": "entrepots:ENTREPOT DERRIERE HOTEL SARAKAWA",
+   "tid": "T069",
+   "tenantName": "SOLEVA TOGO",
+   "startDate": "2022-10-01",
+   "endDate": null,
+   "rent": 2200000.0,
+   "depositAmount": 6000000.0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": "2025-10-01",
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2028-10-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-04-01",
+     "amount": 6600000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 01/10/2025 au 31/12/2025"
+    },
+    {
+     "date": "2026-04-01",
+     "amount": 6600000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 01/01/2026 au 31/03/2026"
+    },
+    {
+     "date": "2026-04-01",
+     "amount": 6600000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 01/04/2026 au 30/06/2026"
+    },
+    {
+     "date": "2022-10-01",
+     "amount": 6000000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 03 mois de caution"
+    },
+    {
+     "date": "2022-10-01",
+     "amount": 18000000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 9,
+     "notes": "Rapport : 09 mois de loyer"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B091",
+   "uid": "entrepots:NOUVEL ENTREPOT AKODESSEWA",
+   "tid": "T030",
+   "tenantName": "GIT",
+   "startDate": "2026-02-01",
+   "endDate": null,
+   "rent": 5000000.0,
+   "depositAmount": 0,
+   "depositLabel": "0 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": null,
+   "needsReview": true,
+   "reviewReason": "Aucune date de prochain paiement dans le registre et aucun paiement dans les relevés 2026.",
+   "reviews": [],
+   "payments": [],
+   "followUps": []
+  },
+  {
+   "lid": "B092",
+   "uid": "entrepots:ENTREPOT PROFOOD",
+   "tid": "T055",
+   "tenantName": "SNG",
+   "startDate": "2024-04-01",
+   "endDate": null,
+   "rent": 2500000.0,
+   "depositAmount": 0,
+   "depositLabel": null,
+   "status": "ACTIVE",
+   "ledgerStartDate": "2025-05-01",
+   "needsReview": true,
+   "reviewReason": "Aucun paiement dans les relevés 2026 ; prochain paiement du registre au 01/05/2025 : impayé réel ou ligne non mise à jour ?",
+   "reviews": [],
+   "payments": [
+    {
+     "date": "2024-04-01",
+     "amount": 5000000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 2,
+     "notes": "Rapport : 02 mois de loyer"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B093",
+   "uid": "showrooms:SHOW ROOM1 SITE1",
+   "tid": "T070",
+   "tenantName": "EUROPARTS",
+   "startDate": "2026-01-01",
+   "endDate": null,
+   "rent": 2500000.0,
+   "depositAmount": 7500000.0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": null,
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2028-01-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-01-01",
+     "amount": 7500000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": 3,
+     "notes": "3 mois de caution (inclus dans : Location de show room Payement de 3 mois de caution et de 9 mois de loyer du 01/01/2026 au 30/09/2026)"
+    },
+    {
+     "date": "2026-01-01",
+     "amount": 22500000.0,
+     "kind": "RENT",
+     "monthsCovered": 9,
+     "notes": "Location de show room Payement de 3 mois de caution et de 9 mois de loyer du 01/01/2026 au 30/09/2026"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B094",
+   "uid": "showrooms:SHOW ROOM2 SITE1",
+   "tid": "T071",
+   "tenantName": "ATLAS MOTORS LIMITED",
+   "startDate": "2026-02-01",
+   "endDate": null,
+   "rent": 2500000.0,
+   "depositAmount": 5000000.0,
+   "depositLabel": "02 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": null,
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2028-02-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-01-01",
+     "amount": 5000000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": 2,
+     "notes": "2 mois de caution (inclus dans : Location de show room Payement de 2 mois de caution et de 6 mois de loyer du 01/02/2026 au 31/07/2026)"
+    },
+    {
+     "date": "2026-01-01",
+     "amount": 14457446.0,
+     "kind": "RENT",
+     "monthsCovered": 6,
+     "notes": "Location de show room Payement de 2 mois de caution et de 6 mois de loyer du 01/02/2026 au 31/07/2026"
+    },
+    {
+     "date": "2026-04-01",
+     "amount": 542500.0,
+     "kind": "RENT",
+     "monthsCovered": 6,
+     "notes": "Location de show room Payement de solde 2 mois de caution et de 6 mois de loyer du 01/02/2026 au 31/07/2026"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B095",
+   "uid": "showrooms:SHOW ROOM1 SITE2",
+   "tid": "T072",
+   "tenantName": "AMSPEC TOGO SARL U",
+   "startDate": "2026-05-01",
+   "endDate": null,
+   "rent": 2525000.0,
+   "depositAmount": 7575000.0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": null,
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2029-05-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-04-01",
+     "amount": 7575000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": 3,
+     "notes": "3 mois de caution (inclus dans : Location de show room Payement de 3 mois de caution et de 6 mois de loyer)"
+    },
+    {
+     "date": "2026-04-01",
+     "amount": 15150000.0,
+     "kind": "RENT",
+     "monthsCovered": 6,
+     "notes": "Location de show room Payement de 3 mois de caution et de 6 mois de loyer"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B096",
+   "uid": "showrooms:SHOW ROOM2 SITE2",
+   "tid": "T073",
+   "tenantName": "LUI XIANGHUI",
+   "startDate": "2026-09-01",
+   "endDate": null,
+   "rent": 2500000.0,
+   "depositAmount": 7500000.0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": null,
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2028-09-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-04-01",
+     "amount": 7500000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": 3,
+     "notes": "3 mois de caution (inclus dans : Location de show room Payement de 3 mois de caution et de 3 mois de loyer)"
+    },
+    {
+     "date": "2026-04-01",
+     "amount": 7500000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Location de show room Payement de 3 mois de caution et de 3 mois de loyer"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B097",
+   "uid": "showrooms:SHOW ROOM3 SITE2",
+   "tid": "T074",
+   "tenantName": "CHEN AFRICA",
+   "startDate": "2026-04-01",
+   "endDate": null,
+   "rent": 2280000.0,
+   "depositAmount": 6840000.0,
+   "depositLabel": "03 mois de caution",
+   "status": "ACTIVE",
+   "ledgerStartDate": null,
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [
+    {
+     "dueDate": "2028-09-01",
+     "rate": 0.1,
+     "applied": false
+    }
+   ],
+   "payments": [
+    {
+     "date": "2026-01-01",
+     "amount": 6840000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": 3,
+     "notes": "3 mois de caution (inclus dans : Location de show room Payement de 3 mois de caution et de 6 mois de loyer du 01/04/2026 au 30/06/2026)"
+    },
+    {
+     "date": "2026-01-01",
+     "amount": 6840000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Location de show room Payement de 3 mois de caution et de 6 mois de loyer du 01/04/2026 au 30/06/2026"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B098",
+   "uid": "entrepots:ENTREPOT RAMATOU 1",
+   "tid": "T075",
+   "tenantName": "LABEL D'OR",
+   "startDate": "2025-08-01",
+   "endDate": "2025-11-30",
+   "rent": 4750000.0,
+   "depositAmount": 0,
+   "depositLabel": null,
+   "status": "ENDED",
+   "ledgerStartDate": null,
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [],
+   "payments": [
+    {
+     "date": "2026-01-01",
+     "amount": 19000000.0,
+     "kind": "RENT",
+     "monthsCovered": 4,
+     "notes": "Payement de loyer de 4 mois du 01/08/2025 au 30/11/2025"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B099",
+   "uid": "entrepots:ENTREPOT RAMATOU 1",
+   "tid": "T053",
+   "tenantName": "AFRIQUE CENTURY",
+   "startDate": "2026-04-01",
+   "endDate": "2026-08-31",
+   "rent": 5000000.0,
+   "depositAmount": 0,
+   "depositLabel": null,
+   "status": "ENDED",
+   "ledgerStartDate": null,
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [],
+   "payments": [
+    {
+     "date": "2026-06-01",
+     "amount": 15000000.0,
+     "kind": "RENT",
+     "monthsCovered": 3,
+     "notes": "Payement de loyer de 3 mois du 01/04/2026 au 30/06/2026"
+    },
+    {
+     "date": "2026-08-01",
+     "amount": 10000000.0,
+     "kind": "RENT",
+     "monthsCovered": 2,
+     "notes": "Payement de loyer de 3 mois du 01/07/2026 au 31/08/2026"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B100",
+   "uid": "paix:2 STUDIOS RDC",
+   "tid": "T037",
+   "tenantName": "R-LOGISTIC",
+   "startDate": "2025-11-01",
+   "endDate": null,
+   "rent": 200000.0,
+   "depositAmount": 0,
+   "depositLabel": null,
+   "status": "ACTIVE",
+   "ledgerStartDate": null,
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [],
+   "payments": [
+    {
+     "date": "2026-03-01",
+     "amount": 1000000.0,
+     "kind": "RENT",
+     "monthsCovered": 5,
+     "notes": "Payement de 5 mois de loyer du 01/11/2025 au 31/03/2026"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B101",
+   "uid": "paix:charges",
+   "tid": "T076",
+   "tenantName": "LOCATAIRES — IMMEUBLE LA PAIX",
+   "startDate": "2026-01-01",
+   "endDate": "2026-12-31",
+   "rent": 0,
+   "depositAmount": 0,
+   "depositLabel": null,
+   "status": "ENDED",
+   "ledgerStartDate": null,
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [],
+   "payments": [
+    {
+     "date": "2026-02-01",
+     "amount": 125000.0,
+     "kind": "OTHER",
+     "monthsCovered": null,
+     "notes": "collecte des frais d'entretien mois de JANVIER chez les locataires"
+    },
+    {
+     "date": "2026-06-01",
+     "amount": 490000.0,
+     "kind": "OTHER",
+     "monthsCovered": null,
+     "notes": "collecte des frais d'entretien mois de main et juin chez les locataires versé sur le compte sci bia"
+    },
+    {
+     "date": "2026-08-01",
+     "amount": 495000.0,
+     "kind": "OTHER",
+     "monthsCovered": null,
+     "notes": "collecte des frais d'entretien mois de juillet aoüt septembre 2026 chez les locataires versé sur le compte sci bia"
+    }
+   ],
+   "followUps": []
+  },
+  {
+   "lid": "B102",
+   "uid": "assigame:charges",
+   "tid": "T077",
+   "tenantName": "LOCATAIRES — IMMEUBLE ASSIGAME",
+   "startDate": "2026-01-01",
+   "endDate": "2026-12-31",
+   "rent": 0,
+   "depositAmount": 0,
+   "depositLabel": null,
+   "status": "ENDED",
+   "ledgerStartDate": null,
+   "needsReview": false,
+   "reviewReason": null,
+   "reviews": [],
+   "payments": [
+    {
+     "date": "2026-02-01",
+     "amount": 45000.0,
+     "kind": "OTHER",
+     "monthsCovered": null,
+     "notes": "ELECTRICITE du mois De juillet 2025 collecté chez les locataires"
+    },
+    {
+     "date": "2026-02-01",
+     "amount": 40000.0,
+     "kind": "OTHER",
+     "monthsCovered": null,
+     "notes": "ELECTRICITE du mois d'aout 2025 collecté chez les locataires"
+    },
+    {
+     "date": "2026-02-01",
+     "amount": 37000.0,
+     "kind": "OTHER",
+     "monthsCovered": null,
+     "notes": "ELECTRICITE du mois de septembre 2025 collecté chez les locataires"
+    },
+    {
+     "date": "2026-02-01",
+     "amount": 38000.0,
+     "kind": "OTHER",
+     "monthsCovered": null,
+     "notes": "ELECTRICITE du mois d'octobre 2025 collecté chez les locataires"
+    },
+    {
+     "date": "2026-02-01",
+     "amount": 41000.0,
+     "kind": "OTHER",
+     "monthsCovered": null,
+     "notes": "ELECTRICITE du mois de novembre 2025 collecté chez les locataires"
+    },
+    {
+     "date": "2026-06-01",
+     "amount": 31000.0,
+     "kind": "OTHER",
+     "monthsCovered": null,
+     "notes": "ELECTRICITE du mois de decembre 2025 collecté chez les locataires"
+    },
+    {
+     "date": "2026-06-01",
+     "amount": 35000.0,
+     "kind": "OTHER",
+     "monthsCovered": null,
+     "notes": "ELECTRICITE du mois de janvier 2026 collecté chez les locataires"
+    },
+    {
+     "date": "2026-06-01",
+     "amount": 33000.0,
+     "kind": "OTHER",
+     "monthsCovered": null,
+     "notes": "ELECTRICITE du mois de fevrier 2026 collecté chez les locataires"
+    },
+    {
+     "date": "2026-09-01",
+     "amount": 46500.0,
+     "kind": "OTHER",
+     "monthsCovered": null,
+     "notes": "ELECTRICITE du mois de mai 2025 collecté chez les locataires"
+    },
+    {
+     "date": "2026-09-01",
+     "amount": 42000.0,
+     "kind": "OTHER",
+     "monthsCovered": null,
+     "notes": "ELECTRICITE du mois de juin 2025 collecté chez les locataires"
+    },
+    {
+     "date": "2026-09-01",
+     "amount": 37500.0,
+     "kind": "OTHER",
+     "monthsCovered": null,
+     "notes": "ELECTRICITE du mois de juillet 2026 collecté chez les locataires"
+    }
+   ],
+   "followUps": []
+  }
+ ],
+ "issues": [
+  {
+   "ref": "B009",
+   "problem": "Observation du registre : a payé 89 000 ce 11/09/2026 et le reliquat de 16000 resté au niveau du payemet de loyer de M9 en juillet fait que l'année 2025 est soldé",
+   "action": null
+  },
+  {
+   "ref": "B013",
+   "problem": "Observation du registre : année soldé. Elle a payé 500 000 ce 24/07/2025 et a un reliquat de 16000 qui sera ajouté au payement de M5",
+   "action": null
+  },
+  {
+   "ref": "B018",
+   "problem": "Locataire en cours d'expulsion (selon le registre).",
+   "action": "Suivre la procédure"
+  },
+  {
+   "ref": "B020",
+   "problem": "Observation du registre : a payé 6 mois de loyeé et a un reliquat de 20 000 avec la sci",
+   "action": null
+  },
+  {
+   "ref": "B023",
+   "problem": "Observation du registre : dis qu'il va me faire signe bientôt",
+   "action": null
+  },
+  {
+   "ref": "B054",
+   "problem": "Observation du registre : ont dis qu'ils vont payer sous peu",
+   "action": null
+  },
+  {
+   "ref": "B056",
+   "problem": "Le locataire est en train de partir (selon le registre).",
+   "action": "Préparer la fin de bail / état des lieux"
+  },
+  {
+   "ref": "B057",
+   "problem": "Observation du registre : a dis que le nouveau propriétaire est venu prendre le loyer",
+   "action": null
+  },
+  {
+   "ref": "B063",
+   "problem": "Le locataire est en train de partir (selon le registre).",
+   "action": "Préparer la fin de bail / état des lieux"
+  },
+  {
+   "ref": "B088",
+   "problem": "Loyer registre « 428 000F CFA SANS TAXE ET 390 550F CFA AVEC TAXE » : le loyer retenu est celui avec taxe (390 550 F).",
+   "action": null
+  },
+  {
+   "ref": "B089",
+   "problem": "Loyer registre « 428 000F CFA SANS TAXE ET 390 550F CFA AVEC TAXE » : le loyer retenu est celui avec taxe (390 550 F).",
+   "action": null
+  },
+  {
+   "ref": "B002",
+   "problem": "Prochain paiement du registre (01/08/2025) ≠ date déduite des relevés (01/06/2026).",
+   "action": "Vérifier avec le gestionnaire"
+  },
+  {
+   "ref": "B003",
+   "problem": "Prochain paiement du registre (01/07/2025) ≠ date déduite des relevés (01/01/2026).",
+   "action": "Vérifier avec le gestionnaire"
+  },
+  {
+   "ref": "B005",
+   "problem": "Prochain paiement du registre (01/04/2026) ≠ date déduite des relevés (01/09/2026).",
+   "action": "Vérifier avec le gestionnaire"
+  },
+  {
+   "ref": "B005",
+   "problem": "Caution du registre : 3 mois de caution = 453 750 F ; caution payée dans les relevés : 302 500 F.",
+   "action": "Confirmer"
+  },
+  {
+   "ref": "B006",
+   "problem": "Loyer du registre (137 500 F) inférieur au loyer payé dans les relevés (151 250 F/mois) : révision déjà appliquée ?",
+   "action": "Mettre le registre à jour"
+  },
+  {
+   "ref": "B011",
+   "problem": "Loyer du registre (110 000 F) inférieur au loyer payé dans les relevés (121 000 F/mois) : révision déjà appliquée ?",
+   "action": "Mettre le registre à jour"
+  },
+  {
+   "ref": "B013",
+   "problem": "Prochain paiement du registre (11/09/2025) ≠ date déduite des relevés (11/01/2026).",
+   "action": "Vérifier avec le gestionnaire"
+  },
+  {
+   "ref": "B031",
+   "problem": "Prochain paiement du registre (24/06/2026) ≠ date déduite des relevés (24/10/2026).",
+   "action": "Vérifier avec le gestionnaire"
+  },
+  {
+   "ref": "B041",
+   "problem": "Loyer du registre (300 000 F) inférieur au loyer payé dans les relevés (330 000 F/mois) : révision déjà appliquée ?",
+   "action": "Mettre le registre à jour"
+  },
+  {
+   "ref": "B058",
+   "problem": "Loyer du registre (1 200 000 F) inférieur au loyer payé dans les relevés (1 320 000 F/mois) : révision déjà appliquée ?",
+   "action": "Mettre le registre à jour"
+  },
+  {
+   "ref": "B059",
+   "problem": "« 1an de loyer » = 18 000 000 F, alors que 1 × 1 500 000 F = 1 500 000 F : montant ignoré.",
+   "action": "Confirmer le montant réel"
+  },
+  {
+   "ref": "B060",
+   "problem": "Loyer du registre (2 000 000 F) inférieur au loyer payé dans les relevés (2 300 000 F/mois) : révision déjà appliquée ?",
+   "action": "Mettre le registre à jour"
+  },
+  {
+   "ref": "B060",
+   "problem": "Caution notée « 0 mois de caution » mais montant 6 000 000 F : montant ignoré.",
+   "action": "Confirmer la caution"
+  },
+  {
+   "ref": "B060",
+   "problem": "« 01 an de loyer » = 6 000 000 F, alors que 12 × 2 300 000 F = 27 600 000 F : montant ignoré.",
+   "action": "Confirmer le montant réel"
+  },
+  {
+   "ref": "B061",
+   "problem": "Pas de date de remise de clé dans le registre : date de début estimée.",
+   "action": "Vérifier et compléter"
+  },
+  {
+   "ref": "B064",
+   "problem": "Pas de date de remise de clé dans le registre : date de début estimée.",
+   "action": "Vérifier et compléter"
+  },
+  {
+   "ref": "B064",
+   "problem": "Caution notée « 0 mois de caition » mais montant 26 000 000 F : montant ignoré.",
+   "action": "Confirmer la caution"
+  },
+  {
+   "ref": "B064",
+   "problem": "Date de révision de loyer du registre dépassée (01/09/2023) : à replanifier.",
+   "action": "Replanifier la révision"
+  },
+  {
+   "ref": "B065",
+   "problem": "Pas de date de remise de clé dans le registre : date de début estimée.",
+   "action": "Vérifier et compléter"
+  },
+  {
+   "ref": "B066",
+   "problem": "Date de révision de loyer invraisemblable dans le registre (01/07/2051).",
+   "action": "Corriger la date"
+  },
+  {
+   "ref": "B068",
+   "problem": "Les relevés montrent un loyer payé dès le 01/12/2025, avant la remise de clé du registre (01/01/2026) : date de début ajustée.",
+   "action": null
+  },
+  {
+   "ref": "B069",
+   "problem": "Pas de date de remise de clé dans le registre : date de début estimée.",
+   "action": "Vérifier et compléter"
+  },
+  {
+   "ref": "B070",
+   "problem": "« 05 mois de loyer » = 180 500 000 F, alors que 5 × 3 500 000 F = 17 500 000 F : montant ignoré.",
+   "action": "Confirmer le montant réel"
+  },
+  {
+   "ref": "B071",
+   "problem": "Prochain paiement du registre (01/07/2028) ≠ date déduite des relevés (01/07/2027).",
+   "action": "Vérifier avec le gestionnaire"
+  },
+  {
+   "ref": "B073",
+   "problem": "« 03 mois de loyer » = 10 500 000 F, alors que 3 × 1 500 000 F = 4 500 000 F : montant ignoré.",
+   "action": "Confirmer le montant réel"
+  },
+  {
+   "ref": "B077",
+   "problem": "Locataire SMMT depuis le 01/04/2026 (10 000 000 F/mois) : aucun paiement ni échéance dans les relevés.",
+   "action": "Confirmer le bail et les échéances"
+  },
+  {
+   "ref": "B080",
+   "problem": "« 03 mois de loyer » = 2 609 600 000 F, alors que 3 × 6 500 000 F = 19 500 000 F : montant ignoré.",
+   "action": "Confirmer le montant réel"
+  },
+  {
+   "ref": "B081",
+   "problem": "Loyer du registre (6 500 000 F) supérieur au loyer payé dans les relevés (6 000 000 F/mois).",
+   "action": "Vérifier"
+  },
+  {
+   "ref": "B085",
+   "problem": "Pas de date de remise de clé dans le registre : date de début estimée.",
+   "action": "Vérifier et compléter"
+  },
+  {
+   "ref": "B085",
+   "problem": "5 ans de loyer payés d'avance (23 292 000 F = 60 × 388 200 F), sans date de début ni d'échéance.",
+   "action": "Compléter la date de début"
+  },
+  {
+   "ref": "B086",
+   "problem": "Pas de date de remise de clé dans le registre : date de début estimée.",
+   "action": "Vérifier et compléter"
+  },
+  {
+   "ref": "B087",
+   "problem": "Pas de date de remise de clé dans le registre : date de début estimée.",
+   "action": "Vérifier et compléter"
+  },
+  {
+   "ref": "B097",
+   "problem": "Les relevés montrent un loyer payé dès le 01/04/2026, avant la remise de clé du registre (01/09/2026) : date de début ajustée.",
+   "action": null
+  },
+  {
+   "ref": "B097",
+   "problem": "Prochain paiement du registre (01/12/2026) ≠ date déduite des relevés (01/07/2026).",
+   "action": "Vérifier avec le gestionnaire"
+  }
+ ]
+}
