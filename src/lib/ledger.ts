@@ -84,9 +84,26 @@ interface PaymentLike {
   kind?: PaymentKind;
   confirmed?: boolean;
   date?: Date;
+  /** Statement wording such as "… du 01/06/2025 au 31/08/2025", used to tell which periods a payment settled. */
+  notes?: string | null;
 }
 
 const RENT_LIKE_KINDS: PaymentKind[] = ["RENT", "ARREARS"];
+
+/**
+ * True when the payment's own wording ("du dd/mm/yyyy au dd/mm/yyyy") says it settled periods that
+ * both started and ended before `billingStart` — e.g. 2026 receipts for April–August 2025 when
+ * billing starts on 1 Sept 2025. Those periods are already settled, so the money must not be used
+ * to pay the periods billed from `billingStart`.
+ */
+function settlesEarlierPeriods(notes: string | null | undefined, billingStart: Date): boolean {
+  if (!notes) return false;
+  const dates = [...notes.matchAll(/(\d{1,2})\/(\d{1,2})\/(\d{4})/g)].map(
+    (m) => new Date(Date.UTC(Number(m[3]), Number(m[2]) - 1, Number(m[1]))),
+  );
+  if (dates.length < 2) return false;
+  return dates[0] < billingStart && dates[1] < billingStart;
+}
 
 /**
  * `lease.rentAmount` only ever holds the current rent — applying a review multiplies
@@ -144,7 +161,8 @@ export function computeLeaseLedger(
     (p) =>
       (p.confirmed ?? true) &&
       (p.kind === undefined || RENT_LIKE_KINDS.includes(p.kind)) &&
-      (p.date === undefined || paymentsFrom === null || p.date >= paymentsFrom),
+      (p.date === undefined || paymentsFrom === null || p.date >= paymentsFrom) &&
+      !(paymentsFrom !== null && settlesEarlierPeriods(p.notes, billingStart)),
   );
   const totalPaid = rentPayments.reduce((sum, p) => sum + p.amount, 0);
 
