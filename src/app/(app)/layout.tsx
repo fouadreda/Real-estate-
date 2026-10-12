@@ -17,7 +17,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
         ledgerStartDate: true,
         rentAmount: true,
         billingFrequency: true,
-        payments: { select: { amount: true, kind: true, confirmed: true, date: true } },
+        payments: { select: { amount: true, kind: true, confirmed: true, date: true, notes: true } },
         rentReviews: { where: { appliedAt: { not: null } }, select: { dueDate: true, rate: true, appliedAt: true } },
       },
     }),

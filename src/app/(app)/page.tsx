@@ -11,7 +11,7 @@ export default async function DashboardPage() {
   const { t, locale } = await requireUserWithDictionary();
   const now = new Date();
 
-  const [properties, activeLeases, leasesWithPayments, upcomingExpirations] =
+  const [allProperties, activeLeases, leasesWithPayments, upcomingExpirations] =
     await Promise.all([
       prisma.property.findMany(),
       prisma.lease.findMany({
@@ -37,6 +37,8 @@ export default async function DashboardPage() {
       }),
     ]);
 
+  // The "Charges collectées" units only hold collected electricity / maintenance fees — they are not rentable.
+  const properties = allProperties.filter((p) => !(p.category === "OTHER" && p.unitCode === "Charges collectées"));
   const occupied = properties.filter((p) => p.status === "OCCUPIED").length;
   const vacant = properties.filter((p) => p.status === "VACANT").length;
   const monthlyRentRoll = activeLeases.reduce(
