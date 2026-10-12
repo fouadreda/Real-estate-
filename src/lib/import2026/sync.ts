@@ -214,6 +214,7 @@ export async function syncBuilding(
             areaLabel: u.areaLabel,
             price: u.askingRent,
             status: u.status as Prisma.PropertyCreateInput["status"],
+            ...(u.notes ? { notes: u.notes } : {}),
           };
           if (match) {
             claimedProps.add(match.id);
@@ -298,10 +299,14 @@ export async function syncBuilding(
             // billing start so those older receipts are not used to pay the current periods.
             if (!fields.ledgerStartDate) {
               const monthStart = new Date(Date.UTC(fields.startDate.getUTCFullYear(), fields.startDate.getUTCMonth(), 1));
-              const older = await tx.payment.count({
+              // advance payments that this import itself provides (paid before the lease start) don't count
+              const known = new Set(l.payments.map((p) => `${p.date}|${Math.round(p.amount)}|${p.kind}`));
+              const earlier = await tx.payment.findMany({
                 where: { leaseId: existing.id, kind: { in: ["RENT", "ARREARS"] }, date: { lt: monthStart } },
+                select: { date: true, amount: true, kind: true },
               });
-              if (older > 0) fields.ledgerStartDate = fields.startDate;
+              const legacy = earlier.filter((p) => !known.has(`${ymd(p.date)}|${Math.round(p.amount)}|${p.kind}`));
+              if (legacy.length > 0) fields.ledgerStartDate = fields.startDate;
             }
             await tx.lease.update({ where: { id: existing.id }, data: { ...fields, tenantId } });
             leaseId = existing.id;
@@ -337,6 +342,10 @@ export async function syncBuilding(
             if (hit) {
               consumed.add(hit.id);
               counts.paymentsSkipped++;
+              // keep the wording in step with the statements (the ledger reads the covered periods from it)
+              if (hit.recordedById === null && hit.notes !== p.notes) {
+                await tx.payment.update({ where: { id: hit.id }, data: { notes: p.notes } });
+              }
               continue;
             }
             if (isEntry && entryKinds.has(p.kind as "DEPOSIT" | "ADVANCE_AT_ENTRY")) {

@@ -55,7 +55,8 @@
    "areaLabel": null,
    "askingRent": 350000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "assigame:B2",
@@ -69,7 +70,8 @@
    "areaLabel": null,
    "askingRent": 350000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "assigame:B3",
@@ -83,7 +85,8 @@
    "areaLabel": null,
    "askingRent": 350000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "assigame:B4",
@@ -97,7 +100,8 @@
    "areaLabel": null,
    "askingRent": 275000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "assigame:M1",
@@ -111,7 +115,8 @@
    "areaLabel": null,
    "askingRent": 151250.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "assigame:M2",
@@ -125,7 +130,8 @@
    "areaLabel": null,
    "askingRent": 137500.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "assigame:M3",
@@ -139,7 +145,8 @@
    "areaLabel": null,
    "askingRent": 151250.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "assigame:M4",
@@ -153,7 +160,8 @@
    "areaLabel": null,
    "askingRent": 137500.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "assigame:M5",
@@ -167,7 +175,8 @@
    "areaLabel": null,
    "askingRent": 151250.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "assigame:M6",
@@ -181,7 +190,8 @@
    "areaLabel": null,
    "askingRent": 70000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "assigame:M7",
@@ -195,7 +205,8 @@
    "areaLabel": null,
    "askingRent": 110000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "assigame:M8",
@@ -209,7 +220,8 @@
    "areaLabel": null,
    "askingRent": 121000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "assigame:M9",
@@ -223,7 +235,8 @@
    "areaLabel": null,
    "askingRent": 121000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "assigame:M10",
@@ -237,7 +250,8 @@
    "areaLabel": null,
    "askingRent": 121000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "assigame:M11",
@@ -251,7 +265,8 @@
    "areaLabel": null,
    "askingRent": 121000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "assigame:B5",
@@ -265,7 +280,8 @@
    "areaLabel": null,
    "askingRent": 110000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "assigame:B6",
@@ -279,7 +295,8 @@
    "areaLabel": null,
    "askingRent": 100000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "assigame:B7",
@@ -293,7 +310,8 @@
    "areaLabel": null,
    "askingRent": 110000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "assigame:B8",
@@ -307,7 +325,8 @@
    "areaLabel": null,
    "askingRent": 110000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "assigame:M12",
@@ -321,7 +340,8 @@
    "areaLabel": null,
    "askingRent": 80000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "assigame:M13",
@@ -335,7 +355,8 @@
    "areaLabel": null,
    "askingRent": 90000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "assigame:M14",
@@ -349,7 +370,8 @@
    "areaLabel": null,
    "askingRent": 90000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "assigame:M15",
@@ -363,7 +385,8 @@
    "areaLabel": null,
    "askingRent": 80000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "assigame:M16",
@@ -377,7 +400,8 @@
    "areaLabel": null,
    "askingRent": 90000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "assigame:M18",
@@ -391,7 +415,8 @@
    "areaLabel": null,
    "askingRent": 70000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "assigame:M19",
@@ -405,7 +430,8 @@
    "areaLabel": null,
    "askingRent": 70000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "assigame:M20",
@@ -419,7 +445,8 @@
    "areaLabel": null,
    "askingRent": 60000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "assigame:M21",
@@ -433,7 +460,8 @@
    "areaLabel": null,
    "askingRent": 70000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "assigame:M22",
@@ -447,7 +475,8 @@
    "areaLabel": null,
    "askingRent": 70000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "jp2:B1",
@@ -461,7 +490,8 @@
    "areaLabel": null,
    "askingRent": 100000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "jp2:B2",
@@ -475,7 +505,8 @@
    "areaLabel": null,
    "askingRent": 300000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "jp2:B3",
@@ -489,7 +520,8 @@
    "areaLabel": null,
    "askingRent": 330000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "jp2:B4",
@@ -503,7 +535,8 @@
    "areaLabel": null,
    "askingRent": 330000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "jp2:STUP ME1",
@@ -517,7 +550,8 @@
    "areaLabel": null,
    "askingRent": 250000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "jp2:STUP ME2",
@@ -531,7 +565,8 @@
    "areaLabel": null,
    "askingRent": 250000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "jp2:STUG ME3",
@@ -545,7 +580,8 @@
    "areaLabel": null,
    "askingRent": 250000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "jp2:STU P4",
@@ -559,7 +595,8 @@
    "areaLabel": null,
    "askingRent": 150000.0,
    "status": "VACANT",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "jp2:2APP ME1",
@@ -573,7 +610,8 @@
    "areaLabel": null,
    "askingRent": 300000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "jp2:3APP ME1",
@@ -587,7 +625,8 @@
    "areaLabel": null,
    "askingRent": 250000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "jp2:3APP 2",
@@ -601,7 +640,8 @@
    "areaLabel": null,
    "askingRent": 250000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "jp2:3APP 3",
@@ -615,7 +655,8 @@
    "areaLabel": null,
    "askingRent": 250000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "paix:B1",
@@ -629,7 +670,8 @@
    "areaLabel": null,
    "askingRent": 300000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "paix:B2",
@@ -643,7 +685,8 @@
    "areaLabel": null,
    "askingRent": 400000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "paix:B3",
@@ -657,7 +700,8 @@
    "areaLabel": null,
    "askingRent": 385000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "paix:B4",
@@ -671,7 +715,8 @@
    "areaLabel": null,
    "askingRent": 440000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "paix:B5",
@@ -685,7 +730,8 @@
    "areaLabel": null,
    "askingRent": 2250000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "paix:B6",
@@ -699,7 +745,8 @@
    "areaLabel": null,
    "askingRent": 700000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "paix:B7",
@@ -713,7 +760,8 @@
    "areaLabel": null,
    "askingRent": 400000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "paix:B8",
@@ -727,7 +775,8 @@
    "areaLabel": null,
    "askingRent": 3100000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "paix:2APP RDC",
@@ -740,8 +789,9 @@
    "areaM2": null,
    "areaLabel": null,
    "askingRent": null,
-   "status": "VACANT",
-   "legacyCodes": []
+   "status": "OCCUPIED",
+   "legacyCodes": [],
+   "notes": "Occupé par R-LOGISTIC (même bail que B8++ : RDC + R+1, 3 100 000 F/mois)."
   },
   {
    "uid": "paix:STU1 MER",
@@ -754,8 +804,9 @@
    "areaM2": null,
    "areaLabel": null,
    "askingRent": null,
-   "status": "VACANT",
-   "legacyCodes": []
+   "status": "OCCUPIED",
+   "legacyCodes": [],
+   "notes": "Occupé par R-LOGISTIC (même bail que B8++ : RDC + R+1, 3 100 000 F/mois)."
   },
   {
    "uid": "paix:3APP1 MER",
@@ -768,8 +819,9 @@
    "areaM2": null,
    "areaLabel": null,
    "askingRent": null,
-   "status": "VACANT",
-   "legacyCodes": []
+   "status": "OCCUPIED",
+   "legacyCodes": [],
+   "notes": "Occupé par R-LOGISTIC (même bail que B8++ : RDC + R+1, 3 100 000 F/mois)."
   },
   {
    "uid": "paix:3APP1 PAIX",
@@ -782,8 +834,9 @@
    "areaM2": null,
    "areaLabel": null,
    "askingRent": null,
-   "status": "VACANT",
-   "legacyCodes": []
+   "status": "OCCUPIED",
+   "legacyCodes": [],
+   "notes": "Occupé par R-LOGISTIC (même bail que B8++ : RDC + R+1, 3 100 000 F/mois)."
   },
   {
    "uid": "paix:2 STUDIOS RDC",
@@ -797,7 +850,8 @@
    "areaLabel": null,
    "askingRent": null,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "paix:STU2 MER",
@@ -811,7 +865,8 @@
    "areaLabel": null,
    "askingRent": 300000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "paix:3APP2 MER",
@@ -825,7 +880,8 @@
    "areaLabel": null,
    "askingRent": 1000000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "paix:3APP ME 2 PAIX",
@@ -841,7 +897,8 @@
    "status": "OCCUPIED",
    "legacyCodes": [
     "3APP2 PAIX"
-   ]
+   ],
+   "notes": null
   },
   {
    "uid": "paix:STU ME 3 MER",
@@ -857,7 +914,8 @@
    "status": "OCCUPIED",
    "legacyCodes": [
     "STU3 MER"
-   ]
+   ],
+   "notes": null
   },
   {
    "uid": "paix:3APP ME 3 MER",
@@ -873,7 +931,8 @@
    "status": "OCCUPIED",
    "legacyCodes": [
     "3APP3 MER"
-   ]
+   ],
+   "notes": null
   },
   {
    "uid": "paix:3APP3 ME PAIX",
@@ -887,7 +946,8 @@
    "areaLabel": null,
    "askingRent": 800000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "villas:VILLA CAISSE BODJONA RABI",
@@ -901,7 +961,8 @@
    "areaLabel": "10a 7ca",
    "askingRent": 2000000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "villas:VILLA ESPERANCE 133",
@@ -915,7 +976,8 @@
    "areaLabel": null,
    "askingRent": 1200000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "villas:VILLA JUBILE 118 SONIPA RABI",
@@ -929,7 +991,8 @@
    "areaLabel": "8a 65 ca",
    "askingRent": 1300000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "villas:VILLA JUBILE A80",
@@ -943,7 +1006,8 @@
    "areaLabel": null,
    "askingRent": 1200000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "villas:VILLA MILLENIUM",
@@ -957,7 +1021,8 @@
    "areaLabel": null,
    "askingRent": 1500000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "villas:VILLA 313",
@@ -971,7 +1036,8 @@
    "areaLabel": null,
    "askingRent": 2000000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "villas:VILLA AVEPOZO",
@@ -985,7 +1051,8 @@
    "areaLabel": null,
    "askingRent": 400000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "villas:VILLA HORIZON",
@@ -999,7 +1066,8 @@
    "areaLabel": null,
    "askingRent": 1300000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "villas:RESIDENCE COMPLEXE DE LOISIR KPESSI",
@@ -1013,7 +1081,8 @@
    "areaLabel": null,
    "askingRent": 2000000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "entrepots:SITE PORT ENTREPOT N 1",
@@ -1027,7 +1096,8 @@
    "areaLabel": null,
    "askingRent": 13000000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "entrepots:SITE PORT ENTREPOT N 2",
@@ -1040,8 +1110,9 @@
    "areaM2": null,
    "areaLabel": null,
    "askingRent": null,
-   "status": "VACANT",
-   "legacyCodes": []
+   "status": "OCCUPIED",
+   "legacyCodes": [],
+   "notes": "Occupé par SORETRAP (même bail que SITE PORT ENTREPOT N°1 : 2 entrepôts à 6 500 000 F, soit 13 000 000 F/mois)."
   },
   {
    "uid": "entrepots:SITE PORT ENTREPOT N 3",
@@ -1055,7 +1126,8 @@
    "areaLabel": null,
    "askingRent": 7500000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "entrepots:ENTREPOT:TOGOTOLE SARL",
@@ -1069,7 +1141,8 @@
    "areaLabel": null,
    "askingRent": 1000000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "entrepots:SITE AZAR ENTREPOT N 1",
@@ -1083,7 +1156,8 @@
    "areaLabel": null,
    "askingRent": 4000000.0,
    "status": "VACANT",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": "Ancien occupant (registre du 28/09/2026) : INTERPARCK, 4 000 000 F/mois, 3 mois d'avance (12 000 000 F) payés ; local noté LIBRE."
   },
   {
    "uid": "entrepots:SITE AZAR ENTREPOT N 2",
@@ -1097,7 +1171,8 @@
    "areaLabel": null,
    "askingRent": 3000000.0,
    "status": "VACANT",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "entrepots:SITE AZAR ENTREPOT N 3",
@@ -1111,7 +1186,8 @@
    "areaLabel": null,
    "askingRent": 3500000.0,
    "status": "VACANT",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "entrepots:SITE DUCRO ENTREPOT N 1",
@@ -1125,7 +1201,8 @@
    "areaLabel": null,
    "askingRent": 10265625.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "entrepots:SITE DUCRO ENTREPOT N 2",
@@ -1139,7 +1216,8 @@
    "areaLabel": null,
    "askingRent": 3500000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "entrepots:ENTREPOT:WEST AFRICA CHAIN MANUFACTURING",
@@ -1153,7 +1231,8 @@
    "areaLabel": null,
    "askingRent": 5000000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "entrepots:ENTREPOT RAMATOU 1",
@@ -1167,7 +1246,8 @@
    "areaLabel": null,
    "askingRent": 6000000.0,
    "status": "VACANT",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "entrepots:ENTREPOT RAMATOU 2",
@@ -1181,7 +1261,8 @@
    "areaLabel": null,
    "askingRent": 1500000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "entrepots:ENTREPOT 1 VON FACE ABC",
@@ -1195,7 +1276,8 @@
    "areaLabel": null,
    "askingRent": 5000000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "entrepots:ENTREPOT 2 VON FACE ABC",
@@ -1209,7 +1291,8 @@
    "areaLabel": null,
    "askingRent": 3500000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "entrepots:ENTREPOT AKODESSEWA DERRIERE TDE",
@@ -1223,7 +1306,8 @@
    "areaLabel": null,
    "askingRent": 3000000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "entrepots:ENTREPOT VON FAN MILK A COTE DE LOCAMAT",
@@ -1237,7 +1321,8 @@
    "areaLabel": null,
    "askingRent": 10000000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "entrepots:ENTREPOT:LIU WEIJIAN",
@@ -1251,7 +1336,8 @@
    "areaLabel": null,
    "askingRent": 3000000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "entrepots:SITE ITP ENTREPOT N 1 MESANINE",
@@ -1265,7 +1351,8 @@
    "areaLabel": null,
    "askingRent": 5000000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "entrepots:SITE ITP ENTREPOT N 2",
@@ -1279,7 +1366,8 @@
    "areaLabel": null,
    "askingRent": 6500000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "entrepots:SITE ITP ENTREPOT N 3",
@@ -1293,7 +1381,8 @@
    "areaLabel": null,
    "askingRent": 6500000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "entrepots:SITE SIVOP ENTREPOT N 1",
@@ -1307,7 +1396,8 @@
    "areaLabel": null,
    "askingRent": 6000000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "entrepots:SITE SIVOP ENTREPOT N 2 MESANINE",
@@ -1321,7 +1411,8 @@
    "areaLabel": null,
    "askingRent": 2750000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "entrepots:ENTRPOT LEADER FOOD INDUSTRIE",
@@ -1335,7 +1426,8 @@
    "areaLabel": null,
    "askingRent": 3000000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "entrepots:ENTREPOT CACAVELI",
@@ -1349,7 +1441,8 @@
    "areaLabel": null,
    "askingRent": 388200.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "entrepots:ENTREPOT NYEKONAKPOE",
@@ -1363,7 +1456,8 @@
    "areaLabel": null,
    "askingRent": 500000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "entrepots:ENTREPOT:BUREAU DE TRANSIT FOI TRANS",
@@ -1377,7 +1471,8 @@
    "areaLabel": null,
    "askingRent": 500000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "entrepots:ENTREPOT DERRIERE IMMEUBLE LA PAIX:CMA CGM",
@@ -1391,7 +1486,8 @@
    "areaLabel": null,
    "askingRent": 390550.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "entrepots:ENTREPOT DERRIERE IMMEUBLE LA PAIX:R LOGISTIC",
@@ -1405,7 +1501,8 @@
    "areaLabel": null,
    "askingRent": 390550.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "entrepots:ENTREPOT DERRIERE HOTEL SARAKAWA",
@@ -1419,7 +1516,8 @@
    "areaLabel": null,
    "askingRent": 2200000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "entrepots:NOUVEL ENTREPOT AKODESSEWA",
@@ -1433,7 +1531,8 @@
    "areaLabel": null,
    "askingRent": 5000000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "entrepots:ENTREPOT PROFOOD",
@@ -1447,7 +1546,8 @@
    "areaLabel": null,
    "askingRent": 2500000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "entrepots:ENTREPOT IMS",
@@ -1461,7 +1561,8 @@
    "areaLabel": null,
    "askingRent": 10000000.0,
    "status": "VACANT",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "showrooms:SHOW ROOM1 SITE1",
@@ -1475,7 +1576,8 @@
    "areaLabel": null,
    "askingRent": 2500000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "showrooms:SHOW ROOM2 SITE1",
@@ -1489,7 +1591,8 @@
    "areaLabel": null,
    "askingRent": 2500000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "showrooms:SHOW ROOM1 SITE2",
@@ -1503,7 +1606,8 @@
    "areaLabel": null,
    "askingRent": 2525000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "showrooms:SHOW ROOM2 SITE2",
@@ -1517,7 +1621,8 @@
    "areaLabel": null,
    "askingRent": 2500000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "showrooms:SHOW ROOM3 SITE2",
@@ -1531,7 +1636,8 @@
    "areaLabel": null,
    "askingRent": 2280000.0,
    "status": "OCCUPIED",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "showrooms:B1 SITE3",
@@ -1545,7 +1651,8 @@
    "areaLabel": null,
    "askingRent": null,
    "status": "VACANT",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "showrooms:B2 SITE3",
@@ -1559,7 +1666,8 @@
    "areaLabel": null,
    "askingRent": null,
    "status": "VACANT",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "showrooms:B3 SITE3",
@@ -1573,7 +1681,8 @@
    "areaLabel": null,
    "askingRent": null,
    "status": "VACANT",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "showrooms:B4 SITE3",
@@ -1587,7 +1696,8 @@
    "areaLabel": null,
    "askingRent": null,
    "status": "VACANT",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "showrooms:B5 SITE3",
@@ -1601,7 +1711,8 @@
    "areaLabel": null,
    "askingRent": null,
    "status": "VACANT",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "showrooms:B6 SITE3",
@@ -1615,7 +1726,8 @@
    "areaLabel": null,
    "askingRent": null,
    "status": "VACANT",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "showrooms:B7 SITE3",
@@ -1629,7 +1741,8 @@
    "areaLabel": null,
    "askingRent": null,
    "status": "VACANT",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "showrooms:B8 SITE3",
@@ -1643,7 +1756,8 @@
    "areaLabel": null,
    "askingRent": null,
    "status": "VACANT",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "showrooms:B9 SITE3",
@@ -1657,7 +1771,8 @@
    "areaLabel": null,
    "askingRent": null,
    "status": "VACANT",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "showrooms:B10 SITE3",
@@ -1671,7 +1786,8 @@
    "areaLabel": null,
    "askingRent": null,
    "status": "VACANT",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "showrooms:B11 SITE3",
@@ -1685,7 +1801,8 @@
    "areaLabel": null,
    "askingRent": null,
    "status": "VACANT",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "showrooms:M1 SITE3",
@@ -1699,7 +1816,8 @@
    "areaLabel": null,
    "askingRent": null,
    "status": "VACANT",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "showrooms:M2 SITE3",
@@ -1713,7 +1831,8 @@
    "areaLabel": null,
    "askingRent": null,
    "status": "VACANT",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "showrooms:M3 SITE3",
@@ -1727,7 +1846,8 @@
    "areaLabel": null,
    "askingRent": null,
    "status": "VACANT",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "showrooms:M4 SITE3",
@@ -1741,7 +1861,8 @@
    "areaLabel": null,
    "askingRent": null,
    "status": "VACANT",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "paix:charges",
@@ -1755,7 +1876,8 @@
    "areaLabel": null,
    "askingRent": null,
    "status": "MAINTENANCE",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   },
   {
    "uid": "assigame:charges",
@@ -1769,7 +1891,8 @@
    "areaLabel": null,
    "askingRent": null,
    "status": "MAINTENANCE",
-   "legacyCodes": []
+   "legacyCodes": [],
+   "notes": null
   }
  ],
  "tenants": [
@@ -2280,7 +2403,7 @@
   {
    "tid": "T057",
    "name": "PALMAIRA",
-   "representative": "representée par Mr EL MOHAMAD HUSSEINI",
+   "representative": "Mr EL MOHAMAD HUSSEINI",
    "phone": null,
    "poBox": null,
    "notes": null,
@@ -2483,7 +2606,7 @@
    "depositAmount": 1050000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2025-10-01",
+   "ledgerStartDate": "2026-05-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -2726,8 +2849,8 @@
    "startDate": "2026-02-01",
    "endDate": null,
    "rent": 151250.0,
-   "depositAmount": 302500.0,
-   "depositLabel": "02 mois de caution",
+   "depositAmount": 453750.0,
+   "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
    "ledgerStartDate": null,
    "needsReview": false,
@@ -2742,16 +2865,16 @@
    "payments": [
     {
      "date": "2026-02-01",
-     "amount": 302500.0,
+     "amount": 453750.0,
      "kind": "DEPOSIT",
-     "monthsCovered": 2,
-     "notes": "2 mois de caution (inclus dans : Location de magasin Payement de 2 mois de caution et de 3 mois de loyer du 01/02/2026 au 31/03/2026)"
+     "monthsCovered": 3,
+     "notes": "3 mois de caution (inclus dans : Location de magasin Payement de 2 mois de caution et de 3 mois de loyer du 01/02/2026 au 31/03/2026)"
     },
     {
      "date": "2026-02-01",
-     "amount": 453750.0,
+     "amount": 302500.0,
      "kind": "RENT",
-     "monthsCovered": 3,
+     "monthsCovered": 2,
      "notes": "Location de magasin Payement de 2 mois de caution et de 3 mois de loyer du 01/02/2026 au 31/03/2026"
     },
     {
@@ -2775,7 +2898,7 @@
    "depositAmount": 375000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2025-07-12",
+   "ledgerStartDate": "2026-04-12",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -2833,7 +2956,7 @@
    "depositAmount": 453750.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2025-11-01",
+   "ledgerStartDate": "2026-07-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -2958,7 +3081,7 @@
    "depositAmount": 900000.0,
    "depositLabel": "06 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2025-06-01",
+   "ledgerStartDate": "2026-01-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -2988,14 +3111,14 @@
      "amount": 500000.0,
      "kind": "ARREARS",
      "monthsCovered": null,
-     "notes": "Depôt pour payement d'arrièré de loyer de 01/09/2025 au 31/10/2026"
+     "notes": "[Période réglée du 01/09/2025 au 31/12/2025] Depôt pour payement d'arrièré de loyer de 01/09/2025 au 31/10/2026"
     },
     {
      "date": "2026-09-01",
      "amount": 89000.0,
      "kind": "ARREARS",
      "monthsCovered": null,
-     "notes": "SOLDE ANNEE 2025"
+     "notes": "[Période réglée du 01/01/2025 au 31/12/2025] SOLDE ANNEE 2025"
     },
     {
      "date": "2015-04-01",
@@ -3030,7 +3153,7 @@
    "depositAmount": 210000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-02-01",
+   "ledgerStartDate": "2026-08-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -3083,7 +3206,7 @@
    "depositAmount": 660000.0,
    "depositLabel": "06 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2025-12-27",
+   "ledgerStartDate": "2026-09-27",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -3143,7 +3266,7 @@
    "depositAmount": 330000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2025-01-01",
+   "ledgerStartDate": "2026-07-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -3247,7 +3370,7 @@
    "depositAmount": 363000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-01-01",
+   "ledgerStartDate": "2026-07-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -3305,7 +3428,7 @@
    "depositAmount": 600000.0,
    "depositLabel": "06 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2025-04-01",
+   "ledgerStartDate": "2025-09-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -3363,7 +3486,7 @@
    "depositAmount": 270000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2025-09-01",
+   "ledgerStartDate": "2026-09-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -3593,7 +3716,7 @@
    "depositAmount": 180000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2025-07-29",
+   "ledgerStartDate": "2026-07-29",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -3658,7 +3781,7 @@
    "depositAmount": 210000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-01-20",
+   "ledgerStartDate": "2026-07-20",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -3774,7 +3897,7 @@
    "depositAmount": 240000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2025-12-01",
+   "ledgerStartDate": "2026-06-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -3895,7 +4018,7 @@
    "depositAmount": 150000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2025-11-09",
+   "ledgerStartDate": "2026-08-09",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -3955,7 +4078,7 @@
    "depositAmount": 210000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-02-01",
+   "ledgerStartDate": "2026-08-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -4008,7 +4131,7 @@
    "depositAmount": 300000.0,
    "depositLabel": "06 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-03-15",
+   "ledgerStartDate": "2026-09-15",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -4061,7 +4184,7 @@
    "depositAmount": 300000.0,
    "depositLabel": "06 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2025-09-01",
+   "ledgerStartDate": "2026-09-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -4126,7 +4249,7 @@
    "depositAmount": 150000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2025-10-04",
+   "ledgerStartDate": "2026-04-04",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -4177,7 +4300,7 @@
    "depositAmount": 300000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-02-01",
+   "ledgerStartDate": "2026-08-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -4290,7 +4413,7 @@
    "depositAmount": 900000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-01-01",
+   "ledgerStartDate": "2026-10-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -4350,7 +4473,7 @@
    "depositAmount": 900000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-01-01",
+   "ledgerStartDate": "2026-10-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -4428,7 +4551,7 @@
    "depositAmount": 0,
    "depositLabel": null,
    "status": "ACTIVE",
-   "ledgerStartDate": null,
+   "ledgerStartDate": "2026-07-15",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [],
@@ -4461,7 +4584,7 @@
    "depositAmount": 0,
    "depositLabel": "0 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2025-12-01",
+   "ledgerStartDate": "2026-07-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -4664,7 +4787,7 @@
    "depositAmount": 900000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-02-01",
+   "ledgerStartDate": "2026-08-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -4713,6 +4836,10 @@
     {
      "date": "2026-09-28",
      "response": "a payé 3 mois ce 15/07/2026"
+    },
+    {
+     "date": "2026-09-28",
+     "response": "Frais d'entretien mensuels (registre) : 15 000 F"
     }
    ]
   },
@@ -4727,7 +4854,7 @@
    "depositAmount": 1200000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2025-12-01",
+   "ledgerStartDate": "2026-09-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -4778,6 +4905,10 @@
     {
      "date": "2026-09-28",
      "response": "a payé 3 mois ce 15/07/2026"
+    },
+    {
+     "date": "2026-09-28",
+     "response": "Frais d'entretien mensuels (registre) : 10 000 F"
     }
    ]
   },
@@ -4792,7 +4923,7 @@
    "depositAmount": 900000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2025-12-01",
+   "ledgerStartDate": "2026-09-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -4857,7 +4988,7 @@
    "depositAmount": 1200000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2025-12-01",
+   "ledgerStartDate": "2026-09-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -4922,7 +5053,7 @@
    "depositAmount": 4500000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-01-01",
+   "ledgerStartDate": "2026-10-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -4969,7 +5100,12 @@
      "notes": "Rapport : 03mois de loyer"
     }
    ],
-   "followUps": []
+   "followUps": [
+    {
+     "date": "2026-09-28",
+     "response": "Frais d'entretien mensuels (registre) : 25 000 F"
+    }
+   ]
   },
   {
    "lid": "B046",
@@ -4982,7 +5118,7 @@
    "depositAmount": 1950000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-01-01",
+   "ledgerStartDate": "2026-10-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -5033,6 +5169,10 @@
     {
      "date": "2026-09-28",
      "response": "a payé 3 mois ce 15/07/2026"
+    },
+    {
+     "date": "2026-09-28",
+     "response": "Frais d'entretien mensuels (registre) : 20 000 F"
     }
    ]
   },
@@ -5047,7 +5187,7 @@
    "depositAmount": 1200000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-03-01",
+   "ledgerStartDate": "2026-09-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -5091,6 +5231,10 @@
     {
      "date": "2026-09-28",
      "response": "a payé 3 mois ce 15/07/2026"
+    },
+    {
+     "date": "2026-09-28",
+     "response": "Frais d'entretien (registre) : PAYE DÉJÀ PAR B1++"
     }
    ]
   },
@@ -5105,13 +5249,13 @@
    "depositAmount": 8700000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2025-10-01",
+   "ledgerStartDate": "2026-07-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
     {
      "dueDate": "2026-04-01",
-     "rate": 0.069,
+     "rate": 0.06896552,
      "applied": true
     },
     {
@@ -5155,6 +5299,13 @@
      "kind": "DEPOSIT",
      "monthsCovered": null,
      "notes": "Rapport : 03 mois de caution"
+    },
+    {
+     "date": "2024-06-01",
+     "amount": 8700000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 3,
+     "notes": "Rapport : 03 mois de loyer"
     }
    ],
    "followUps": []
@@ -5196,7 +5347,12 @@
      "notes": "Rapport : 06 mois de loyer"
     }
    ],
-   "followUps": []
+   "followUps": [
+    {
+     "date": "2026-09-28",
+     "response": "Frais d'entretien (registre) : PAYE DÉJÀ PAR 3APP2 MER"
+    }
+   ]
   },
   {
    "lid": "B050",
@@ -5242,7 +5398,12 @@
      "notes": "Rapport : 06 mois de loyer"
     }
    ],
-   "followUps": []
+   "followUps": [
+    {
+     "date": "2026-09-28",
+     "response": "Frais d'entretien mensuels (registre) : 50 000 F"
+    }
+   ]
   },
   {
    "lid": "B051",
@@ -5255,7 +5416,7 @@
    "depositAmount": 0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": null,
+   "ledgerStartDate": "2026-10-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -5281,7 +5442,12 @@
      "notes": "Payement de 3 mois de loyer du 01/07/2026 au 30/09/2026"
     }
    ],
-   "followUps": []
+   "followUps": [
+    {
+     "date": "2026-09-28",
+     "response": "Frais d'entretien mensuels (registre) : 50 000 F"
+    }
+   ]
   },
   {
    "lid": "B052",
@@ -5294,7 +5460,7 @@
    "depositAmount": 0,
    "depositLabel": "0 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": null,
+   "ledgerStartDate": "2026-10-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -5320,7 +5486,12 @@
      "notes": "Payement de 3 mois de loyer du 01/07/2026 au 30/09/2026"
     }
    ],
-   "followUps": []
+   "followUps": [
+    {
+     "date": "2026-09-28",
+     "response": "Frais d'entretien mensuels (registre) : 50 000 F"
+    }
+   ]
   },
   {
    "lid": "B053",
@@ -5333,7 +5504,7 @@
    "depositAmount": 0,
    "depositLabel": "0 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": null,
+   "ledgerStartDate": "2026-10-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -5359,7 +5530,12 @@
      "notes": "Payement de 3 mois de loyer du 01/07/2026 au 30/09/2026"
     }
    ],
-   "followUps": []
+   "followUps": [
+    {
+     "date": "2026-09-28",
+     "response": "Frais d'entretien mensuels (registre) : 50 000 F"
+    }
+   ]
   },
   {
    "lid": "B054",
@@ -5376,11 +5552,6 @@
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
-    {
-     "dueDate": "2026-05-01",
-     "rate": 0.0667,
-     "applied": true
-    },
     {
      "dueDate": "2027-11-01",
      "rate": 0.1,
@@ -5435,6 +5606,10 @@
     {
      "date": "2026-09-28",
      "response": "ont dis qu'ils vont payer sous peu"
+    },
+    {
+     "date": "2026-09-28",
+     "response": "Frais d'entretien (registre) : 50 000 PAYE PAR REMISE DE CHEQUE"
     }
    ]
   },
@@ -5449,7 +5624,7 @@
    "depositAmount": 6000000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2025-12-01",
+   "ledgerStartDate": "2026-09-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -5507,7 +5682,7 @@
    "depositAmount": 3600000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-01-01",
+   "ledgerStartDate": "2026-07-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [],
@@ -5552,7 +5727,7 @@
    "depositAmount": 3900000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-02-01",
+   "ledgerStartDate": "2026-05-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [],
@@ -5699,7 +5874,7 @@
    "depositAmount": 0,
    "depositLabel": "0 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-03-28",
+   "ledgerStartDate": "2026-09-28",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -5723,6 +5898,13 @@
      "kind": "RENT",
      "monthsCovered": 3,
      "notes": "Payement de 3 mois de loyer du 28/06/2026 au 27/09/2026"
+    },
+    {
+     "date": "2022-06-28",
+     "amount": 18000000.0,
+     "kind": "ADVANCE_AT_ENTRY",
+     "monthsCovered": 12,
+     "notes": "Rapport : 1an de loyer"
     }
    ],
    "followUps": []
@@ -5735,8 +5917,8 @@
    "startDate": "2023-11-01",
    "endDate": null,
    "rent": 2300000.0,
-   "depositAmount": 0,
-   "depositLabel": "0 mois de caution",
+   "depositAmount": 6000000.0,
+   "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
    "ledgerStartDate": "2025-11-01",
    "needsReview": false,
@@ -5781,6 +5963,13 @@
      "kind": "RENT",
      "monthsCovered": 3,
      "notes": "Payement de 3 mois de loyer du 01/08/2026 au 31/10/2026"
+    },
+    {
+     "date": "2023-11-01",
+     "amount": 6000000.0,
+     "kind": "DEPOSIT",
+     "monthsCovered": null,
+     "notes": "Rapport : 03 mois de caution"
     }
    ],
    "followUps": []
@@ -5874,7 +6063,7 @@
    "depositAmount": 6000000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-02-01",
+   "ledgerStartDate": "2026-08-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [],
@@ -5911,8 +6100,8 @@
    "startDate": "2021-04-01",
    "endDate": null,
    "rent": 13000000.0,
-   "depositAmount": 0,
-   "depositLabel": "0 mois de caition",
+   "depositAmount": 26000000.0,
+   "depositLabel": "02 mois de caution",
    "status": "ACTIVE",
    "ledgerStartDate": null,
    "needsReview": true,
@@ -6055,7 +6244,7 @@
    "depositAmount": 0,
    "depositLabel": "00 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": null,
+   "ledgerStartDate": "2026-07-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [],
@@ -6166,7 +6355,7 @@
    "status": "ACTIVE",
    "ledgerStartDate": "2025-07-01",
    "needsReview": true,
-   "reviewReason": "« 03 mois de loyer » = 10 500 000 F alors que le loyer est de 1 500 000 F : ligne probablement copiée de Ramatou 1.",
+   "reviewReason": "« 03 mois de loyer » = 10 500 000 F alors que 3 × 1 500 000 F = 4 500 000 F : montant incohérent dans le registre (échéance 2025 non mise à jour).",
    "reviews": [],
    "payments": [],
    "followUps": []
@@ -6182,7 +6371,7 @@
    "depositAmount": 15000000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-01-01",
+   "ledgerStartDate": "2026-10-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -6242,7 +6431,7 @@
    "depositAmount": 0,
    "depositLabel": "0 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-01-01",
+   "ledgerStartDate": "2026-07-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -6431,7 +6620,7 @@
    "depositAmount": 0,
    "depositLabel": null,
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-01-01",
+   "ledgerStartDate": "2026-10-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [],
@@ -6471,7 +6660,7 @@
    "depositAmount": 0,
    "depositLabel": null,
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-01-01",
+   "ledgerStartDate": "2026-10-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [],
@@ -6551,7 +6740,7 @@
    "depositAmount": 0,
    "depositLabel": null,
    "status": "ACTIVE",
-   "ledgerStartDate": "2025-12-01",
+   "ledgerStartDate": "2026-09-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -6667,7 +6856,7 @@
    "depositAmount": 0,
    "depositLabel": null,
    "status": "ACTIVE",
-   "ledgerStartDate": null,
+   "ledgerStartDate": "2031-01-01",
    "needsReview": true,
    "reviewReason": "5 ans de loyer payés d'avance (23 292 000 F = 60 × 388 200 F), sans date de début ni d'échéance.",
    "reviews": [],
@@ -6767,7 +6956,7 @@
    "depositAmount": 0,
    "depositLabel": null,
    "status": "ACTIVE",
-   "ledgerStartDate": "2025-10-01",
+   "ledgerStartDate": "2026-07-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -6820,7 +7009,7 @@
    "depositAmount": 6000000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2025-10-01",
+   "ledgerStartDate": "2026-07-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -6924,7 +7113,7 @@
    "depositAmount": 7500000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": null,
+   "ledgerStartDate": "2027-01-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -6963,7 +7152,7 @@
    "depositAmount": 5000000.0,
    "depositLabel": "02 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": null,
+   "ledgerStartDate": "2026-08-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -7081,7 +7270,7 @@
    "uid": "showrooms:SHOW ROOM3 SITE2",
    "tid": "T074",
    "tenantName": "CHEN AFRICA",
-   "startDate": "2026-04-01",
+   "startDate": "2026-09-01",
    "endDate": null,
    "rent": 2280000.0,
    "depositAmount": 6840000.0,
@@ -7185,9 +7374,9 @@
    "depositAmount": 0,
    "depositLabel": null,
    "status": "ACTIVE",
-   "ledgerStartDate": null,
-   "needsReview": false,
-   "reviewReason": null,
+   "ledgerStartDate": "2026-07-01",
+   "needsReview": true,
+   "reviewReason": "Bail déduit d'un seul paiement (200 000 F/mois, 5 mois jusqu'au 31/03/2026) : le registre place ces studios dans le bloc loué par R-LOGISTIC (bail B8++). Aucun paiement depuis avril.",
    "reviews": [],
    "payments": [
     {
@@ -7394,29 +7583,44 @@
    "action": null
   },
   {
+   "ref": "B005",
+   "problem": "Réception d'entrée 756 250 F : relevé : 2 mois de caution ; registre : 3 mois — le registre est retenu.",
+   "action": "Confirmer"
+  },
+  {
    "ref": "B002",
-   "problem": "Prochain paiement du registre (01/08/2025) ≠ date déduite des relevés (01/06/2026).",
-   "action": "Vérifier avec le gestionnaire"
+   "problem": "Registre non mis à jour : prochain paiement 01/08/2025, alors que les relevés couvrent le loyer jusqu'au 31/05/2026 (relevés retenus).",
+   "action": null
   },
   {
    "ref": "B003",
-   "problem": "Prochain paiement du registre (01/07/2025) ≠ date déduite des relevés (01/01/2026).",
-   "action": "Vérifier avec le gestionnaire"
+   "problem": "Registre non mis à jour : prochain paiement 01/07/2025, alors que les relevés couvrent le loyer jusqu'au 31/12/2025 (relevés retenus).",
+   "action": null
+  },
+  {
+   "ref": "B004",
+   "problem": "Le relevé d'avril montre un solde de 1 050 000 F pour 3 mois (soit 350 000 F/mois) alors que le loyer du registre est de 275 000 F : loyer ou solde à confirmer.",
+   "action": "Confirmer le loyer réel"
   },
   {
    "ref": "B005",
-   "problem": "Prochain paiement du registre (01/04/2026) ≠ date déduite des relevés (01/09/2026).",
-   "action": "Vérifier avec le gestionnaire"
-  },
-  {
-   "ref": "B005",
-   "problem": "Caution du registre : 3 mois de caution = 453 750 F ; caution payée dans les relevés : 302 500 F.",
-   "action": "Confirmer"
+   "problem": "Registre non mis à jour : prochain paiement 01/04/2026, alors que les relevés couvrent le loyer jusqu'au 31/07/2026 (relevés retenus).",
+   "action": null
   },
   {
    "ref": "B006",
    "problem": "Loyer du registre (137 500 F) inférieur au loyer payé dans les relevés (151 250 F/mois) : révision déjà appliquée ?",
    "action": "Mettre le registre à jour"
+  },
+  {
+   "ref": "B008",
+   "problem": "Registre non mis à jour : prochain paiement 01/10/2026, alors que les relevés couvrent le loyer jusqu'au 31/12/2026 (relevés retenus).",
+   "action": null
+  },
+  {
+   "ref": "B008",
+   "problem": "La même période (01/04–30/06/2026, 412 500 F) est enregistrée trois fois dans les relevés (février, avril, juillet) : vérifier s'il s'agit de trois trimestres différents ou d'un doublon.",
+   "action": "Vérifier avec le gestionnaire"
   },
   {
    "ref": "B011",
@@ -7425,13 +7629,33 @@
   },
   {
    "ref": "B013",
-   "problem": "Prochain paiement du registre (11/09/2025) ≠ date déduite des relevés (11/01/2026).",
+   "problem": "Registre non mis à jour : prochain paiement 11/09/2025, alors que les relevés couvrent le loyer jusqu'au 10/01/2026 (relevés retenus).",
+   "action": null
+  },
+  {
+   "ref": "B015",
+   "problem": "Solde calculé depuis le prochain paiement du registre (01/09/2025) : les relevés 2026 ne couvrent le loyer que jusqu'au 31/07/2025 ; l'écart (1 mois) est considéré comme payé en dehors des relevés.",
+   "action": "Vérifier avec le gestionnaire"
+  },
+  {
+   "ref": "B015",
+   "problem": "Le registre note un dépôt de 200 000 F le 05/08/2026 qui ne figure dans aucun relevé mensuel : non enregistré.",
+   "action": "Retrouver le reçu"
+  },
+  {
+   "ref": "B018",
+   "problem": "Registre non mis à jour : prochain paiement 12/02/2026, alors que les relevés couvrent le loyer jusqu'au 11/05/2026 (relevés retenus).",
+   "action": null
+  },
+  {
+   "ref": "B020",
+   "problem": "Solde calculé depuis le prochain paiement du registre (29/07/2026) : les relevés 2026 ne couvrent le loyer que jusqu'au 28/06/2026 ; l'écart (1 mois) est considéré comme payé en dehors des relevés.",
    "action": "Vérifier avec le gestionnaire"
   },
   {
    "ref": "B031",
-   "problem": "Prochain paiement du registre (24/06/2026) ≠ date déduite des relevés (24/10/2026).",
-   "action": "Vérifier avec le gestionnaire"
+   "problem": "Registre non mis à jour : prochain paiement 24/06/2026, alors que les relevés couvrent le loyer jusqu'au 23/10/2026 (relevés retenus).",
+   "action": null
   },
   {
    "ref": "B041",
@@ -7439,14 +7663,19 @@
    "action": "Mettre le registre à jour"
   },
   {
+   "ref": "B055",
+   "problem": "Solde calculé depuis le prochain paiement du registre (01/09/2026) : les relevés 2026 ne couvrent le loyer que jusqu'au 31/05/2026 ; l'écart (3 mois) est considéré comme payé en dehors des relevés.",
+   "action": "Vérifier avec le gestionnaire"
+  },
+  {
+   "ref": "B056",
+   "problem": "Solde calculé depuis le prochain paiement du registre (01/07/2026) : les relevés 2026 ne couvrent le loyer que jusqu'au 31/03/2026 ; l'écart (3 mois) est considéré comme payé en dehors des relevés.",
+   "action": "Vérifier avec le gestionnaire"
+  },
+  {
    "ref": "B058",
    "problem": "Loyer du registre (1 200 000 F) inférieur au loyer payé dans les relevés (1 320 000 F/mois) : révision déjà appliquée ?",
    "action": "Mettre le registre à jour"
-  },
-  {
-   "ref": "B059",
-   "problem": "« 1an de loyer » = 18 000 000 F, alors que 1 × 1 500 000 F = 1 500 000 F : montant ignoré.",
-   "action": "Confirmer le montant réel"
   },
   {
    "ref": "B060",
@@ -7455,8 +7684,13 @@
   },
   {
    "ref": "B060",
-   "problem": "Caution notée « 0 mois de caution » mais montant 6 000 000 F : montant ignoré.",
-   "action": "Confirmer la caution"
+   "problem": "Registre non mis à jour : prochain paiement 01/08/2026, alors que les relevés couvrent le loyer jusqu'au 31/10/2026 (relevés retenus).",
+   "action": null
+  },
+  {
+   "ref": "B060",
+   "problem": "Libellé du registre « 0 mois de caution » corrigé : le montant 6 000 000 F correspond à 3 mois de loyer (2 000 000 F).",
+   "action": "Confirmer"
   },
   {
    "ref": "B060",
@@ -7475,8 +7709,8 @@
   },
   {
    "ref": "B064",
-   "problem": "Caution notée « 0 mois de caition » mais montant 26 000 000 F : montant ignoré.",
-   "action": "Confirmer la caution"
+   "problem": "Libellé du registre « 0 mois de caution » corrigé : le montant 26 000 000 F correspond à 2 mois de loyer (13 000 000 F).",
+   "action": "Confirmer"
   },
   {
    "ref": "B064",
@@ -7510,8 +7744,13 @@
   },
   {
    "ref": "B071",
-   "problem": "Prochain paiement du registre (01/07/2028) ≠ date déduite des relevés (01/07/2027).",
-   "action": "Vérifier avec le gestionnaire"
+   "problem": "Prochain paiement du registre (01/07/2028) improbable (plus de 6 mois après la couverture des relevés, 01/07/2027) : les relevés sont retenus.",
+   "action": "Corriger le registre"
+  },
+  {
+   "ref": "B072",
+   "problem": "Le registre indique 18 000 000 F de caution et 18 000 000 F de loyer d'avance (3 mois) payés, sans relevé mensuel correspondant : aucun paiement enregistré.",
+   "action": "Enregistrer les paiements avec leur date"
   },
   {
    "ref": "B073",
@@ -7554,13 +7793,13 @@
    "action": "Vérifier et compléter"
   },
   {
-   "ref": "B097",
-   "problem": "Les relevés montrent un loyer payé dès le 01/04/2026, avant la remise de clé du registre (01/09/2026) : date de début ajustée.",
-   "action": null
+   "ref": "B093",
+   "problem": "Solde calculé depuis le prochain paiement du registre (01/01/2027) : les relevés 2026 ne couvrent le loyer que jusqu'au 30/09/2026 ; l'écart (3 mois) est considéré comme payé en dehors des relevés.",
+   "action": "Vérifier avec le gestionnaire"
   },
   {
-   "ref": "B097",
-   "problem": "Prochain paiement du registre (01/12/2026) ≠ date déduite des relevés (01/07/2026).",
+   "ref": "B100",
+   "problem": "Solde calculé depuis le prochain paiement du registre (01/07/2026) : les relevés 2026 ne couvrent le loyer que jusqu'au 31/03/2026 ; l'écart (3 mois) est considéré comme payé en dehors des relevés.",
    "action": "Vérifier avec le gestionnaire"
   }
  ],
