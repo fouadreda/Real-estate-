@@ -5,6 +5,7 @@ import { requireUserWithDictionary } from "@/lib/auth";
 import { propertyLabel, leaseLocationName } from "@/lib/leaseLocation";
 import { tenantDisplayName } from "@/lib/tenantName";
 import Badge from "@/components/Badge";
+import { leaseDisplayStatus } from "@/lib/ledger";
 
 export default async function SearchPage({
   searchParams,
@@ -147,7 +148,7 @@ export default async function SearchPage({
                         <p className="font-medium text-stone-900">{tenantDisplayName(lease.tenant)}</p>
                         <p className="text-sm text-stone-500">{leaseLocationName(lease)}</p>
                       </div>
-                      <Badge status={lease.status} label={t.status[lease.status]} />
+                      <Badge status={leaseDisplayStatus(lease, new Date())} label={t.status[leaseDisplayStatus(lease, new Date())]} />
                     </div>
                   </Link>
                 ))}
