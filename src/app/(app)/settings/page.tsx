@@ -1,5 +1,7 @@
 import { requireUserWithDictionary } from "@/lib/auth";
 import { updateProfile, updatePassword, updateLanguage } from "@/lib/actions/settings";
+import { updateOverdueDays } from "@/lib/actions/appSettings";
+import { getSettings } from "@/lib/settings";
 import { formatDate } from "@/lib/format";
 import Link from "next/link";
 import Avatar from "@/components/Avatar";
@@ -7,10 +9,11 @@ import Avatar from "@/components/Avatar";
 export default async function SettingsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ profile?: string; password?: string; language?: string }>;
+  searchParams: Promise<{ profile?: string; password?: string; language?: string; paymentStatus?: string }>;
 }) {
   const { user, t, locale } = await requireUserWithDictionary();
   const params = await searchParams;
+  const { overdueDays } = await getSettings();
 
   return (
     <div className="max-w-2xl space-y-6">
@@ -97,6 +100,36 @@ export default async function SettingsPage({
           </div>
           <button type="submit" className="btn-primary w-full sm:w-auto">{t.settings.savePassword}</button>
         </form>
+      </div>
+
+      <div className="card space-y-4">
+        <h2 className="font-semibold text-stone-900">{t.settings.paymentStatusHeading}</h2>
+        <p className="text-sm text-stone-500">{t.settings.paymentStatusHelp}</p>
+        {params.paymentStatus === "success" && (
+          <div className="rounded-lg bg-emerald-50 px-3 py-2 text-sm text-emerald-700">{t.settings.paymentStatusSaved}</div>
+        )}
+        {params.paymentStatus === "invalid" && (
+          <div className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-600">{t.settings.paymentStatusInvalid}</div>
+        )}
+        {params.paymentStatus === "forbidden" && (
+          <div className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-600">{t.settings.paymentStatusForbidden}</div>
+        )}
+        {params.paymentStatus === "unavailable" && (
+          <div className="rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">{t.settings.paymentStatusUnavailable}</div>
+        )}
+        {user.role === "ADMIN" ? (
+          <form action={updateOverdueDays} className="flex flex-col gap-3 sm:flex-row sm:items-end">
+            <div>
+              <label className="label" htmlFor="overdueDays">{t.settings.overdueDaysLabel}</label>
+              <input className="input w-32" id="overdueDays" name="overdueDays" type="number" min={1} max={365} step={1} required defaultValue={overdueDays} />
+            </div>
+            <button type="submit" className="btn-primary w-full sm:w-auto">{t.settings.saveOverdueDays}</button>
+          </form>
+        ) : (
+          <p className="text-sm text-stone-700">
+            {t.settings.overdueDaysLabel}: <strong>{overdueDays}</strong>
+          </p>
+        )}
       </div>
 
       <div className="card space-y-4">
