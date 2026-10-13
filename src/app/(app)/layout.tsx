@@ -7,6 +7,11 @@ export default async function AppLayout({ children }: { children: React.ReactNod
   const { user, t } = await requireUserWithDictionary();
   const now = new Date();
 
+  // An Upcoming lease becomes Active by itself on its start date.
+  await prisma.lease
+    .updateMany({ where: { status: "PENDING", startDate: { lte: now } }, data: { status: "ACTIVE" } })
+    .catch(() => undefined);
+
   const [leasesWithPayments, expiringLeases, dismissed] = await Promise.all([
     prisma.lease.findMany({
       where: { status: { not: "PENDING" }, needsReview: false },
@@ -17,7 +22,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
         ledgerStartDate: true,
         rentAmount: true,
         billingFrequency: true,
-        payments: { select: { amount: true, kind: true, confirmed: true, date: true, notes: true } },
+        payments: { select: { amount: true, kind: true, confirmed: true, date: true, notes: true, monthsCovered: true } },
         rentReviews: { where: { appliedAt: { not: null } }, select: { dueDate: true, rate: true, appliedAt: true } },
       },
     }),
