@@ -6,6 +6,7 @@ import { requireUserWithDictionary } from "@/lib/auth";
 import { propertyLabel } from "@/lib/leaseLocation";
 import { tenantDisplayName } from "@/lib/tenantName";
 import Badge from "@/components/Badge";
+import { leaseDisplayStatus } from "@/lib/ledger";
 import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
 import { deleteProperty } from "@/lib/actions/properties";
 
@@ -139,7 +140,7 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
                   </div>
                   <div className="flex items-center gap-2">
                     {lease.needsReview && <Badge status="TODO" label={t.leaseDetail.needsReview} />}
-                    <Badge status={lease.status} label={t.status[lease.status]} />
+                    <Badge status={leaseDisplayStatus(lease, new Date())} label={t.status[leaseDisplayStatus(lease, new Date())]} />
                   </div>
                 </div>
               </Link>
