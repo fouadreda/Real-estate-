@@ -82,6 +82,22 @@ export default async function EditPaymentPage({
             <option value="OTHER">{t.status.OTHER}</option>
           </select>
         </div>
+        {(payment.kind === "RENT" || payment.kind === "ARREARS") && (
+          <div>
+            <label className="label" htmlFor="months">{t.leaseDetail.monthsForKind}</label>
+            <input
+              className="input w-28"
+              id="months"
+              name="months"
+              type="number"
+              min={1}
+              max={60}
+              step={1}
+              defaultValue={payment.monthsCovered ?? ""}
+            />
+            <p className="mt-1 text-xs text-stone-500">{t.leaseDetail.monthsHelp}</p>
+          </div>
+        )}
         <div>
           <label className="label" htmlFor="notes">{t.leaseDetail.notes}</label>
           <input className="input" id="notes" name="notes" defaultValue={payment.notes ?? ""} />
