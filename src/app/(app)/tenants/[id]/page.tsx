@@ -5,7 +5,7 @@ import { formatDate, formatMoney } from "@/lib/format";
 import { requireUserWithDictionary } from "@/lib/auth";
 import { leaseLocationName } from "@/lib/leaseLocation";
 import { tenantDisplayName } from "@/lib/tenantName";
-import { computeLeaseLedger } from "@/lib/ledger";
+import { computeLeaseLedger, leaseDisplayStatus } from "@/lib/ledger";
 import Badge from "@/components/Badge";
 import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
 import { deleteTenant } from "@/lib/actions/tenants";
@@ -109,7 +109,7 @@ export default async function TenantDetailPage({ params }: { params: Promise<{ i
                   </div>
                   <div className="flex items-center gap-2">
                     {lease.needsReview && <Badge status="TODO" label={t.leaseDetail.needsReview} />}
-                    <Badge status={lease.status} label={t.status[lease.status]} />
+                    <Badge status={leaseDisplayStatus(lease, new Date())} label={t.status[leaseDisplayStatus(lease, new Date())]} />
                   </div>
                 </div>
               </Link>
