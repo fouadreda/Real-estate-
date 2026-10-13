@@ -5,6 +5,7 @@ import { requireUserWithDictionary } from "@/lib/auth";
 import { leaseLocationName } from "@/lib/leaseLocation";
 import { tenantDisplayName } from "@/lib/tenantName";
 import Badge from "@/components/Badge";
+import { leaseDisplayStatus } from "@/lib/ledger";
 
 export default async function LeasesPage({
   searchParams,
@@ -101,7 +102,7 @@ export default async function LeasesPage({
                     <td className="px-5 py-3">
                       <div className="flex items-center gap-1">
                         {lease.needsReview && <Badge status="TODO" label={t.leaseDetail.needsReview} />}
-                        <Badge status={lease.status} label={t.status[lease.status]} />
+                        <Badge status={leaseDisplayStatus(lease, new Date())} label={t.status[leaseDisplayStatus(lease, new Date())]} />
                       </div>
                     </td>
                   </tr>
