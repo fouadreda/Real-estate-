@@ -327,3 +327,10 @@ model DismissedAlert {
 
   @@unique([kind, refId, context])
 }
+
+/// Company-wide settings that staff can change (for example how many days late counts as overdue).
+model AppSetting {
+  key       String   @id
+  value     String
+  updatedAt DateTime @updatedAt
+}
