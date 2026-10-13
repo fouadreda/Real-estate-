@@ -5,6 +5,7 @@ import { requireUserWithDictionary } from "@/lib/auth";
 import {
   cashAmount,
   computeLeaseLedger,
+  paymentsWithPaidUntil,
   monthlyEquivalentRent,
   leaseActiveInRange,
   emptyAgingBuckets,
@@ -132,6 +133,12 @@ export default async function ReportsPage({
     if (selectedStatus === "all") return true;
     return selectedStatus === "paid" ? row.isPaid : !row.isPaid;
   });
+
+  // Months each rent payment pays for, and the date the lease is paid up to after it.
+  const monthsByPayment = new Map<string, { months: number; paidUntil: Date }>();
+  for (const lease of leasesAll) {
+    for (const [paymentId, info] of paymentsWithPaidUntil(lease, lease.payments)) monthsByPayment.set(paymentId, info);
+  }
 
   const filteredPayments = payments.filter(
     (p) => (!rangeFrom || p.date >= rangeFrom) && (!rangeTo || p.date <= rangeTo),
@@ -637,15 +644,22 @@ export default async function ReportsPage({
                 t.reports.tenantHeader,
                 t.reports.propertyHeader,
                 t.leaseDetail.kind,
+                t.reports.monthsHeader,
+                t.reports.paidUntilHeader,
                 t.reports.amountHeader,
               ]}
-              rows={filteredPayments.map((payment) => [
-                formatDate(payment.date, locale),
-                tenantDisplayName(payment.lease.tenant),
-                leaseLocationName(payment.lease),
-                t.status[payment.kind],
-                formatMoneyForPdf(cashAmount(payment)),
-              ])}
+              rows={filteredPayments.map((payment) => {
+                const info = monthsByPayment.get(payment.id);
+                return [
+                  formatDate(payment.date, locale),
+                  tenantDisplayName(payment.lease.tenant),
+                  leaseLocationName(payment.lease),
+                  t.status[payment.kind],
+                  info ? t.leaseDetail.monthsUnit(info.months) : "",
+                  info ? formatDate(info.paidUntil, locale) : "",
+                  formatMoneyForPdf(cashAmount(payment)),
+                ];
+              })}
               totalLabel={t.reports.pdfTotalReceived}
               totalValue={formatMoneyForPdf(totalPaymentsFiltered)}
               footer={pdfFooter}
@@ -656,12 +670,14 @@ export default async function ReportsPage({
           ) : (
             <div className="card overflow-hidden p-0">
               <div className="overflow-x-auto">
-                <table className="w-full min-w-[520px] text-sm">
+                <table className="w-full min-w-[720px] text-sm">
                   <thead className="border-b border-stone-200 bg-stone-50 text-left text-stone-500">
                     <tr>
                       <th className="px-5 py-3 font-medium">{t.reports.dueHeader}</th>
                       <th className="px-5 py-3 font-medium">{t.reports.tenantHeader}</th>
                       <th className="px-5 py-3 font-medium">{t.leaseDetail.kind}</th>
+                      <th className="px-5 py-3 font-medium">{t.reports.monthsHeader}</th>
+                      <th className="px-5 py-3 font-medium">{t.reports.paidUntilHeader}</th>
                       <th className="px-5 py-3 font-medium">{t.reports.amountHeader}</th>
                     </tr>
                   </thead>
@@ -674,6 +690,12 @@ export default async function ReportsPage({
                         </td>
                         <td className="px-5 py-3">
                           <Badge status={payment.kind} label={t.status[payment.kind]} />
+                        </td>
+                        <td className="px-5 py-3 text-stone-600">
+                          {monthsByPayment.get(payment.id) ? t.leaseDetail.monthsUnit(monthsByPayment.get(payment.id)!.months) : <span className="text-stone-400">—</span>}
+                        </td>
+                        <td className="px-5 py-3 text-stone-600">
+                          {monthsByPayment.get(payment.id) ? formatDate(monthsByPayment.get(payment.id)!.paidUntil, locale) : <span className="text-stone-400">—</span>}
                         </td>
                         <td className={`px-5 py-3 ${payment.kind === "DEPOSIT_REFUND" ? "text-red-600" : "text-stone-600"}`}>
                           {formatMoney(cashAmount(payment), locale)}
