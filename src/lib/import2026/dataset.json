@@ -2606,7 +2606,7 @@
    "depositAmount": 1050000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-05-01",
+   "ledgerStartDate": "2025-10-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -2642,7 +2642,7 @@
      "date": "2025-02-01",
      "amount": 2100000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 6,
+     "monthsCovered": null,
      "notes": "Rapport : 06 mois de loyer"
     }
    ],
@@ -2707,7 +2707,7 @@
      "date": "2015-10-01",
      "amount": 905000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -2758,14 +2758,14 @@
      "date": "2026-07-01",
      "amount": 500000.0,
      "kind": "ARREARS",
-     "monthsCovered": null,
+     "monthsCovered": 1,
      "notes": "Depôt pour payement d'arrièré de loyer de 01/07/2025 au 31/07/2026"
     },
     {
      "date": "2026-09-01",
      "amount": 1600000.0,
      "kind": "ARREARS",
-     "monthsCovered": null,
+     "monthsCovered": 5,
      "notes": "SOLDE ANNEE 2025"
     },
     {
@@ -2779,7 +2779,7 @@
      "date": "2014-10-01",
      "amount": 905000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -2830,7 +2830,7 @@
      "date": "2021-01-01",
      "amount": 825000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -2867,7 +2867,7 @@
      "date": "2026-02-01",
      "amount": 453750.0,
      "kind": "DEPOSIT",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "3 mois de caution (inclus dans : Location de magasin Payement de 2 mois de caution et de 3 mois de loyer du 01/02/2026 au 31/03/2026)"
     },
     {
@@ -2898,7 +2898,7 @@
    "depositAmount": 375000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-04-12",
+   "ledgerStartDate": "2025-07-12",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -2934,7 +2934,7 @@
      "date": "2016-12-12",
      "amount": 375000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -2956,7 +2956,7 @@
    "depositAmount": 453750.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-07-01",
+   "ledgerStartDate": "2025-11-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -2999,7 +2999,7 @@
      "date": "2025-09-01",
      "amount": 302500.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 2,
+     "monthsCovered": null,
      "notes": "Rapport : 02 mois de loyer"
     }
    ],
@@ -3021,7 +3021,7 @@
    "depositAmount": 750000.0,
    "depositLabel": "06 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-04-01",
+   "ledgerStartDate": "2026-10-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -3043,14 +3043,14 @@
      "date": "2026-04-01",
      "amount": 412500.0,
      "kind": "RENT",
-     "monthsCovered": 3,
+     "monthsCovered": 0,
      "notes": "Payement de 3 mois de loyer du 01/04/2026 au 30/06/2026"
     },
     {
      "date": "2026-07-01",
      "amount": 412500.0,
      "kind": "RENT",
-     "monthsCovered": 3,
+     "monthsCovered": 0,
      "notes": "Payement de 3 mois de loyer du 01/04/2026 au 30/06/2026"
     },
     {
@@ -3064,7 +3064,7 @@
      "date": "2022-01-01",
      "amount": 375000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -3110,14 +3110,14 @@
      "date": "2026-07-01",
      "amount": 500000.0,
      "kind": "ARREARS",
-     "monthsCovered": null,
+     "monthsCovered": 3,
      "notes": "[Période réglée du 01/09/2025 au 31/12/2025] Depôt pour payement d'arrièré de loyer de 01/09/2025 au 31/10/2026"
     },
     {
      "date": "2026-09-01",
      "amount": 89000.0,
      "kind": "ARREARS",
-     "monthsCovered": null,
+     "monthsCovered": 0,
      "notes": "[Période réglée du 01/01/2025 au 31/12/2025] SOLDE ANNEE 2025"
     },
     {
@@ -3131,7 +3131,7 @@
      "date": "2015-04-01",
      "amount": 375000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -3153,7 +3153,7 @@
    "depositAmount": 210000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-08-01",
+   "ledgerStartDate": "2026-02-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -3189,7 +3189,7 @@
      "date": "2025-08-01",
      "amount": 210000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -3206,7 +3206,7 @@
    "depositAmount": 660000.0,
    "depositLabel": "06 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-09-27",
+   "ledgerStartDate": "2025-12-27",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -3249,7 +3249,7 @@
      "date": "2022-06-27",
      "amount": 330000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -3266,7 +3266,7 @@
    "depositAmount": 330000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-07-01",
+   "ledgerStartDate": "2025-01-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -3295,7 +3295,7 @@
      "date": "2022-09-01",
      "amount": 330000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -3341,14 +3341,14 @@
      "date": "2026-07-01",
      "amount": 500000.0,
      "kind": "ARREARS",
-     "monthsCovered": null,
+     "monthsCovered": 4,
      "notes": "Depôt pour payement d'arrièré de loyer de 11/09/2025 au 10/10/2026"
     },
     {
      "date": "2017-01-11",
      "amount": 300000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -3370,7 +3370,7 @@
    "depositAmount": 363000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-07-01",
+   "ledgerStartDate": "2026-01-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -3406,7 +3406,7 @@
      "date": "2025-03-01",
      "amount": 363000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -3428,7 +3428,7 @@
    "depositAmount": 600000.0,
    "depositLabel": "06 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2025-09-01",
+   "ledgerStartDate": "2025-04-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -3464,7 +3464,7 @@
      "date": "2021-02-01",
      "amount": 300000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -3486,7 +3486,7 @@
    "depositAmount": 270000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-09-01",
+   "ledgerStartDate": "2025-09-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -3529,7 +3529,7 @@
      "date": "2018-01-01",
      "amount": 270000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -3594,7 +3594,7 @@
      "date": "2018-10-08",
      "amount": 240000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -3620,7 +3620,7 @@
      "date": "2026-06-01",
      "amount": 300000.0,
      "kind": "ARREARS",
-     "monthsCovered": null,
+     "monthsCovered": 2,
      "notes": "Dépôt pour payement d'arriére de loyer"
     },
     {
@@ -3634,7 +3634,7 @@
      "date": "2016-05-12",
      "amount": 270000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -3699,7 +3699,7 @@
      "date": "2022-10-10",
      "amount": 300000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -3716,7 +3716,7 @@
    "depositAmount": 180000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-07-29",
+   "ledgerStartDate": "2025-07-29",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -3759,7 +3759,7 @@
      "date": "2018-10-29",
      "amount": 180000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -3781,7 +3781,7 @@
    "depositAmount": 210000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-07-20",
+   "ledgerStartDate": "2026-01-20",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -3817,7 +3817,7 @@
      "date": "2016-01-20",
      "amount": 210000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -3875,7 +3875,7 @@
      "date": "2021-08-10",
      "amount": 270000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -3897,7 +3897,7 @@
    "depositAmount": 240000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-06-01",
+   "ledgerStartDate": "2025-12-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -3926,7 +3926,7 @@
      "date": "2024-06-01",
      "amount": 240000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -3996,7 +3996,7 @@
      "date": "2020-10-01",
      "amount": 210000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -4018,7 +4018,7 @@
    "depositAmount": 150000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-08-09",
+   "ledgerStartDate": "2025-11-09",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -4061,7 +4061,7 @@
      "date": "2016-09-09",
      "amount": 150000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -4078,7 +4078,7 @@
    "depositAmount": 210000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-08-01",
+   "ledgerStartDate": "2026-02-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -4114,7 +4114,7 @@
      "date": "2025-09-01",
      "amount": 140000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 2,
+     "monthsCovered": null,
      "notes": "Rapport : 02 mois de loyer"
     }
    ],
@@ -4131,7 +4131,7 @@
    "depositAmount": 300000.0,
    "depositLabel": "06 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-09-15",
+   "ledgerStartDate": "2026-03-15",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -4167,7 +4167,7 @@
      "date": "2022-12-15",
      "amount": 150000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -4184,7 +4184,7 @@
    "depositAmount": 300000.0,
    "depositLabel": "06 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-09-01",
+   "ledgerStartDate": "2025-09-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -4227,7 +4227,7 @@
      "date": "2021-09-01",
      "amount": 150000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -4249,7 +4249,7 @@
    "depositAmount": 150000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-04-04",
+   "ledgerStartDate": "2025-10-04",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -4278,7 +4278,7 @@
      "date": "2020-10-04",
      "amount": 100000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 2,
+     "monthsCovered": null,
      "notes": "Rapport : 02 mois de loyer"
     }
    ],
@@ -4300,7 +4300,7 @@
    "depositAmount": 300000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-08-01",
+   "ledgerStartDate": "2026-02-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -4336,7 +4336,7 @@
      "date": "2025-11-01",
      "amount": 300000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -4396,7 +4396,7 @@
      "date": "2025-03-24",
      "amount": 900000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -4413,7 +4413,7 @@
    "depositAmount": 900000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-10-01",
+   "ledgerStartDate": "2026-01-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -4456,7 +4456,7 @@
      "date": "2022-10-01",
      "amount": 990000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -4473,7 +4473,7 @@
    "depositAmount": 900000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-10-01",
+   "ledgerStartDate": "2026-01-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -4516,7 +4516,7 @@
      "date": "2023-01-01",
      "amount": 990000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -4551,7 +4551,7 @@
    "depositAmount": 0,
    "depositLabel": null,
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-07-15",
+   "ledgerStartDate": null,
    "needsReview": false,
    "reviewReason": null,
    "reviews": [],
@@ -4584,7 +4584,7 @@
    "depositAmount": 0,
    "depositLabel": "0 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-07-01",
+   "ledgerStartDate": "2025-12-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -4634,7 +4634,7 @@
      "date": "2024-10-01",
      "amount": 250000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 1,
+     "monthsCovered": null,
      "notes": "Rapport : 01 mois de loyer"
     }
    ],
@@ -4787,7 +4787,7 @@
    "depositAmount": 900000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-08-01",
+   "ledgerStartDate": "2026-02-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -4828,7 +4828,7 @@
      "date": "2023-07-01",
      "amount": 900000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -4854,7 +4854,7 @@
    "depositAmount": 1200000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-09-01",
+   "ledgerStartDate": "2025-12-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -4897,7 +4897,7 @@
      "date": "2024-12-01",
      "amount": 1200000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -4923,7 +4923,7 @@
    "depositAmount": 900000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-09-01",
+   "ledgerStartDate": "2025-12-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -4966,7 +4966,7 @@
      "date": "2021-12-01",
      "amount": 1155000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -4988,7 +4988,7 @@
    "depositAmount": 1200000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-09-01",
+   "ledgerStartDate": "2025-12-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -5031,7 +5031,7 @@
      "date": "2021-12-01",
      "amount": 1320000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -5053,7 +5053,7 @@
    "depositAmount": 4500000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-10-01",
+   "ledgerStartDate": "2026-01-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -5096,7 +5096,7 @@
      "date": "2021-07-01",
      "amount": 4500000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03mois de loyer"
     }
    ],
@@ -5118,7 +5118,7 @@
    "depositAmount": 1950000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-10-01",
+   "ledgerStartDate": "2026-01-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -5161,7 +5161,7 @@
      "date": "2022-04-01",
      "amount": 2100000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -5187,7 +5187,7 @@
    "depositAmount": 1200000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-09-01",
+   "ledgerStartDate": "2026-03-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -5223,7 +5223,7 @@
      "date": "2025-12-01",
      "amount": 1200000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -5249,7 +5249,7 @@
    "depositAmount": 8700000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-07-01",
+   "ledgerStartDate": "2025-10-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -5304,7 +5304,7 @@
      "date": "2024-06-01",
      "amount": 8700000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -5343,7 +5343,7 @@
      "date": "2025-06-01",
      "amount": 1800000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 6,
+     "monthsCovered": null,
      "notes": "Rapport : 06 mois de loyer"
     }
    ],
@@ -5394,7 +5394,7 @@
      "date": "2025-02-01",
      "amount": 6000000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 6,
+     "monthsCovered": null,
      "notes": "Rapport : 06 mois de loyer"
     }
    ],
@@ -5416,7 +5416,7 @@
    "depositAmount": 0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-10-01",
+   "ledgerStartDate": null,
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -5460,7 +5460,7 @@
    "depositAmount": 0,
    "depositLabel": "0 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-10-01",
+   "ledgerStartDate": null,
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -5504,7 +5504,7 @@
    "depositAmount": 0,
    "depositLabel": "0 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-10-01",
+   "ledgerStartDate": null,
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -5598,7 +5598,7 @@
      "date": "2025-11-01",
      "amount": 2400000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -5660,7 +5660,7 @@
      "date": "2021-09-01",
      "amount": 6000000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -5705,7 +5705,7 @@
      "date": "2024-04-01",
      "amount": 3600000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -5727,7 +5727,7 @@
    "depositAmount": 3900000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-05-01",
+   "ledgerStartDate": "2026-02-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [],
@@ -5750,7 +5750,7 @@
      "date": "2025-05-01",
      "amount": 3900000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -5857,7 +5857,7 @@
      "date": "2023-08-01",
      "amount": 3600000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -5874,7 +5874,7 @@
    "depositAmount": 0,
    "depositLabel": "0 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-09-28",
+   "ledgerStartDate": "2026-03-28",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -5903,7 +5903,7 @@
      "date": "2022-06-28",
      "amount": 18000000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 12,
+     "monthsCovered": null,
      "notes": "Rapport : 1an de loyer"
     }
    ],
@@ -6046,7 +6046,7 @@
      "date": "2025-05-01",
      "amount": 3600000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -6063,7 +6063,7 @@
    "depositAmount": 6000000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-08-01",
+   "ledgerStartDate": "2026-02-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [],
@@ -6086,7 +6086,7 @@
      "date": "2025-08-01",
      "amount": 12000000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 6,
+     "monthsCovered": null,
      "notes": "Rapport : 06 mois de loyer"
     }
    ],
@@ -6244,7 +6244,7 @@
    "depositAmount": 0,
    "depositLabel": "00 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-07-01",
+   "ledgerStartDate": null,
    "needsReview": false,
    "reviewReason": null,
    "reviews": [],
@@ -6318,7 +6318,7 @@
      "date": "2019-07-01",
      "amount": 36000000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 12,
+     "monthsCovered": null,
      "notes": "Rapport : 01 an de loyer"
     }
    ],
@@ -6371,7 +6371,7 @@
    "depositAmount": 15000000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-10-01",
+   "ledgerStartDate": "2026-01-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -6414,7 +6414,7 @@
      "date": "2024-10-01",
      "amount": 15000000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -6431,7 +6431,7 @@
    "depositAmount": 0,
    "depositLabel": "0 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-07-01",
+   "ledgerStartDate": "2026-01-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -6453,7 +6453,7 @@
      "date": "2025-09-01",
      "amount": 14000000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 4,
+     "monthsCovered": null,
      "notes": "Rapport : 04 mois de loyer"
     }
    ],
@@ -6506,7 +6506,7 @@
      "date": "2025-03-01",
      "amount": 9000000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -6577,7 +6577,7 @@
      "date": "2021-10-15",
      "amount": 9000000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -6603,7 +6603,7 @@
      "date": "2025-07-01",
      "amount": 15000000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -6620,7 +6620,7 @@
    "depositAmount": 0,
    "depositLabel": null,
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-10-01",
+   "ledgerStartDate": "2026-01-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [],
@@ -6660,7 +6660,7 @@
    "depositAmount": 0,
    "depositLabel": null,
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-10-01",
+   "ledgerStartDate": "2026-01-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [],
@@ -6697,7 +6697,7 @@
      "date": "2024-03-01",
      "amount": 6500000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 1,
+     "monthsCovered": null,
      "notes": "Rapport : 01 mois de loyer"
     }
    ],
@@ -6723,7 +6723,7 @@
      "date": "2023-04-01",
      "amount": 36000000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 6,
+     "monthsCovered": null,
      "notes": "Rapport : 06 mois de loyer"
     }
    ],
@@ -6740,7 +6740,7 @@
    "depositAmount": 0,
    "depositLabel": null,
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-09-01",
+   "ledgerStartDate": "2025-12-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -6781,7 +6781,7 @@
      "date": "2024-01-01",
      "amount": 7500000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -6839,7 +6839,7 @@
      "date": "2025-11-01",
      "amount": 9000000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -6939,7 +6939,7 @@
      "date": "2019-12-01",
      "amount": 2343300.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 6,
+     "monthsCovered": null,
      "notes": "Rapport : 06 mois de loyer"
     }
    ],
@@ -6956,7 +6956,7 @@
    "depositAmount": 0,
    "depositLabel": null,
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-07-01",
+   "ledgerStartDate": "2025-10-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -6992,7 +6992,7 @@
      "date": "2024-09-01",
      "amount": 1171650.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "Rapport : 03 mois de loyer"
     }
    ],
@@ -7009,7 +7009,7 @@
    "depositAmount": 6000000.0,
    "depositLabel": "03 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-07-01",
+   "ledgerStartDate": "2025-10-01",
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -7052,7 +7052,7 @@
      "date": "2022-10-01",
      "amount": 18000000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 9,
+     "monthsCovered": null,
      "notes": "Rapport : 09 mois de loyer"
     }
    ],
@@ -7096,7 +7096,7 @@
      "date": "2024-04-01",
      "amount": 5000000.0,
      "kind": "ADVANCE_AT_ENTRY",
-     "monthsCovered": 2,
+     "monthsCovered": null,
      "notes": "Rapport : 02 mois de loyer"
     }
    ],
@@ -7128,7 +7128,7 @@
      "date": "2026-01-01",
      "amount": 7500000.0,
      "kind": "DEPOSIT",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "3 mois de caution (inclus dans : Location de show room Payement de 3 mois de caution et de 9 mois de loyer du 01/01/2026 au 30/09/2026)"
     },
     {
@@ -7152,7 +7152,7 @@
    "depositAmount": 5000000.0,
    "depositLabel": "02 mois de caution",
    "status": "ACTIVE",
-   "ledgerStartDate": "2026-08-01",
+   "ledgerStartDate": null,
    "needsReview": false,
    "reviewReason": null,
    "reviews": [
@@ -7167,7 +7167,7 @@
      "date": "2026-01-01",
      "amount": 5000000.0,
      "kind": "DEPOSIT",
-     "monthsCovered": 2,
+     "monthsCovered": null,
      "notes": "2 mois de caution (inclus dans : Location de show room Payement de 2 mois de caution et de 6 mois de loyer du 01/02/2026 au 31/07/2026)"
     },
     {
@@ -7181,7 +7181,7 @@
      "date": "2026-04-01",
      "amount": 542500.0,
      "kind": "RENT",
-     "monthsCovered": 6,
+     "monthsCovered": 0,
      "notes": "Location de show room Payement de solde 2 mois de caution et de 6 mois de loyer du 01/02/2026 au 31/07/2026"
     }
    ],
@@ -7213,7 +7213,7 @@
      "date": "2026-04-01",
      "amount": 7575000.0,
      "kind": "DEPOSIT",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "3 mois de caution (inclus dans : Location de show room Payement de 3 mois de caution et de 6 mois de loyer)"
     },
     {
@@ -7252,7 +7252,7 @@
      "date": "2026-04-01",
      "amount": 7500000.0,
      "kind": "DEPOSIT",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "3 mois de caution (inclus dans : Location de show room Payement de 3 mois de caution et de 3 mois de loyer)"
     },
     {
@@ -7291,7 +7291,7 @@
      "date": "2026-01-01",
      "amount": 6840000.0,
      "kind": "DEPOSIT",
-     "monthsCovered": 3,
+     "monthsCovered": null,
      "notes": "3 mois de caution (inclus dans : Location de show room Payement de 3 mois de caution et de 6 mois de loyer du 01/04/2026 au 30/06/2026)"
     },
     {

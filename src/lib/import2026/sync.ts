@@ -343,8 +343,8 @@ export async function syncBuilding(
               consumed.add(hit.id);
               counts.paymentsSkipped++;
               // keep the wording in step with the statements (the ledger reads the covered periods from it)
-              if (hit.recordedById === null && hit.notes !== p.notes) {
-                await tx.payment.update({ where: { id: hit.id }, data: { notes: p.notes } });
+              if (hit.recordedById === null && (hit.notes !== p.notes || (hit.monthsCovered ?? null) !== (p.monthsCovered ?? null))) {
+                await tx.payment.update({ where: { id: hit.id }, data: { notes: p.notes, monthsCovered: p.monthsCovered ?? null } });
               }
               continue;
             }
