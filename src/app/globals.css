@@ -61,3 +61,9 @@ h3 {
 .badge {
   @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium;
 }
+
+/* Grid cells may shrink below their content, so a wide table scrolls inside its card instead of
+   widening the whole page on a phone. Zero specificity: any utility on the cell still wins. */
+:where(.grid) > * {
+  min-width: 0;
+}
