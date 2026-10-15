@@ -11,10 +11,13 @@ import { tenantDisplayName } from "@/lib/tenantName";
 
 export default async function EditPaymentPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ id: string; paymentId: string }>;
+  searchParams: Promise<{ error?: string }>;
 }) {
   const { id, paymentId } = await params;
+  const { error } = await searchParams;
   const { t } = await requireUserWithDictionary();
   const payment = await prisma.payment.findUnique({
     where: { id: paymentId },
@@ -43,6 +46,11 @@ export default async function EditPaymentPage({
       </div>
 
       <form action={updatePaymentWithIds} className="card space-y-4">
+        {(error === "amount" || error === "months") && (
+          <p className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700" role="alert">
+            {error === "amount" ? t.leaseDetail.paymentErrorAmount : t.leaseDetail.paymentErrorMonthsEdit}
+          </p>
+        )}
         <div>
           <label className="label" htmlFor="amount">{t.leaseDetail.amount}</label>
           <input
@@ -82,22 +90,21 @@ export default async function EditPaymentPage({
             <option value="OTHER">{t.status.OTHER}</option>
           </select>
         </div>
-        {(payment.kind === "RENT" || payment.kind === "ARREARS") && (
-          <div>
-            <label className="label" htmlFor="months">{t.leaseDetail.monthsForKind}</label>
-            <input
-              className="input w-28"
-              id="months"
-              name="months"
-              type="number"
-              min={1}
-              max={60}
-              step={1}
-              defaultValue={payment.monthsCovered ?? ""}
-            />
-            <p className="mt-1 text-xs text-stone-500">{t.leaseDetail.monthsHelp}</p>
-          </div>
-        )}
+        <div>
+          <label className="label" htmlFor="months">{t.leaseDetail.monthsForKind}</label>
+          <input
+            className="input !w-28"
+            id="months"
+            name="months"
+            type="number"
+            inputMode="numeric"
+            min={0}
+            max={60}
+            step={1}
+            defaultValue={payment.monthsCovered ?? ""}
+          />
+          <p className="mt-1 text-xs text-stone-500">{t.leaseDetail.monthsEditHelp}</p>
+        </div>
         <div>
           <label className="label" htmlFor="notes">{t.leaseDetail.notes}</label>
           <input className="input" id="notes" name="notes" defaultValue={payment.notes ?? ""} />
