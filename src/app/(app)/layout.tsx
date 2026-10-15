@@ -7,10 +7,18 @@ export default async function AppLayout({ children }: { children: React.ReactNod
   const { user, t } = await requireUserWithDictionary();
   const now = new Date();
 
-  // An Upcoming lease becomes Active by itself on its start date.
-  await prisma.lease
-    .updateMany({ where: { status: "PENDING", startDate: { lte: now } }, data: { status: "ACTIVE" } })
-    .catch(() => undefined);
+  // An Upcoming lease becomes Active by itself on its start date, and its unit becomes occupied.
+  const starting = await prisma.lease
+    .findMany({ where: { status: "PENDING", startDate: { lte: now } }, select: { id: true, propertyId: true } })
+    .catch(() => []);
+  if (starting.length > 0) {
+    await prisma
+      .$transaction([
+        prisma.lease.updateMany({ where: { id: { in: starting.map((l) => l.id) }, status: "PENDING" }, data: { status: "ACTIVE" } }),
+        prisma.property.updateMany({ where: { id: { in: starting.map((l) => l.propertyId) } }, data: { status: "OCCUPIED" } }),
+      ])
+      .catch(() => undefined);
+  }
 
   const [leasesWithPayments, expiringLeases, dismissed] = await Promise.all([
     prisma.lease.findMany({
@@ -22,7 +30,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
         ledgerStartDate: true,
         rentAmount: true,
         billingFrequency: true,
-        payments: { select: { amount: true, kind: true, confirmed: true, date: true, notes: true, monthsCovered: true } },
+        payments: { select: { amount: true, kind: true, confirmed: true, date: true, notes: true, monthsCovered: true, recordedById: true } },
         rentReviews: { where: { appliedAt: { not: null } }, select: { dueDate: true, rate: true, appliedAt: true } },
       },
     }),
@@ -56,7 +64,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
 
   return (
     <>
-      <Nav user={user} nav={t.nav} alertCount={overdueCount + expiringCount} />
+      <Nav user={{ name: user.name, role: user.role }} nav={t.nav} alertCount={overdueCount + expiringCount} />
       <main className="mx-auto max-w-6xl px-6 py-8">{children}</main>
     </>
   );
