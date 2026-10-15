@@ -302,7 +302,7 @@ export async function syncBuilding(
               // advance payments that this import itself provides (paid before the lease start) don't count
               const known = new Set(l.payments.map((p) => `${p.date}|${Math.round(p.amount)}|${p.kind}`));
               const earlier = await tx.payment.findMany({
-                where: { leaseId: existing.id, kind: { in: ["RENT", "ARREARS"] }, date: { lt: monthStart } },
+                where: { leaseId: existing.id, kind: { in: ["RENT", "ARREARS"] }, date: { lt: monthStart }, recordedById: null },
                 select: { date: true, amount: true, kind: true },
               });
               const legacy = earlier.filter((p) => !known.has(`${ymd(p.date)}|${Math.round(p.amount)}|${p.kind}`));
@@ -433,6 +433,14 @@ export async function syncBuilding(
           const earliestCurrent = current.map((l) => l.startDate).sort()[0];
           for (const old of leasesByProp.get(propertyId) ?? []) {
             if (usedLeases.has(old.id) || (old.status !== "ACTIVE" && old.status !== "PENDING")) continue;
+            // A lease starting after the register date was entered in the app later (a new tenant who
+            // arrived after the register): it is left alone.
+            if (old.startDate > d(dataset.registerAsOf)!) {
+              notes.push(
+                `${tenantKey(old.tenant)} (${u.unitCode}) starts after the register's lease on this unit: it was left as it is — check which tenant is current.`,
+              );
+              continue;
+            }
             const end = new Date(d(earliestCurrent)!.getTime() - 86400000);
             const endDate = end > old.startDate ? end : old.startDate;
             await tx.lease.update({ where: { id: old.id }, data: { status: "ENDED", endDate } });
