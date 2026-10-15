@@ -113,7 +113,8 @@ export default async function ReportsPage({
     [];
 
   for (const lease of leases) {
-    const ledger = computeLeaseLedger(lease, lease.payments, asOf);
+    // as at the report date: payments made after it are not counted yet
+    const ledger = computeLeaseLedger(lease, lease.payments.filter((p) => p.date <= asOf), asOf);
     totalUnpaid += ledger.unpaid;
     totalAdvance += ledger.advance;
     const isPaid = ledger.unpaid <= 0.005;
@@ -623,8 +624,8 @@ export default async function ReportsPage({
         )}
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-3">
-        <div className="lg:col-span-2 space-y-4">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+        <div className="min-w-0 space-y-4 lg:col-span-2">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div>
               <h2 className="font-semibold text-stone-900">{t.reports.cashLogHeading(filteredPayments.length)}</h2>
