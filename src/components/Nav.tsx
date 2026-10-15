@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import type { User } from "@prisma/client";
+import type { Role } from "@prisma/client";
 import type { Dictionary } from "@/lib/i18n";
 import { logout } from "@/lib/actions/auth";
 import Avatar from "@/components/Avatar";
@@ -13,7 +13,7 @@ export default function Nav({
   nav,
   alertCount,
 }: {
-  user: User;
+  user: { name: string; role: Role };
   nav: Dictionary["nav"];
   alertCount: number;
 }) {

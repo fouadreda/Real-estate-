@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { useFormStatus } from "react-dom";
+import { addMonths } from "@/lib/ledger";
 
 type Kind = { value: string; label: string };
 
@@ -19,17 +21,26 @@ type Labels = {
   recordPaymentHint: string;
   nonRentHint: string;
   submit: string;
+  saving: string;
   /** "{period} · paid until {until}" */
   previewTemplate: string;
 };
 
 const MONTH_CHOICES = [1, 2, 3, 6, 12];
 const RENT_KINDS = ["RENT", "ARREARS"];
+const DAY_MS = 24 * 60 * 60 * 1000;
 
-function addMonthsUtc(date: Date, months: number): Date {
-  const d = new Date(date);
-  d.setUTCMonth(d.getUTCMonth() + months);
-  return d;
+function clampMonths(value: number): number {
+  return Math.min(Math.max(Math.round(value) || 1, 1), 60);
+}
+
+function SubmitButton({ label, saving }: { label: string; saving: string }) {
+  const { pending } = useFormStatus();
+  return (
+    <button type="submit" className="btn-primary w-full disabled:opacity-60" disabled={pending}>
+      {pending ? saving : label}
+    </button>
+  );
 }
 
 export default function PaymentForm({
@@ -37,7 +48,8 @@ export default function PaymentForm({
   kinds,
   defaultKind,
   rentPerMonth,
-  paidUntilIso,
+  billingStartIso,
+  paidMonths,
   defaultOtherAmount,
   todayIso,
   locale,
@@ -47,8 +59,10 @@ export default function PaymentForm({
   kinds: Kind[];
   defaultKind: string;
   rentPerMonth: number;
-  /** The date the rent is currently paid up to (YYYY-MM-DD). */
-  paidUntilIso: string;
+  /** The date billing starts from (YYYY-MM-DD); Paid Until = billing start + months paid − 1 day, as on the server. */
+  billingStartIso: string;
+  /** Whole months already paid since the billing start. */
+  paidMonths: number;
   /** Suggested amount for payments that are not rent (deposit...). */
   defaultOtherAmount: number | "";
   todayIso: string;
@@ -57,15 +71,15 @@ export default function PaymentForm({
 }) {
   const [kind, setKind] = useState(defaultKind);
   const [months, setMonths] = useState(1);
+  const [monthsText, setMonthsText] = useState("1"); // what is typed in the box, checked when it loses focus
   const rentLike = RENT_KINDS.includes(kind);
-  const suggested = rentLike ? Math.round(months * rentPerMonth) : defaultOtherAmount;
+  const suggested = rentLike ? (rentPerMonth > 0 ? Math.round(months * rentPerMonth) : "") : defaultOtherAmount;
   const [typed, setTyped] = useState<string | null>(null); // set once staff type their own amount
   const amount = typed ?? String(suggested);
 
-  const start = addMonthsUtc(new Date(`${paidUntilIso}T00:00:00Z`), 0);
-  start.setUTCDate(start.getUTCDate() + 1);
-  const end = addMonthsUtc(start, months);
-  end.setUTCDate(end.getUTCDate() - 1);
+  const billingStart = new Date(`${billingStartIso}T00:00:00Z`);
+  const start = addMonths(billingStart, paidMonths);
+  const end = new Date(addMonths(billingStart, paidMonths + months).getTime() - DAY_MS);
   const monthYear = new Intl.DateTimeFormat(locale, { month: "short", year: "numeric", timeZone: "UTC" });
   const monthOnly = new Intl.DateTimeFormat(locale, { month: "short", timeZone: "UTC" });
   const longDate = new Intl.DateTimeFormat(locale, { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
@@ -78,8 +92,9 @@ export default function PaymentForm({
   const preview = labels.previewTemplate.replace("{period}", period).replace("{until}", longDate.format(end));
 
   function chooseMonths(value: number) {
-    const n = Math.min(Math.max(Math.round(value) || 1, 1), 60);
+    const n = clampMonths(value);
     setMonths(n);
+    setMonthsText(String(n));
     setTyped(null); // the amount follows the months again
   }
 
@@ -108,13 +123,14 @@ export default function PaymentForm({
       {rentLike && (
         <div>
           <label className="label" htmlFor="months">{labels.monthsPaid}</label>
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2" role="group" aria-label={labels.monthsPaid}>
             {MONTH_CHOICES.map((n) => (
               <button
                 key={n}
                 type="button"
+                aria-pressed={months === n}
                 onClick={() => chooseMonths(n)}
-                className={`rounded-lg border px-3 py-1.5 text-sm ${
+                className={`min-h-11 min-w-11 rounded-lg border px-3 text-sm font-medium ${
                   months === n ? "border-brand-600 bg-brand-600 text-white" : "border-stone-300 bg-white text-stone-700 hover:bg-stone-50"
                 }`}
               >
@@ -122,18 +138,30 @@ export default function PaymentForm({
               </button>
             ))}
             <input
-              className="input w-20"
+              className="input !w-20 min-h-11"
               id="months"
               name="months"
               type="number"
+              inputMode="numeric"
               min={1}
               max={60}
               step={1}
-              value={months}
-              onChange={(e) => chooseMonths(Number(e.target.value))}
+              required
+              value={monthsText}
+              onChange={(e) => {
+                setMonthsText(e.target.value);
+                const n = Number(e.target.value);
+                if (e.target.value !== "" && Number.isInteger(n) && n >= 1 && n <= 60) {
+                  setMonths(n);
+                  setTyped(null);
+                }
+              }}
+              onBlur={() => chooseMonths(Number(monthsText))}
             />
           </div>
-          <p className="mt-2 rounded-lg bg-emerald-50 px-3 py-2 text-sm font-medium text-emerald-800">{preview}</p>
+          <p className="mt-2 rounded-lg bg-emerald-50 px-3 py-2 text-sm font-medium text-emerald-800" aria-live="polite">
+            {preview}
+          </p>
           <p className="mt-1 text-xs text-stone-500">{labels.monthsHelp}</p>
         </div>
       )}
@@ -145,6 +173,7 @@ export default function PaymentForm({
           id="amount"
           name="amount"
           type="number"
+          inputMode="decimal"
           min="0.01"
           step="0.01"
           required
@@ -177,7 +206,7 @@ export default function PaymentForm({
       </div>
       <p className="text-xs text-stone-500">{labels.recordPaymentHint}</p>
       <p className="text-xs text-stone-500">{labels.nonRentHint}</p>
-      <button type="submit" className="btn-primary w-full">{labels.submit}</button>
+      <SubmitButton label={labels.submit} saving={labels.saving} />
     </form>
   );
 }

@@ -60,9 +60,14 @@ export default function ExportPdfButton({
         styles: { fontSize: 9, cellPadding: 7, valign: "middle", overflow: "linebreak" },
         headStyles: { fillColor: [69, 90, 69], textColor: 255, fontStyle: "bold" },
         alternateRowStyles: { fillColor: [246, 245, 240] },
-        columnStyles: Object.fromEntries(
-          moneyCols.map((col) => [col, { halign: "right" as const, cellWidth: 100, fontStyle: "bold" as const }]),
-        ),
+        columnStyles: Object.fromEntries([
+          // short columns (dates, month counts) keep their text on one line
+          ...columns
+            .map((_, col) => col)
+            .filter((col) => !moneyCols.includes(col) && rows.every((row) => (row[col] ?? "").length <= 14))
+            .map((col) => [col, { cellWidth: "wrap" as const }]),
+          ...moneyCols.map((col) => [col, { halign: "right" as const, cellWidth: 100, fontStyle: "bold" as const }]),
+        ]),
         margin: { left: 40, right: 40 },
         didParseCell: (data) => {
           if (data.section === "head" && moneyCols.includes(data.column.index)) {
@@ -71,7 +76,13 @@ export default function ExportPdfButton({
         },
       });
 
-      const finalY = (doc as unknown as { lastAutoTable: { finalY: number } }).lastAutoTable.finalY;
+      let finalY = (doc as unknown as { lastAutoTable: { finalY: number } }).lastAutoTable.finalY;
+
+      // the totals go on a new page when they would run into the page footer
+      if (totalLines.length > 0 && finalY + 26 + totalLines.length * 16 > doc.internal.pageSize.getHeight() - 40) {
+        doc.addPage();
+        finalY = 50;
+      }
 
       if (totalLines.length > 0) {
         doc.setFontSize(11);
