@@ -25,10 +25,10 @@ export default async function LeaseDetailPage({
   searchParams,
 }: {
   params: Promise<{ id: string }>;
-  searchParams: Promise<{ kind?: string }>;
+  searchParams: Promise<{ kind?: string; paymentError?: string; paymentSaved?: string }>;
 }) {
   const { id } = await params;
-  const { kind: kindParam } = await searchParams;
+  const { kind: kindParam, paymentError, paymentSaved } = await searchParams;
   const { t, locale } = await requireUserWithDictionary();
   const lease = await prisma.lease.findUnique({
     where: { id },
@@ -64,7 +64,16 @@ export default async function LeaseDetailPage({
   const depositStillToRecord = Math.max(lease.depositAmount - depositInCashbook, 0);
   const preselectedKind: PaymentKind =
     kindParam && (PAYMENT_KINDS as string[]).includes(kindParam) ? (kindParam as PaymentKind) : "RENT";
-  const statusOptions: LeaseStatus[] = ["ACTIVE", "PENDING", "ENDED", "TERMINATED"];
+  // "Upcoming" only makes sense before the start date (an upcoming lease turns active by itself on that day).
+  const statusOptions: LeaseStatus[] = lease.startDate > now ? ["ACTIVE", "PENDING", "ENDED", "TERMINATED"] : ["ACTIVE", "ENDED", "TERMINATED"];
+  const paymentErrorMessage =
+    paymentError === "amount"
+      ? t.leaseDetail.paymentErrorAmount
+      : paymentError === "months"
+        ? t.leaseDetail.paymentErrorMonths
+        : paymentError === "file"
+          ? t.leaseDetail.paymentErrorFile
+          : null;
 
   return (
     <div className="space-y-8">
@@ -72,8 +81,8 @@ export default async function LeaseDetailPage({
         <Link href="/leases" className="text-sm text-brand-600 hover:underline">
           ← {t.leases.title}
         </Link>
-        <div className="mt-1 flex items-start justify-between">
-          <div>
+        <div className="mt-1 flex flex-wrap items-start justify-between gap-3">
+          <div className="min-w-0">
             <h1 className="text-2xl font-semibold text-stone-900">
               <Link href={leaseLocationHref(lease)} className="hover:underline">
                 {leaseLocationName(lease)}
@@ -112,7 +121,7 @@ export default async function LeaseDetailPage({
               </p>
             )}
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
             {lease.needsReview && <Badge status="TODO" label={t.leaseDetail.needsReview} />}
             <Badge status={displayStatus} label={t.status[displayStatus]} />
             <Link href={`/leases/${lease.id}/edit`} className="btn-secondary">
@@ -149,7 +158,7 @@ export default async function LeaseDetailPage({
                   disabled={lease.status === status}
                   className="btn-secondary disabled:opacity-40"
                 >
-                  {t.leaseDetail.markStatus(t.status[status].toLowerCase())}
+                  {t.leaseDetail.markStatus(t.status[status === "PENDING" ? "UPCOMING" : status].toLowerCase())}
                 </button>
               </form>
             );
@@ -180,8 +189,8 @@ export default async function LeaseDetailPage({
         </div>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-3">
-        <div className="lg:col-span-2 space-y-8">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+        <div className="min-w-0 space-y-8 lg:col-span-2">
           <div className="space-y-4">
             <h2 className="font-semibold text-stone-900">{t.leaseDetail.rentScheduleHeading}</h2>
             {ledger.periods.length === 0 ? (
@@ -256,12 +265,19 @@ export default async function LeaseDetailPage({
                               )}
                             </td>
                             <td className="px-5 py-3 text-stone-600">{t.status[payment.kind]}</td>
-                            <td className="px-5 py-3 text-stone-600">
-                              {paymentMonths.get(payment.id) ? t.leaseDetail.monthsUnit(paymentMonths.get(payment.id)!.months) : <span className="text-stone-400">—</span>}
-                            </td>
-                            <td className="px-5 py-3 text-stone-600">
-                              {paymentMonths.get(payment.id) ? formatDate(paymentMonths.get(payment.id)!.paidUntil, locale) : <span className="text-stone-400">—</span>}
-                            </td>
+                            {paymentMonths.get(payment.id) ? (
+                              <>
+                                <td className="px-5 py-3 text-stone-600">{t.leaseDetail.monthsUnit(paymentMonths.get(payment.id)!.months)}</td>
+                                <td className="px-5 py-3 text-stone-600">{formatDate(paymentMonths.get(payment.id)!.paidUntil, locale)}</td>
+                              </>
+                            ) : payment.confirmed && (payment.kind === "RENT" || payment.kind === "ARREARS") ? (
+                              <td colSpan={2} className="px-5 py-3 text-xs text-stone-400">{t.leaseDetail.notCounted}</td>
+                            ) : (
+                              <>
+                                <td className="px-5 py-3 text-stone-400">—</td>
+                                <td className="px-5 py-3 text-stone-400">—</td>
+                              </>
+                            )}
                             <td className="px-5 py-3 text-stone-600">{payment.method ?? <span className="text-stone-400">—</span>}</td>
                             <td className="px-5 py-3 text-stone-600">
                               {payment.recordedBy?.name ?? <span className="text-stone-400">—</span>}
@@ -366,7 +382,7 @@ export default async function LeaseDetailPage({
               </div>
               <div>
                 <label className="label" htmlFor="fu-response">{t.leaseDetail.response}</label>
-                <input className="input" id="fu-response" name="response" placeholder="Optional" />
+                <input className="input" id="fu-response" name="response" placeholder={t.leaseDetail.optional} />
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
@@ -448,14 +464,21 @@ export default async function LeaseDetailPage({
           </div>
         </div>
 
-        <div id="record-payment" className="card h-fit scroll-mt-4">
+        <div id="record-payment" className="card h-fit min-w-0 scroll-mt-4">
           <h2 className="mb-4 font-semibold text-stone-900">{t.leaseDetail.recordPaymentHeading}</h2>
+          {paymentErrorMessage && (
+            <p className="mb-3 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700" role="alert">{paymentErrorMessage}</p>
+          )}
+          {paymentSaved && !paymentErrorMessage && (
+            <p className="mb-3 rounded-lg bg-emerald-50 px-3 py-2 text-sm text-emerald-800" role="status">{t.leaseDetail.paymentSaved}</p>
+          )}
           <PaymentForm
             action={createPaymentForLease}
             kinds={PAYMENT_KINDS.map((kind) => ({ value: kind, label: t.status[kind] }))}
             defaultKind={preselectedKind}
             rentPerMonth={monthlyEquivalentRent(lease.rentAmount, lease.billingFrequency)}
-            paidUntilIso={toDateInputValue(ledger.paidUntil)}
+            billingStartIso={toDateInputValue(lease.ledgerStartDate ?? lease.startDate)}
+            paidMonths={ledger.paidMonths}
             defaultOtherAmount={preselectedKind === "DEPOSIT" ? depositStillToRecord || lease.depositAmount || "" : ""}
             todayIso={toDateInputValue(now)}
             locale={locale}
@@ -466,20 +489,21 @@ export default async function LeaseDetailPage({
               amount: t.leaseDetail.amount,
               date: t.leaseDetail.dateHeader,
               method: t.leaseDetail.method,
-              methodPlaceholder: "e.g. bank transfer",
+              methodPlaceholder: t.leaseDetail.methodPlaceholder,
               notes: t.leaseDetail.notes,
-              notesPlaceholder: "Optional",
+              notesPlaceholder: t.leaseDetail.optional,
               receiptOptional: t.leaseDetail.receiptOptional,
               attachmentHint: t.leaseDetail.attachmentHint,
               recordPaymentHint: t.leaseDetail.recordPaymentHint,
               nonRentHint: t.leaseDetail.nonRentHint,
               submit: t.leaseDetail.addPayment,
+              saving: t.leaseDetail.saving,
               previewTemplate: t.leaseDetail.paysPeriodTemplate,
             }}
           />
         </div>
 
-        <div className="card h-fit lg:col-start-3">
+        <div className="card h-fit min-w-0 lg:col-start-3">
           <h2 className="mb-4 font-semibold text-stone-900">{t.leaseDetail.documentsHeading}</h2>
           <AttachmentGallery
             attachments={lease.attachments}
