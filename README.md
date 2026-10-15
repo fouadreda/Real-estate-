@@ -27,12 +27,7 @@ npm run dev
 
 Then open [http://localhost:3000](http://localhost:3000) — you'll be redirected to sign in.
 
-**Seeded logins** (change these before real use — see [Settings](#settings--profile)):
-
-| Role | Email | Password |
-| --- | --- | --- |
-| Admin | `admin@example.com` | `admin123` |
-| Manager | `manager@example.com` | `manager123` |
+**Seeded logins** — `npm run db:seed` creates a test admin and manager for local development only (see `prisma/seed.ts`). Never seed a production database, and change any default password before real use (see [Settings](#settings--profile)).
 
 Both roles currently see and can do everything (record properties/tenants/leases/payments/expenses, and view Reports and Alerts). The role label is there for future use if you later want to split permissions.
 
