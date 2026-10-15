@@ -1,9 +1,11 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
+import { requireUser } from "@/lib/auth";
 import { revalidatePath } from "next/cache";
 
 export async function createRentReview(leaseId: string, formData: FormData) {
+  await requireUser();
   const dueDate = new Date(String(formData.get("dueDate") ?? ""));
   const rate = Number(formData.get("rate") ?? 0);
 
@@ -18,12 +20,14 @@ export async function createRentReview(leaseId: string, formData: FormData) {
 }
 
 export async function markRentReviewLetterSent(reviewId: string, leaseId: string) {
+  await requireUser();
   await prisma.rentReview.update({ where: { id: reviewId }, data: { letterSentAt: new Date() } });
   revalidatePath(`/leases/${leaseId}`);
   revalidatePath("/alerts");
 }
 
 export async function markRentReviewApplied(reviewId: string, leaseId: string) {
+  await requireUser();
   const review = await prisma.rentReview.update({
     where: { id: reviewId },
     data: { appliedAt: new Date() },
@@ -38,6 +42,7 @@ export async function markRentReviewApplied(reviewId: string, leaseId: string) {
 }
 
 export async function deleteRentReview(reviewId: string, leaseId: string) {
+  await requireUser();
   await prisma.rentReview.delete({ where: { id: reviewId } });
   revalidatePath(`/leases/${leaseId}`);
   revalidatePath("/alerts");

@@ -38,6 +38,7 @@ export async function createExpense(formData: FormData) {
 }
 
 export async function updateExpense(expenseId: string, formData: FormData) {
+  await requireUser();
   const data = readExpenseFields(formData);
 
   await prisma.expense.update({ where: { id: expenseId }, data });
@@ -48,6 +49,7 @@ export async function updateExpense(expenseId: string, formData: FormData) {
 }
 
 export async function deleteExpense(expenseId: string) {
+  await requireUser();
   await prisma.expense.delete({ where: { id: expenseId } });
   revalidatePath("/expenses");
   revalidatePath("/reports");

@@ -5,32 +5,17 @@ import { revalidatePath } from "next/cache";
 import { requireUser } from "@/lib/auth";
 import { randomUUID } from "crypto";
 import { put, del } from "@vercel/blob";
-
-const MAX_FILE_BYTES = 10 * 1024 * 1024;
-const ALLOWED_TYPES = new Set([
-  "image/jpeg",
-  "image/png",
-  "image/webp",
-  "image/gif",
-  "application/pdf",
-]);
-const EXTENSIONS: Record<string, string> = {
-  "image/jpeg": ".jpg",
-  "image/png": ".png",
-  "image/webp": ".webp",
-  "image/gif": ".gif",
-  "application/pdf": ".pdf",
-};
+import { MAX_UPLOAD_BYTES, UPLOAD_EXTENSIONS } from "@/lib/uploads";
 
 async function saveUpload(file: File, userId: string) {
-  if (!ALLOWED_TYPES.has(file.type)) {
+  if (!(file.type in UPLOAD_EXTENSIONS)) {
     throw new Error("Only JPG, PNG, WEBP, GIF, or PDF files are allowed.");
   }
-  if (file.size > MAX_FILE_BYTES) {
+  if (file.size > MAX_UPLOAD_BYTES) {
     throw new Error("Files must be smaller than 10 MB.");
   }
 
-  const storedName = `${randomUUID()}${EXTENSIONS[file.type]}`;
+  const storedName = `${randomUUID()}${UPLOAD_EXTENSIONS[file.type]}`;
   const blob = await put(storedName, file, {
     access: "public",
     contentType: file.type,
@@ -60,6 +45,7 @@ export async function uploadLeaseAttachment(leaseId: string, formData: FormData)
 }
 
 export async function attachFileToPayment(paymentId: string, file: File, userId: string) {
+  await requireUser();
   const attachment = await saveUpload(file, userId);
   await prisma.attachment.update({ where: { id: attachment.id }, data: { paymentId } });
 }
@@ -78,6 +64,7 @@ export async function uploadPaymentAttachment(leaseId: string, paymentId: string
 }
 
 export async function attachFileToExpense(expenseId: string, file: File, userId: string) {
+  await requireUser();
   const attachment = await saveUpload(file, userId);
   await prisma.attachment.update({ where: { id: attachment.id }, data: { expenseId } });
 }
@@ -101,12 +88,14 @@ async function deleteStoredFile(url: string) {
 }
 
 export async function deleteLeaseAttachment(leaseId: string, attachmentId: string) {
+  await requireUser();
   const attachment = await prisma.attachment.delete({ where: { id: attachmentId } });
   await deleteStoredFile(attachment.url);
   revalidatePath(`/leases/${leaseId}`);
 }
 
 export async function deletePaymentAttachment(leaseId: string, paymentId: string, attachmentId: string) {
+  await requireUser();
   const attachment = await prisma.attachment.delete({ where: { id: attachmentId } });
   await deleteStoredFile(attachment.url);
   revalidatePath(`/leases/${leaseId}`);
@@ -114,6 +103,7 @@ export async function deletePaymentAttachment(leaseId: string, paymentId: string
 }
 
 export async function deleteExpenseAttachment(expenseId: string, attachmentId: string) {
+  await requireUser();
   const attachment = await prisma.attachment.delete({ where: { id: attachmentId } });
   await deleteStoredFile(attachment.url);
   revalidatePath("/expenses");

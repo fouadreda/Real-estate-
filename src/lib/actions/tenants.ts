@@ -1,6 +1,7 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
+import { requireUser } from "@/lib/auth";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
@@ -25,6 +26,7 @@ function readTenantFields(formData: FormData) {
 }
 
 export async function createTenant(formData: FormData) {
+  await requireUser();
   const data = readTenantFields(formData);
   const tenant = await prisma.tenant.create({ data });
 
@@ -33,6 +35,7 @@ export async function createTenant(formData: FormData) {
 }
 
 export async function updateTenant(tenantId: string, formData: FormData) {
+  await requireUser();
   const data = readTenantFields(formData);
 
   await prisma.tenant.update({ where: { id: tenantId }, data });
@@ -43,6 +46,7 @@ export async function updateTenant(tenantId: string, formData: FormData) {
 }
 
 export async function deleteTenant(tenantId: string) {
+  await requireUser();
   await prisma.tenant.delete({ where: { id: tenantId } });
   revalidatePath("/tenants");
   redirect("/tenants");

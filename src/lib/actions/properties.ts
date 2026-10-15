@@ -1,6 +1,7 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
+import { requireUser } from "@/lib/auth";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { PropertyCategory, BuildingType } from "@prisma/client";
@@ -57,6 +58,7 @@ function readPropertyFields(formData: FormData) {
 }
 
 export async function createProperty(formData: FormData) {
+  await requireUser();
   const data = readPropertyFields(formData);
   const buildingId = await resolveBuildingId(formData);
 
@@ -67,6 +69,7 @@ export async function createProperty(formData: FormData) {
 }
 
 export async function updateProperty(propertyId: string, formData: FormData) {
+  await requireUser();
   const data = readPropertyFields(formData);
   const buildingId = await resolveBuildingId(formData);
 
@@ -78,6 +81,7 @@ export async function updateProperty(propertyId: string, formData: FormData) {
 }
 
 export async function deleteProperty(propertyId: string) {
+  await requireUser();
   await prisma.property.delete({ where: { id: propertyId } });
   revalidatePath("/properties");
   redirect("/properties");
