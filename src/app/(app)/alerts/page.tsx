@@ -2,7 +2,8 @@ import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { formatDate, formatMoney, daysUntil } from "@/lib/format";
 import { requireUserWithDictionary } from "@/lib/auth";
-import { computeLeaseLedger } from "@/lib/ledger";
+import { computeLeaseLedger, paymentStatusFor } from "@/lib/ledger";
+import { getSettings } from "@/lib/settings";
 import { leaseLocationName } from "@/lib/leaseLocation";
 import { tenantDisplayName } from "@/lib/tenantName";
 import { dismissAlert } from "@/lib/actions/alerts";
@@ -13,7 +14,7 @@ export default async function AlertsPage() {
   const now = new Date();
   const in90Days = new Date(now.getTime() + 90 * 24 * 60 * 60 * 1000);
   const in60Days = new Date(now.getTime() + 60 * 24 * 60 * 60 * 1000);
-  const CRITICAL_OVERDUE_DAYS = 90;
+  const { overdueDays } = await getSettings();
 
   const [leases, expiringLeasesAll, reviewsDueAll, brokenPromisesAll, needsReviewLeasesAll, dismissed] =
     await Promise.all([
@@ -58,8 +59,10 @@ export default async function AlertsPage() {
     .map((row) => ({ ...row, daysLate: -daysUntil(row.ledger.oldestUnpaidDate!) }))
     .sort((a, b) => (a.ledger.oldestUnpaidDate!.getTime() - b.ledger.oldestUnpaidDate!.getTime()));
 
-  const criticalOverdue = overdueAll.filter((r) => r.daysLate >= CRITICAL_OVERDUE_DAYS);
-  const overdue = overdueAll.filter((r) => r.daysLate < CRITICAL_OVERDUE_DAYS);
+  // same rule as the lease page: Overdue once the tenant is the Settings number of days past Paid Until
+  const isCritical = (r: (typeof overdueAll)[number]) => paymentStatusFor(r.ledger.paidUntil, now, overdueDays).status === "OVERDUE";
+  const criticalOverdue = overdueAll.filter(isCritical);
+  const overdue = overdueAll.filter((r) => !isCritical(r));
 
   const expiringLeases = expiringLeasesAll.filter(
     (lease) => !isDismissed("EXPIRING", lease.id, lease.endDate!.toISOString()),
@@ -91,7 +94,7 @@ export default async function AlertsPage() {
 
       {criticalOverdue.length > 0 && (
         <div>
-          <h2 className="mb-4 font-semibold text-stone-900">{t.alerts.criticalOverdueHeading(criticalOverdue.length)}</h2>
+          <h2 className="mb-4 font-semibold text-stone-900">{t.alerts.criticalOverdueHeading(criticalOverdue.length, overdueDays)}</h2>
           <div className="space-y-3">
             {criticalOverdue.map(({ lease, ledger, daysLate }) => {
               const dismiss = dismissAlert.bind(null, "OVERDUE", lease.id, ledger.oldestUnpaidDate!.toISOString());
@@ -111,7 +114,7 @@ export default async function AlertsPage() {
                     </Link>
                     <div className="shrink-0 text-right">
                       <p className="font-semibold text-stone-900">{formatMoney(ledger.unpaid, locale)}</p>
-                      <Badge status="TERMINATED" label={t.alerts.criticalBadge} />
+                      <Badge status="TERMINATED" label={t.alerts.criticalBadge(overdueDays)} />
                       <form action={dismiss} className="mt-2">
                         <button type="submit" className="text-xs text-stone-500 hover:underline">
                           {t.alerts.dismiss}
