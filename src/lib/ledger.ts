@@ -7,18 +7,28 @@ const MONTHS_PER_PERIOD: Record<BillingFrequency, number> = {
   ANNUAL: 12,
 };
 
-/** A month counts as due once it started more than this many days ago (a tenant paid until 30 Sept is not yet late on 6 Oct). */
+/** Unpaid amounts count a month once it started more than this many days ago (a tenant paid until 30 Sept owes nothing yet on 6 Oct). The Due/Overdue status itself starts the day after Paid Until. */
 export const DEFAULT_GRACE_DAYS = 10;
 
 export function monthsPerPeriod(frequency: BillingFrequency): number {
   return MONTHS_PER_PERIOD[frequency];
 }
 
-/** Dates are stored at UTC midnight, so month arithmetic is done in UTC — it must not depend on the server's time zone. */
-function addMonths(date: Date, months: number): Date {
-  const d = new Date(date);
-  d.setUTCMonth(d.getUTCMonth() + months);
-  return d;
+const DAY_MS = 24 * 60 * 60 * 1000;
+
+/**
+ * Dates are stored at UTC midnight, so month arithmetic is done in UTC — it must not depend on the server's time zone.
+ * A day that does not exist in the target month moves to the 1st of the month after (31 Jan + 1 month = 1 Mar),
+ * so a month paid from 31 Jan runs to the end of February.
+ */
+export function addMonths(date: Date, months: number): Date {
+  const year = date.getUTCFullYear();
+  const day = date.getUTCDate();
+  const timeOfDay = date.getTime() - Date.UTC(year, date.getUTCMonth(), day);
+  const month = date.getUTCMonth() + months;
+  const daysInTarget = new Date(Date.UTC(year, month + 1, 0)).getUTCDate();
+  const target = day <= daysInTarget ? Date.UTC(year, month, day) : Date.UTC(year, month + 1, 1);
+  return new Date(target + timeOfDay);
 }
 
 /** Rent paid is counted in whole months; this forgives a few francs when a month count has to be worked out from an amount. */
@@ -93,6 +103,8 @@ interface PaymentLike {
   monthsCovered?: number | null;
   /** Statement wording such as "… du 01/06/2025 au 31/08/2025", used to tell which periods a payment settled. */
   notes?: string | null;
+  /** Set when staff entered (or corrected) the payment in the app; null for payments that came from an import. */
+  recordedById?: string | null;
 }
 
 const RENT_LIKE_KINDS: PaymentKind[] = ["RENT", "ARREARS"];
@@ -137,20 +149,21 @@ export function cashAmount(payment: { amount: number; kind: PaymentKind }): numb
 /** Rent counted payments are the confirmed rent/arrears ones that belong to the billing period (see computeLeaseLedger). */
 function countedRentPayments(lease: LeaseLike, payments: PaymentLike[]): PaymentLike[] {
   const billingStart = lease.ledgerStartDate ?? lease.startDate;
-  // Payments before the billing start are ignored only when it was set explicitly at import
-  // (that older history is already settled). Without it the lease start is the real start,
-  // so anything paid earlier is an advance. Compared by calendar month, so a payment made
-  // a few days before a mid-month start still counts.
+  // Imported payments before the billing start are ignored only when it was set explicitly at
+  // import (that older history is already settled). Without it the lease start is the real start,
+  // so anything paid earlier is an advance. Compared by calendar month, so a payment made a few
+  // days before a mid-month start still counts. Payments entered in the app always count — e.g.
+  // a tenant paid up to December who pays the next months in October.
   const paymentsFrom = lease.ledgerStartDate
     ? new Date(Date.UTC(billingStart.getUTCFullYear(), billingStart.getUTCMonth(), 1))
     : null;
-  return payments.filter(
-    (p) =>
-      (p.confirmed ?? true) &&
-      (p.kind === undefined || RENT_LIKE_KINDS.includes(p.kind)) &&
-      (p.date === undefined || paymentsFrom === null || p.date >= paymentsFrom) &&
-      !(paymentsFrom !== null && settlesEarlierPeriods(p.notes, billingStart)),
-  );
+  return payments.filter((p) => {
+    if (!(p.confirmed ?? true)) return false;
+    if (p.kind !== undefined && !RENT_LIKE_KINDS.includes(p.kind)) return false;
+    if (paymentsFrom === null || p.recordedById) return true;
+    if (p.date !== undefined && p.date < paymentsFrom) return false;
+    return !settlesEarlierPeriods(p.notes, billingStart);
+  });
 }
 
 /** Whole months a payment pays for: the number chosen when it was recorded, else amount ÷ rent rounded down. */
@@ -208,12 +221,14 @@ export function computeLeaseLedger(
 
   const totalAccrued = periods.reduce((sum, p) => sum + p.amountDue, 0);
   const unpaid = periods.reduce((sum, p) => sum + p.balance, 0);
-  const paidUntil = new Date(addMonths(billingStart, paidMonths).getTime() - 24 * 60 * 60 * 1000);
+  const paidUntil = new Date(addMonths(billingStart, paidMonths).getTime() - DAY_MS);
 
-  // Rent paid ahead: whole months between today and the Paid Until date.
+  // Rent paid ahead: whole months between today (or the lease start, when it has not started yet)
+  // and the Paid Until date.
   let monthsAhead = 0;
-  const firstUnpaidDay = new Date(paidUntil.getTime() + 24 * 60 * 60 * 1000);
-  while (monthsAhead < 240 && addMonths(asOf, monthsAhead + 1) <= firstUnpaidDay) monthsAhead += 1;
+  const firstUnpaidDay = new Date(paidUntil.getTime() + DAY_MS);
+  const aheadFrom = lease.startDate > asOf ? lease.startDate : asOf;
+  while (monthsAhead < 240 && addMonths(aheadFrom, monthsAhead + 1) <= firstUnpaidDay) monthsAhead += 1;
   const advance = monthsAhead * rentPerMonth;
 
   return {
@@ -236,9 +251,8 @@ export function paymentStatusFor(
   paidUntil: Date,
   asOf: Date,
   overdueDays: number,
-  graceDays: number = DEFAULT_GRACE_DAYS,
 ): { status: PaymentStatus; daysLate: number } {
-  const daysLate = asOf > paidUntil ? Math.max(0, daysBetween(paidUntil, asOf) - graceDays) : 0;
+  const daysLate = asOf > paidUntil ? Math.max(0, daysBetween(paidUntil, asOf)) : 0;
   if (daysLate <= 0) return { status: "PAID", daysLate: 0 };
   return { status: daysLate >= overdueDays ? "OVERDUE" : "DUE", daysLate };
 }
@@ -252,9 +266,10 @@ export function leaseDisplayStatus(
   endingSoonMonths = 3,
 ): LeaseDisplayStatus {
   if (lease.status === "ENDED" || lease.status === "TERMINATED") return "ENDED";
-  if (lease.status === "PENDING" || lease.startDate > asOf) return "UPCOMING";
+  if (lease.startDate > asOf) return "UPCOMING";
   if (lease.endDate) {
-    if (lease.endDate < asOf) return "EXPIRED_OCCUPYING";
+    // the end date is the lease's last day, so it expires the day after
+    if (lease.endDate.getTime() + DAY_MS <= asOf.getTime()) return "EXPIRED_OCCUPYING";
     if (lease.endDate <= addMonths(asOf, endingSoonMonths)) return "ENDING_SOON";
   }
   return "ACTIVE";
@@ -279,7 +294,7 @@ export function paymentsWithPaidUntil<T extends PaymentLike & { id: string; date
     cumulative += months;
     result.set(p.id, {
       months,
-      paidUntil: new Date(addMonths(billingStart, cumulative).getTime() - 24 * 60 * 60 * 1000),
+      paidUntil: new Date(addMonths(billingStart, cumulative).getTime() - DAY_MS),
     });
   }
   return result;
