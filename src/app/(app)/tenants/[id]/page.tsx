@@ -9,9 +9,17 @@ import { computeLeaseLedger, leaseDisplayStatus } from "@/lib/ledger";
 import Badge from "@/components/Badge";
 import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
 import { deleteTenant } from "@/lib/actions/tenants";
+import FormError from "@/components/FormError";
 
-export default async function TenantDetailPage({ params }: { params: Promise<{ id: string }> }) {
+export default async function TenantDetailPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ error?: string }>;
+}) {
   const { id } = await params;
+  const { error } = await searchParams;
   const { t, locale } = await requireUserWithDictionary();
   const tenant = await prisma.tenant.findUnique({
     where: { id },
@@ -37,6 +45,7 @@ export default async function TenantDetailPage({ params }: { params: Promise<{ i
 
   return (
     <div className="space-y-8">
+      <FormError code={error} messages={t.formErrors} />
       <div>
         <Link href="/tenants" className="text-sm text-brand-600 hover:underline">
           ← {t.tenants.title}
