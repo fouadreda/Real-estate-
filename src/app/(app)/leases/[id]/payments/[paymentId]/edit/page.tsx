@@ -8,6 +8,7 @@ import AttachmentGallery from "@/components/AttachmentGallery";
 import { requireUserWithDictionary } from "@/lib/auth";
 import { leaseLocationName } from "@/lib/leaseLocation";
 import { tenantDisplayName } from "@/lib/tenantName";
+import FileInput from "@/components/FileInput";
 
 export default async function EditPaymentPage({
   params,
@@ -128,13 +129,7 @@ export default async function EditPaymentPage({
           removeLabel={t.leaseDetail.removeAttachment}
         />
         <form action={uploadReceiptForPayment} className="space-y-2 border-t border-stone-200 pt-4">
-          <input
-            className="input"
-            type="file"
-            name="file"
-            required
-            accept="image/jpeg,image/png,image/webp,image/gif,application/pdf"
-          />
+          <FileInput required invalidMessage={t.formErrors.file} />
           <p className="text-xs text-stone-500">{t.leaseDetail.attachmentHint}</p>
           <button type="submit" className="btn-secondary w-full">{t.leaseDetail.uploadReceipt}</button>
         </form>
