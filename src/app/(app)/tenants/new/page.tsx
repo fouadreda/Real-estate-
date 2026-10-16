@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { createTenant } from "@/lib/actions/tenants";
 import { requireUserWithDictionary } from "@/lib/auth";
+import FormError from "@/components/FormError";
 
-export default async function NewTenantPage() {
+export default async function NewTenantPage({ searchParams }: { searchParams: Promise<{ error?: string }> }) {
+  const { error } = await searchParams;
   const { t } = await requireUserWithDictionary();
 
   return (
@@ -15,56 +17,57 @@ export default async function NewTenantPage() {
       </div>
 
       <form action={createTenant} className="card space-y-4">
+          <FormError code={error} messages={t.formErrors} />
         <p className="text-xs text-stone-500">{t.tenantForm.personOrCompanyHint}</p>
         <div className="grid grid-cols-2 gap-4">
           <div>
             <label className="label" htmlFor="firstName">{t.tenantForm.firstName}</label>
-            <input className="input" id="firstName" name="firstName" placeholder="Optional" />
+            <input className="input" id="firstName" name="firstName" placeholder={t.common.optional} />
           </div>
           <div>
             <label className="label" htmlFor="lastName">{t.tenantForm.lastName}</label>
-            <input className="input" id="lastName" name="lastName" placeholder="Optional" />
+            <input className="input" id="lastName" name="lastName" placeholder={t.common.optional} />
           </div>
         </div>
         <div className="grid grid-cols-2 gap-4">
           <div>
             <label className="label" htmlFor="company">{t.tenantForm.company}</label>
-            <input className="input" id="company" name="company" placeholder="Optional" />
+            <input className="input" id="company" name="company" placeholder={t.common.optional} />
           </div>
           <div>
             <label className="label" htmlFor="representative">{t.tenantForm.representative}</label>
-            <input className="input" id="representative" name="representative" placeholder="Optional" />
+            <input className="input" id="representative" name="representative" placeholder={t.common.optional} />
           </div>
         </div>
         <div>
           <label className="label" htmlFor="email">{t.tenantForm.email}</label>
-          <input className="input" id="email" name="email" type="email" placeholder="Optional" />
+          <input className="input" id="email" name="email" type="email" placeholder={t.common.optional} />
         </div>
         <div className="grid grid-cols-2 gap-4">
           <div>
             <label className="label" htmlFor="phone">{t.tenantForm.phone}</label>
-            <input className="input" id="phone" name="phone" placeholder="Optional" />
+            <input className="input" id="phone" name="phone" placeholder={t.common.optional} />
           </div>
           <div>
             <label className="label" htmlFor="poBox">{t.tenantForm.poBox}</label>
-            <input className="input" id="poBox" name="poBox" placeholder="Optional" />
+            <input className="input" id="poBox" name="poBox" placeholder={t.common.optional} />
           </div>
         </div>
         <div>
           <label className="label" htmlFor="idNumber">{t.tenantForm.idNumber}</label>
-          <input className="input" id="idNumber" name="idNumber" placeholder="Optional" />
+          <input className="input" id="idNumber" name="idNumber" placeholder={t.common.optional} />
         </div>
         <div>
           <label className="label" htmlFor="address">{t.tenantForm.address}</label>
-          <input className="input" id="address" name="address" placeholder="Optional" />
+          <input className="input" id="address" name="address" placeholder={t.common.optional} />
         </div>
         <div>
           <label className="label" htmlFor="city">{t.tenantForm.city}</label>
-          <input className="input" id="city" name="city" placeholder="Optional" />
+          <input className="input" id="city" name="city" placeholder={t.common.optional} />
         </div>
         <div>
           <label className="label" htmlFor="notes">{t.tenantForm.notes}</label>
-          <textarea className="input" id="notes" name="notes" rows={3} placeholder="Optional notes" />
+          <textarea className="input" id="notes" name="notes" rows={3} placeholder={t.common.optionalNotes} />
         </div>
         <div className="flex gap-3 pt-2">
           <button type="submit" className="btn-primary">{t.tenantForm.create}</button>
