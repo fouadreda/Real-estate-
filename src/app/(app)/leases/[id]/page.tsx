@@ -17,6 +17,9 @@ import { createRentReview, deleteRentReview, markRentReviewApplied, markRentRevi
 import AttachmentGallery from "@/components/AttachmentGallery";
 import PaymentForm from "@/components/PaymentForm";
 import type { LeaseStatus, PaymentKind } from "@prisma/client";
+import FileInput from "@/components/FileInput";
+import ScrollIntoView from "@/components/ScrollIntoView";
+import FormError from "@/components/FormError";
 
 const PAYMENT_KINDS: PaymentKind[] = ["RENT", "ARREARS", "ADVANCE_AT_ENTRY", "DEPOSIT", "DEPOSIT_REFUND", "OTHER"];
 
@@ -25,10 +28,10 @@ export default async function LeaseDetailPage({
   searchParams,
 }: {
   params: Promise<{ id: string }>;
-  searchParams: Promise<{ kind?: string; paymentError?: string; paymentSaved?: string }>;
+  searchParams: Promise<{ kind?: string; paymentError?: string; paymentSaved?: string; formError?: string }>;
 }) {
   const { id } = await params;
-  const { kind: kindParam, paymentError, paymentSaved } = await searchParams;
+  const { kind: kindParam, paymentError, paymentSaved, formError } = await searchParams;
   const { t, locale } = await requireUserWithDictionary();
   const lease = await prisma.lease.findUnique({
     where: { id },
@@ -73,7 +76,9 @@ export default async function LeaseDetailPage({
         ? t.leaseDetail.paymentErrorMonths
         : paymentError === "file"
           ? t.leaseDetail.paymentErrorFile
-          : null;
+          : paymentError === "upload"
+            ? t.leaseDetail.paymentErrorUpload
+            : null;
 
   return (
     <div className="space-y-8">
@@ -198,26 +203,26 @@ export default async function LeaseDetailPage({
             ) : (
               <div className="card overflow-hidden p-0">
                 <div className="overflow-x-auto">
-                  <table className="w-full min-w-[640px] text-sm">
+                  <table className="w-full min-w-[520px] text-sm">
                     <thead className="border-b border-stone-200 bg-stone-50 text-left text-stone-500">
                       <tr>
-                        <th className="px-5 py-3 font-medium">{t.leaseDetail.dueHeader}</th>
-                        <th className="px-5 py-3 font-medium">{t.leaseDetail.amountDueHeader}</th>
-                        <th className="px-5 py-3 font-medium">{t.leaseDetail.amountPaidHeader}</th>
-                        <th className="px-5 py-3 font-medium">{t.leaseDetail.balanceHeader}</th>
-                        <th className="px-5 py-3 font-medium">{t.leaseDetail.statusHeader}</th>
+                        <th className="px-4 py-3 font-medium">{t.leaseDetail.dueHeader}</th>
+                        <th className="px-4 py-3 font-medium">{t.leaseDetail.amountDueHeader}</th>
+                        <th className="px-4 py-3 font-medium">{t.leaseDetail.amountPaidHeader}</th>
+                        <th className="px-4 py-3 font-medium">{t.leaseDetail.balanceHeader}</th>
+                        <th className="px-4 py-3 font-medium">{t.leaseDetail.statusHeader}</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-stone-100">
                       {ledger.periods.map((period) => (
                         <tr key={period.index}>
-                          <td className="px-5 py-3 text-stone-600">{formatDate(period.dueDate, locale)}</td>
-                          <td className="px-5 py-3 text-stone-900">{formatMoney(period.amountDue, locale)}</td>
-                          <td className="px-5 py-3 text-stone-600">{formatMoney(period.amountAllocated, locale)}</td>
-                          <td className={`px-5 py-3 ${period.balance > 0 ? "font-medium text-red-600" : "text-stone-400"}`}>
+                          <td className="px-4 py-3 text-stone-600">{formatDate(period.dueDate, locale)}</td>
+                          <td className="px-4 py-3 text-stone-900">{formatMoney(period.amountDue, locale)}</td>
+                          <td className="px-4 py-3 text-stone-600">{formatMoney(period.amountAllocated, locale)}</td>
+                          <td className={`px-4 py-3 ${period.balance > 0 ? "font-medium text-red-600" : "text-stone-400"}`}>
                             {formatMoney(period.balance, locale)}
                           </td>
-                          <td className="px-5 py-3">
+                          <td className="px-4 py-3">
                             <Badge
                               status={period.isPaid ? "PAID" : period.isOverdue ? "LATE" : "PENDING"}
                               label={period.isPaid ? t.status.PAID : period.isOverdue ? t.status.LATE : t.status.PENDING}
@@ -239,66 +244,65 @@ export default async function LeaseDetailPage({
             ) : (
               <div className="card overflow-hidden p-0">
                 <div className="overflow-x-auto">
-                  <table className="w-full min-w-[860px] text-sm">
+                  <table className="w-full min-w-[560px] text-sm">
                     <thead className="border-b border-stone-200 bg-stone-50 text-left text-stone-500">
                       <tr>
-                        <th className="px-5 py-3 font-medium">{t.leaseDetail.dateHeader}</th>
-                        <th className="px-5 py-3 font-medium">{t.leaseDetail.amount}</th>
-                        <th className="px-5 py-3 font-medium">{t.leaseDetail.kind}</th>
-                        <th className="px-5 py-3 font-medium">{t.leaseDetail.monthsHeader}</th>
-                        <th className="px-5 py-3 font-medium">{t.leaseDetail.paidUntilHeader}</th>
-                        <th className="px-5 py-3 font-medium">{t.leaseDetail.method}</th>
-                        <th className="px-5 py-3 font-medium">{t.leaseDetail.recordedByHeader}</th>
-                        <th className="px-5 py-3 font-medium"></th>
+                        <th className="px-4 py-3 font-medium">{t.leaseDetail.dateHeader}</th>
+                        <th className="px-4 py-3 font-medium">{t.leaseDetail.amount}</th>
+                        <th className="px-4 py-3 font-medium">{t.leaseDetail.kind}</th>
+                        <th className="px-4 py-3 font-medium">{t.leaseDetail.monthsHeader}</th>
+                        <th className="px-4 py-3 font-medium">{t.leaseDetail.paidUntilHeader}</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-stone-100">
                       {lease.payments.map((payment) => {
                         const removePayment = deletePayment.bind(null, payment.id, lease.id);
+                        const months = paymentMonths.get(payment.id);
+                        const details = [payment.method, payment.recordedBy?.name].filter(Boolean).join(" · ");
                         return (
-                          <tr key={payment.id}>
-                            <td className="px-5 py-3 text-stone-600">{formatDate(payment.date, locale)}</td>
-                            <td className="px-5 py-3 text-stone-900">
-                              {formatMoney(payment.amount, locale)}
-                              {!payment.confirmed && (
-                                <span className="ml-2"><Badge status="TODO" label={t.leaseDetail.unconfirmed} /></span>
-                              )}
-                            </td>
-                            <td className="px-5 py-3 text-stone-600">{t.status[payment.kind]}</td>
-                            {paymentMonths.get(payment.id) ? (
-                              <>
-                                <td className="px-5 py-3 text-stone-600">{t.leaseDetail.monthsUnit(paymentMonths.get(payment.id)!.months)}</td>
-                                <td className="px-5 py-3 text-stone-600">{formatDate(paymentMonths.get(payment.id)!.paidUntil, locale)}</td>
-                              </>
-                            ) : payment.confirmed && (payment.kind === "RENT" || payment.kind === "ARREARS") ? (
-                              <td colSpan={2} className="px-5 py-3 text-xs text-stone-400">{t.leaseDetail.notCounted}</td>
-                            ) : (
-                              <>
-                                <td className="px-5 py-3 text-stone-400">—</td>
-                                <td className="px-5 py-3 text-stone-400">—</td>
-                              </>
-                            )}
-                            <td className="px-5 py-3 text-stone-600">{payment.method ?? <span className="text-stone-400">—</span>}</td>
-                            <td className="px-5 py-3 text-stone-600">
-                              {payment.recordedBy?.name ?? <span className="text-stone-400">—</span>}
-                            </td>
-                            <td className="px-5 py-3 text-right">
-                              <div className="flex items-center justify-end gap-3">
-                                <Link href={`/leases/${lease.id}/payments/${payment.id}/edit`} className="text-sm text-brand-600 hover:underline">
+                          <tr key={payment.id} className="align-top">
+                            <td className="px-4 py-3 text-stone-600">
+                              <span className="whitespace-nowrap">{formatDate(payment.date, locale)}</span>
+                              {/* the row actions sit under the date so they are never pushed off screen */}
+                              <div className="mt-1 flex items-center gap-3">
+                                <Link href={`/leases/${lease.id}/payments/${payment.id}/edit`} className="text-xs font-medium text-brand-600 hover:underline">
                                   {t.common.edit}
                                 </Link>
                                 <form action={removePayment}>
                                   <ConfirmSubmitButton
-                              confirmMessage={t.common.confirmDelete}
-                              confirmLabel={t.common.confirmDeleteYes}
-                              cancelLabel={t.common.cancel}
-                              className="text-sm text-red-600 hover:underline"
-                            >
+                                    confirmMessage={t.common.confirmDelete}
+                                    confirmLabel={t.common.confirmDeleteYes}
+                                    cancelLabel={t.common.cancel}
+                                    className="text-xs font-medium text-red-600 hover:underline"
+                                  >
                                     {t.common.delete}
                                   </ConfirmSubmitButton>
                                 </form>
                               </div>
                             </td>
+                            <td className="whitespace-nowrap px-4 py-3 text-stone-900">
+                              {formatMoney(payment.amount, locale)}
+                              {!payment.confirmed && (
+                                <span className="mt-1 block"><Badge status="TODO" label={t.leaseDetail.unconfirmed} /></span>
+                              )}
+                            </td>
+                            <td className="px-4 py-3 text-stone-600">
+                              {t.status[payment.kind]}
+                              {details && <span className="block text-xs text-stone-400">{details}</span>}
+                            </td>
+                            {months ? (
+                              <>
+                                <td className="whitespace-nowrap px-4 py-3 text-stone-600">{t.leaseDetail.monthsUnit(months.months)}</td>
+                                <td className="whitespace-nowrap px-4 py-3 text-stone-600">{formatDate(months.paidUntil, locale)}</td>
+                              </>
+                            ) : payment.confirmed && (payment.kind === "RENT" || payment.kind === "ARREARS") ? (
+                              <td colSpan={2} className="px-4 py-3 text-xs text-stone-400">{t.leaseDetail.notCounted}</td>
+                            ) : (
+                              <>
+                                <td className="px-4 py-3 text-stone-400">—</td>
+                                <td className="px-4 py-3 text-stone-400">—</td>
+                              </>
+                            )}
                           </tr>
                         );
                       })}
@@ -309,8 +313,13 @@ export default async function LeaseDetailPage({
             )}
           </div>
 
-          <div className="space-y-4">
+          <div id="follow-ups" className="scroll-mt-4 space-y-4">
             <h2 className="font-semibold text-stone-900">{t.leaseDetail.followUpsHeading}</h2>
+            {formError === "followup" && (
+              <ScrollIntoView>
+                <FormError code={formError} messages={t.formErrors} />
+              </ScrollIntoView>
+            )}
             {lease.followUps.length === 0 ? (
               <div className="card text-sm text-stone-500">{t.leaseDetail.noFollowUps}</div>
             ) : (
@@ -399,7 +408,12 @@ export default async function LeaseDetailPage({
           </div>
 
           <div className="space-y-4">
-            <h2 className="font-semibold text-stone-900">{t.leaseRevision.heading}</h2>
+            <h2 id="rent-review" className="scroll-mt-4 font-semibold text-stone-900">{t.leaseRevision.heading}</h2>
+            {formError === "review" && (
+              <ScrollIntoView>
+                <FormError code={formError} messages={t.formErrors} />
+              </ScrollIntoView>
+            )}
             {lease.rentReviews.length === 0 ? (
               <div className="card text-sm text-stone-500">{t.leaseRevision.noneSet}</div>
             ) : (
@@ -467,10 +481,14 @@ export default async function LeaseDetailPage({
         <div id="record-payment" className="card h-fit min-w-0 scroll-mt-4">
           <h2 className="mb-4 font-semibold text-stone-900">{t.leaseDetail.recordPaymentHeading}</h2>
           {paymentErrorMessage && (
-            <p className="mb-3 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700" role="alert">{paymentErrorMessage}</p>
+            <ScrollIntoView>
+              <p className="mb-3 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700" role="alert">{paymentErrorMessage}</p>
+            </ScrollIntoView>
           )}
           {paymentSaved && !paymentErrorMessage && (
-            <p className="mb-3 rounded-lg bg-emerald-50 px-3 py-2 text-sm text-emerald-800" role="status">{t.leaseDetail.paymentSaved}</p>
+            <ScrollIntoView>
+              <p className="mb-3 rounded-lg bg-emerald-50 px-3 py-2 text-sm text-emerald-800" role="status">{t.leaseDetail.paymentSaved}</p>
+            </ScrollIntoView>
           )}
           <PaymentForm
             action={createPaymentForLease}
@@ -498,6 +516,7 @@ export default async function LeaseDetailPage({
               nonRentHint: t.leaseDetail.nonRentHint,
               submit: t.leaseDetail.addPayment,
               saving: t.leaseDetail.saving,
+              fileInvalid: t.formErrors.file,
               previewTemplate: t.leaseDetail.paysPeriodTemplate,
             }}
           />
@@ -512,13 +531,7 @@ export default async function LeaseDetailPage({
             removeLabel={t.leaseDetail.removeAttachment}
           />
           <form action={uploadDocumentForLease} className="mt-4 space-y-2 border-t border-stone-200 pt-4">
-            <input
-              className="input"
-              type="file"
-              name="file"
-              required
-              accept="image/jpeg,image/png,image/webp,image/gif,application/pdf"
-            />
+            <FileInput required invalidMessage={t.formErrors.file} />
             <p className="text-xs text-stone-500">{t.leaseDetail.attachmentHint}</p>
             <button type="submit" className="btn-secondary w-full">{t.leaseDetail.uploadDocument}</button>
           </form>
