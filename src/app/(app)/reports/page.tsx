@@ -49,8 +49,14 @@ export default async function ReportsPage({
   const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
   const monthEnd = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59, 999);
 
-  const rangeFrom = fromParam ? new Date(`${fromParam}T00:00:00`) : null;
-  const rangeTo = toParam ? new Date(`${toParam}T23:59:59.999`) : null;
+  // a date that is not YYYY-MM-DD (edited or old link) is ignored instead of breaking the page
+  const parseDay = (value: string | undefined, time: string) => {
+    if (!value || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return null;
+    const d = new Date(`${value}T${time}`);
+    return Number.isNaN(d.getTime()) ? null : d;
+  };
+  const rangeFrom = parseDay(fromParam, "00:00:00");
+  const rangeTo = parseDay(toParam, "23:59:59.999");
   const hasFilter = Boolean(rangeFrom || rangeTo);
   const asOf = rangeTo ?? now;
   const selectedType =
@@ -671,34 +677,34 @@ export default async function ReportsPage({
           ) : (
             <div className="card overflow-hidden p-0">
               <div className="overflow-x-auto">
-                <table className="w-full min-w-[720px] text-sm">
+                <table className="w-full min-w-[600px] text-sm">
                   <thead className="border-b border-stone-200 bg-stone-50 text-left text-stone-500">
                     <tr>
-                      <th className="px-5 py-3 font-medium">{t.reports.dueHeader}</th>
-                      <th className="px-5 py-3 font-medium">{t.reports.tenantHeader}</th>
-                      <th className="px-5 py-3 font-medium">{t.leaseDetail.kind}</th>
-                      <th className="px-5 py-3 font-medium">{t.reports.monthsHeader}</th>
-                      <th className="px-5 py-3 font-medium">{t.reports.paidUntilHeader}</th>
-                      <th className="px-5 py-3 font-medium">{t.reports.amountHeader}</th>
+                      <th className="px-4 py-3 font-medium">{t.reports.dueHeader}</th>
+                      <th className="px-4 py-3 font-medium">{t.reports.tenantHeader}</th>
+                      <th className="px-4 py-3 font-medium">{t.leaseDetail.kind}</th>
+                      <th className="px-4 py-3 font-medium">{t.reports.monthsHeader}</th>
+                      <th className="px-4 py-3 font-medium">{t.reports.paidUntilHeader}</th>
+                      <th className="px-4 py-3 font-medium">{t.reports.amountHeader}</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-stone-100">
                     {filteredPayments.slice(0, 25).map((payment) => (
                       <tr key={payment.id}>
-                        <td className="px-5 py-3 text-stone-600">{formatDate(payment.date, locale)}</td>
-                        <td className="px-5 py-3 text-stone-900">
+                        <td className="px-4 py-3 text-stone-600">{formatDate(payment.date, locale)}</td>
+                        <td className="px-4 py-3 text-stone-900">
                           {tenantDisplayName(payment.lease.tenant)}
                         </td>
-                        <td className="px-5 py-3">
+                        <td className="px-4 py-3">
                           <Badge status={payment.kind} label={t.status[payment.kind]} />
                         </td>
-                        <td className="px-5 py-3 text-stone-600">
+                        <td className="px-4 py-3 text-stone-600">
                           {monthsByPayment.get(payment.id) ? t.leaseDetail.monthsUnit(monthsByPayment.get(payment.id)!.months) : <span className="text-stone-400">—</span>}
                         </td>
-                        <td className="px-5 py-3 text-stone-600">
+                        <td className="px-4 py-3 text-stone-600">
                           {monthsByPayment.get(payment.id) ? formatDate(monthsByPayment.get(payment.id)!.paidUntil, locale) : <span className="text-stone-400">—</span>}
                         </td>
-                        <td className={`px-5 py-3 ${payment.kind === "DEPOSIT_REFUND" ? "text-red-600" : "text-stone-600"}`}>
+                        <td className={`px-4 py-3 ${payment.kind === "DEPOSIT_REFUND" ? "text-red-600" : "text-stone-600"}`}>
                           {formatMoney(cashAmount(payment), locale)}
                         </td>
                       </tr>
@@ -707,6 +713,9 @@ export default async function ReportsPage({
                 </table>
               </div>
             </div>
+          )}
+          {filteredPayments.length > 25 && (
+            <p className="text-xs text-stone-500">{t.reports.cashbookShowing(25, filteredPayments.length)}</p>
           )}
         </div>
 
@@ -796,6 +805,9 @@ export default async function ReportsPage({
               </table>
             </div>
           </div>
+        )}
+        {filteredExpenses.length > 25 && (
+          <p className="text-xs text-stone-500">{t.reports.cashbookShowing(25, filteredExpenses.length)}</p>
         )}
       </div>
     </div>
