@@ -6,9 +6,17 @@ import { updateLease } from "@/lib/actions/leases";
 import { requireUserWithDictionary } from "@/lib/auth";
 import { leaseLocationName } from "@/lib/leaseLocation";
 import { tenantDisplayName } from "@/lib/tenantName";
+import FormError from "@/components/FormError";
 
-export default async function EditLeasePage({ params }: { params: Promise<{ id: string }> }) {
+export default async function EditLeasePage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ error?: string }>;
+}) {
   const { id } = await params;
+  const { error } = await searchParams;
   const { t } = await requireUserWithDictionary();
   const lease = await prisma.lease.findUnique({
     where: { id },
@@ -31,6 +39,7 @@ export default async function EditLeasePage({ params }: { params: Promise<{ id: 
       </div>
 
       <form action={updateLeaseWithId} className="card space-y-4">
+          <FormError code={error} messages={t.formErrors} />
         <div className="grid grid-cols-2 gap-4">
           <div>
             <label className="label" htmlFor="startDate">{t.leaseEdit.startDate}</label>
