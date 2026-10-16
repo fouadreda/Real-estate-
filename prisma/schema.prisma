@@ -209,6 +209,9 @@ model Lease {
   /// First unpaid due date at the time data was imported — the ledger bills forward from
   /// here instead of from startDate, so old leases don't show years of false arrears.
   ledgerStartDate   DateTime?
+  /// Day the lease was marked Ended/Terminated in the app: rent stops being billed there.
+  /// Cleared when the lease is made active again, so a mis-click can be undone.
+  closedAt          DateTime?
   /// True when the imported data for this lease is unreliable and must not count toward totals.
   needsReview       Boolean          @default(false)
   reviewReason      String?
