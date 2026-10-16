@@ -6,9 +6,18 @@ import { updateExpense } from "@/lib/actions/expenses";
 import { deleteExpenseAttachment, uploadExpenseAttachment } from "@/lib/actions/attachments";
 import AttachmentGallery from "@/components/AttachmentGallery";
 import { requireUserWithDictionary } from "@/lib/auth";
+import FileInput from "@/components/FileInput";
+import FormError from "@/components/FormError";
 
-export default async function EditExpensePage({ params }: { params: Promise<{ id: string }> }) {
+export default async function EditExpensePage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ error?: string }>;
+}) {
   const { id } = await params;
+  const { error } = await searchParams;
   const { t } = await requireUserWithDictionary();
   const [expense, properties] = await Promise.all([
     prisma.expense.findUnique({ where: { id }, include: { attachments: { orderBy: { createdAt: "desc" } } } }),
@@ -31,6 +40,7 @@ export default async function EditExpensePage({ params }: { params: Promise<{ id
       </div>
 
       <form action={updateExpenseWithId} className="card space-y-4">
+          <FormError code={error} messages={t.formErrors} />
         <div>
           <label className="label" htmlFor="propertyId">{t.expenseForm.property}</label>
           <select className="input" id="propertyId" name="propertyId" required defaultValue={expense.propertyId}>
@@ -88,13 +98,7 @@ export default async function EditExpensePage({ params }: { params: Promise<{ id
           removeLabel={t.leaseDetail.removeAttachment}
         />
         <form action={uploadReceiptForExpense} className="space-y-2 border-t border-stone-200 pt-4">
-          <input
-            className="input"
-            type="file"
-            name="file"
-            required
-            accept="image/jpeg,image/png,image/webp,image/gif,application/pdf"
-          />
+          <FileInput required invalidMessage={t.formErrors.file} />
           <p className="text-xs text-stone-500">{t.leaseDetail.attachmentHint}</p>
           <button type="submit" className="btn-secondary w-full">{t.leaseDetail.uploadReceipt}</button>
         </form>
