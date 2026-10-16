@@ -9,9 +9,17 @@ import Badge from "@/components/Badge";
 import { leaseDisplayStatus } from "@/lib/ledger";
 import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
 import { deleteProperty } from "@/lib/actions/properties";
+import FormError from "@/components/FormError";
 
-export default async function PropertyDetailPage({ params }: { params: Promise<{ id: string }> }) {
+export default async function PropertyDetailPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ error?: string }>;
+}) {
   const { id } = await params;
+  const { error } = await searchParams;
   const { t, locale } = await requireUserWithDictionary();
   const property = await prisma.property.findUnique({
     where: { id },
@@ -38,6 +46,7 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
 
   return (
     <div className="space-y-8">
+      <FormError code={error} messages={t.formErrors} />
       <div>
         <Link href="/properties" className="text-sm text-brand-600 hover:underline">
           ← {t.properties.title}
