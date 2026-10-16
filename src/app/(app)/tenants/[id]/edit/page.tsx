@@ -4,9 +4,17 @@ import { prisma } from "@/lib/prisma";
 import { updateTenant } from "@/lib/actions/tenants";
 import { requireUserWithDictionary } from "@/lib/auth";
 import { tenantDisplayName } from "@/lib/tenantName";
+import FormError from "@/components/FormError";
 
-export default async function EditTenantPage({ params }: { params: Promise<{ id: string }> }) {
+export default async function EditTenantPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ error?: string }>;
+}) {
   const { id } = await params;
+  const { error } = await searchParams;
   const { t } = await requireUserWithDictionary();
   const tenant = await prisma.tenant.findUnique({ where: { id } });
   if (!tenant) notFound();
@@ -23,6 +31,7 @@ export default async function EditTenantPage({ params }: { params: Promise<{ id:
       </div>
 
       <form action={updateTenantWithId} className="card space-y-4">
+          <FormError code={error} messages={t.formErrors} />
         <p className="text-xs text-stone-500">{t.tenantForm.personOrCompanyHint}</p>
         <div className="grid grid-cols-2 gap-4">
           <div>
