@@ -56,11 +56,12 @@ export default async function AlertsPage() {
     .map((lease) => ({ lease, ledger: computeLeaseLedger(lease, lease.payments, now) }))
     .filter(({ ledger }) => ledger.oldestUnpaidDate !== null && ledger.oldestUnpaidDate < now)
     .filter(({ lease, ledger }) => !isDismissed("OVERDUE", lease.id, ledger.oldestUnpaidDate!.toISOString()))
-    .map((row) => ({ ...row, daysLate: -daysUntil(row.ledger.oldestUnpaidDate!) }))
+    // days late counted from Paid Until, exactly like the lease page
+    .map((row) => ({ ...row, daysLate: paymentStatusFor(row.ledger.paidUntil, now, overdueDays).daysLate }))
     .sort((a, b) => (a.ledger.oldestUnpaidDate!.getTime() - b.ledger.oldestUnpaidDate!.getTime()));
 
   // same rule as the lease page: Overdue once the tenant is the Settings number of days past Paid Until
-  const isCritical = (r: (typeof overdueAll)[number]) => paymentStatusFor(r.ledger.paidUntil, now, overdueDays).status === "OVERDUE";
+  const isCritical = (r: (typeof overdueAll)[number]) => r.daysLate >= overdueDays;
   const criticalOverdue = overdueAll.filter(isCritical);
   const overdue = overdueAll.filter((r) => !isCritical(r));
 
