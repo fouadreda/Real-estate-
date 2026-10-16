@@ -4,13 +4,14 @@ import { createLease } from "@/lib/actions/leases";
 import { requireUserWithDictionary } from "@/lib/auth";
 import { propertyLabel } from "@/lib/leaseLocation";
 import { tenantDisplayName } from "@/lib/tenantName";
+import FormError from "@/components/FormError";
 
 export default async function NewLeasePage({
   searchParams,
 }: {
-  searchParams: Promise<{ propertyId?: string; tenantId?: string }>;
+  searchParams: Promise<{ propertyId?: string; tenantId?: string; error?: string }>;
 }) {
-  const { propertyId, tenantId } = await searchParams;
+  const { propertyId, tenantId, error } = await searchParams;
   const { t } = await requireUserWithDictionary();
 
   const [vacantProperties, selectedProperty, tenants] = await Promise.all([
@@ -47,6 +48,7 @@ export default async function NewLeasePage({
         </div>
       ) : (
         <form action={createLease} className="card space-y-4">
+          <FormError code={error} messages={t.formErrors} />
           <div>
             <label className="label" htmlFor="propertyId">{t.leaseNew.property}</label>
             <select className="input" id="propertyId" name="propertyId" required defaultValue={propertyId ?? ""}>
