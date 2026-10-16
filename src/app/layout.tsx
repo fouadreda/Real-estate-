@@ -24,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${fontDisplay.variable} ${fontSans.variable}`}>
+    <html lang="fr" className={`${fontDisplay.variable} ${fontSans.variable}`}>
       <body className="min-h-screen font-sans antialiased">{children}</body>
     </html>
   );
