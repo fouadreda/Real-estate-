@@ -3,8 +3,11 @@ import { prisma } from "@/lib/prisma";
 import { toDateInputValue } from "@/lib/format";
 import { createExpense } from "@/lib/actions/expenses";
 import { requireUserWithDictionary } from "@/lib/auth";
+import FileInput from "@/components/FileInput";
+import FormError from "@/components/FormError";
 
-export default async function NewExpensePage() {
+export default async function NewExpensePage({ searchParams }: { searchParams: Promise<{ error?: string }> }) {
+  const { error } = await searchParams;
   const { t } = await requireUserWithDictionary();
   const properties = await prisma.property.findMany({ orderBy: { name: "asc" } });
 
@@ -23,6 +26,7 @@ export default async function NewExpensePage() {
         </div>
       ) : (
         <form action={createExpense} className="card space-y-4">
+          <FormError code={error} messages={t.formErrors} />
           <div>
             <label className="label" htmlFor="propertyId">{t.expenseForm.property}</label>
             <select className="input" id="propertyId" name="propertyId" required defaultValue="">
@@ -64,17 +68,11 @@ export default async function NewExpensePage() {
           </div>
           <div>
             <label className="label" htmlFor="description">{t.expenseForm.description}</label>
-            <textarea className="input" id="description" name="description" rows={3} placeholder="Optional" />
+            <textarea className="input" id="description" name="description" rows={3} placeholder={t.common.optional} />
           </div>
           <div>
             <label className="label" htmlFor="file">{t.expenseForm.receiptOptional}</label>
-            <input
-              className="input"
-              id="file"
-              name="file"
-              type="file"
-              accept="image/jpeg,image/png,image/webp,image/gif,application/pdf"
-            />
+            <FileInput id="file" invalidMessage={t.formErrors.file} />
             <p className="mt-1 text-xs text-stone-500">{t.leaseDetail.attachmentHint}</p>
           </div>
           <div className="flex gap-3 pt-2">
