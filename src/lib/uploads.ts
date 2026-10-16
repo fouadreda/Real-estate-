@@ -1,5 +1,5 @@
-/** Files staff can attach (receipts, invoices, lease documents). */
-export const MAX_UPLOAD_BYTES = 10 * 1024 * 1024;
+/** Files staff can attach (receipts, invoices, lease documents). Vercel refuses requests above about 4.5 MB. */
+export const MAX_UPLOAD_BYTES = 4 * 1024 * 1024;
 export const UPLOAD_EXTENSIONS: Record<string, string> = {
   "image/jpeg": ".jpg",
   "image/png": ".png",

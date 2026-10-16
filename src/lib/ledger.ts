@@ -34,10 +34,13 @@ export function addMonths(date: Date, months: number): Date {
 /** Rent paid is counted in whole months; this forgives a few francs when a month count has to be worked out from an amount. */
 const AMOUNT_TOLERANCE = 100;
 
+const isValidDate = (d: Date) => !Number.isNaN(d.getTime());
+
 /** Due dates for every billing period of the lease, from start to end. */
 export function leasePeriods(startDate: Date, endDate: Date, frequency: BillingFrequency): Date[] {
   const step = monthsPerPeriod(frequency);
   const dates: Date[] = [];
+  if (!isValidDate(startDate) || !isValidDate(endDate)) return dates; // never loop on a broken date
   let i = 0;
   while (true) {
     const due = addMonths(startDate, i * step);
@@ -88,6 +91,8 @@ interface LeaseLike {
   endDate: Date | null;
   /** First due date not yet paid at import time — billing starts here instead of startDate. */
   ledgerStartDate?: Date | null;
+  /** Day the lease was marked ended in the app; billing stops there (cleared if it is made active again). */
+  closedAt?: Date | null;
   rentAmount: number;
   billingFrequency: BillingFrequency;
   /** Applied rent reviews, used to bill each period at the rent that was actually in effect on its due date. */
@@ -190,7 +195,8 @@ export function computeLeaseLedger(
   graceDays: number = DEFAULT_GRACE_DAYS,
 ): LeaseLedger {
   const billingStart = lease.ledgerStartDate ?? lease.startDate;
-  const end = lease.endDate ?? addMonths(asOf, 1);
+  const stops = [lease.endDate, lease.closedAt].filter((d): d is Date => d instanceof Date);
+  const end = stops.length > 0 ? new Date(Math.min(...stops.map((d) => d.getTime()))) : addMonths(asOf, 1);
   const cutoff = new Date(asOf.getTime() - graceDays * 24 * 60 * 60 * 1000);
   const step = monthsPerPeriod(lease.billingFrequency);
   const allDates = leasePeriods(billingStart, end, lease.billingFrequency);
@@ -206,7 +212,8 @@ export function computeLeaseLedger(
   let oldestUnpaidDate: Date | null = null;
   const periods: LedgerPeriod[] = elapsedDates.map((dueDate, index) => {
     const amountDue = rentAmountAt(lease.rentAmount, appliedReviews, dueDate);
-    const isPaid = index < paidPeriods;
+    // a period with nothing to pay (rent 0, e.g. the "Charges collectées" units) is never late
+    const isPaid = index < paidPeriods || amountDue <= 0;
     if (!isPaid && oldestUnpaidDate === null) oldestUnpaidDate = dueDate;
     return {
       index,
