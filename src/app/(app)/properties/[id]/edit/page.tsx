@@ -3,9 +3,17 @@ import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { updateProperty } from "@/lib/actions/properties";
 import { requireUserWithDictionary } from "@/lib/auth";
+import FormError from "@/components/FormError";
 
-export default async function EditPropertyPage({ params }: { params: Promise<{ id: string }> }) {
+export default async function EditPropertyPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ error?: string }>;
+}) {
   const { id } = await params;
+  const { error } = await searchParams;
   const { t } = await requireUserWithDictionary();
   const [property, buildings] = await Promise.all([
     prisma.property.findUnique({ where: { id } }),
@@ -25,6 +33,7 @@ export default async function EditPropertyPage({ params }: { params: Promise<{ i
       </div>
 
       <form action={updatePropertyWithId} className="card space-y-4">
+          <FormError code={error} messages={t.formErrors} />
         <div>
           <label className="label" htmlFor="name">{t.propertyForm.name}</label>
           <input className="input" id="name" name="name" required defaultValue={property.name} />
