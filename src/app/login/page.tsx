@@ -1,7 +1,8 @@
 import { login } from "@/lib/actions/auth";
-import { en } from "@/lib/i18n/en";
+import { fr } from "@/lib/i18n/fr";
 
-const t = en.login;
+// the sign-in page is shown before we know the user's language: the team works in French
+const t = fr.login;
 
 export default async function LoginPage({
   searchParams,
