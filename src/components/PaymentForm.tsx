@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useFormStatus } from "react-dom";
 import { addMonths } from "@/lib/ledger";
+import FileInput from "@/components/FileInput";
 
 type Kind = { value: string; label: string };
 
@@ -22,6 +23,7 @@ type Labels = {
   nonRentHint: string;
   submit: string;
   saving: string;
+  fileInvalid: string;
   /** "{period} · paid until {until}" */
   previewTemplate: string;
 };
@@ -195,13 +197,7 @@ export default function PaymentForm({
       </div>
       <div>
         <label className="label" htmlFor="file">{labels.receiptOptional}</label>
-        <input
-          className="input"
-          id="file"
-          name="file"
-          type="file"
-          accept="image/jpeg,image/png,image/webp,image/gif,application/pdf"
-        />
+        <FileInput id="file" invalidMessage={labels.fileInvalid} />
         <p className="mt-1 text-xs text-stone-500">{labels.attachmentHint}</p>
       </div>
       <p className="text-xs text-stone-500">{labels.recordPaymentHint}</p>

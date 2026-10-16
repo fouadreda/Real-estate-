@@ -34,7 +34,8 @@ export default function ConfirmSubmitButton({
   }
 
   return (
-    <span className="inline-flex items-center gap-2" title={confirmMessage}>
+    <span className="inline-flex flex-wrap items-center gap-2" role="alertdialog" aria-label={confirmMessage}>
+      <span className="text-xs font-medium text-red-700">{confirmMessage}</span>
       <button
         type="submit"
         className="rounded-lg bg-red-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-red-700"

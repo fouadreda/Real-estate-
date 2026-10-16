@@ -34,18 +34,19 @@ export default function Nav({
 
   return (
     <header className="border-b border-stone-200 bg-white">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-4">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-3 gap-y-2 px-4 py-3 sm:px-6 sm:py-4">
         <Link href="/" className="shrink-0 text-lg font-semibold text-stone-900">
           Les <span className="text-brand-600">Cocotiers</span>
         </Link>
 
-        <nav className="hidden items-center gap-1 lg:flex">
+        {/* on laptops the links get their own row, so the bar never runs off the screen */}
+        <nav className="hidden items-center gap-1 lg:order-last lg:flex lg:w-full lg:flex-wrap">
           {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={`rounded-lg px-3 py-2 text-sm font-medium hover:bg-stone-100 hover:text-stone-900 ${
-                isActive(link.href) ? "text-stone-900" : "text-stone-600"
+              className={`whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium hover:bg-stone-100 hover:text-stone-900 ${
+                isActive(link.href) ? "bg-stone-100 text-stone-900" : "text-stone-600"
               }`}
             >
               {link.label}
@@ -53,8 +54,8 @@ export default function Nav({
           ))}
           <Link
             href="/alerts"
-            className={`relative rounded-lg px-3 py-2 text-sm font-medium hover:bg-stone-100 hover:text-stone-900 ${
-              isActive("/alerts") ? "text-stone-900" : "text-stone-600"
+            className={`relative whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium hover:bg-stone-100 hover:text-stone-900 ${
+              isActive("/alerts") ? "bg-stone-100 text-stone-900" : "text-stone-600"
             }`}
           >
             {nav.alerts}
@@ -66,7 +67,7 @@ export default function Nav({
           </Link>
         </nav>
 
-        <form action="/search" method="GET" className="hidden lg:block">
+        <form action="/search" method="GET" className="hidden lg:ml-auto lg:block">
           <input
             className="input h-9 w-40 xl:w-56"
             type="search"
@@ -85,7 +86,7 @@ export default function Nav({
             </span>
           </Link>
           <form action={logout}>
-            <button type="submit" className="btn-secondary">{nav.signOut}</button>
+            <button type="submit" className="btn-secondary whitespace-nowrap">{nav.signOut}</button>
           </form>
         </div>
 
