@@ -308,7 +308,16 @@ export async function syncBuilding(
               const legacy = earlier.filter((p) => !known.has(`${ymd(p.date)}|${Math.round(p.amount)}|${p.kind}`));
               if (legacy.length > 0) fields.ledgerStartDate = fields.startDate;
             }
-            await tx.lease.update({ where: { id: existing.id }, data: { ...fields, tenantId } });
+            if (existing.closedAt) {
+              // closed in the app after the register: keep it closed (status and end date untouched)
+              const { status: _status, endDate: _endDate, ...rest } = fields;
+              void _status;
+              void _endDate;
+              await tx.lease.update({ where: { id: existing.id }, data: { ...rest, tenantId } });
+              notes.push(`${l.tenantName} (${units.find((u) => u.uid === l.uid)?.unitCode}): lease was ended in the app, so it was left ended.`);
+            } else {
+              await tx.lease.update({ where: { id: existing.id }, data: { ...fields, tenantId } });
+            }
             leaseId = existing.id;
             counts.leasesUpdated++;
           } else {
