@@ -3,14 +3,15 @@
 import { prisma } from "@/lib/prisma";
 import { requireUser } from "@/lib/auth";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 export async function createRentReview(leaseId: string, formData: FormData) {
   await requireUser();
   const dueDate = new Date(String(formData.get("dueDate") ?? ""));
   const rate = Number(formData.get("rate") ?? 0);
 
-  if (!dueDate.getTime() || Number.isNaN(rate)) {
-    throw new Error("A valid due date and rate are required.");
+  if (Number.isNaN(dueDate.getTime()) || Number.isNaN(rate) || rate <= 0) {
+    redirect(`/leases/${leaseId}?formError=review#rent-review`);
   }
 
   await prisma.rentReview.create({ data: { leaseId, dueDate, rate: rate / 100 } });
@@ -43,7 +44,17 @@ export async function markRentReviewApplied(reviewId: string, leaseId: string) {
 
 export async function deleteRentReview(reviewId: string, leaseId: string) {
   await requireUser();
-  await prisma.rentReview.delete({ where: { id: reviewId } });
+  const review = await prisma.rentReview.findUniqueOrThrow({ where: { id: reviewId }, include: { lease: true } });
+  if (review.appliedAt) {
+    // an applied increase raised the rent: deleting it puts the rent back as it was
+    const rentBefore = Math.round(review.lease.rentAmount / (1 + review.rate));
+    await prisma.$transaction([
+      prisma.lease.update({ where: { id: leaseId }, data: { rentAmount: rentBefore } }),
+      prisma.rentReview.delete({ where: { id: reviewId } }),
+    ]);
+  } else {
+    await prisma.rentReview.delete({ where: { id: reviewId } });
+  }
   revalidatePath(`/leases/${leaseId}`);
   revalidatePath("/alerts");
 }

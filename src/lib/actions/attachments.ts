@@ -12,7 +12,7 @@ async function saveUpload(file: File, userId: string) {
     throw new Error("Only JPG, PNG, WEBP, GIF, or PDF files are allowed.");
   }
   if (file.size > MAX_UPLOAD_BYTES) {
-    throw new Error("Files must be smaller than 10 MB.");
+    throw new Error("Files must be smaller than 4 MB.");
   }
 
   const storedName = `${randomUUID()}${UPLOAD_EXTENSIONS[file.type]}`;

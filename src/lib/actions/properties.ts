@@ -20,12 +20,13 @@ function parseOptionalInt(value: FormDataEntryValue | null): number | null {
   return Number.isNaN(parsed) ? null : parsed;
 }
 
-async function resolveBuildingId(formData: FormData): Promise<string | null> {
+async function resolveBuildingId(formData: FormData, failUrl: string): Promise<string | null> {
   const buildingId = String(formData.get("buildingId") ?? "").trim();
   const newBuildingName = String(formData.get("newBuildingName") ?? "").trim();
   const newBuildingType = String(formData.get("newBuildingType") ?? "BUILDING") as BuildingType;
 
-  if (buildingId === "__new__" && newBuildingName) {
+  if (buildingId === "__new__" && !newBuildingName) redirect(`${failUrl}?error=newBuilding`);
+  if (buildingId === "__new__") {
     const building = await prisma.building.upsert({
       where: { name: newBuildingName },
       update: {},
@@ -36,7 +37,8 @@ async function resolveBuildingId(formData: FormData): Promise<string | null> {
   return buildingId || null;
 }
 
-function readPropertyFields(formData: FormData) {
+/** Reads the form; an invalid form goes back to `failUrl` with an error code. */
+function readPropertyFields(formData: FormData, failUrl: string) {
   const name = String(formData.get("name") ?? "").trim();
   const address = String(formData.get("address") ?? "").trim();
   const city = String(formData.get("city") ?? "").trim();
@@ -50,17 +52,15 @@ function readPropertyFields(formData: FormData) {
   const floor = String(formData.get("floor") ?? "").trim() || null;
   const unitCode = String(formData.get("unitCode") ?? "").trim() || null;
 
-  if (!name || !address || !city) {
-    throw new Error("Name, address, and city are required.");
-  }
+  if (!name || !address || !city) redirect(`${failUrl}?error=propertyRequired`);
 
   return { name, address, city, category, dimension, areaLabel, bedrooms, bathrooms, price, notes, floor, unitCode };
 }
 
 export async function createProperty(formData: FormData) {
   await requireUser();
-  const data = readPropertyFields(formData);
-  const buildingId = await resolveBuildingId(formData);
+  const data = readPropertyFields(formData, "/properties/new");
+  const buildingId = await resolveBuildingId(formData, "/properties/new");
 
   const property = await prisma.property.create({ data: { ...data, buildingId } });
 
@@ -70,8 +70,8 @@ export async function createProperty(formData: FormData) {
 
 export async function updateProperty(propertyId: string, formData: FormData) {
   await requireUser();
-  const data = readPropertyFields(formData);
-  const buildingId = await resolveBuildingId(formData);
+  const data = readPropertyFields(formData, `/properties/${propertyId}/edit`);
+  const buildingId = await resolveBuildingId(formData, `/properties/${propertyId}/edit`);
 
   await prisma.property.update({ where: { id: propertyId }, data: { ...data, buildingId } });
 
@@ -82,6 +82,12 @@ export async function updateProperty(propertyId: string, formData: FormData) {
 
 export async function deleteProperty(propertyId: string) {
   await requireUser();
+  // deleting a unit would also delete its leases, payments and expenses: only an unused unit can go
+  const [leases, expenses] = await Promise.all([
+    prisma.lease.count({ where: { propertyId } }),
+    prisma.expense.count({ where: { propertyId } }),
+  ]);
+  if (leases + expenses > 0) redirect(`/properties/${propertyId}?error=unitHasLeases`);
   await prisma.property.delete({ where: { id: propertyId } });
   revalidatePath("/properties");
   redirect("/properties");

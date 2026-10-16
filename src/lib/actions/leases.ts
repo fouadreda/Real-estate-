@@ -23,9 +23,11 @@ export async function createLease(formData: FormData) {
   const billingFrequency = String(formData.get("billingFrequency") ?? "MONTHLY") as BillingFrequency;
   const depositAmount = Number(formData.get("depositAmount") ?? 0);
 
-  if (!propertyId || !tenantId || Number.isNaN(rentAmount) || !startDate.getTime()) {
-    throw new Error("Property, tenant, and rent amount are required.");
+  const back = `/leases/new?${new URLSearchParams({ ...(propertyId ? { propertyId } : {}), ...(tenantId ? { tenantId } : {}) })}`;
+  if (!propertyId || !tenantId || Number.isNaN(rentAmount) || rentAmount < 0 || Number.isNaN(startDate.getTime())) {
+    redirect(`${back}&error=leaseFields`);
   }
+  if (endDate && endDate <= startDate) redirect(`${back}&error=leaseDates`);
 
   const lease = await prisma.lease.create({
     data: {
@@ -55,9 +57,10 @@ export async function updateLease(leaseId: string, formData: FormData) {
   const billingFrequency = String(formData.get("billingFrequency") ?? "MONTHLY") as BillingFrequency;
   const depositAmount = Number(formData.get("depositAmount") ?? 0);
 
-  if (Number.isNaN(rentAmount) || !startDate.getTime()) {
-    throw new Error("A valid start date and rent amount are required.");
+  if (Number.isNaN(rentAmount) || rentAmount < 0 || Number.isNaN(startDate.getTime())) {
+    redirect(`/leases/${leaseId}/edit?error=leaseFields`);
   }
+  if (endDate && endDate <= startDate) redirect(`/leases/${leaseId}/edit?error=leaseDates`);
 
   await prisma.lease.update({
     where: { id: leaseId },
@@ -71,13 +74,14 @@ export async function updateLease(leaseId: string, formData: FormData) {
 
 export async function updateLeaseStatus(leaseId: string, status: LeaseStatus) {
   await requireUser();
-  const current = await prisma.lease.findUniqueOrThrow({ where: { id: leaseId }, select: { endDate: true } });
-  // An open-ended lease that is closed gets today as its end date, so it stops billing rent.
-  const closing = (status === "ENDED" || status === "TERMINATED") && current.endDate === null;
+  const current = await prisma.lease.findUniqueOrThrow({ where: { id: leaseId }, select: { closedAt: true } });
+  // Closing a lease records the day it was closed (rent stops there); reopening it clears that day again.
+  const closing = status === "ENDED" || status === "TERMINATED";
   const now = new Date();
+  const today = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
   const lease = await prisma.lease.update({
     where: { id: leaseId },
-    data: closing ? { status, endDate: new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate())) } : { status },
+    data: { status, closedAt: closing ? (current.closedAt ?? today) : null },
   });
 
   if (status === "ENDED" || status === "TERMINATED") {

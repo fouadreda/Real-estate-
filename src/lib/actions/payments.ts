@@ -9,7 +9,7 @@ import { isAllowedUpload } from "@/lib/uploads";
 import type { PaymentKind } from "@prisma/client";
 
 /** A form value the server will not accept; shown back to staff on the form instead of an error page. */
-type PaymentError = "amount" | "months" | "file";
+type PaymentError = "amount" | "months" | "file" | "upload";
 
 function readPaymentFields(formData: FormData) {
   const amount = Number(formData.get("amount") ?? 0);
@@ -73,7 +73,15 @@ export async function createPayment(leaseId: string, formData: FormData) {
   const payment = await prisma.payment.create({
     data: { ...data, leaseId, recordedById: user.id, kind, monthsCovered: monthsCovered ?? null, confirmed: true },
   });
-  if (file) await attachFileToPayment(payment.id, file, user.id);
+  if (file) {
+    try {
+      await attachFileToPayment(payment.id, file, user.id);
+    } catch {
+      // the receipt could not be stored: undo the payment so a retry does not record it twice
+      await prisma.payment.delete({ where: { id: payment.id } }).catch(() => undefined);
+      redirect(`/leases/${leaseId}?paymentError=upload#record-payment`);
+    }
+  }
 
   refreshPaymentPages(leaseId);
   redirect(`/leases/${leaseId}?paymentSaved=1`);

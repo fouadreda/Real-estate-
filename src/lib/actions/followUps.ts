@@ -3,6 +3,7 @@
 import { prisma } from "@/lib/prisma";
 import { requireUser } from "@/lib/auth";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 import { FollowUpAction, FollowUpResult } from "@prisma/client";
 
 export async function createFollowUp(leaseId: string, formData: FormData) {
@@ -15,8 +16,11 @@ export async function createFollowUp(leaseId: string, formData: FormData) {
   const promiseAmountRaw = String(formData.get("promiseAmount") ?? "").trim();
   const promiseAmount = promiseAmountRaw ? Number(promiseAmountRaw) : null;
 
-  if (!date.getTime()) {
-    throw new Error("A valid date is required.");
+  const badPromise =
+    (promiseDate !== null && Number.isNaN(promiseDate.getTime())) ||
+    (promiseAmount !== null && (Number.isNaN(promiseAmount) || promiseAmount < 0));
+  if (Number.isNaN(date.getTime()) || badPromise) {
+    redirect(`/leases/${leaseId}?formError=followup#follow-ups`);
   }
 
   await prisma.followUp.create({
