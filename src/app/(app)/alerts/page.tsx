@@ -8,6 +8,7 @@ import { leaseLocationName } from "@/lib/leaseLocation";
 import { tenantDisplayName } from "@/lib/tenantName";
 import { dismissAlert } from "@/lib/actions/alerts";
 import Badge from "@/components/Badge";
+import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
 
 export default async function AlertsPage() {
   const { t, locale } = await requireUserWithDictionary();
@@ -117,9 +118,14 @@ export default async function AlertsPage() {
                       <p className="font-semibold text-stone-900">{formatMoney(ledger.unpaid, locale)}</p>
                       <Badge status="TERMINATED" label={t.alerts.criticalBadge(overdueDays)} />
                       <form action={dismiss} className="mt-2">
-                        <button type="submit" className="text-xs text-stone-500 hover:underline">
+                        <ConfirmSubmitButton
+                          confirmMessage={t.alerts.dismissConfirm}
+                          confirmLabel={t.alerts.dismissYes}
+                          cancelLabel={t.common.cancel}
+                          className="inline-flex min-h-9 items-center rounded-lg px-2 text-xs font-medium text-stone-500 hover:bg-stone-100 hover:text-stone-800"
+                        >
                           {t.alerts.dismiss}
-                        </button>
+                        </ConfirmSubmitButton>
                       </form>
                     </div>
                   </div>
@@ -154,9 +160,14 @@ export default async function AlertsPage() {
                       <p className="font-semibold text-stone-900">{formatMoney(ledger.unpaid, locale)}</p>
                       <Badge status="LATE" label={t.status.LATE} />
                       <form action={dismiss} className="mt-2">
-                        <button type="submit" className="text-xs text-stone-500 hover:underline">
+                        <ConfirmSubmitButton
+                          confirmMessage={t.alerts.dismissConfirm}
+                          confirmLabel={t.alerts.dismissYes}
+                          cancelLabel={t.common.cancel}
+                          className="inline-flex min-h-9 items-center rounded-lg px-2 text-xs font-medium text-stone-500 hover:bg-stone-100 hover:text-stone-800"
+                        >
                           {t.alerts.dismiss}
-                        </button>
+                        </ConfirmSubmitButton>
                       </form>
                     </div>
                   </div>
@@ -185,9 +196,14 @@ export default async function AlertsPage() {
                       {f.promiseAmount && <p className="font-semibold text-stone-900">{formatMoney(f.promiseAmount, locale)}</p>}
                       {f.promiseDate && <p className="text-sm text-stone-500">{formatDate(f.promiseDate, locale)}</p>}
                       <form action={dismiss} className="mt-2">
-                        <button type="submit" className="text-xs text-stone-500 hover:underline">
+                        <ConfirmSubmitButton
+                          confirmMessage={t.alerts.dismissConfirm}
+                          confirmLabel={t.alerts.dismissYes}
+                          cancelLabel={t.common.cancel}
+                          className="inline-flex min-h-9 items-center rounded-lg px-2 text-xs font-medium text-stone-500 hover:bg-stone-100 hover:text-stone-800"
+                        >
                           {t.alerts.dismiss}
-                        </button>
+                        </ConfirmSubmitButton>
                       </form>
                     </div>
                   </div>
@@ -219,9 +235,14 @@ export default async function AlertsPage() {
                       <p className="font-medium text-stone-900">{lease.endDate ? formatDate(lease.endDate, locale) : "—"}</p>
                       <p className="text-sm text-stone-500">{lease.endDate ? t.alerts.daysLeft(daysUntil(lease.endDate)) : ""}</p>
                       <form action={dismiss} className="mt-2">
-                        <button type="submit" className="text-xs text-stone-500 hover:underline">
+                        <ConfirmSubmitButton
+                          confirmMessage={t.alerts.dismissConfirm}
+                          confirmLabel={t.alerts.dismissYes}
+                          cancelLabel={t.common.cancel}
+                          className="inline-flex min-h-9 items-center rounded-lg px-2 text-xs font-medium text-stone-500 hover:bg-stone-100 hover:text-stone-800"
+                        >
                           {t.alerts.dismiss}
-                        </button>
+                        </ConfirmSubmitButton>
                       </form>
                     </div>
                   </div>
@@ -254,9 +275,14 @@ export default async function AlertsPage() {
                       <p className="font-medium text-stone-900">{t.alerts.revisionDue(formatDate(r.dueDate, locale))}</p>
                       <p className="text-sm text-stone-500">{t.alerts.daysLeft(daysUntil(r.dueDate))}</p>
                       <form action={dismiss} className="mt-2">
-                        <button type="submit" className="text-xs text-stone-500 hover:underline">
+                        <ConfirmSubmitButton
+                          confirmMessage={t.alerts.dismissConfirm}
+                          confirmLabel={t.alerts.dismissYes}
+                          cancelLabel={t.common.cancel}
+                          className="inline-flex min-h-9 items-center rounded-lg px-2 text-xs font-medium text-stone-500 hover:bg-stone-100 hover:text-stone-800"
+                        >
                           {t.alerts.dismiss}
-                        </button>
+                        </ConfirmSubmitButton>
                       </form>
                     </div>
                   </div>
@@ -284,9 +310,14 @@ export default async function AlertsPage() {
                     <div className="shrink-0 flex flex-col items-end gap-2">
                       <Badge status="TODO" label={t.leaseDetail.needsReview} />
                       <form action={dismiss}>
-                        <button type="submit" className="text-xs text-stone-500 hover:underline">
+                        <ConfirmSubmitButton
+                          confirmMessage={t.alerts.dismissConfirm}
+                          confirmLabel={t.alerts.dismissYes}
+                          cancelLabel={t.common.cancel}
+                          className="inline-flex min-h-9 items-center rounded-lg px-2 text-xs font-medium text-stone-500 hover:bg-stone-100 hover:text-stone-800"
+                        >
                           {t.alerts.dismiss}
-                        </button>
+                        </ConfirmSubmitButton>
                       </form>
                     </div>
                   </div>
