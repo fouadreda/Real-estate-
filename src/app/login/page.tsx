@@ -1,5 +1,6 @@
 import { login } from "@/lib/actions/auth";
 import { fr } from "@/lib/i18n/fr";
+import SubmitButton from "@/components/SubmitButton";
 
 // the sign-in page is shown before we know the user's language: the team works in French
 const t = fr.login;
@@ -35,7 +36,7 @@ export default async function LoginPage({
             <label className="label" htmlFor="password">{t.password}</label>
             <input className="input" id="password" name="password" type="password" required />
           </div>
-          <button type="submit" className="btn-primary w-full">{t.submit}</button>
+          <SubmitButton className="btn-primary w-full" pendingLabel={`${t.submit}…`}>{t.submit}</SubmitButton>
         </form>
       </div>
     </div>
