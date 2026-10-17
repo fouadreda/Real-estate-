@@ -5,6 +5,7 @@ import { createExpense } from "@/lib/actions/expenses";
 import { requireUserWithDictionary } from "@/lib/auth";
 import FileInput from "@/components/FileInput";
 import FormError from "@/components/FormError";
+import SubmitButton from "@/components/SubmitButton";
 
 export default async function NewExpensePage({ searchParams }: { searchParams: Promise<{ error?: string }> }) {
   const { error } = await searchParams;
@@ -59,7 +60,7 @@ export default async function NewExpensePage({ searchParams }: { searchParams: P
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="label" htmlFor="amount">{t.expenseForm.amount}</label>
-              <input className="input" id="amount" name="amount" type="number" min="0" step="0.01" required />
+              <input className="input" id="amount" name="amount" type="number" min="0.01" step="0.01" required />
             </div>
             <div>
               <label className="label" htmlFor="date">{t.expenseForm.date}</label>
@@ -76,7 +77,7 @@ export default async function NewExpensePage({ searchParams }: { searchParams: P
             <p className="mt-1 text-xs text-stone-500">{t.leaseDetail.attachmentHint}</p>
           </div>
           <div className="flex gap-3 pt-2">
-            <button type="submit" className="btn-primary">{t.expenseForm.create}</button>
+            <SubmitButton className="btn-primary" pendingLabel={t.leaseDetail.saving}>{t.expenseForm.create}</SubmitButton>
             <Link href="/expenses" className="btn-secondary">{t.common.cancel}</Link>
           </div>
         </form>
