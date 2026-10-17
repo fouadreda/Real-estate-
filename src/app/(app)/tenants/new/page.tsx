@@ -2,6 +2,7 @@ import Link from "next/link";
 import { createTenant } from "@/lib/actions/tenants";
 import { requireUserWithDictionary } from "@/lib/auth";
 import FormError from "@/components/FormError";
+import SubmitButton from "@/components/SubmitButton";
 
 export default async function NewTenantPage({ searchParams }: { searchParams: Promise<{ error?: string }> }) {
   const { error } = await searchParams;
@@ -70,7 +71,7 @@ export default async function NewTenantPage({ searchParams }: { searchParams: Pr
           <textarea className="input" id="notes" name="notes" rows={3} placeholder={t.common.optionalNotes} />
         </div>
         <div className="flex gap-3 pt-2">
-          <button type="submit" className="btn-primary">{t.tenantForm.create}</button>
+          <SubmitButton className="btn-primary" pendingLabel={t.leaseDetail.saving}>{t.tenantForm.create}</SubmitButton>
           <Link href="/tenants" className="btn-secondary">{t.common.cancel}</Link>
         </div>
       </form>
