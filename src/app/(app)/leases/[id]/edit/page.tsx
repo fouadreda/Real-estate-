@@ -7,6 +7,7 @@ import { requireUserWithDictionary } from "@/lib/auth";
 import { leaseLocationName } from "@/lib/leaseLocation";
 import { tenantDisplayName } from "@/lib/tenantName";
 import FormError from "@/components/FormError";
+import SubmitButton from "@/components/SubmitButton";
 
 export default async function EditLeasePage({
   params,
@@ -102,7 +103,7 @@ export default async function EditLeasePage({
         </div>
         <p className="text-xs text-stone-500">{t.leaseEdit.note}</p>
         <div className="flex gap-3 pt-2">
-          <button type="submit" className="btn-primary">{t.common.save}</button>
+          <SubmitButton className="btn-primary" pendingLabel={t.leaseDetail.saving}>{t.common.save}</SubmitButton>
           <Link href={`/leases/${lease.id}`} className="btn-secondary">{t.common.cancel}</Link>
         </div>
       </form>
