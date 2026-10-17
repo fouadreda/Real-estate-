@@ -20,6 +20,7 @@ import type { LeaseStatus, PaymentKind } from "@prisma/client";
 import FileInput from "@/components/FileInput";
 import ScrollIntoView from "@/components/ScrollIntoView";
 import FormError from "@/components/FormError";
+import SubmitButton from "@/components/SubmitButton";
 
 const PAYMENT_KINDS: PaymentKind[] = ["RENT", "ARREARS", "ADVANCE_AT_ENTRY", "DEPOSIT", "DEPOSIT_REFUND", "OTHER"];
 
@@ -103,6 +104,9 @@ export default async function LeaseDetailPage({
               {formatDate(lease.startDate, locale)} – {lease.endDate ? formatDate(lease.endDate, locale) : t.leaseDetail.openEnded} · {formatMoney(lease.rentAmount, locale)} / {t.leaseNew.frequencyShort[lease.billingFrequency]} · {t.leaseDetail.depositLabel} {formatMoney(lease.depositAmount, locale)}
               {lease.depositLabel ? ` (${lease.depositLabel})` : ""}
             </p>
+            {lease.closedAt && (
+              <p className="mt-1 text-sm font-medium text-amber-700">{t.leaseDetail.closedOn(formatDate(lease.closedAt, locale))}</p>
+            )}
             {showPayStatus && (
               <p className="mt-2 flex flex-wrap items-center gap-2 text-sm text-stone-700">
                 <span className="font-medium text-stone-900">
@@ -264,8 +268,11 @@ export default async function LeaseDetailPage({
                             <td className="px-4 py-3 text-stone-600">
                               <span className="whitespace-nowrap">{formatDate(payment.date, locale)}</span>
                               {/* the row actions sit under the date so they are never pushed off screen */}
-                              <div className="mt-1 flex items-center gap-3">
-                                <Link href={`/leases/${lease.id}/payments/${payment.id}/edit`} className="text-xs font-medium text-brand-600 hover:underline">
+                              <div className="mt-1 flex flex-wrap items-center gap-2">
+                                <Link
+                                  href={`/leases/${lease.id}/payments/${payment.id}/edit`}
+                                  className="inline-flex min-h-8 items-center rounded-lg px-2 text-xs font-medium text-brand-600 hover:bg-stone-100"
+                                >
                                   {t.common.edit}
                                 </Link>
                                 <form action={removePayment}>
@@ -273,7 +280,7 @@ export default async function LeaseDetailPage({
                                     confirmMessage={t.common.confirmDelete}
                                     confirmLabel={t.common.confirmDeleteYes}
                                     cancelLabel={t.common.cancel}
-                                    className="text-xs font-medium text-red-600 hover:underline"
+                                    className="inline-flex min-h-8 items-center rounded-lg px-2 text-xs font-medium text-red-600 hover:bg-red-50"
                                   >
                                     {t.common.delete}
                                   </ConfirmSubmitButton>
@@ -403,7 +410,7 @@ export default async function LeaseDetailPage({
                   <input className="input" id="fu-promiseAmount" name="promiseAmount" type="number" min="0" step="0.01" />
                 </div>
               </div>
-              <button type="submit" className="btn-secondary w-full">{t.leaseDetail.logFollowUp}</button>
+              <SubmitButton className="btn-secondary w-full" pendingLabel={t.leaseDetail.saving}>{t.leaseDetail.logFollowUp}</SubmitButton>
             </form>
           </div>
 
@@ -473,7 +480,7 @@ export default async function LeaseDetailPage({
                   <input className="input" id="rr-rate" name="rate" type="number" min="0" step="0.1" required />
                 </div>
               </div>
-              <button type="submit" className="btn-secondary w-full">{t.leaseRevision.schedule}</button>
+              <SubmitButton className="btn-secondary w-full" pendingLabel={t.leaseDetail.saving}>{t.leaseRevision.schedule}</SubmitButton>
             </form>
           </div>
         </div>
@@ -533,7 +540,7 @@ export default async function LeaseDetailPage({
           <form action={uploadDocumentForLease} className="mt-4 space-y-2 border-t border-stone-200 pt-4">
             <FileInput required invalidMessage={t.formErrors.file} />
             <p className="text-xs text-stone-500">{t.leaseDetail.attachmentHint}</p>
-            <button type="submit" className="btn-secondary w-full">{t.leaseDetail.uploadDocument}</button>
+            <SubmitButton className="btn-secondary w-full" pendingLabel={t.leaseDetail.saving}>{t.leaseDetail.uploadDocument}</SubmitButton>
           </form>
         </div>
       </div>
