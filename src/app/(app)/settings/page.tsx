@@ -5,6 +5,7 @@ import { getSettings } from "@/lib/settings";
 import { formatDate } from "@/lib/format";
 import Link from "next/link";
 import Avatar from "@/components/Avatar";
+import SubmitButton from "@/components/SubmitButton";
 
 export default async function SettingsPage({
   searchParams,
@@ -65,7 +66,7 @@ export default async function SettingsPage({
             <label className="label" htmlFor="email">{t.settings.email}</label>
             <input className="input" id="email" name="email" type="email" required defaultValue={user.email} />
           </div>
-          <button type="submit" className="btn-primary w-full sm:w-auto">{t.settings.saveProfile}</button>
+          <SubmitButton className="btn-primary w-full sm:w-auto" pendingLabel={t.leaseDetail.saving}>{t.settings.saveProfile}</SubmitButton>
         </form>
       </div>
 
@@ -98,7 +99,7 @@ export default async function SettingsPage({
             <label className="label" htmlFor="confirmPassword">{t.settings.confirmPassword}</label>
             <input className="input" id="confirmPassword" name="confirmPassword" type="password" required minLength={8} />
           </div>
-          <button type="submit" className="btn-primary w-full sm:w-auto">{t.settings.savePassword}</button>
+          <SubmitButton className="btn-primary w-full sm:w-auto" pendingLabel={t.leaseDetail.saving}>{t.settings.savePassword}</SubmitButton>
         </form>
       </div>
 
@@ -123,7 +124,7 @@ export default async function SettingsPage({
               <label className="label" htmlFor="overdueDays">{t.settings.overdueDaysLabel}</label>
               <input className="input w-32" id="overdueDays" name="overdueDays" type="number" min={1} max={365} step={1} required defaultValue={overdueDays} />
             </div>
-            <button type="submit" className="btn-primary w-full sm:w-auto">{t.settings.saveOverdueDays}</button>
+            <SubmitButton className="btn-primary w-full sm:w-auto" pendingLabel={t.leaseDetail.saving}>{t.settings.saveOverdueDays}</SubmitButton>
           </form>
         ) : (
           <p className="text-sm text-stone-700">
@@ -148,7 +149,7 @@ export default async function SettingsPage({
               <option value="FR">{t.settings.french}</option>
             </select>
           </div>
-          <button type="submit" className="btn-primary w-full sm:w-auto">{t.settings.saveLanguage}</button>
+          <SubmitButton className="btn-primary w-full sm:w-auto" pendingLabel={t.leaseDetail.saving}>{t.settings.saveLanguage}</SubmitButton>
         </form>
       </div>
     </div>
