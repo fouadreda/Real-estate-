@@ -3,6 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { createProperty } from "@/lib/actions/properties";
 import { requireUserWithDictionary } from "@/lib/auth";
 import FormError from "@/components/FormError";
+import SubmitButton from "@/components/SubmitButton";
 
 export default async function NewPropertyPage({ searchParams }: { searchParams: Promise<{ error?: string }> }) {
   const { error } = await searchParams;
@@ -105,7 +106,7 @@ export default async function NewPropertyPage({ searchParams }: { searchParams: 
           <textarea className="input" id="notes" name="notes" rows={3} placeholder={t.common.optionalNotes} />
         </div>
         <div className="flex gap-3 pt-2">
-          <button type="submit" className="btn-primary">{t.propertyForm.create}</button>
+          <SubmitButton className="btn-primary" pendingLabel={t.leaseDetail.saving}>{t.propertyForm.create}</SubmitButton>
           <Link href="/properties" className="btn-secondary">{t.common.cancel}</Link>
         </div>
       </form>
