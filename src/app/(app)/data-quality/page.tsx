@@ -57,7 +57,7 @@ export default async function DataQualityPage() {
                           <button
                             type="submit"
                             disabled={issue.status === status}
-                            className="text-xs text-brand-600 hover:underline disabled:text-stone-300"
+                            className="inline-flex min-h-9 items-center rounded-lg px-2 text-xs font-medium text-brand-600 hover:bg-stone-100 disabled:text-stone-300 disabled:hover:bg-transparent"
                           >
                             {t.status[status]}
                           </button>
