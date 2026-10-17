@@ -14,8 +14,8 @@ const fontSans = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Les Cocotiers — Internal Property & Tenant Management",
-  description: "Internal tool for managing properties, tenants, and leases.",
+  title: "Les Cocotiers — Gestion immobilière",
+  description: "Outil interne de gestion des biens, locataires et baux.",
 };
 
 export default function RootLayout({
