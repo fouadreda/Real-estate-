@@ -9,6 +9,7 @@ import { requireUserWithDictionary } from "@/lib/auth";
 import { leaseLocationName } from "@/lib/leaseLocation";
 import { tenantDisplayName } from "@/lib/tenantName";
 import FileInput from "@/components/FileInput";
+import SubmitButton from "@/components/SubmitButton";
 
 export default async function EditPaymentPage({
   params,
@@ -115,7 +116,7 @@ export default async function EditPaymentPage({
           {t.leaseDetail.confirmedLabel}
         </label>
         <div className="flex gap-3 pt-2">
-          <button type="submit" className="btn-primary">{t.common.save}</button>
+          <SubmitButton className="btn-primary" pendingLabel={t.leaseDetail.saving}>{t.common.save}</SubmitButton>
           <Link href={`/leases/${payment.leaseId}`} className="btn-secondary">{t.common.cancel}</Link>
         </div>
       </form>
@@ -131,7 +132,7 @@ export default async function EditPaymentPage({
         <form action={uploadReceiptForPayment} className="space-y-2 border-t border-stone-200 pt-4">
           <FileInput required invalidMessage={t.formErrors.file} />
           <p className="text-xs text-stone-500">{t.leaseDetail.attachmentHint}</p>
-          <button type="submit" className="btn-secondary w-full">{t.leaseDetail.uploadReceipt}</button>
+          <SubmitButton className="btn-secondary w-full" pendingLabel={t.leaseDetail.saving}>{t.leaseDetail.uploadReceipt}</SubmitButton>
         </form>
       </div>
     </div>
