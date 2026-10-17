@@ -8,6 +8,7 @@ import AttachmentGallery from "@/components/AttachmentGallery";
 import { requireUserWithDictionary } from "@/lib/auth";
 import FileInput from "@/components/FileInput";
 import FormError from "@/components/FormError";
+import SubmitButton from "@/components/SubmitButton";
 
 export default async function EditExpensePage({
   params,
@@ -72,7 +73,7 @@ export default async function EditExpensePage({
         <div className="grid grid-cols-2 gap-4">
           <div>
             <label className="label" htmlFor="amount">{t.expenseForm.amount}</label>
-            <input className="input" id="amount" name="amount" type="number" min="0" step="0.01" required defaultValue={expense.amount} />
+            <input className="input" id="amount" name="amount" type="number" min="0.01" step="0.01" required defaultValue={expense.amount} />
           </div>
           <div>
             <label className="label" htmlFor="date">{t.expenseForm.date}</label>
@@ -84,7 +85,7 @@ export default async function EditExpensePage({
           <textarea className="input" id="description" name="description" rows={3} defaultValue={expense.description ?? ""} />
         </div>
         <div className="flex gap-3 pt-2">
-          <button type="submit" className="btn-primary">{t.common.save}</button>
+          <SubmitButton className="btn-primary" pendingLabel={t.leaseDetail.saving}>{t.common.save}</SubmitButton>
           <Link href="/expenses" className="btn-secondary">{t.common.cancel}</Link>
         </div>
       </form>
@@ -100,7 +101,7 @@ export default async function EditExpensePage({
         <form action={uploadReceiptForExpense} className="space-y-2 border-t border-stone-200 pt-4">
           <FileInput required invalidMessage={t.formErrors.file} />
           <p className="text-xs text-stone-500">{t.leaseDetail.attachmentHint}</p>
-          <button type="submit" className="btn-secondary w-full">{t.leaseDetail.uploadReceipt}</button>
+          <SubmitButton className="btn-secondary w-full" pendingLabel={t.leaseDetail.saving}>{t.leaseDetail.uploadReceipt}</SubmitButton>
         </form>
       </div>
     </div>
