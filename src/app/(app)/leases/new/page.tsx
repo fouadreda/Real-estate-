@@ -5,6 +5,7 @@ import { requireUserWithDictionary } from "@/lib/auth";
 import { propertyLabel } from "@/lib/leaseLocation";
 import { tenantDisplayName } from "@/lib/tenantName";
 import FormError from "@/components/FormError";
+import SubmitButton from "@/components/SubmitButton";
 
 export default async function NewLeasePage({
   searchParams,
@@ -138,9 +139,9 @@ export default async function NewLeasePage({
           </div>
 
           <div className="flex gap-3 pt-2">
-            <button type="submit" className="btn-primary" disabled={tenants.length === 0}>
+            <SubmitButton className="btn-primary" disabled={tenants.length === 0} pendingLabel={t.leaseDetail.saving}>
               {t.leaseNew.create}
-            </button>
+            </SubmitButton>
             <Link href="/leases" className="btn-secondary">{t.common.cancel}</Link>
           </div>
         </form>
