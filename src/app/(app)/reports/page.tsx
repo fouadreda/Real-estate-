@@ -16,7 +16,9 @@ import { leaseLocationName, propertyLabel } from "@/lib/leaseLocation";
 import { tenantDisplayName } from "@/lib/tenantName";
 import Badge from "@/components/Badge";
 import ExportPdfButton from "@/components/ExportPdfButton";
-import type { BuildingType, ExpenseCategory } from "@prisma/client";
+import PlaceFilters from "@/components/PlaceFilters";
+import { knownId, loadFilterOptions } from "@/lib/filterOptions";
+import type { BuildingType, ExpenseCategory, PaymentKind } from "@prisma/client";
 
 const BUILDING_TYPES: BuildingType[] = ["BUILDING", "VILLA", "WAREHOUSE_SITE"];
 const EXPENSE_CATEGORIES: ExpenseCategory[] = [
@@ -34,17 +36,39 @@ const EXPENSE_CATEGORIES: ExpenseCategory[] = [
   "MANAGEMENT_FEE",
   "OTHER",
 ];
+const PAYMENT_KINDS: PaymentKind[] = ["RENT", "ARREARS", "ADVANCE_AT_ENTRY", "DEPOSIT", "DEPOSIT_REFUND", "OTHER"];
 const LEASE_STATUS_FILTERS = ["unpaid", "paid", "all"] as const;
 type LeaseStatusFilter = (typeof LEASE_STATUS_FILTERS)[number];
 
 export default async function ReportsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ from?: string; to?: string; type?: string; category?: string; status?: string }>;
+  searchParams: Promise<{
+    from?: string;
+    to?: string;
+    type?: string;
+    category?: string;
+    status?: string;
+    building?: string;
+    unit?: string;
+    tenant?: string;
+    kind?: string;
+    all?: string;
+  }>;
 }) {
   const { t, locale } = await requireUserWithDictionary();
-  const { from: fromParam, to: toParam, type: typeParam, category: categoryParam, status: statusParam } =
-    await searchParams;
+  const {
+    from: fromParam,
+    to: toParam,
+    type: typeParam,
+    category: categoryParam,
+    status: statusParam,
+    building: buildingParam,
+    unit: unitParam,
+    tenant: tenantParam,
+    kind: kindParam,
+    all: allParam,
+  } = await searchParams;
   const now = new Date();
   const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
   const monthEnd = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59, 999);
@@ -69,7 +93,7 @@ export default async function ReportsPage({
     ? (statusParam as LeaseStatusFilter)
     : "unpaid";
 
-  const [leasesAll, paymentsAll, expensesAll] = await Promise.all([
+  const [leasesAll, paymentsAll, expensesAll, options] = await Promise.all([
     prisma.lease.findMany({
       where: { status: { not: "PENDING" } },
       include: {
@@ -84,16 +108,46 @@ export default async function ReportsPage({
       orderBy: { date: "desc" },
     }),
     prisma.expense.findMany({ include: { property: { include: { building: true } } }, orderBy: { date: "desc" } }),
+    loadFilterOptions(),
   ]);
+
+  const selectedBuilding = knownId(buildingParam, options.buildings.map((b) => b.id));
+  const selectedUnit = knownId(unitParam, options.unitIds);
+  const selectedTenant = knownId(tenantParam, options.tenants.map((x) => x.id));
+  const selectedKind =
+    kindParam && (PAYMENT_KINDS as string[]).includes(kindParam) ? (kindParam as PaymentKind) : null;
+  const showAll = allParam === "1";
+  const SCREEN_ROWS = 25;
+  const hasPlaceFilter = Boolean(selectedBuilding || selectedUnit || selectedTenant || selectedKind);
 
   const matchesType = (buildingType: BuildingType | null | undefined) =>
     !selectedType || buildingType === selectedType;
+  const matchesPlace = (property: { id: string; buildingId: string | null }) =>
+    (!selectedBuilding || property.buildingId === selectedBuilding) && (!selectedUnit || property.id === selectedUnit);
 
-  const payments = paymentsAll.filter((p) => matchesType(p.lease.property.building?.type));
-  const expenses = expensesAll.filter(
-    (e) => matchesType(e.property.building?.type) && (!selectedCategory || e.category === selectedCategory),
+  // Filters combine. Payment type only narrows payments; expense category only narrows expenses.
+  const payments = paymentsAll.filter(
+    (p) =>
+      matchesType(p.lease.property.building?.type) &&
+      matchesPlace(p.lease.property) &&
+      (!selectedTenant || p.lease.tenantId === selectedTenant) &&
+      (!selectedKind || p.kind === selectedKind),
   );
-  const leasesInType = leasesAll.filter((l) => matchesType(l.property.building?.type));
+  // expenses belong to the company, not to a tenant: none when a tenant is selected
+  const expenses = selectedTenant
+    ? []
+    : expensesAll.filter(
+        (e) =>
+          matchesType(e.property.building?.type) &&
+          matchesPlace(e.property) &&
+          (!selectedCategory || e.category === selectedCategory),
+      );
+  const leasesInType = leasesAll.filter(
+    (l) =>
+      matchesType(l.property.building?.type) &&
+      matchesPlace(l.property) &&
+      (!selectedTenant || l.tenantId === selectedTenant),
+  );
 
   const needsReviewCount = leasesInType.filter((l) => l.needsReview).length;
   const leases = leasesInType.filter((l) => !l.needsReview);
@@ -223,15 +277,21 @@ export default async function ReportsPage({
   const monthlyInflow = monthlyRows.reduce((sum, r) => sum + r.inflow, 0);
   const monthlyOutflow = monthlyRows.reduce((sum, r) => sum + r.outflow, 0);
 
-  function buildHref(overrides: { type?: BuildingType | null; status?: LeaseStatusFilter | null }) {
+  function buildHref(overrides: { type?: BuildingType | null; status?: LeaseStatusFilter | null; all?: boolean }) {
     const params = new URLSearchParams();
     if (fromParam) params.set("from", fromParam);
     if (toParam) params.set("to", toParam);
     if (selectedCategory) params.set("category", selectedCategory);
+    if (selectedBuilding) params.set("building", selectedBuilding);
+    if (selectedUnit) params.set("unit", selectedUnit);
+    if (selectedTenant) params.set("tenant", selectedTenant);
+    if (selectedKind) params.set("kind", selectedKind);
     const nextType = "type" in overrides ? overrides.type : selectedType;
     const nextStatus = "status" in overrides ? overrides.status : selectedStatus;
+    const nextAll = "all" in overrides ? overrides.all : showAll;
     if (nextType) params.set("type", nextType);
     if (nextStatus && nextStatus !== "unpaid") params.set("status", nextStatus);
+    if (nextAll) params.set("all", "1");
     const qs = params.toString();
     return qs ? `/reports?${qs}` : "/reports";
   }
@@ -251,9 +311,18 @@ export default async function ReportsPage({
     selectedStatus === "paid" ? t.reports.statusPaid : selectedStatus === "all" ? t.reports.statusAll : t.reports.statusUnpaid;
   const fromLabel = rangeFrom ? formatDate(rangeFrom, locale) : null;
   const toLabel = rangeTo ? formatDate(rangeTo, locale) : null;
+  const buildingLabel = selectedBuilding ? options.buildings.find((b) => b.id === selectedBuilding)?.name : null;
+  const unitGroup = selectedUnit ? options.unitGroups.find((g) => g.units.some((u) => u.id === selectedUnit)) : null;
+  const unitLabel = unitGroup ? `${unitGroup.name} — ${unitGroup.units.find((u) => u.id === selectedUnit)?.label}` : null;
+  const tenantLabel = selectedTenant ? options.tenants.find((x) => x.id === selectedTenant)?.label : null;
+  const kindLabel = selectedKind ? t.status[selectedKind] : null;
   const filterSummary = [
     fromLabel && toLabel ? `${t.reports.dateFrom} ${fromLabel} ${t.reports.dateTo.toLowerCase()} ${toLabel}` : fromLabel ? `${t.reports.dateFrom} ${fromLabel}` : toLabel ? `${t.reports.dateTo} ${toLabel}` : null,
     typeLabel,
+    buildingLabel,
+    unitLabel,
+    tenantLabel,
+    kindLabel,
     categoryLabel,
   ]
     .filter(Boolean)
@@ -268,9 +337,10 @@ export default async function ReportsPage({
       </div>
 
       <div className="card space-y-3">
-        <form action="/reports" method="GET" className="flex flex-wrap items-end gap-3">
+        <form action="/reports" method="GET" className="grid grid-cols-1 items-end gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {selectedType && <input type="hidden" name="type" value={selectedType} />}
           {selectedStatus !== "unpaid" && <input type="hidden" name="status" value={selectedStatus} />}
+          {showAll && <input type="hidden" name="all" value="1" />}
           <div>
             <label className="label" htmlFor="from">{t.reports.dateFrom}</label>
             <input className="input" type="date" id="from" name="from" defaultValue={fromParam ?? ""} />
@@ -290,12 +360,30 @@ export default async function ReportsPage({
               ))}
             </select>
           </div>
-          <button type="submit" className="btn-secondary">{t.reports.applyFilter}</button>
-          {(hasFilter || selectedCategory) && (
-            <Link href={clearFilterHref()} className="text-sm text-stone-500 hover:underline">
-              {t.reports.clearFilter}
-            </Link>
-          )}
+          <PlaceFilters
+            options={options}
+            selected={{ building: selectedBuilding, unit: selectedUnit, tenant: selectedTenant }}
+            labels={t.reports}
+          />
+          <div className="min-w-0">
+            <label className="label" htmlFor="kind">{t.reports.kindFilter}</label>
+            <select className="input" id="kind" name="kind" defaultValue={selectedKind ?? ""}>
+              <option value="">{t.reports.allKinds}</option>
+              {PAYMENT_KINDS.map((kind) => (
+                <option key={kind} value={kind}>
+                  {t.status[kind]}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="flex items-center gap-3">
+            <button type="submit" className="btn-primary">{t.reports.applyFilter}</button>
+            {(hasFilter || selectedCategory || hasPlaceFilter) && (
+              <Link href={clearFilterHref()} className="text-sm text-stone-500 hover:underline">
+                {t.reports.clearFilter}
+              </Link>
+            )}
+          </div>
         </form>
         <div>
           <p className="label mb-1">{t.reports.propertyType}</p>
@@ -528,6 +616,12 @@ export default async function ReportsPage({
                     </tr>
                   ))}
                 </tbody>
+                <tfoot className="border-t border-stone-200 bg-stone-50 font-medium text-stone-900">
+                  <tr>
+                    <td className="px-5 py-3" colSpan={4}>{t.reports.totalRows(arRows.length)}</td>
+                    <td className="px-5 py-3 text-red-600">{formatMoney(arRows.reduce((sum, r) => sum + r.unpaid, 0), locale)}</td>
+                  </tr>
+                </tfoot>
               </table>
             </div>
           </div>
@@ -602,7 +696,7 @@ export default async function ReportsPage({
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-stone-100">
-                  {cashEntries.slice(0, CASHBOOK_SCREEN_ROWS).map((entry) => (
+                  {cashEntries.slice(0, showAll ? undefined : CASHBOOK_SCREEN_ROWS).map((entry) => (
                     <tr key={entry.id}>
                       <td className="px-5 py-3 text-stone-600">{formatDate(entry.date, locale)}</td>
                       <td className="px-5 py-3">
@@ -621,12 +715,24 @@ export default async function ReportsPage({
                     </tr>
                   ))}
                 </tbody>
+                <tfoot className="border-t border-stone-200 bg-stone-50 font-medium text-stone-900">
+                  <tr>
+                    <td className="px-5 py-3" colSpan={3}>{t.reports.totalRows(cashEntries.length)}</td>
+                    <td className="px-5 py-3 text-right text-emerald-700">{formatMoney(totalInflow, locale)}</td>
+                    <td className="px-5 py-3 text-right text-red-600">{formatMoney(totalOutflow, locale)}</td>
+                  </tr>
+                </tfoot>
               </table>
             </div>
           </div>
         )}
         {cashEntries.length > CASHBOOK_SCREEN_ROWS && (
-          <p className="text-xs text-stone-500">{t.reports.cashbookShowing(CASHBOOK_SCREEN_ROWS, cashEntries.length)}</p>
+          <p className="text-xs text-stone-500">
+            {showAll ? null : `${t.reports.cashbookShowing(CASHBOOK_SCREEN_ROWS, cashEntries.length)} `}
+            <Link href={buildHref({ all: !showAll })} className="font-medium text-brand-600 hover:underline">
+              {showAll ? t.reports.showLess : t.reports.showAll(cashEntries.length)}
+            </Link>
+          </p>
         )}
       </div>
 
@@ -689,7 +795,7 @@ export default async function ReportsPage({
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-stone-100">
-                    {filteredPayments.slice(0, 25).map((payment) => (
+                    {filteredPayments.slice(0, showAll ? undefined : SCREEN_ROWS).map((payment) => (
                       <tr key={payment.id}>
                         <td className="px-4 py-3 text-stone-600">{formatDate(payment.date, locale)}</td>
                         <td className="px-4 py-3 text-stone-900">
@@ -710,12 +816,23 @@ export default async function ReportsPage({
                       </tr>
                     ))}
                   </tbody>
+                  <tfoot className="border-t border-stone-200 bg-stone-50 font-medium text-stone-900">
+                    <tr>
+                      <td className="px-4 py-3" colSpan={5}>{t.reports.totalRows(filteredPayments.length)}</td>
+                      <td className="px-4 py-3">{formatMoney(totalPaymentsFiltered, locale)}</td>
+                    </tr>
+                  </tfoot>
                 </table>
               </div>
             </div>
           )}
-          {filteredPayments.length > 25 && (
-            <p className="text-xs text-stone-500">{t.reports.cashbookShowing(25, filteredPayments.length)}</p>
+          {filteredPayments.length > SCREEN_ROWS && (
+            <p className="text-xs text-stone-500">
+              {showAll ? null : `${t.reports.cashbookShowing(SCREEN_ROWS, filteredPayments.length)} `}
+              <Link href={buildHref({ all: !showAll })} className="font-medium text-brand-600 hover:underline">
+                {showAll ? t.reports.showLess : t.reports.showAll(filteredPayments.length)}
+              </Link>
+            </p>
           )}
         </div>
 
@@ -724,7 +841,9 @@ export default async function ReportsPage({
           <p className="mb-4 text-xs text-stone-500">
             {formatMoney(totalExpensesFiltered, locale)} {hasFilter ? t.reports.selectedPeriod : t.reports.allTime}
           </p>
-          {Object.keys(expensesByCategory).length === 0 ? (
+          {selectedTenant ? (
+            <p className="text-sm text-stone-500">{t.reports.expensesNotForTenant}</p>
+          ) : Object.keys(expensesByCategory).length === 0 ? (
             <p className="text-sm text-stone-500">{t.reports.noExpenses}</p>
           ) : (
             <ul className="space-y-3">
@@ -769,7 +888,7 @@ export default async function ReportsPage({
           />
         </div>
         {filteredExpenses.length === 0 ? (
-          <div className="card text-sm text-stone-500">{t.reports.noExpenses}</div>
+          <div className="card text-sm text-stone-500">{selectedTenant ? t.reports.expensesNotForTenant : t.reports.noExpenses}</div>
         ) : (
           <div className="card overflow-hidden p-0">
             <div className="overflow-x-auto">
@@ -784,7 +903,7 @@ export default async function ReportsPage({
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-stone-100">
-                  {filteredExpenses.slice(0, 25).map((expense) => (
+                  {filteredExpenses.slice(0, showAll ? undefined : SCREEN_ROWS).map((expense) => (
                     <tr key={expense.id}>
                       <td className="px-5 py-3 text-stone-600">{formatDate(expense.date, locale)}</td>
                       <td className="px-5 py-3">
@@ -802,12 +921,23 @@ export default async function ReportsPage({
                     </tr>
                   ))}
                 </tbody>
+                <tfoot className="border-t border-stone-200 bg-stone-50 font-medium text-stone-900">
+                  <tr>
+                    <td className="px-5 py-3" colSpan={4}>{t.reports.totalRows(filteredExpenses.length)}</td>
+                    <td className="px-5 py-3">{formatMoney(totalExpensesFiltered, locale)}</td>
+                  </tr>
+                </tfoot>
               </table>
             </div>
           </div>
         )}
-        {filteredExpenses.length > 25 && (
-          <p className="text-xs text-stone-500">{t.reports.cashbookShowing(25, filteredExpenses.length)}</p>
+        {filteredExpenses.length > SCREEN_ROWS && (
+          <p className="text-xs text-stone-500">
+            {showAll ? null : `${t.reports.cashbookShowing(SCREEN_ROWS, filteredExpenses.length)} `}
+            <Link href={buildHref({ all: !showAll })} className="font-medium text-brand-600 hover:underline">
+              {showAll ? t.reports.showLess : t.reports.showAll(filteredExpenses.length)}
+            </Link>
+          </p>
         )}
       </div>
     </div>
