@@ -18,6 +18,7 @@ export async function createRentReview(leaseId: string, formData: FormData) {
 
   revalidatePath(`/leases/${leaseId}`);
   revalidatePath("/alerts");
+  redirect(`/leases/${leaseId}`);
 }
 
 export async function markRentReviewLetterSent(reviewId: string, leaseId: string) {

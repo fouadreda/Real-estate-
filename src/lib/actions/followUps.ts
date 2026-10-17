@@ -29,6 +29,7 @@ export async function createFollowUp(leaseId: string, formData: FormData) {
 
   revalidatePath(`/leases/${leaseId}`);
   revalidatePath("/collections");
+  redirect(`/leases/${leaseId}`);
 }
 
 export async function updateFollowUpResult(followUpId: string, leaseId: string, result: FollowUpResult) {

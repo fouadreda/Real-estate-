@@ -93,6 +93,7 @@ export async function updateLeaseStatus(leaseId: string, status: LeaseStatus) {
   revalidatePath(`/leases/${leaseId}`);
   revalidatePath("/leases");
   revalidatePath("/properties");
+  redirect(`/leases/${leaseId}`);
 }
 
 export async function deleteLease(leaseId: string) {
