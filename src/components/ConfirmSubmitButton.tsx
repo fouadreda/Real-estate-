@@ -38,11 +38,15 @@ export default function ConfirmSubmitButton({
       <span className="text-xs font-medium text-red-700">{confirmMessage}</span>
       <button
         type="submit"
-        className="rounded-lg bg-red-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-red-700"
+        className="inline-flex min-h-9 items-center rounded-lg bg-red-600 px-3 text-sm font-medium text-white hover:bg-red-700"
       >
         {confirmLabel}
       </button>
-      <button type="button" className="text-sm text-stone-600 hover:underline" onClick={() => setAsking(false)}>
+      <button
+        type="button"
+        className="inline-flex min-h-9 items-center rounded-lg px-3 text-sm text-stone-600 hover:bg-stone-100"
+        onClick={() => setAsking(false)}
+      >
         {cancelLabel}
       </button>
     </span>
