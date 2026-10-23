@@ -32,6 +32,22 @@ export async function createUser(formData: FormData) {
   redirect(`${PAGE}?done=created`);
 }
 
+/** Changes someone's name or sign-in email (the email must not belong to another account). */
+export async function updateUserDetails(userId: string, formData: FormData) {
+  await requireAdmin();
+  const name = String(formData.get("name") ?? "").trim();
+  const email = String(formData.get("email") ?? "").trim().toLowerCase();
+  if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) redirect(`${PAGE}?error=fields`);
+
+  const other = await prisma.user.findUnique({ where: { email } });
+  if (other && other.id !== userId) redirect(`${PAGE}?error=emailInUse`);
+
+  await prisma.user.update({ where: { id: userId }, data: { name, email } });
+  revalidatePath(PAGE);
+  revalidatePath("/", "layout");
+  redirect(`${PAGE}?done=updated`);
+}
+
 /** Sets a new password for someone (e.g. they forgot theirs) and signs them out everywhere. */
 export async function resetUserPassword(userId: string, formData: FormData) {
   await requireAdmin();
@@ -64,4 +80,28 @@ export async function setUserAccess(userId: string, active: boolean) {
   ]);
   revalidatePath(PAGE);
   redirect(`${PAGE}?done=${active ? "accessRestored" : "accessRemoved"}`);
+}
+
+/**
+ * Deletes someone's account for good. Their payments and expenses stay; they are shown as recorded by the
+ * administrator who deleted the account (a payment entered in the app must keep a recorder: the balances
+ * count it differently from imported history).
+ */
+export async function deleteUser(userId: string) {
+  const admin = await requireAdmin();
+  if (userId === admin.id) redirect(`${PAGE}?error=self`);
+  const target = await prisma.user.findUnique({ where: { id: userId }, select: { role: true } });
+  if (!target) redirect(PAGE);
+  if (target.role === "ADMIN") {
+    const otherAdmins = await prisma.user.count({ where: { role: "ADMIN", active: true, id: { not: userId } } });
+    if (otherAdmins === 0) redirect(`${PAGE}?error=lastAdmin`);
+  }
+
+  await prisma.$transaction([
+    prisma.payment.updateMany({ where: { recordedById: userId }, data: { recordedById: admin.id } }),
+    prisma.expense.updateMany({ where: { recordedById: userId }, data: { recordedById: admin.id } }),
+    prisma.user.delete({ where: { id: userId } }),
+  ]);
+  revalidatePath(PAGE);
+  redirect(`${PAGE}?done=deleted`);
 }
