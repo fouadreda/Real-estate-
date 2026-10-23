@@ -2,12 +2,12 @@ import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { requireAdmin, requireUserWithDictionary } from "@/lib/auth";
 import { formatDate } from "@/lib/format";
-import { createUser, resetUserPassword, setUserAccess } from "@/lib/actions/users";
+import { createUser, deleteUser, resetUserPassword, setUserAccess, updateUserDetails } from "@/lib/actions/users";
 import Avatar from "@/components/Avatar";
 import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
 import SubmitButton from "@/components/SubmitButton";
 
-const DONE = ["created", "passwordReset", "accessRemoved", "accessRestored"] as const;
+const DONE = ["created", "updated", "passwordReset", "accessRemoved", "accessRestored", "deleted"] as const;
 const ERRORS = ["fields", "emailInUse", "password", "self", "lastAdmin"] as const;
 
 export default async function UsersPage({
@@ -82,8 +82,10 @@ export default async function UsersPage({
         {users.map((u) => {
           const isMe = u.id === admin.id;
           const reset = resetUserPassword.bind(null, u.id);
+          const saveDetails = updateUserDetails.bind(null, u.id);
           const remove = setUserAccess.bind(null, u.id, false);
           const restore = setUserAccess.bind(null, u.id, true);
+          const removeAccount = deleteUser.bind(null, u.id);
           return (
             <div key={u.id} className={`card space-y-3 ${u.active ? "" : "bg-stone-50"}`}>
               <div className="flex flex-wrap items-center gap-3">
@@ -101,6 +103,25 @@ export default async function UsersPage({
                 </span>
                 <span className="text-xs text-stone-400">{t.settings.memberSince(formatDate(u.createdAt, locale))}</span>
               </div>
+
+              <details className="border-t border-stone-100 pt-3">
+                <summary className="inline-flex min-h-9 cursor-pointer items-center text-sm font-medium text-brand-600">
+                  {t.users.editDetails}
+                </summary>
+                <form action={saveDetails} className="mt-3 grid grid-cols-1 items-end gap-3 sm:grid-cols-[1fr_1fr_auto]">
+                  <div>
+                    <label className="label" htmlFor={`name-${u.id}`}>{t.users.name}</label>
+                    <input className="input" id={`name-${u.id}`} name="name" required defaultValue={u.name} />
+                  </div>
+                  <div>
+                    <label className="label" htmlFor={`email-${u.id}`}>{t.users.email}</label>
+                    <input className="input" id={`email-${u.id}`} name="email" type="email" required defaultValue={u.email} />
+                  </div>
+                  <SubmitButton className="btn-secondary" pendingLabel={t.leaseDetail.saving}>
+                    {t.users.saveDetails}
+                  </SubmitButton>
+                </form>
+              </details>
 
               <div className="flex flex-wrap items-end gap-3 border-t border-stone-100 pt-3">
                 <form action={reset} className="flex flex-wrap items-end gap-2">
@@ -120,25 +141,38 @@ export default async function UsersPage({
                     {t.users.resetPassword}
                   </SubmitButton>
                 </form>
-                {!isMe &&
-                  (u.active ? (
-                    <form action={remove} className="sm:ml-auto">
+                {!isMe && (
+                  <div className="flex flex-wrap items-center gap-2 sm:ml-auto">
+                    {u.active ? (
+                      <form action={remove}>
+                        <ConfirmSubmitButton
+                          confirmMessage={t.users.removeConfirm}
+                          confirmLabel={t.users.removeYes}
+                          cancelLabel={t.common.cancel}
+                          className="btn-danger"
+                        >
+                          {t.users.removeAccess}
+                        </ConfirmSubmitButton>
+                      </form>
+                    ) : (
+                      <form action={restore}>
+                        <SubmitButton className="btn-primary" pendingLabel={t.leaseDetail.saving}>
+                          {t.users.restoreAccess}
+                        </SubmitButton>
+                      </form>
+                    )}
+                    <form action={removeAccount}>
                       <ConfirmSubmitButton
-                        confirmMessage={t.users.removeConfirm}
-                        confirmLabel={t.users.removeYes}
+                        confirmMessage={t.users.deleteConfirm}
+                        confirmLabel={t.users.deleteYes}
                         cancelLabel={t.common.cancel}
-                        className="btn-danger"
+                        className="btn border border-red-300 bg-white text-red-700 hover:bg-red-50"
                       >
-                        {t.users.removeAccess}
+                        {t.users.deleteAccount}
                       </ConfirmSubmitButton>
                     </form>
-                  ) : (
-                    <form action={restore} className="sm:ml-auto">
-                      <SubmitButton className="btn-primary" pendingLabel={t.leaseDetail.saving}>
-                        {t.users.restoreAccess}
-                      </SubmitButton>
-                    </form>
-                  ))}
+                  </div>
+                )}
               </div>
             </div>
           );
