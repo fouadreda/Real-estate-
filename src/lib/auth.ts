@@ -45,8 +45,9 @@ export const getCurrentUser = cache(async () => {
     include: { user: true },
   });
 
-  if (!session || session.expiresAt < new Date()) {
-    if (session) await prisma.session.delete({ where: { token } });
+  // an expired session, or one whose access was removed by an administrator, is signed out
+  if (!session || session.expiresAt < new Date() || !session.user.active) {
+    if (session) await prisma.session.deleteMany({ where: { token } });
     return null;
   }
 
@@ -56,6 +57,13 @@ export const getCurrentUser = cache(async () => {
 export async function requireUser() {
   const user = await getCurrentUser();
   if (!user) redirect("/login");
+  return user;
+}
+
+/** Only administrators get past this (others go back to the dashboard). */
+export async function requireAdmin() {
+  const user = await requireUser();
+  if (user.role !== "ADMIN") redirect("/");
   return user;
 }
 
