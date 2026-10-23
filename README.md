@@ -29,7 +29,7 @@ Then open [http://localhost:3000](http://localhost:3000) — you'll be redirecte
 
 **Seeded logins** — `npm run db:seed` creates a test admin and manager for local development only (see `prisma/seed.ts`). Never seed a production database, and change any default password before real use (see [Settings](#settings--profile)).
 
-Both roles currently see and can do everything (record properties/tenants/leases/payments/expenses, and view Reports and Alerts). The role label is there for future use if you later want to split permissions.
+Both roles see and can do everything in the day-to-day app (properties, tenants, leases, payments, expenses, Reports and Alerts). Only an **Admin** can manage accounts (Settings → Users: create manager accounts, reset a password, remove or give back access), run the data import and change the overdue setting. Removing access keeps the person's records; they simply can no longer sign in.
 
 ## What's included
 
