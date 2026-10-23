@@ -15,6 +15,9 @@ export async function login(formData: FormData) {
   if (!user || !valid) {
     redirect("/login?error=1");
   }
+  if (!user.active) {
+    redirect("/login?error=disabled");
+  }
 
   await createSession(user.id);
   redirect("/");
