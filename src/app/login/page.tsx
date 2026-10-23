@@ -25,7 +25,7 @@ export default async function LoginPage({
         <form action={login} className="card space-y-4">
           {error && (
             <div className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-600">
-              {t.error}
+              {error === "disabled" ? t.disabled : t.error}
             </div>
           )}
           <div>
