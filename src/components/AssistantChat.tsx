@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import type { Dictionary } from "@/lib/i18n";
 import ChatMarkdown, { CopyButton, plainText } from "@/components/ChatMarkdown";
+import { ASSISTANT_STORAGE_KEY, clearAssistantConversation } from "@/lib/assistant/storage";
 
 type Labels = Dictionary["assistant"];
 
@@ -17,53 +18,99 @@ interface ChatItem {
 /** The conversation as Claude's API needs it back; the browser keeps it as it came and never edits it. */
 type ApiHistory = unknown[];
 
-const STORAGE_KEY = "cocotiers-assistant";
+interface Conversation {
+  history: ApiHistory;
+  /** The server's signature of `history`: it only accepts a conversation it handed out to this person. */
+  signature: string;
+  items: ChatItem[];
+  /** The conversation reached its size limit: a new one is needed for the next question. */
+  full: boolean;
+}
 
-function readSaved(): { history: ApiHistory; items: ChatItem[] } | null {
+const EMPTY: Conversation = { history: [], signature: "", items: [], full: false };
+
+/** The saved conversation, only when it belongs to the person signed in now. */
+function readSaved(userId: string): Conversation | null {
   try {
-    const raw = sessionStorage.getItem(STORAGE_KEY);
+    const raw = sessionStorage.getItem(ASSISTANT_STORAGE_KEY);
     if (!raw) return null;
     const saved = JSON.parse(raw);
-    return Array.isArray(saved?.history) && Array.isArray(saved?.items) ? saved : null;
+    if (saved?.userId !== userId || !Array.isArray(saved.history) || !Array.isArray(saved.items)) return null;
+    return { history: saved.history, signature: String(saved.signature ?? ""), items: saved.items, full: saved.full === true };
   } catch {
     return null;
   }
 }
 
-function save(history: ApiHistory, items: ChatItem[]) {
+function save(userId: string, conversation: Conversation) {
+  if (conversation.items.length === 0) {
+    clearAssistantConversation();
+    return;
+  }
   try {
-    if (items.length === 0) sessionStorage.removeItem(STORAGE_KEY);
-    else sessionStorage.setItem(STORAGE_KEY, JSON.stringify({ history, items }));
+    sessionStorage.setItem(ASSISTANT_STORAGE_KEY, JSON.stringify({ userId, ...conversation }));
   } catch {
-    // storage full or blocked: the conversation simply isn't kept when the page is left
+    // storage full or blocked: drop the older copy too, so it is never brought back as if it were current
+    clearAssistantConversation();
   }
 }
 
 const joinSteps = (a: string, b: string) => (a && b ? `${a}\n\n${b}` : a + b);
 
-export default function AssistantChat({ t }: { t: Labels }) {
-  const [history, setHistory] = useState<ApiHistory>([]);
-  const [items, setItems] = useState<ChatItem[]>([]);
+export default function AssistantChat({ t, userId }: { t: Labels; userId: string }) {
+  const [conversation, setConversation] = useState<Conversation>(EMPTY);
+  const { history, signature, items, full } = conversation;
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
+  const [status, setStatus] = useState("");
+  const [restored, setRestored] = useState(false);
   const abortRef = useRef<AbortController | null>(null);
   const endRef = useRef<HTMLDivElement>(null);
   const followRef = useRef(true);
   const inputRef = useRef<HTMLTextAreaElement>(null);
+  // the latest values, for saving when the page is left in the middle of an answer
+  const latest = useRef({ conversation, t, userId });
+  useEffect(() => {
+    latest.current = { conversation, t, userId };
+  });
   const copyLabels = { copy: t.copy, copied: t.copied };
 
-  // the conversation stays while moving around the app (until the tab is closed)
+  // the conversation stays while moving around the app (until the tab is closed or the person signs out)
   useEffect(() => {
-    const saved = readSaved();
+    const saved = readSaved(userId);
     if (saved) {
-      setHistory(saved.history);
-      setItems(saved.items.map((item) => (item.state === "streaming" ? { ...item, state: "failed" } : item)));
+      setConversation({ ...saved, items: saved.items.map((item) => (item.state === "streaming" ? { ...item, state: "failed" } : item)) });
     }
-  }, []);
+    setRestored(true);
+  }, [userId]);
 
   useEffect(() => {
-    if (!busy) save(history, items);
-  }, [busy, history, items]);
+    if (restored && !busy) save(userId, conversation);
+  }, [restored, busy, userId, conversation]);
+
+  // leaving the page (or reloading / closing the tab) mid-answer stops the answer, so it isn't paid
+  // for, and keeps the question visible as not kept
+  useEffect(() => {
+    const stopAndSave = () => {
+      if (!abortRef.current) return;
+      abortRef.current.abort();
+      abortRef.current = null;
+      const { conversation: current, t: labels, userId: owner } = latest.current;
+      save(owner, {
+        ...current,
+        items: current.items.map((item, index) =>
+          index === current.items.length - 1 && item.state === "streaming"
+            ? { ...item, state: "failed", notice: `${labels.stopped} ${labels.notKept}` }
+            : item,
+        ),
+      });
+    };
+    window.addEventListener("pagehide", stopAndSave);
+    return () => {
+      window.removeEventListener("pagehide", stopAndSave);
+      stopAndSave();
+    };
+  }, []);
 
   // keep the newest text in view while it is written, unless the person scrolled up to read
   useEffect(() => {
@@ -78,50 +125,61 @@ export default function AssistantChat({ t }: { t: Labels }) {
   }, [items]);
 
   const updateLast = (patch: Partial<ChatItem>) =>
-    setItems((prev) => {
-      const next = [...prev];
+    setConversation((prev) => {
+      if (prev.items.length === 0) return prev; // the conversation was cleared meanwhile
+      const next = [...prev.items];
       next[next.length - 1] = { ...next[next.length - 1], ...patch };
-      return next;
+      return { ...prev, items: next };
     });
 
   async function ask(question: string) {
     const text = question.trim();
-    if (!text || busy) return;
+    if (!text || busy || full) return;
     const controller = new AbortController();
     abortRef.current = controller;
     followRef.current = true;
     setBusy(true);
     setInput("");
-    setItems((prev) => [
+    setStatus("");
+    setConversation((prev) => ({
       ...prev,
-      { role: "user", text, tools: [], state: "done" },
-      { role: "assistant", text: "", tools: [], state: "streaming" },
-    ]);
+      items: [
+        ...prev.items,
+        { role: "user", text, tools: [], state: "done" },
+        { role: "assistant", text: "", tools: [], state: "streaming" },
+      ],
+    }));
 
     let committed = "";
     let step = "";
     const tools: string[] = [];
     let finished = false;
-    const fail = (notice: string) => {
+    const fail = (notice: string, extra?: Partial<Conversation>) => {
       finished = true;
-      updateLast({ text: joinSteps(committed, step), state: "failed", notice: `${notice} ${t.notKept}` });
+      const message = `${notice} ${t.notKept}`;
+      updateLast({ text: joinSteps(committed, step), state: "failed", notice: message });
+      if (extra) setConversation((prev) => ({ ...prev, ...extra }));
+      setStatus(message);
     };
 
     try {
       const response = await fetch("/api/assistant", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ history, question: text }),
+        body: JSON.stringify({ history, signature, question: text }),
         signal: controller.signal,
       });
       if (!response.ok || !response.body) {
         const body = await response.json().catch(() => ({}));
+        if (body?.error === "signedOut") clearAssistantConversation();
         const known: Record<string, string> = {
           signedOut: t.errors.signedOut,
           tooLong: t.errors.tooLongConversation,
+          invalidConversation: t.errors.invalidConversation,
           notConfigured: t.errors.notConfigured,
         };
-        fail(known[body?.error] ?? t.errors.internal);
+        const needsNew = body?.error === "tooLong" || body?.error === "invalidConversation";
+        fail(known[body?.error] ?? t.errors.internal, needsNew ? { full: true } : undefined);
         return;
       }
 
@@ -155,15 +213,17 @@ export default function AssistantChat({ t }: { t: Labels }) {
               committed = joinSteps(committed, step);
               step = "";
               break;
-            case "done":
+            case "done": {
               finished = true;
-              setHistory(event.history);
-              updateLast({
-                text: joinSteps(committed, step),
-                state: "done",
-                notice: event.note === "truncated" ? t.truncated : event.note === "too_many_steps" ? t.tooManySteps : undefined,
-              });
+              const notes = [
+                event.note === "truncated" ? t.truncated : event.note === "too_many_steps" ? t.tooManySteps : "",
+                event.full ? t.errors.tooLongConversation : "",
+              ].filter(Boolean);
+              setConversation((prev) => ({ ...prev, history: event.history, signature: event.signature ?? "", full: event.full === true }));
+              updateLast({ text: joinSteps(committed, step), state: "done", notice: notes.join(" ") || undefined });
+              setStatus(t.answerReady);
               break;
+            }
             case "refusal":
               committed = "";
               step = "";
@@ -172,12 +232,19 @@ export default function AssistantChat({ t }: { t: Labels }) {
             case "error": {
               const messages: Record<string, string> = {
                 auth: t.errors.auth,
+                billing: t.errors.billing,
                 rate: t.errors.rate,
                 overloaded: t.errors.overloaded,
+                network: t.errors.network,
+                timeout: t.errors.timeout,
+                conversation_too_long: t.errors.tooLongConversation,
                 request: t.errors.request,
                 too_long: t.errors.tooLongAnswer,
               };
-              fail([messages[event.code] ?? t.errors.internal, event.detail ? `(${event.detail})` : ""].filter(Boolean).join(" "));
+              fail(
+                [messages[event.code] ?? t.errors.internal, event.detail ? `(${event.detail})` : ""].filter(Boolean).join(" "),
+                event.code === "conversation_too_long" ? { full: true } : undefined,
+              );
               break;
             }
           }
@@ -192,7 +259,7 @@ export default function AssistantChat({ t }: { t: Labels }) {
         fail(t.errors.network);
       }
     } finally {
-      abortRef.current = null;
+      if (abortRef.current === controller) abortRef.current = null;
       setBusy(false);
       inputRef.current?.focus();
     }
@@ -200,9 +267,10 @@ export default function AssistantChat({ t }: { t: Labels }) {
 
   function newConversation() {
     abortRef.current?.abort();
-    setHistory([]);
-    setItems([]);
+    abortRef.current = null;
+    setConversation(EMPTY);
     setInput("");
+    setStatus("");
   }
 
   return (
@@ -219,7 +287,7 @@ export default function AssistantChat({ t }: { t: Labels }) {
         )}
       </div>
 
-      {items.length === 0 && (
+      {restored && items.length === 0 && (
         <div className="card space-y-3">
           <p className="text-sm font-medium text-stone-700">{t.suggestionsHeading}</p>
           <div className="flex flex-col gap-2">
@@ -238,7 +306,12 @@ export default function AssistantChat({ t }: { t: Labels }) {
         </div>
       )}
 
-      <div className="flex flex-col gap-4" aria-live="polite">
+      {/* screen readers hear a short line when an answer is ready or fails, not every word as it streams */}
+      <p role="status" className="sr-only">
+        {status}
+      </p>
+
+      <div className="flex flex-col gap-4">
         {items.map((item, index) =>
           item.role === "user" ? (
             <div key={index} className="flex justify-end">
@@ -247,7 +320,7 @@ export default function AssistantChat({ t }: { t: Labels }) {
               </div>
             </div>
           ) : (
-            <div key={index} className="card space-y-2 !p-4">
+            <div key={index} className="card space-y-2 !p-4" aria-busy={item.state === "streaming"}>
               {item.tools.length > 0 && (
                 <p className="text-xs text-stone-400">
                   {t.lookedAt} {item.tools.map((name) => t.tools[name as keyof Labels["tools"]] ?? name).join(", ")}
@@ -281,33 +354,45 @@ export default function AssistantChat({ t }: { t: Labels }) {
           ask(input);
         }}
       >
-        <div className="flex items-end gap-2">
-          <textarea
-            ref={inputRef}
-            className="input min-h-[44px] flex-1 resize-none"
-            rows={Math.min(6, Math.max(1, input.split("\n").length))}
-            value={input}
-            maxLength={4000}
-            placeholder={t.placeholder}
-            aria-label={t.placeholder}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" && !e.shiftKey && !e.nativeEvent.isComposing) {
-                e.preventDefault();
-                ask(input);
-              }
-            }}
-          />
-          {busy ? (
-            <button type="button" className="btn-secondary min-h-[44px]" onClick={() => abortRef.current?.abort()}>
-              {t.stop}
+        {full ? (
+          <div className="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-stone-200 bg-white px-3 py-2">
+            <p className="text-sm text-stone-600">{t.errors.tooLongConversation}</p>
+            <button type="button" className="btn-primary min-h-[44px]" onClick={newConversation}>
+              {t.newChat}
             </button>
-          ) : (
-            <button type="submit" className="btn-primary min-h-[44px]" disabled={!input.trim()}>
-              {t.send}
-            </button>
-          )}
-        </div>
+          </div>
+        ) : (
+          <div className="flex items-end gap-2">
+            <textarea
+              ref={inputRef}
+              className="input min-h-[44px] flex-1 resize-none"
+              rows={Math.min(6, Math.max(1, input.split("\n").length))}
+              value={input}
+              maxLength={4000}
+              placeholder={t.placeholder}
+              aria-label={t.placeholder}
+              enterKeyHint="enter"
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={(e) => {
+                // with a keyboard, Enter sends (Shift+Enter for a new line); on a phone, Return makes a new line and the button sends
+                const keyboard = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+                if (keyboard && e.key === "Enter" && !e.shiftKey && !e.nativeEvent.isComposing) {
+                  e.preventDefault();
+                  ask(input);
+                }
+              }}
+            />
+            {busy ? (
+              <button type="button" className="btn-secondary min-h-[44px]" onClick={() => abortRef.current?.abort()}>
+                {t.stop}
+              </button>
+            ) : (
+              <button type="submit" className="btn-primary min-h-[44px]" disabled={!input.trim()}>
+                {t.send}
+              </button>
+            )}
+          </div>
+        )}
       </form>
       <div ref={endRef} />
     </div>

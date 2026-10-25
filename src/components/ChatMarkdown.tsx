@@ -39,7 +39,7 @@ export function CopyButton({ text, labels, className }: { text: string; labels: 
 type Block =
   | { kind: "heading"; text: string }
   | { kind: "paragraph"; lines: string[] }
-  | { kind: "list"; ordered: boolean; items: string[] }
+  | { kind: "list"; ordered: boolean; start: number; items: { text: string; sub: string[] }[] }
   | { kind: "quote"; lines: string[] }
   | { kind: "table"; header: string[]; rows: string[][] }
   | { kind: "code"; text: string }
@@ -47,6 +47,7 @@ type Block =
 
 const BULLET = /^\s*[-*•]\s+/;
 const NUMBERED = /^\s*\d+[.)]\s+/;
+const indentOf = (line: string) => line.length - line.trimStart().length;
 const TABLE_SEPARATOR = /^\s*\|?\s*:?-{2,}:?\s*(\|\s*:?-{2,}:?\s*)*\|?\s*$/;
 
 function cells(line: string): string[] {
@@ -97,16 +98,39 @@ function parse(text: string): Block[] {
     if (BULLET.test(line) || NUMBERED.test(line)) {
       const ordered = NUMBERED.test(line);
       const marker = ordered ? NUMBERED : BULLET;
-      const items: string[] = [];
-      while (i < lines.length && marker.test(lines[i])) {
-        let item = lines[i++].replace(marker, "");
-        // an indented line under an item continues it
-        while (i < lines.length && /^\s{2,}\S/.test(lines[i]) && !BULLET.test(lines[i]) && !NUMBERED.test(lines[i])) {
-          item += ` ${lines[i++].trim()}`;
+      const base = indentOf(line);
+      const isItem = (l: string) => marker.test(l) && indentOf(l) <= base + 1;
+      const items: { text: string; sub: string[] }[] = [];
+      while (i < lines.length) {
+        const current = lines[i];
+        if (isItem(current)) {
+          items.push({ text: current.replace(marker, ""), sub: [] });
+          i += 1;
+          continue;
         }
-        items.push(item);
+        const item = items[items.length - 1];
+        // an indented line under an item is a sub-point, or continues the item (or its last sub-point)
+        if (current.trim() && indentOf(current) >= base + 2) {
+          const text = current.trim();
+          if (BULLET.test(text) || NUMBERED.test(text)) item.sub.push(text.replace(BULLET, "").replace(NUMBERED, ""));
+          else if (item.sub.length > 0) item.sub[item.sub.length - 1] += ` ${text}`;
+          else item.text += ` ${text}`;
+          i += 1;
+          continue;
+        }
+        // blank lines between two items of the same list do not end it
+        if (!current.trim()) {
+          let next = i;
+          while (next < lines.length && !lines[next].trim()) next += 1;
+          if (next < lines.length && isItem(lines[next])) {
+            i = next;
+            continue;
+          }
+        }
+        break;
       }
-      out.push({ kind: "list", ordered, items });
+      const start = ordered ? Number.parseInt(line.trim(), 10) || 1 : 1;
+      out.push({ kind: "list", ordered, start, items });
       continue;
     }
     if (/^>\s?/.test(line)) {
@@ -128,6 +152,7 @@ function parse(text: string): Block[] {
     ) {
       paragraph.push(lines[i++]);
     }
+    if (paragraph.length === 0) paragraph.push(lines[i++]); // never stop on a line no rule took
     out.push({ kind: "paragraph", lines: paragraph });
   }
   return out;
@@ -154,9 +179,20 @@ function blocks(text: string, labels: CopyLabels): ReactNode {
       case "paragraph":
         return <p key={index}>{withBreaks(block.lines)}</p>;
       case "list": {
-        const items = block.items.map((item, n) => <li key={n}>{inline(item)}</li>);
+        const items = block.items.map((item, n) => (
+          <li key={n}>
+            {inline(item.text)}
+            {item.sub.length > 0 && (
+              <ul className="mt-1 list-[circle] space-y-1 pl-5">
+                {item.sub.map((sub, m) => (
+                  <li key={m}>{inline(sub)}</li>
+                ))}
+              </ul>
+            )}
+          </li>
+        ));
         return block.ordered ? (
-          <ol key={index} className="list-decimal space-y-1 pl-5">{items}</ol>
+          <ol key={index} start={block.start} className="list-decimal space-y-1 pl-5">{items}</ol>
         ) : (
           <ul key={index} className="list-disc space-y-1 pl-5">{items}</ul>
         );
@@ -205,6 +241,22 @@ function blocks(text: string, labels: CopyLabels): ReactNode {
   });
 }
 
+const PLACEHOLDER_ORIGIN = "https://app.invalid";
+
+/**
+ * The path when a link points to a page of this app (such as /leases/…), else null. Browsers read a
+ * backslash as "/" and "//" starts another site, so the link is resolved before it is trusted.
+ */
+function appPath(href: string): string | null {
+  if (!href.startsWith("/") || /[\\\u0000-\u001f\u007f]/.test(href)) return null;
+  try {
+    const url = new URL(href, PLACEHOLDER_ORIGIN);
+    return url.origin === PLACEHOLDER_ORIGIN ? url.pathname + url.search + url.hash : null;
+  } catch {
+    return null;
+  }
+}
+
 const INLINE = /(\*\*[^*\n]+\*\*|\[[^\]\n]+\]\([^)\s]+\)|`[^`\n]+`)/g;
 
 function inline(text: string): ReactNode {
@@ -218,9 +270,9 @@ function inline(text: string): ReactNode {
     const link = /^\[([^\]]+)\]\(([^)\s]+)\)$/.exec(part);
     if (link) {
       const [, label, href] = link;
-      // only pages of the app (a path such as /leases/…), never another site
-      return href.startsWith("/") && !href.startsWith("//") ? (
-        <Link key={index} href={href} className="font-medium text-brand-600 underline-offset-2 hover:underline">
+      const path = appPath(href);
+      return path ? (
+        <Link key={index} href={path} className="font-medium text-brand-600 underline-offset-2 hover:underline">
           {label}
         </Link>
       ) : (

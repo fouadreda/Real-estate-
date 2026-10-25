@@ -7,6 +7,7 @@ import type { Role } from "@prisma/client";
 import type { Dictionary } from "@/lib/i18n";
 import { logout } from "@/lib/actions/auth";
 import Avatar from "@/components/Avatar";
+import { clearAssistantConversation } from "@/lib/assistant/storage";
 
 export default function Nav({
   user,
@@ -86,7 +87,7 @@ export default function Nav({
               <p className="text-xs leading-tight text-stone-500">{user.role === "ADMIN" ? nav.admin : nav.manager}</p>
             </span>
           </Link>
-          <form action={logout}>
+          <form action={logout} onSubmit={clearAssistantConversation}>
             <button type="submit" className="btn-secondary whitespace-nowrap">{nav.signOut}</button>
           </form>
         </div>
@@ -154,7 +155,7 @@ export default function Nav({
               ),
             )}
           </ul>
-          <form action={logout} className="mt-2 border-t border-stone-200 pt-3">
+          <form action={logout} onSubmit={clearAssistantConversation} className="mt-2 border-t border-stone-200 pt-3">
             <button type="submit" className="btn-secondary w-full">{nav.signOut}</button>
           </form>
         </nav>
