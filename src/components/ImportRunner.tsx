@@ -139,6 +139,7 @@ export default function ImportRunner({ buildings, labels }: { buildings: Buildin
                           <li>
                             {labels.expenses}: {c.expensesCreated} {labels.created} · {c.expensesSkipped} {labels.skipped}
                             {c.expensesRemoved > 0 ? ` · ${c.expensesRemoved} ${labels.removed}` : ""}
+                            {c.expensesRedated > 0 ? ` · ${c.expensesRedated} ${labels.redated}` : ""}
                           </li>
                           <li>{labels.reviews}: {c.reviewsCreated} · {labels.followUps}: {c.followUpsCreated} · {labels.issues}: {c.issuesCreated}</li>
                         </ul>
