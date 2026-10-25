@@ -1,3 +1,4 @@
+import { createHash, createHmac, timingSafeEqual } from "crypto";
 import type Anthropic from "@anthropic-ai/sdk";
 import { getCurrentUser } from "@/lib/auth";
 import { assistantConfigured, runAssistantTurn, type AssistantEvent } from "@/lib/assistant/run";
@@ -9,13 +10,13 @@ export const maxDuration = 300;
 
 const MAX_QUESTION_CHARS = 4000;
 /** Past this the conversation is too long to send back each time: the person starts a new one. */
-const MAX_HISTORY_BYTES = 3_000_000;
+const MAX_HISTORY_BYTES = 800_000;
 
 function json(status: number, body: object) {
   return Response.json(body, { status, headers: { "Cache-Control": "no-store" } });
 }
 
-/** The conversation comes back from the browser as it was handed out; only its outline is checked here (Claude's API checks the rest). */
+/** The conversation comes back from the browser as it was handed out; only its outline is checked here (the signature covers the rest). */
 function isHistory(value: unknown): value is Anthropic.Beta.BetaMessageParam[] {
   return (
     Array.isArray(value) &&
@@ -30,6 +31,22 @@ function isHistory(value: unknown): value is Anthropic.Beta.BetaMessageParam[] {
   );
 }
 
+/**
+ * Signs a conversation for the person it belongs to. The browser keeps the conversation and sends it
+ * back with each question; only one this server handed to this person is accepted, so nobody can slip
+ * in made-up answers or tool results, or carry on someone else's conversation. The key is derived from
+ * the Anthropic key (server-only), so changing that key simply starts conversations afresh.
+ */
+function signature(userId: string, history: unknown[]): string {
+  const key = createHash("sha256").update(`cocotiers-assistant-history:${process.env.ANTHROPIC_API_KEY ?? ""}`).digest();
+  return createHmac("sha256", key).update(`${userId}\n${JSON.stringify(history)}`).digest("hex");
+}
+
+function signatureMatches(expected: string, given: unknown): boolean {
+  if (typeof given !== "string" || given.length !== expected.length) return false;
+  return timingSafeEqual(Buffer.from(expected), Buffer.from(given));
+}
+
 export async function POST(request: Request) {
   const user = await getCurrentUser();
   if (!user) return json(401, { error: "signedOut" });
@@ -42,7 +59,7 @@ export async function POST(request: Request) {
 
   const raw = await request.text();
   if (raw.length > MAX_HISTORY_BYTES) return json(413, { error: "tooLong" });
-  let body: { history?: unknown; question?: unknown };
+  let body: { history?: unknown; question?: unknown; signature?: unknown };
   try {
     body = JSON.parse(raw);
   } catch {
@@ -51,13 +68,21 @@ export async function POST(request: Request) {
   const question = typeof body.question === "string" ? body.question.trim() : "";
   const history = body.history ?? [];
   if (!question || question.length > MAX_QUESTION_CHARS || !isHistory(history)) return json(400, { error: "badRequest" });
+  if (history.length > 0 && !signatureMatches(signature(user.id, history), body.signature)) {
+    return json(409, { error: "invalidConversation" });
+  }
 
   const encoder = new TextEncoder();
   const stream = new ReadableStream<Uint8Array>({
     async start(controller) {
       const emit = (event: AssistantEvent) => {
         if (request.signal.aborted) return;
-        controller.enqueue(encoder.encode(`${JSON.stringify(event)}\n`));
+        const sent = event.type === "done" ? { ...event, signature: signature(user.id, event.history) } : event;
+        try {
+          controller.enqueue(encoder.encode(`${JSON.stringify(sent)}\n`));
+        } catch {
+          // the browser went away mid-answer
+        }
       };
       await runAssistantTurn({
         history,
