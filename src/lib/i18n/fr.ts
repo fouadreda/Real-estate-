@@ -638,6 +638,7 @@ export const fr: typeof en = {
     copy: "Copier",
     copied: "Copié",
     thinking: "Réflexion…",
+    answerReady: "La réponse est prête.",
     you: "Vous",
     suggestionsHeading: "Par exemple",
     suggestions: [
@@ -667,6 +668,9 @@ export const fr: typeof en = {
       signedOut: "Votre session a expiré. Reconnectez-vous.",
       tooLongConversation: "Cette conversation est devenue trop longue. Commencez une nouvelle conversation.",
       notConfigured: "L'assistant n'est pas encore activé.",
+      billing: "Le compte Anthropic n'a plus de crédit ou a atteint sa limite de dépense mensuelle. Un administrateur peut ajouter du crédit ou relever la limite sur platform.claude.com (Billing).",
+      timeout: "La réponse a pris trop de temps. Posez une question plus ciblée (un immeuble, un locataire ou un mois).",
+      invalidConversation: "Cette conversation ne peut pas être poursuivie (elle appartient à une autre session). Commencez une nouvelle conversation.",
     },
     notKept: "Cette question n'a pas été gardée dans la conversation.",
     refusal: "L'assistant ne peut pas répondre à cette demande. Essayez de la formuler autrement.",

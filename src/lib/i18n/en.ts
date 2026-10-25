@@ -642,6 +642,7 @@ export const en = {
     copy: "Copy",
     copied: "Copied",
     thinking: "Thinking…",
+    answerReady: "The answer is ready.",
     you: "You",
     suggestionsHeading: "For example",
     suggestions: [
@@ -671,6 +672,9 @@ export const en = {
       signedOut: "Your session ended. Sign in again.",
       tooLongConversation: "This conversation has become too long. Start a new conversation.",
       notConfigured: "The assistant is not switched on yet.",
+      billing: "The Anthropic account has no credit left or reached its monthly spend limit. An administrator can add credit or raise the limit on platform.claude.com (Billing).",
+      timeout: "The answer took too long. Ask a narrower question (one building, one tenant or one month).",
+      invalidConversation: "This conversation can't be continued (it belongs to another session). Start a new conversation.",
     },
     notKept: "This question was not kept in the conversation.",
     refusal: "The assistant can't answer this request. Try wording it differently.",
