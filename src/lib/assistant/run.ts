@@ -9,11 +9,30 @@ export const ASSISTANT_MODEL = "claude-opus-5-5";
 
 /** Model calls allowed for one question (each tool round is one call). */
 const MAX_STEPS = 10;
-/** No new model call is started after this long, so the answer ends before the server time limit. */
+/** No new model call is started after this long. */
 const TIME_BUDGET_MS = 240_000;
+/** A call still running at this point is stopped, so the answer ends before the server's 300 s limit with a clear message. */
+const DEADLINE_MS = 285_000;
+/**
+ * Past this many prompt tokens the conversation is full: the answer is kept, then the person is asked
+ * to start a new conversation. Keeps each question's cost reasonable and stays far from the model's limit.
+ */
+const CONVERSATION_TOKEN_LIMIT = 250_000;
 
 type MessageParam = Anthropic.Beta.BetaMessageParam;
 type ContentBlock = Anthropic.Beta.BetaContentBlock;
+
+export type AssistantErrorCode =
+  | "auth"
+  | "billing"
+  | "rate"
+  | "overloaded"
+  | "network"
+  | "timeout"
+  | "conversation_too_long"
+  | "request"
+  | "too_long"
+  | "internal";
 
 /** What the browser receives, one JSON object per line. */
 export type AssistantEvent =
@@ -23,10 +42,11 @@ export type AssistantEvent =
   | { type: "step_discard" }
   /** One model call finished; the next one's text starts a new paragraph. */
   | { type: "step_end" }
-  | { type: "done"; history: MessageParam[]; note?: "truncated" | "too_many_steps" }
+  /** `full`: the conversation reached its size limit; the next question needs a new conversation. */
+  | { type: "done"; history: MessageParam[]; note?: "truncated" | "too_many_steps"; full?: boolean; signature?: string }
   /** Declined by Claude's safeguards (after the automatic retry on another model): nothing is kept. */
   | { type: "refusal" }
-  | { type: "error"; code: "auth" | "rate" | "overloaded" | "request" | "too_long" | "internal"; detail?: string };
+  | { type: "error"; code: AssistantErrorCode; detail?: string };
 
 export function assistantConfigured(): boolean {
   return Boolean(process.env.ANTHROPIC_API_KEY);
@@ -57,14 +77,42 @@ function keptContent(content: ContentBlock[]): ContentBlock[] {
   return content.filter((block, index) => block.type !== "fallback" && (index > lastFallback || block.type === "text"));
 }
 
+/** The API's own explanation (the inner `error.message`), rather than the raw JSON body. */
+function apiMessage(err: InstanceType<typeof Anthropic.APIError>): string {
+  const body = err.error as { error?: { message?: unknown } } | undefined;
+  const inner = body?.error?.message;
+  return (typeof inner === "string" && inner ? inner : err.message).slice(0, 300);
+}
+
+/** Overloaded or a server-side hiccup: worth one more try. */
+function isTransient(err: unknown): boolean {
+  return (
+    err instanceof Anthropic.InternalServerError ||
+    (err instanceof Anthropic.APIError && (err.type === "overloaded_error" || err.type === "api_error" || err.type === "timeout_error"))
+  );
+}
+
 function errorEvent(err: unknown): AssistantEvent {
-  if (err instanceof Anthropic.AuthenticationError || err instanceof Anthropic.PermissionDeniedError) {
+  if (!(err instanceof Anthropic.APIError)) return { type: "error", code: "internal" };
+  // the type comes from the API's error body, so errors that arrive mid-stream are recognised too
+  if (err instanceof Anthropic.APIConnectionError) return { type: "error", code: "network" };
+  if (err.type === "billing_error") return { type: "error", code: "billing" };
+  if (
+    err instanceof Anthropic.AuthenticationError ||
+    err instanceof Anthropic.PermissionDeniedError ||
+    err.type === "authentication_error" ||
+    err.type === "permission_error"
+  ) {
     return { type: "error", code: "auth" };
   }
-  if (err instanceof Anthropic.RateLimitError) return { type: "error", code: "rate" };
-  if (err instanceof Anthropic.InternalServerError) return { type: "error", code: "overloaded" };
-  if (err instanceof Anthropic.APIError) return { type: "error", code: "request", detail: err.message.slice(0, 400) };
-  return { type: "error", code: "internal" };
+  if (err instanceof Anthropic.RateLimitError || err.type === "rate_limit_error") return { type: "error", code: "rate" };
+  if (isTransient(err)) return { type: "error", code: "overloaded" };
+  const detail = apiMessage(err);
+  // a request that is too big has no error type of its own: it is an invalid_request_error that says so
+  if (err.status === 413 || (err instanceof Anthropic.BadRequestError && /prompt is too long|context window/i.test(detail))) {
+    return { type: "error", code: "conversation_too_long" };
+  }
+  return { type: "error", code: "request", detail };
 }
 
 /**
@@ -79,9 +127,12 @@ export async function runAssistantTurn(opts: {
   signal: AbortSignal;
   emit: (event: AssistantEvent) => void;
 }): Promise<void> {
-  const { question, user, signal, emit } = opts;
+  const { question, user, emit } = opts;
   const started = Date.now();
-  const client = new Anthropic();
+  const deadline = AbortSignal.timeout(DEADLINE_MS);
+  // stops the call in flight when the person presses Stop or leaves, or when the time is up
+  const signal = AbortSignal.any([opts.signal, deadline]);
+  const client = new Anthropic({ maxRetries: 1 });
   const messages: MessageParam[] = [
     ...opts.history,
     {
@@ -94,8 +145,15 @@ export async function runAssistantTurn(opts: {
   ];
 
   let jsonRetries = 0;
+  let transientRetries = 0;
+  let promptTokens = 0;
   try {
     for (let step = 0; ; step++) {
+      // only a redone call (or a paused one) gets here late: a finished tool round ends the answer itself below
+      if (step > 0 && Date.now() - started > TIME_BUDGET_MS) {
+        emit({ type: "error", code: "timeout" });
+        return;
+      }
       const stream = client.beta.messages.stream(
         {
           model: ASSISTANT_MODEL,
@@ -103,8 +161,8 @@ export async function runAssistantTurn(opts: {
           system: ASSISTANT_SYSTEM_PROMPT,
           tools: ASSISTANT_TOOLS,
           messages,
-          // caches everything up to the newest message, so each step and each follow-up question re-reads it cheaply
-          cache_control: { type: "ephemeral" },
+          // caches everything up to the newest message for an hour, so each step and each follow-up question re-reads it cheaply
+          cache_control: { type: "ephemeral", ttl: "1h" },
           output_config: { effort: "medium" },
           // if an earlier turn ever comes back altered, its old reasoning is dropped instead of failing the request
           thinking: { type: "adaptive", block_binding: { prefix_mismatch_behavior: "drop_block" } },
@@ -127,12 +185,20 @@ export async function runAssistantTurn(opts: {
         message = await stream.finalMessage();
         jsonRetries = 0;
       } catch (err) {
+        if (signal.aborted) throw err;
+        // an overload or server hiccup in the middle of an answer: try that call once more
+        if (isTransient(err) && transientRetries++ < 1) {
+          emit({ type: "step_discard" });
+          continue;
+        }
         // with eager input streaming a tool input can arrive as JSON that does not parse: redo that call (twice at most)
-        if (err instanceof Anthropic.APIError || signal.aborted || jsonRetries++ >= 2) throw err;
+        if (err instanceof Anthropic.APIError || jsonRetries++ >= 2) throw err;
         emit({ type: "step_discard" });
         continue;
       }
 
+      const usage = message.usage;
+      promptTokens = usage.input_tokens + (usage.cache_read_input_tokens ?? 0) + (usage.cache_creation_input_tokens ?? 0);
       const dropped = (message.input_transformations ?? []).filter(
         (t) => t.type === "thinking_dropped" && "reason" in t && t.reason === "prefix_binding_mismatch",
       );
@@ -140,6 +206,10 @@ export async function runAssistantTurn(opts: {
 
       if (message.stop_reason === "refusal") {
         emit({ type: "refusal" });
+        return;
+      }
+      if (message.stop_reason === "model_context_window_exceeded") {
+        emit({ type: "error", code: "conversation_too_long" });
         return;
       }
 
@@ -152,10 +222,11 @@ export async function runAssistantTurn(opts: {
 
       messages.push({ role: "assistant", content });
       emit({ type: "step_end" });
+      const full = promptTokens > CONVERSATION_TOKEN_LIMIT || undefined;
 
       if (message.stop_reason === "pause_turn") continue;
       if (toolUses.length === 0) {
-        emit({ type: "done", history: messages, ...(message.stop_reason === "max_tokens" ? { note: "truncated" as const } : {}) });
+        emit({ type: "done", history: messages, full, ...(message.stop_reason === "max_tokens" ? { note: "truncated" as const } : {}) });
         return;
       }
 
@@ -173,12 +244,16 @@ export async function runAssistantTurn(opts: {
       messages.push({ role: "user", content: results });
 
       if (step + 1 >= MAX_STEPS || Date.now() - started > TIME_BUDGET_MS) {
-        emit({ type: "done", history: messages, note: "too_many_steps" });
+        emit({ type: "done", history: messages, note: "too_many_steps", full });
         return;
       }
     }
   } catch (err) {
-    if (signal.aborted) return;
+    if (opts.signal.aborted) return; // the person pressed Stop or left: nobody is listening
+    if (deadline.aborted) {
+      emit({ type: "error", code: "timeout" });
+      return;
+    }
     if (!(err instanceof Anthropic.APIError)) console.error("assistant failed", err);
     emit(errorEvent(err));
   }

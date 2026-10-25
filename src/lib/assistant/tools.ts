@@ -73,13 +73,13 @@ export const ASSISTANT_TOOLS: Anthropic.Beta.BetaTool[] = [
           type: "string",
           enum: [...PAYMENT_FILTERS],
           description:
-            "late = has unpaid rent today (the Reports 'unpaid' list and the Alerts page); very_late = status 'Très en retard' (the Settings number of days or more past the paid-until date); up_to_date = nothing unpaid; any (default).",
+            "late = has unpaid rent today (the Reports 'unpaid' list and the Alerts page), closed leases that still owe included; very_late = the Alerts page's 'Très en retard' list (rent unpaid and the Settings number of days or more past the paid-until date); up_to_date = nothing unpaid; any (default).",
         },
         contract: {
           type: "string",
           enum: [...CONTRACT_FILTERS],
           description:
-            "current (default) = active, ending soon, expired but still occupied, or upcoming; ending_soon = ends within 3 months; expired_occupying = end date passed but not closed; upcoming = not started yet; ended = closed in the app; any = all.",
+            "current = active, ending soon, expired but still occupied, or upcoming; ending_soon = ends within 3 months; expired_occupying = end date passed but not closed; upcoming = not started yet; ended = closed in the app; any = all. Default: any when `payment` is late or very_late or when `query` is given (so a closed lease that still owes, or a former tenant, is found), otherwise current.",
         },
         sort: {
           type: "string",
@@ -255,14 +255,25 @@ const DAY_MS = 24 * 60 * 60 * 1000;
 /** Pseudo units that only hold collected electricity / maintenance fees (not rentable), as on the dashboard. */
 const isChargesUnit = (p: { category: string; unitCode: string | null }) => p.category === "OTHER" && p.unitCode === "Charges collectées";
 
-/** Building ids whose name contains the text (or null when no building filter was asked). */
+const words = (text: string) => normalize(text).split(/[^a-z0-9]+/).filter(Boolean);
+
+/**
+ * Buildings whose name has every word asked for (each one as the start of a word), or null when no
+ * building filter was asked. A more specific name ("Entrepôts Akodessewa") matches nothing rather
+ * than the whole building, so the unit is looked up by name instead.
+ */
 async function resolveBuildings(name: string | null): Promise<{ ids: Set<string>; names: string[] } | null> {
   if (!name) return null;
   const buildings = await prisma.building.findMany({ orderBy: { name: "asc" } });
-  const wanted = normalize(name);
-  const matches = buildings.filter((b) => normalize(b.name).includes(wanted) || wanted.includes(normalize(b.name)));
+  const wanted = words(name);
+  const matches = buildings.filter((b) => {
+    const nameWords = words(b.name);
+    return wanted.length > 0 && wanted.every((w) => nameWords.some((n) => n.startsWith(w)));
+  });
   if (matches.length === 0) {
-    throw new ToolInputError(`No building matches "${name}". Buildings: ${buildings.map((b) => b.name).join(", ")}.`);
+    throw new ToolInputError(
+      `No building matches "${name}". Buildings: ${buildings.map((b) => b.name).join(", ")}. For a unit, villa or site inside a building, use find_leases with \`query\` instead.`,
+    );
   }
   return { ids: new Set(matches.map((b) => b.id)), names: matches.map((b) => b.name) };
 }
@@ -303,13 +314,21 @@ function loadLeases() {
   return prisma.lease.findMany({ include: leaseInclude });
 }
 
-/** One lease as the assistant sees it — the same figures as the lease page. */
+/** The lease's ledger today. As on the Reports page, a payment dated after today is not counted yet. */
+function ledgerToday(lease: LeaseWithLedgerData, now: Date) {
+  return computeLeaseLedger(lease, lease.payments.filter((p) => p.date <= now), now);
+}
+
+/** One lease as the assistant sees it — the figures of the lease page, the Reports page and the Alerts page. */
 function leaseRow(lease: LeaseWithLedgerData, now: Date, overdueDays: number) {
-  const ledger = computeLeaseLedger(lease, lease.payments, now);
+  const ledger = ledgerToday(lease, now);
   const contract = leaseDisplayStatus(lease, now);
   const billed = contract === "ACTIVE" || contract === "ENDING_SOON" || contract === "EXPIRED_OCCUPYING";
   const hasRent = lease.rentAmount > 0;
+  const owes = ledger.unpaid > 0.005;
   const pay = paymentStatusFor(ledger.paidUntil, now, overdueDays);
+  // status as on the lease page; a closed lease that still owes rent keeps its lateness, as on the Alerts page
+  const showStatus = (billed && hasRent) || owes;
   const unpaidPeriods = ledger.periods.filter((p) => p.balance > 0.005).length;
   return {
     lease_id: lease.id,
@@ -329,8 +348,10 @@ function leaseRow(lease: LeaseWithLedgerData, now: Date, overdueDays: number) {
     closed_on: isoDay(lease.closedAt),
     contract_status: contract,
     paid_until: hasRent ? isoDay(ledger.paidUntil) : null,
-    payment_status: billed && hasRent ? pay.status : null,
-    days_late: billed && hasRent ? pay.daysLate : 0,
+    payment_status: showStatus ? pay.status : null,
+    days_late: showStatus ? pay.daysLate : 0,
+    // the Alerts page's "Très en retard" list: rent unpaid and the Settings number of days or more past paid-until
+    very_late: owes && pay.daysLate >= overdueDays ? true : undefined,
     unpaid: money(ledger.unpaid),
     months_unpaid: unpaidPeriods * monthsPerPeriod(lease.billingFrequency),
     oldest_unpaid_due: isoDay(ledger.oldestUnpaidDate),
@@ -386,7 +407,7 @@ async function portfolioOverview(args: Input) {
       unpaid += row.unpaid;
       paidAhead += row.paid_ahead;
       if (row.unpaid > 0) late += 1;
-      if (row.payment_status === "OVERDUE") veryLate += 1;
+      if (row.very_late) veryLate += 1;
     }
     const activeLeases = scopeLeases.filter((l) => l.status === "ACTIVE" && !l.needsReview);
     const inBuildings = (buildingId: string | null) => !buildingIds || (buildingId !== null && buildingIds.has(buildingId));
@@ -415,7 +436,8 @@ async function portfolioOverview(args: Input) {
       tenants_very_late: veryLate,
       leases_to_check_not_in_totals: scopeLeases.filter((l) => l.needsReview).length,
       leases_ending_next_90_days: scopeLeases.filter(
-        (l) => l.status === "ACTIVE" && l.endDate && l.endDate >= now && l.endDate <= in90Days,
+        // the end date is the lease's last day, so a lease ending today still counts
+        (l) => l.status === "ACTIVE" && l.endDate && l.endDate.getTime() + DAY_MS > now.getTime() && l.endDate <= in90Days,
       ).length,
       collected_this_month: cashIn(thisMonth),
       expenses_this_month: spent(thisMonth),
@@ -446,7 +468,8 @@ async function findLeases(args: Input) {
   const query = optString(args, "query");
   const building = await resolveBuildings(optString(args, "building"));
   const payment = optEnum(args, "payment", PAYMENT_FILTERS) ?? "any";
-  const contract = optEnum(args, "contract", CONTRACT_FILTERS) ?? "current";
+  const contract =
+    optEnum(args, "contract", CONTRACT_FILTERS) ?? (query || payment === "late" || payment === "very_late" ? "any" : "current");
   const sort = optEnum(args, "sort", LEASE_SORTS) ?? "most_unpaid";
   const limit = optInt(args, "limit", 1, 150) ?? 40;
   // their figures are unreliable (e.g. years of "unpaid" rent from old imports): only listed when asked for or searched by name
@@ -460,14 +483,16 @@ async function findLeases(args: Input) {
       matchesText(query, l.tenant, l.property),
   );
   let toCheckLeftOut = 0;
+  let endedLeftOut = 0;
   const rows = leases
     .map((lease) => ({ lease, row: leaseRow(lease, now, overdueDays) }))
-    .filter(({ lease }) => {
-      if (includeToCheck || !lease.needsReview) return true;
-      toCheckLeftOut += 1;
-      return false;
-    })
-    .filter(({ row }) => {
+    .filter(({ lease, row }) => {
+      const paymentOk =
+        payment === "any" ||
+        (payment === "late" && row.unpaid > 0) ||
+        (payment === "very_late" && row.very_late === true) ||
+        (payment === "up_to_date" && row.unpaid === 0);
+      if (!paymentOk) return false;
       const status = row.contract_status;
       const contractOk =
         contract === "any" ||
@@ -476,12 +501,15 @@ async function findLeases(args: Input) {
         (contract === "expired_occupying" && status === "EXPIRED_OCCUPYING") ||
         (contract === "upcoming" && status === "UPCOMING") ||
         (contract === "ended" && status === "ENDED");
-      const paymentOk =
-        payment === "any" ||
-        (payment === "late" && row.unpaid > 0) ||
-        (payment === "very_late" && row.payment_status === "OVERDUE") ||
-        (payment === "up_to_date" && row.unpaid === 0);
-      return contractOk && paymentOk;
+      if (!contractOk) {
+        if (contract === "current" && status === "ENDED") endedLeftOut += 1;
+        return false;
+      }
+      if (lease.needsReview && !includeToCheck) {
+        toCheckLeftOut += 1;
+        return false;
+      }
+      return true;
     });
 
   const byName = (a: { row: { tenant: string } }, b: { row: { tenant: string } }) => a.row.tenant.localeCompare(b.row.tenant, "fr");
@@ -506,7 +534,8 @@ async function findLeases(args: Input) {
     overdue_days_setting: overdueDays,
     matches: rows.length,
     shown: Math.min(rows.length, limit),
-    leases_to_check_not_listed: includeToCheck ? undefined : toCheckLeftOut,
+    leases_to_check_not_listed: toCheckLeftOut || undefined,
+    ended_leases_not_listed: endedLeftOut || undefined,
     totals_over_all_matches: {
       unpaid: money(counted.reduce((sum, { row }) => sum + row.unpaid, 0)),
       paid_ahead: money(counted.reduce((sum, { row }) => sum + row.paid_ahead, 0)),
@@ -533,7 +562,7 @@ async function leaseDetails(args: Input) {
 
   const now = new Date();
   const { overdueDays } = await getSettings();
-  const ledger = computeLeaseLedger(lease, lease.payments, now);
+  const ledger = ledgerToday(lease, now);
   const monthsByPayment = paymentsWithPaidUntil(lease, lease.payments);
   const payments = [...lease.payments].sort((a, b) => b.date.getTime() - a.date.getTime());
   const otherLeases = await prisma.lease.findMany({
@@ -621,27 +650,44 @@ async function listPayments(args: Input) {
     if (p.kind === "DEPOSIT_REFUND") bucket.money_out = money(bucket.money_out + p.amount);
     else bucket.money_in = money(bucket.money_in + p.amount);
   }
+
+  // months each shown payment paid and the paid-until date after it, worked out like the Reports payment log
+  const shown = rows.slice(0, limit);
+  const leasesShown = await prisma.lease.findMany({
+    where: { id: { in: [...new Set(shown.map((p) => p.leaseId))] } },
+    include: { payments: true, rentReviews: true },
+  });
+  const monthsByPayment = new Map<string, { months: number; paidUntil: Date }>();
+  for (const lease of leasesShown) {
+    for (const [paymentId, info] of paymentsWithPaidUntil(lease, lease.payments)) monthsByPayment.set(paymentId, info);
+  }
+
   return {
     period: { from: isoDay(from), to: isoDay(to) },
     matches: rows.length,
-    shown: Math.min(rows.length, limit),
+    shown: shown.length,
     net_total: money(rows.reduce((sum, p) => sum + cashAmount(p), 0)),
     by_kind: byKind,
     by_month: Object.fromEntries(Object.entries(byMonth).sort(([a], [b]) => a.localeCompare(b))),
-    payments: rows.slice(0, limit).map((p) => ({
-      date: isoDay(p.date),
-      amount: money(p.amount),
-      kind: p.kind,
-      tenant: tenantDisplayName(p.lease.tenant),
-      unit: propertyLabel(p.lease.property),
-      months_paid: p.monthsCovered ?? undefined,
-      receipt: p.receiptNumber,
-      method: p.method,
-      unconfirmed: p.confirmed ? undefined : true,
-      notes: p.notes,
-      entered_in_app: p.recordedById ? true : undefined,
-      lease_id: p.leaseId,
-    })),
+    payments: shown.map((p) => {
+      const months = monthsByPayment.get(p.id);
+      return {
+        date: isoDay(p.date),
+        amount: money(p.amount),
+        kind: p.kind,
+        tenant: tenantDisplayName(p.lease.tenant),
+        unit: propertyLabel(p.lease.property),
+        months_paid: months?.months,
+        paid_until_after: months ? isoDay(months.paidUntil) : undefined,
+        not_counted_in_rent: !months && (p.kind === "RENT" || p.kind === "ARREARS") ? true : undefined,
+        receipt: p.receiptNumber,
+        method: p.method,
+        unconfirmed: p.confirmed ? undefined : true,
+        notes: p.notes,
+        entered_in_app: p.recordedById ? true : undefined,
+        lease_id: p.leaseId,
+      };
+    }),
   };
 }
 
