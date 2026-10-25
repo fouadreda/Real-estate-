@@ -27,6 +27,7 @@ export default function Nav({
     { href: "/leases", label: nav.leases },
     { href: "/expenses", label: nav.expenses },
     { href: "/reports", label: nav.reports },
+    { href: "/assistant", label: nav.assistant },
     { href: "/data-quality", label: nav.dataQuality },
   ];
 
