@@ -34,5 +34,5 @@ export default async function AssistantPage() {
     );
   }
 
-  return <AssistantChat t={t.assistant} />;
+  return <AssistantChat t={t.assistant} userId={user.id} />;
 }
