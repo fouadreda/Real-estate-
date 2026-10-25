@@ -48,6 +48,7 @@ export type SyncCounts = {
   expensesCreated: number;
   expensesSkipped: number;
   expensesRemoved: number;
+  expensesRedated: number;
   followUpsCreated: number;
   issuesCreated: number;
 };
@@ -110,7 +111,7 @@ export async function syncBuilding(
   const counts: SyncCounts = {
     propertiesCreated: 0, propertiesUpdated: 0, tenantsCreated: 0, tenantsUpdated: 0,
     leasesCreated: 0, leasesUpdated: 0, leasesEnded: 0, paymentsCreated: 0, paymentsSkipped: 0, paymentsRemoved: 0, paymentsRedated: 0,
-    reviewsCreated: 0, expensesCreated: 0, expensesSkipped: 0, expensesRemoved: 0, followUpsCreated: 0, issuesCreated: 0,
+    reviewsCreated: 0, expensesCreated: 0, expensesSkipped: 0, expensesRemoved: 0, expensesRedated: 0, followUpsCreated: 0, issuesCreated: 0,
   };
   const notes: string[] = [];
 
@@ -479,12 +480,35 @@ export async function syncBuilding(
           }
           const expConsumed = new Set<string>();
           const expCreate: Prisma.ExpenseCreateManyInput[] = [];
+          // pass 1: expenses already recorded with the same date, amount and category
+          const unmatched: typeof dsExpenses = [];
           for (const e of dsExpenses) {
             const k = `${e.date}|${Math.round(e.amount)}|${e.category}`;
             const hit = (expPool.get(k) ?? []).find((x) => !expConsumed.has(x.id));
             if (hit) {
               expConsumed.add(hit.id);
               counts.expensesSkipped++;
+            } else {
+              unmatched.push(e);
+            }
+          }
+          // pass 2: an imported expense whose date changed in the statements (same amount, category and
+          // wording) is moved to the statement's date instead of being recorded a second time
+          const sameText = (a: string | null | undefined, b: string | null | undefined) =>
+            (a ?? "").trim().toLowerCase() === (b ?? "").trim().toLowerCase();
+          for (const e of unmatched) {
+            const moved = existingExp.find(
+              (x) =>
+                !expConsumed.has(x.id) &&
+                x.recordedById === null &&
+                Math.round(x.amount) === Math.round(e.amount) &&
+                x.category === e.category &&
+                sameText(x.description, e.description),
+            );
+            if (moved) {
+              expConsumed.add(moved.id);
+              await tx.expense.update({ where: { id: moved.id }, data: { date: d(e.date)! } });
+              counts.expensesRedated++;
               continue;
             }
             expCreate.push({
