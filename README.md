@@ -47,6 +47,11 @@ Both roles see and can do everything in the day-to-day app (properties, tenants,
   - *Cash received* — the raw payment log, and expenses broken down by category.
 - **Alerts** (`/alerts`) — leases with an unpaid rent period past its due date (computed from the ledger, not a manually-set flag), and leases expiring within 30 days. A red count badge on the "Alerts" nav link shows at a glance whether anything needs attention.
 - **Dashboard** — property count, occupied/vacant split, occupancy rate, monthly rent roll (billing-frequency-aware — a quarterly lease counts as 1/3 its rent per month), leases expiring within 60 days, and late payments (shown as the actual balance owed, not the full period amount).
+- **Assistant** (`/assistant`) — a chat powered by Claude (Anthropic) that answers questions on the data, writes messages for tenants (with a copy button) and gives summaries and advice, in French or English. It only reads: its tools ([`src/lib/assistant/tools.ts`](src/lib/assistant/tools.ts)) use the same ledger rules as Reports and Alerts, and it cannot record or change anything.
+
+## Assistant setup
+
+The assistant needs an Anthropic API key in the Vercel project's environment variables: `ANTHROPIC_API_KEY` (Secret, Production), created on platform.claude.com (API keys) with credit under Billing. Without it, `/assistant` shows these setup steps instead of the chat. After changing the key, redeploy so the new value is used. Costs are a few cents per question; the Anthropic account's credit (auto-reload off) caps the spending. The current key, "Les Cocotiers - Vercel (2)", expires on 27 October 2027 — create a new one before then and replace the variable.
 
 ## Settings & profile
 
