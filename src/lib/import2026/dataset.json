@@ -8052,14 +8052,14 @@
   },
   {
    "building": "paix",
-   "date": "2026-01-18",
+   "date": "2026-02-18",
    "amount": 20000.0,
    "category": "SALES_SERVICE_FEES",
    "description": "Payement de la facture de l'agent de la CEET pour la reparation du compteur STU MER2"
   },
   {
    "building": "paix",
-   "date": "2026-01-18",
+   "date": "2026-02-18",
    "amount": 60312.0,
    "category": "UTILITIES",
    "description": "Payement de la facture d'électricité mois de décembre 2025"
