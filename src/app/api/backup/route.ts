@@ -9,7 +9,7 @@ export async function GET() {
   if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   if (user.role !== "ADMIN") return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
-  const [buildings, properties, tenants, leases, payments, expenses, followUps, rentReviews, dataIssues, attachments, dismissedAlerts] =
+  const [buildings, properties, tenants, leases, payments, expenses, followUps, rentReviews, dataIssues, attachments, dismissedAlerts, changeLog] =
     await Promise.all([
       prisma.building.findMany(),
       prisma.property.findMany(),
@@ -22,9 +22,10 @@ export async function GET() {
       prisma.dataIssue.findMany(),
       prisma.attachment.findMany(),
       prisma.dismissedAlert.findMany(),
+      prisma.changeLog.findMany({ orderBy: { at: "asc" } }).catch(() => []),
     ]);
 
-  const data = { buildings, properties, tenants, leases, payments, expenses, followUps, rentReviews, dataIssues, attachments, dismissedAlerts };
+  const data = { buildings, properties, tenants, leases, payments, expenses, followUps, rentReviews, dataIssues, attachments, dismissedAlerts, changeLog };
   const counts = Object.fromEntries(Object.entries(data).map(([key, rows]) => [key, rows.length]));
   const exportedAt = new Date();
 
