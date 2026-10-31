@@ -57,6 +57,13 @@ export default async function ExpensesPage({
   const selectedBuilding = knownId(buildingParam, options.buildings.map((b) => b.id));
   const selectedUnit = knownId(unitParam, options.unitIds);
   const hasFilter = Boolean(rangeFrom || rangeTo || selectedCategory || selectedBuilding || selectedUnit);
+  // after correcting an expense, staff come back to this same filtered list
+  const listParams = new URLSearchParams(
+    Object.entries({ from: fromParam, to: toParam, category: categoryParam, building: buildingParam, unit: unitParam }).filter(
+      (entry): entry is [string, string] => typeof entry[1] === "string" && entry[1] !== "",
+    ),
+  ).toString();
+  const backHere = encodeURIComponent(listParams ? `/expenses?${listParams}` : "/expenses");
 
   // filters combine: dates, category, building and unit
   const expenses = allExpenses.filter(
@@ -191,7 +198,7 @@ export default async function ExpensesPage({
                         {/* row actions under the date, so they are never off screen on a phone */}
                         <div className="mt-1 flex flex-wrap items-center gap-2">
                           <Link
-                            href={`/expenses/${expense.id}/edit`}
+                            href={`/expenses/${expense.id}/edit?back=${backHere}`}
                             className="inline-flex min-h-8 items-center rounded-lg px-2 text-xs font-medium text-brand-600 hover:bg-stone-100"
                           >
                             {t.common.edit}
