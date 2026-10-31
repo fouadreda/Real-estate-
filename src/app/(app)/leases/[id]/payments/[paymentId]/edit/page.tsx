@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
-import { formatMoney, toDateInputValue } from "@/lib/format";
-import { updatePayment } from "@/lib/actions/payments";
+import { formatDate, formatMoney, toDateInputValue } from "@/lib/format";
+import { deletePaymentAndReturn, updatePayment } from "@/lib/actions/payments";
 import { deletePaymentAttachment, uploadPaymentAttachment } from "@/lib/actions/attachments";
 import AttachmentGallery from "@/components/AttachmentGallery";
 import { requireUserWithDictionary } from "@/lib/auth";
@@ -10,6 +10,7 @@ import { leaseLocationName } from "@/lib/leaseLocation";
 import { tenantDisplayName } from "@/lib/tenantName";
 import FileInput from "@/components/FileInput";
 import SubmitButton from "@/components/SubmitButton";
+import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
 import { safeBackPath } from "@/lib/backPath";
 import { monthlyEquivalentRent } from "@/lib/ledger";
 
@@ -52,6 +53,7 @@ export default async function EditPaymentPage({
   const updatePaymentWithIds = updatePayment.bind(null, payment.id, payment.leaseId);
   const uploadReceiptForPayment = uploadPaymentAttachment.bind(null, payment.leaseId, payment.id);
   const deleteReceiptForPayment = deletePaymentAttachment.bind(null, payment.leaseId, payment.id);
+  const removePayment = deletePaymentAndReturn.bind(null, payment.id, payment.leaseId, back);
 
   return (
     <div className="max-w-xl space-y-6">
@@ -182,6 +184,18 @@ export default async function EditPaymentPage({
           <SubmitButton className="btn-secondary w-full" pendingLabel={t.leaseDetail.saving}>{t.leaseDetail.uploadReceipt}</SubmitButton>
         </form>
       </div>
+
+      {/* delete the whole payment: every balance and report updates, then back to where staff came from */}
+      <form action={removePayment} className="flex justify-end">
+        <ConfirmSubmitButton
+          confirmMessage={t.leaseDetail.deletePaymentConfirm(formatMoney(payment.amount, locale), formatDate(payment.date, locale))}
+          confirmLabel={t.common.confirmDeleteYes}
+          cancelLabel={t.common.cancel}
+          className="btn-danger"
+        >
+          {t.leaseDetail.deletePayment}
+        </ConfirmSubmitButton>
+      </form>
     </div>
   );
 }
