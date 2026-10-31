@@ -281,6 +281,8 @@ export const fr: typeof en = {
     paymentLeaseHelp: "Enregistré sur le mauvais locataire ou le mauvais local ? Choisissez le bon bail (son loyer mensuel est indiqué) : le paiement et ses reçus y sont déplacés, et les deux soldes se mettent à jour. Si le loyer de ce bail est différent et que vous laissez les mois tels quels, ils sont recalculés à son loyer.",
     sameTenant: "Même locataire",
     paymentErrorLease: "Ce bail n'existe plus. Choisissez-en un autre.",
+    deletePayment: "Supprimer le paiement",
+    deletePaymentConfirm: (amount: string, date: string) => `Supprimer définitivement ce paiement de ${amount} du ${date} ? Les soldes et les rapports sont mis à jour aussitôt.`,
     paymentErrorStale: "Ce paiement a été déplacé vers un autre bail par quelqu'un d'autre après l'ouverture de la page. Rien n'a été enregistré : le voici tel qu'il est maintenant, refaites votre correction.",
     markVerified: "Données vérifiées",
     markVerifiedConfirm: "Marquer les chiffres de ce bail comme vérifiés ? Il sera de nouveau compté dans les impayés, les avances et les totaux des rapports.",

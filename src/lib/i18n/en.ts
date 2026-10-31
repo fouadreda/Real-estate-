@@ -285,6 +285,8 @@ export const en = {
     paymentLeaseHelp: "Recorded on the wrong tenant or unit? Pick the right lease (its monthly rent is shown): the payment and its receipts move there, and both balances update. If that lease's rent is different and you leave the months as they are, the months are recounted at its rent.",
     sameTenant: "Same tenant",
     paymentErrorLease: "That lease no longer exists. Pick another one.",
+    deletePayment: "Delete payment",
+    deletePaymentConfirm: (amount: string, date: string) => `Delete this payment of ${amount} on ${date} for good? Balances and reports update at once.`,
     paymentErrorStale: "This payment was moved to another lease by someone else after you opened the page. Nothing was saved: here it is as it is now, make your correction again.",
     markVerified: "Data checked",
     markVerifiedConfirm: "Mark this lease's figures as checked? It will count again in the unpaid, advance and Reports totals.",
