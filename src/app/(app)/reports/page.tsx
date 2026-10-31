@@ -227,6 +227,7 @@ export default async function ReportsPage({
       const isRefund = p.kind === "DEPOSIT_REFUND";
       return {
         id: `p-${p.id}`,
+        editHref: `/leases/${p.leaseId}/payments/${p.id}/edit`,
         date: p.date,
         description: tenantDisplayName(p.lease.tenant),
         property: leaseLocationName(p.lease),
@@ -238,6 +239,7 @@ export default async function ReportsPage({
     }),
     ...filteredExpenses.map((e) => ({
       id: `e-${e.id}`,
+      editHref: `/expenses/${e.id}/edit`,
       date: e.date,
       description: e.description ?? t.status[e.category],
       property: propertyLabel(e.property),
@@ -295,6 +297,10 @@ export default async function ReportsPage({
     const qs = params.toString();
     return qs ? `/reports?${qs}` : "/reports";
   }
+
+  // after correcting a record from this page, staff come back to it with the same filters
+  const backHere = encodeURIComponent(buildHref({}));
+  const editLinkClass = "inline-flex min-h-8 items-center rounded-lg px-2 text-xs font-medium text-brand-600 hover:bg-stone-100";
 
   // Drops date range and category, keeps the type/status badge selections — used by "Clear filter".
   function clearFilterHref() {
@@ -698,7 +704,12 @@ export default async function ReportsPage({
                 <tbody className="divide-y divide-stone-100">
                   {cashEntries.slice(0, showAll ? undefined : CASHBOOK_SCREEN_ROWS).map((entry) => (
                     <tr key={entry.id}>
-                      <td className="px-5 py-3 text-stone-600">{formatDate(entry.date, locale)}</td>
+                      <td className="px-5 py-3 text-stone-600">
+                        <span className="whitespace-nowrap">{formatDate(entry.date, locale)}</span>
+                        <Link href={`${entry.editHref}?back=${backHere}`} className={`${editLinkClass} mt-1 flex w-fit`}>
+                          {t.common.edit}
+                        </Link>
+                      </td>
                       <td className="px-5 py-3">
                         <p className="text-stone-900">{entry.description}</p>
                         <p className="text-xs text-stone-500">{entry.property}</p>
@@ -797,9 +808,20 @@ export default async function ReportsPage({
                   <tbody className="divide-y divide-stone-100">
                     {filteredPayments.slice(0, showAll ? undefined : SCREEN_ROWS).map((payment) => (
                       <tr key={payment.id}>
-                        <td className="px-4 py-3 text-stone-600">{formatDate(payment.date, locale)}</td>
-                        <td className="px-4 py-3 text-stone-900">
-                          {tenantDisplayName(payment.lease.tenant)}
+                        <td className="px-4 py-3 text-stone-600">
+                          <span className="whitespace-nowrap">{formatDate(payment.date, locale)}</span>
+                          <Link
+                            href={`/leases/${payment.leaseId}/payments/${payment.id}/edit?back=${backHere}`}
+                            className={`${editLinkClass} mt-1 flex w-fit`}
+                          >
+                            {t.common.edit}
+                          </Link>
+                        </td>
+                        <td className="px-4 py-3">
+                          <Link href={`/leases/${payment.leaseId}`} className="text-stone-900 hover:underline">
+                            {tenantDisplayName(payment.lease.tenant)}
+                          </Link>
+                          <p className="text-xs text-stone-500">{leaseLocationName(payment.lease)}</p>
                         </td>
                         <td className="px-4 py-3">
                           <Badge status={payment.kind} label={t.status[payment.kind]} />
@@ -905,10 +927,15 @@ export default async function ReportsPage({
                 <tbody className="divide-y divide-stone-100">
                   {filteredExpenses.slice(0, showAll ? undefined : SCREEN_ROWS).map((expense) => (
                     <tr key={expense.id}>
-                      <td className="px-5 py-3 text-stone-600">{formatDate(expense.date, locale)}</td>
+                      <td className="px-5 py-3 text-stone-600">
+                        <span className="whitespace-nowrap">{formatDate(expense.date, locale)}</span>
+                        <Link href={`/expenses/${expense.id}/edit?back=${backHere}`} className={`${editLinkClass} mt-1 flex w-fit`}>
+                          {t.common.edit}
+                        </Link>
+                      </td>
                       <td className="px-5 py-3">
                         <Link href={`/properties/${expense.propertyId}`} className="text-stone-900 hover:underline">
-                          {expense.property.name}
+                          {propertyLabel(expense.property)}
                         </Link>
                       </td>
                       <td className="px-5 py-3">
