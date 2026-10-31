@@ -231,10 +231,16 @@ export function computeLeaseLedger(
   const paidUntil = new Date(addMonths(billingStart, paidMonths).getTime() - DAY_MS);
 
   // Rent paid ahead: whole months between today (or the lease start, when it has not started yet)
-  // and the Paid Until date.
+  // and the Paid Until date. For a lease closed in the past, months paid after the closing day are
+  // still the tenant's money (to refund or carry over), so they count from the day after closing.
   let monthsAhead = 0;
   const firstUnpaidDay = new Date(paidUntil.getTime() + DAY_MS);
-  const aheadFrom = lease.startDate > asOf ? lease.startDate : asOf;
+  const dayAfterClosing = lease.closedAt && lease.closedAt < asOf ? new Date(lease.closedAt.getTime() + DAY_MS) : null;
+  const aheadFrom = dayAfterClosing
+    ? (dayAfterClosing > lease.startDate ? dayAfterClosing : lease.startDate)
+    : lease.startDate > asOf
+      ? lease.startDate
+      : asOf;
   while (monthsAhead < 240 && addMonths(aheadFrom, monthsAhead + 1) <= firstUnpaidDay) monthsAhead += 1;
   const advance = monthsAhead * rentPerMonth;
 
@@ -324,8 +330,9 @@ export function daysBetween(from: Date, to: Date): number {
   return Math.floor((to.getTime() - from.getTime()) / (1000 * 60 * 60 * 24));
 }
 
-/** Whether a lease has any billing activity during [rangeStart, rangeEnd]. */
+/** Whether a lease has any billing activity during [rangeStart, rangeEnd] (billing stops at its end or closing date). */
 export function leaseActiveInRange(lease: LeaseLike, rangeStart: Date, rangeEnd: Date): boolean {
-  const end = lease.endDate ?? rangeEnd;
+  const stops = [lease.endDate, lease.closedAt].filter((d): d is Date => d instanceof Date);
+  const end = stops.length > 0 ? new Date(Math.min(...stops.map((d) => d.getTime()))) : rangeEnd;
   return lease.startDate <= rangeEnd && end >= rangeStart;
 }
