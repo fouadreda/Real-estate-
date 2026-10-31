@@ -3,6 +3,8 @@
 import { prisma } from "@/lib/prisma";
 import { requireUser } from "@/lib/auth";
 import { revalidatePath } from "next/cache";
+import { logChange } from "@/lib/changeLog";
+import { tenantDisplayName } from "@/lib/tenantName";
 import { redirect } from "next/navigation";
 
 /** Reads the form; an invalid form goes back to `failUrl` with an error code. */
@@ -25,30 +27,33 @@ function readTenantFields(formData: FormData, failUrl: string) {
 }
 
 export async function createTenant(formData: FormData) {
-  await requireUser();
+  const user = await requireUser();
   const data = readTenantFields(formData, "/tenants/new");
   const tenant = await prisma.tenant.create({ data });
 
-  revalidatePath("/tenants");
+  await logChange(user, { entity: "tenant", entityId: tenant.id, action: "created", summary: tenantDisplayName(tenant) });
+  revalidatePath("/", "layout");
   redirect(`/tenants/${tenant.id}`);
 }
 
 export async function updateTenant(tenantId: string, formData: FormData) {
-  await requireUser();
+  const user = await requireUser();
   const data = readTenantFields(formData, `/tenants/${tenantId}/edit`);
 
-  await prisma.tenant.update({ where: { id: tenantId }, data });
+  const tenant = await prisma.tenant.update({ where: { id: tenantId }, data });
 
-  revalidatePath("/tenants");
-  revalidatePath(`/tenants/${tenantId}`);
+  await logChange(user, { entity: "tenant", entityId: tenantId, action: "updated", summary: tenantDisplayName(tenant) });
+  // the name shows on leases, Reports, Alerts and in the assistant: refresh every page
+  revalidatePath("/", "layout");
   redirect(`/tenants/${tenantId}`);
 }
 
 export async function deleteTenant(tenantId: string) {
-  await requireUser();
+  const user = await requireUser();
   // deleting a tenant would also delete their leases and payments: only a tenant without leases can go
   if ((await prisma.lease.count({ where: { tenantId } })) > 0) redirect(`/tenants/${tenantId}?error=tenantHasLeases`);
-  await prisma.tenant.delete({ where: { id: tenantId } });
-  revalidatePath("/tenants");
+  const tenant = await prisma.tenant.delete({ where: { id: tenantId } }).catch(() => null);
+  if (tenant) await logChange(user, { entity: "tenant", entityId: tenantId, action: "deleted", summary: tenantDisplayName(tenant) });
+  revalidatePath("/", "layout");
   redirect("/tenants");
 }

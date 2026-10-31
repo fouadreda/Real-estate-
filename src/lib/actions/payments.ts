@@ -6,10 +6,15 @@ import { redirect } from "next/navigation";
 import { requireUser } from "@/lib/auth";
 import { attachFileToPayment } from "@/lib/actions/attachments";
 import { isAllowedUpload } from "@/lib/uploads";
+import { changedFields, describe, logChange } from "@/lib/changeLog";
+import { leaseLocationName } from "@/lib/leaseLocation";
+import { safeBackPath } from "@/lib/backPath";
+import { tenantDisplayName } from "@/lib/tenantName";
+import { monthlyEquivalentRent } from "@/lib/ledger";
 import type { PaymentKind } from "@prisma/client";
 
 /** A form value the server will not accept; shown back to staff on the form instead of an error page. */
-type PaymentError = "amount" | "months" | "file" | "upload";
+type PaymentError = "amount" | "months" | "file" | "upload" | "lease" | "stale";
 
 function readPaymentFields(formData: FormData) {
   const amount = Number(formData.get("amount") ?? 0);
@@ -48,14 +53,13 @@ function readFile(formData: FormData): File | null {
   return file instanceof File && file.size > 0 ? file : null;
 }
 
-function refreshPaymentPages(leaseId: string) {
-  revalidatePath(`/leases/${leaseId}`);
-  revalidatePath("/leases");
-  revalidatePath("/reports");
-  revalidatePath("/alerts");
-  revalidatePath("/tenants", "layout");
-  revalidatePath("/");
+/** A payment changes balances everywhere (lease, tenant, Reports, Alerts, dashboard, nav badge): refresh them all. */
+function refreshPaymentPages() {
+  revalidatePath("/", "layout");
 }
+
+const leaseLabel = (lease: Parameters<typeof leaseLocationName>[0] & { tenant: Parameters<typeof tenantDisplayName>[0] }) =>
+  `${leaseLocationName(lease)} (${tenantDisplayName(lease.tenant)})`;
 
 export async function createPayment(leaseId: string, formData: FormData) {
   const user = await requireUser();
@@ -72,6 +76,7 @@ export async function createPayment(leaseId: string, formData: FormData) {
 
   const payment = await prisma.payment.create({
     data: { ...data, leaseId, recordedById: user.id, kind, monthsCovered: monthsCovered ?? null, confirmed: true },
+    include: { lease: { include: { tenant: true, property: { include: { building: true } } } } },
   });
   if (file) {
     try {
@@ -83,31 +88,100 @@ export async function createPayment(leaseId: string, formData: FormData) {
     }
   }
 
-  refreshPaymentPages(leaseId);
+  await logChange(user, {
+    entity: "payment",
+    entityId: payment.id,
+    leaseId,
+    action: "created",
+    summary: `${describe.money(payment.amount)} · ${describe.code(payment.kind)} · ${describe.day(payment.date)}${payment.monthsCovered ? ` · ${payment.monthsCovered} mois` : ""} — ${leaseLabel(payment.lease)}`,
+  });
+  refreshPaymentPages();
   redirect(`/leases/${leaseId}?paymentSaved=1`);
 }
 
+/**
+ * Saves a corrected payment. Every field can change, including the lease: a payment recorded on the
+ * wrong tenant or unit is moved, with its receipts, to the right one.
+ */
 export async function updatePayment(paymentId: string, leaseId: string, formData: FormData) {
-  await requireUser();
+  const user = await requireUser();
+  const back = safeBackPath(formData.get("back"));
+  const editUrl = (onLease: string) => `/leases/${onLease}/payments/${paymentId}/edit${back ? `?back=${encodeURIComponent(back)}&` : "?"}`;
   const { valid, data } = readPaymentFields(formData);
   const kind = readKind(formData);
   const confirmed = formData.get("confirmed") === "on";
-  const monthsCovered = readMonths(formData, kind, 0);
+  const typedMonths = readMonths(formData, kind, 0);
+  const targetLeaseId = String(formData.get("leaseId") ?? "").trim() || leaseId;
 
-  const error: PaymentError | null = !valid ? "amount" : monthsCovered === undefined ? "months" : null;
-  if (error) redirect(`/leases/${leaseId}/payments/${paymentId}/edit?error=${error}`);
+  const error: PaymentError | null = !valid ? "amount" : typedMonths === undefined ? "months" : null;
+  if (error) redirect(`${editUrl(leaseId)}error=${error}`);
+
+  const before = await prisma.payment.findUnique({
+    where: { id: paymentId },
+    include: { lease: { include: { tenant: true, property: { include: { building: true } } } } },
+  });
+  // deleted in the meantime (another tab, a colleague): back to the lease instead of an error page
+  if (!before) redirect(`/leases/${leaseId}`);
+  // moved by someone else since this page was opened: saving it would silently move it back
+  if (before.leaseId !== leaseId) redirect(`${editUrl(before.leaseId)}error=stale`);
+  const target =
+    targetLeaseId === before.leaseId
+      ? before.lease
+      : await prisma.lease.findUnique({ where: { id: targetLeaseId }, include: { tenant: true, property: { include: { building: true } } } });
+  if (!target) redirect(`${editUrl(leaseId)}error=lease`);
+
+  const moved = target.id !== before.leaseId;
+  // months are priced at the lease's monthly rent: a rent payment moved to a lease with another monthly
+  // rent, whose months were left as they were, pays the months its amount buys there (as for an imported receipt)
+  const targetMonthly = monthlyEquivalentRent(target.rentAmount, target.billingFrequency);
+  const recount =
+    moved &&
+    RENT_KINDS.includes(kind) &&
+    typedMonths !== null &&
+    typedMonths === before.monthsCovered &&
+    targetMonthly > 0 &&
+    Math.round(targetMonthly) !== Math.round(monthlyEquivalentRent(before.lease.rentAmount, before.lease.billingFrequency));
+  const monthsCovered = recount ? Math.min(60, Math.floor((data.amount + 100) / targetMonthly)) : typedMonths;
 
   await prisma.payment.update({
     where: { id: paymentId },
-    data: { ...data, kind, confirmed, monthsCovered: monthsCovered ?? null },
+    data: { ...data, kind, confirmed, monthsCovered: monthsCovered ?? null, leaseId: target.id },
   });
 
-  refreshPaymentPages(leaseId);
-  redirect(`/leases/${leaseId}`);
+  const summary = changedFields([
+    ["bail", leaseLabel(before.lease), leaseLabel(target)],
+    ["montant", describe.money(before.amount), describe.money(data.amount)],
+    ["date", describe.day(before.date), describe.day(data.date)],
+    ["type", describe.code(before.kind), describe.code(kind)],
+    ["mois", String(before.monthsCovered ?? "—"), `${monthsCovered ?? "—"}${recount ? " (recalculé au loyer du nouveau bail)" : ""}`],
+    ["méthode", before.method ?? "—", data.method ?? "—"],
+    ["notes", before.notes ?? "—", data.notes ?? "—"],
+    ["confirmé", before.confirmed ? "oui" : "non", confirmed ? "oui" : "non"],
+  ]);
+  // a move shows in both leases' history: where the money went, and where it came from
+  for (const onLease of moved ? [before.leaseId, target.id] : [target.id]) {
+    await logChange(user, { entity: "payment", entityId: paymentId, leaseId: onLease, action: moved ? "moved" : "updated", summary });
+  }
+
+  refreshPaymentPages();
+  redirect(back ?? `/leases/${target.id}`);
 }
 
 export async function deletePayment(paymentId: string, leaseId: string) {
-  await requireUser();
+  const user = await requireUser();
+  const payment = await prisma.payment.findUnique({
+    where: { id: paymentId },
+    include: { lease: { include: { tenant: true, property: { include: { building: true } } } } },
+  });
+  // already deleted (double tap, another tab) or moved to another lease since the page was shown: nothing to do
+  if (!payment || payment.leaseId !== leaseId) return refreshPaymentPages();
   await prisma.payment.delete({ where: { id: paymentId } });
-  refreshPaymentPages(leaseId);
+  await logChange(user, {
+    entity: "payment",
+    entityId: paymentId,
+    leaseId: payment.leaseId,
+    action: "deleted",
+    summary: `${describe.money(payment.amount)} · ${describe.code(payment.kind)} · ${describe.day(payment.date)} — ${leaseLabel(payment.lease)}`,
+  });
+  refreshPaymentPages();
 }

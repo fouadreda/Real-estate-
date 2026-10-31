@@ -6,6 +6,7 @@ import { requireUser } from "@/lib/auth";
 import { randomUUID } from "crypto";
 import { put, del } from "@vercel/blob";
 import { MAX_UPLOAD_BYTES, UPLOAD_EXTENSIONS } from "@/lib/uploads";
+import { describe, logChange } from "@/lib/changeLog";
 
 async function saveUpload(file: File, userId: string) {
   if (!(file.type in UPLOAD_EXTENSIONS)) {
@@ -40,6 +41,7 @@ export async function uploadLeaseAttachment(leaseId: string, formData: FormData)
 
   const attachment = await saveUpload(file, user.id);
   await prisma.attachment.update({ where: { id: attachment.id }, data: { leaseId } });
+  await logChange(user, { entity: "lease", entityId: leaseId, leaseId, action: "updated", summary: `document ajouté : ${attachment.filename}` });
 
   revalidatePath(`/leases/${leaseId}`);
 }
@@ -58,6 +60,7 @@ export async function uploadPaymentAttachment(leaseId: string, paymentId: string
   }
 
   await attachFileToPayment(paymentId, file, user.id);
+  await logPaymentReceipt(user, paymentId, `reçu ajouté : ${file.name}`);
 
   revalidatePath(`/leases/${leaseId}`);
   revalidatePath(`/leases/${leaseId}/payments/${paymentId}/edit`);
@@ -77,6 +80,7 @@ export async function uploadExpenseAttachment(expenseId: string, formData: FormD
   }
 
   await attachFileToExpense(expenseId, file, user.id);
+  await logChange(user, { entity: "expense", entityId: expenseId, action: "updated", summary: `justificatif ajouté : ${file.name}` });
 
   revalidatePath("/expenses");
   revalidatePath(`/expenses/${expenseId}/edit`);
@@ -87,25 +91,61 @@ async function deleteStoredFile(url: string) {
   await del(url).catch(() => {});
 }
 
-export async function deleteLeaseAttachment(leaseId: string, attachmentId: string) {
-  await requireUser();
-  const attachment = await prisma.attachment.delete({ where: { id: attachmentId } });
+/** Receipts are the evidence behind a payment: adding or removing one shows in the payment's lease history. */
+async function logPaymentReceipt(user: { id: string; name: string }, paymentId: string, summary: string) {
+  const payment = await prisma.payment.findUnique({ where: { id: paymentId }, select: { leaseId: true, amount: true, date: true } });
+  if (!payment) return;
+  await logChange(user, {
+    entity: "payment",
+    entityId: paymentId,
+    leaseId: payment.leaseId,
+    action: "updated",
+    summary: `${summary} (paiement ${describe.money(payment.amount)} du ${describe.day(payment.date)})`,
+  });
+}
+
+/**
+ * Removes one file, only from the record the page was shown for. Already removed (double tap, another
+ * tab) or attached elsewhere: nothing happens.
+ */
+async function removeAttachment(attachmentId: string, owner: { leaseId: string } | { paymentId: string } | { expenseId: string }) {
+  const attachment = await prisma.attachment.findUnique({ where: { id: attachmentId } });
+  if (!attachment) return null;
+  const belongs =
+    "leaseId" in owner
+      ? attachment.leaseId === owner.leaseId
+      : "paymentId" in owner
+        ? attachment.paymentId === owner.paymentId
+        : attachment.expenseId === owner.expenseId;
+  if (!belongs) return null;
+  await prisma.attachment.delete({ where: { id: attachmentId } });
   await deleteStoredFile(attachment.url);
+  return attachment;
+}
+
+export async function deleteLeaseAttachment(leaseId: string, attachmentId: string) {
+  const user = await requireUser();
+  const attachment = await removeAttachment(attachmentId, { leaseId });
+  if (attachment) {
+    await logChange(user, { entity: "lease", entityId: leaseId, leaseId, action: "updated", summary: `document supprimé : ${attachment.filename}` });
+  }
   revalidatePath(`/leases/${leaseId}`);
 }
 
 export async function deletePaymentAttachment(leaseId: string, paymentId: string, attachmentId: string) {
-  await requireUser();
-  const attachment = await prisma.attachment.delete({ where: { id: attachmentId } });
-  await deleteStoredFile(attachment.url);
+  const user = await requireUser();
+  const attachment = await removeAttachment(attachmentId, { paymentId });
+  if (attachment) await logPaymentReceipt(user, paymentId, `reçu supprimé : ${attachment.filename}`);
   revalidatePath(`/leases/${leaseId}`);
   revalidatePath(`/leases/${leaseId}/payments/${paymentId}/edit`);
 }
 
 export async function deleteExpenseAttachment(expenseId: string, attachmentId: string) {
-  await requireUser();
-  const attachment = await prisma.attachment.delete({ where: { id: attachmentId } });
-  await deleteStoredFile(attachment.url);
+  const user = await requireUser();
+  const attachment = await removeAttachment(attachmentId, { expenseId });
+  if (attachment) {
+    await logChange(user, { entity: "expense", entityId: expenseId, action: "updated", summary: `justificatif supprimé : ${attachment.filename}` });
+  }
   revalidatePath("/expenses");
   revalidatePath(`/expenses/${expenseId}/edit`);
   revalidatePath("/reports");

@@ -4,7 +4,8 @@ import { prisma } from "@/lib/prisma";
 import { requireUser } from "@/lib/auth";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { PropertyCategory, BuildingType } from "@prisma/client";
+import { PropertyCategory, BuildingType, PropertyStatus } from "@prisma/client";
+import { describe, logChange } from "@/lib/changeLog";
 
 function parseOptionalFloat(value: FormDataEntryValue | null): number | null {
   const raw = String(value ?? "").trim();
@@ -51,44 +52,51 @@ function readPropertyFields(formData: FormData, failUrl: string) {
   const notes = String(formData.get("notes") ?? "").trim() || null;
   const floor = String(formData.get("floor") ?? "").trim() || null;
   const unitCode = String(formData.get("unitCode") ?? "").trim() || null;
+  // only the edit form sends it (a new unit starts vacant); lets staff correct Vacant / Occupied / Maintenance
+  const statusRaw = String(formData.get("status") ?? "");
+  const status = (["VACANT", "OCCUPIED", "MAINTENANCE"] as string[]).includes(statusRaw) ? (statusRaw as PropertyStatus) : undefined;
 
   if (!name || !address || !city) redirect(`${failUrl}?error=propertyRequired`);
 
-  return { name, address, city, category, dimension, areaLabel, bedrooms, bathrooms, price, notes, floor, unitCode };
+  return { name, address, city, category, dimension, areaLabel, bedrooms, bathrooms, price, notes, floor, unitCode, ...(status ? { status } : {}) };
 }
 
 export async function createProperty(formData: FormData) {
-  await requireUser();
+  const user = await requireUser();
   const data = readPropertyFields(formData, "/properties/new");
   const buildingId = await resolveBuildingId(formData, "/properties/new");
 
   const property = await prisma.property.create({ data: { ...data, buildingId } });
 
-  revalidatePath("/properties");
+  await logChange(user, { entity: "property", entityId: property.id, action: "created", summary: `${property.name}${property.unitCode ? ` (${property.unitCode})` : ""}` });
+  revalidatePath("/", "layout");
   redirect(`/properties/${property.id}`);
 }
 
 export async function updateProperty(propertyId: string, formData: FormData) {
-  await requireUser();
+  const user = await requireUser();
   const data = readPropertyFields(formData, `/properties/${propertyId}/edit`);
   const buildingId = await resolveBuildingId(formData, `/properties/${propertyId}/edit`);
 
-  await prisma.property.update({ where: { id: propertyId }, data: { ...data, buildingId } });
+  const property = await prisma.property.update({ where: { id: propertyId }, data: { ...data, buildingId } });
 
-  revalidatePath("/properties");
-  revalidatePath(`/properties/${propertyId}`);
+  await logChange(user, { entity: "property", entityId: propertyId, action: "updated", summary: `${property.name}${property.unitCode ? ` (${property.unitCode})` : ""} · ${describe.code(property.status)}` });
+  revalidatePath("/", "layout");
   redirect(`/properties/${propertyId}`);
 }
 
 export async function deleteProperty(propertyId: string) {
-  await requireUser();
+  const user = await requireUser();
   // deleting a unit would also delete its leases, payments and expenses: only an unused unit can go
   const [leases, expenses] = await Promise.all([
     prisma.lease.count({ where: { propertyId } }),
     prisma.expense.count({ where: { propertyId } }),
   ]);
   if (leases + expenses > 0) redirect(`/properties/${propertyId}?error=unitHasLeases`);
-  await prisma.property.delete({ where: { id: propertyId } });
-  revalidatePath("/properties");
+  const property = await prisma.property.delete({ where: { id: propertyId } }).catch(() => null);
+  if (property) {
+    await logChange(user, { entity: "property", entityId: propertyId, action: "deleted", summary: `${property.name}${property.unitCode ? ` (${property.unitCode})` : ""}` });
+  }
+  revalidatePath("/", "layout");
   redirect("/properties");
 }
