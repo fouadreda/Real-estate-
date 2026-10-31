@@ -2,6 +2,7 @@ import { requireUserWithDictionary } from "@/lib/auth";
 import { formatDate } from "@/lib/format";
 import { IMPORT_BUILDINGS, IMPORT_META } from "@/lib/import2026/sync";
 import ImportRunner from "@/components/ImportRunner";
+import { IMPORT_WRITES_LOCKED } from "@/lib/import2026/lock";
 
 // One building per request, but each can touch a few hundred rows.
 export const maxDuration = 60;
@@ -46,7 +47,7 @@ export default async function ImportPage() {
         </ul>
       </div>
 
-      <ImportRunner buildings={IMPORT_BUILDINGS} labels={runnerLabels} />
+      <ImportRunner buildings={IMPORT_BUILDINGS} labels={runnerLabels} locked={IMPORT_WRITES_LOCKED} />
     </div>
   );
 }
