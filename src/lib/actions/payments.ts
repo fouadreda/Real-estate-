@@ -167,14 +167,18 @@ export async function updatePayment(paymentId: string, leaseId: string, formData
   redirect(back ?? `/leases/${target.id}`);
 }
 
-export async function deletePayment(paymentId: string, leaseId: string) {
+/**
+ * Deletes a payment shown on `leaseId`. Already deleted (double tap, another tab): "gone". Moved to
+ * another lease since the page was shown: "moved", and nothing is deleted.
+ */
+async function removePayment(paymentId: string, leaseId: string): Promise<"deleted" | "gone" | { movedTo: string }> {
   const user = await requireUser();
   const payment = await prisma.payment.findUnique({
     where: { id: paymentId },
     include: { lease: { include: { tenant: true, property: { include: { building: true } } } } },
   });
-  // already deleted (double tap, another tab) or moved to another lease since the page was shown: nothing to do
-  if (!payment || payment.leaseId !== leaseId) return refreshPaymentPages();
+  if (!payment) return "gone";
+  if (payment.leaseId !== leaseId) return { movedTo: payment.leaseId };
   await prisma.payment.delete({ where: { id: paymentId } });
   await logChange(user, {
     entity: "payment",
@@ -183,5 +187,23 @@ export async function deletePayment(paymentId: string, leaseId: string) {
     action: "deleted",
     summary: `${describe.money(payment.amount)} · ${describe.code(payment.kind)} · ${describe.day(payment.date)} — ${leaseLabel(payment.lease)}`,
   });
+  return "deleted";
+}
+
+/** Delete from the lease's payment list: the lease page, Reports and every balance refresh. */
+export async function deletePayment(paymentId: string, leaseId: string) {
+  await removePayment(paymentId, leaseId);
   refreshPaymentPages();
+}
+
+/** Delete from the payment's own page (also reached from a Reports row), then go back to where staff came from. */
+export async function deletePaymentAndReturn(paymentId: string, leaseId: string, back: string | null) {
+  const outcome = await removePayment(paymentId, leaseId);
+  refreshPaymentPages();
+  const backPath = safeBackPath(back);
+  // moved by someone else meanwhile: show it as it is now instead of deleting it
+  if (typeof outcome === "object") {
+    redirect(`/leases/${outcome.movedTo}/payments/${paymentId}/edit${backPath ? `?back=${encodeURIComponent(backPath)}&` : "?"}error=stale`);
+  }
+  redirect(backPath ?? `/leases/${leaseId}`);
 }
