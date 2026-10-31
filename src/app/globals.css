@@ -54,6 +54,22 @@ h3 {
   @apply w-full rounded-lg border border-stone-300 bg-paper-raised px-3 py-2 text-sm text-stone-900 focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500;
 }
 
+/* iPhone Safari draws date boxes with a fixed minimum width, its own height and centred text: in a
+   two-column row they spilled under the next box. Same width, height and alignment as the other boxes. */
+input.input[type="date"] {
+  -webkit-appearance: none;
+  appearance: none;
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+  height: 2.375rem; /* the height of the other boxes (text line + padding + border) */
+}
+
+input.input[type="date"]::-webkit-date-and-time-value {
+  min-height: 1.25rem;
+  text-align: left;
+}
+
 .label {
   @apply mb-1 block text-sm font-medium text-stone-700;
 }
