@@ -6,7 +6,7 @@ import { computeLeaseLedger, paymentStatusFor } from "@/lib/ledger";
 import { getSettings } from "@/lib/settings";
 import { leaseLocationName } from "@/lib/leaseLocation";
 import { tenantDisplayName } from "@/lib/tenantName";
-import { dismissAlert } from "@/lib/actions/alerts";
+import { dismissAlert, restoreAlert } from "@/lib/actions/alerts";
 import Badge from "@/components/Badge";
 import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
 
@@ -47,11 +47,19 @@ export default async function AlertsPage() {
         where: { needsReview: true },
         include: { tenant: true, property: { include: { building: true } } },
       }),
-      prisma.dismissedAlert.findMany(),
+      prisma.dismissedAlert.findMany({ include: { dismissedBy: { select: { name: true } } }, orderBy: { dismissedAt: "desc" } }),
     ]);
 
   const dismissedKeys = new Set(dismissed.map((d) => `${d.kind}:${d.refId}:${d.context}`));
-  const isDismissed = (kind: string, refId: string, context: string) => dismissedKeys.has(`${kind}:${refId}:${context}`);
+  // the dismissals that hide an alert right now: only those are listed as hidden (one for an older
+  // overdue date, or a promise kept since, hides nothing any more)
+  const hidingNow = new Set<string>();
+  const isDismissed = (kind: string, refId: string, context: string) => {
+    const key = `${kind}:${refId}:${context}`;
+    if (!dismissedKeys.has(key)) return false;
+    hidingNow.add(key);
+    return true;
+  };
 
   const overdueAll = leases
     .map((lease) => ({ lease, ledger: computeLeaseLedger(lease, lease.payments, now) }))
@@ -73,6 +81,21 @@ export default async function AlertsPage() {
   const brokenPromises = brokenPromisesAll.filter((f) => !isDismissed("BROKEN_PROMISE", f.id, ""));
   const needsReviewLeases = needsReviewLeasesAll.filter(
     (lease) => !isDismissed("NEEDS_REVIEW", lease.id, lease.reviewReason ?? ""),
+  );
+
+  const hidden = dismissed.filter((d) => hidingNow.has(`${d.kind}:${d.refId}:${d.context}`));
+
+  // which lease each hidden alert is about (overdue / expiring / to verify point at a lease; a review or a promise at its lease)
+  const [hiddenReviews, hiddenPromises] = await Promise.all([
+    prisma.rentReview.findMany({ where: { id: { in: hidden.filter((d) => d.kind === "REVISION").map((d) => d.refId) } }, select: { id: true, leaseId: true } }),
+    prisma.followUp.findMany({ where: { id: { in: hidden.filter((d) => d.kind === "BROKEN_PROMISE").map((d) => d.refId) } }, select: { id: true, leaseId: true } }),
+  ]);
+  const leaseIdOfRef = new Map<string, string>([...hiddenReviews, ...hiddenPromises].map((x) => [x.id, x.leaseId]));
+  const hiddenLeaseIds = hidden.map((d) => (d.kind === "REVISION" || d.kind === "BROKEN_PROMISE" ? leaseIdOfRef.get(d.refId) : d.refId)).filter((x): x is string => !!x);
+  const hiddenLeases = await prisma.lease.findMany({ where: { id: { in: hiddenLeaseIds } }, include: { tenant: true, property: { include: { building: true } } } });
+  const hiddenLeaseById = new Map(hiddenLeases.map((l) => [l.id, l]));
+  const hiddenLeaseOf = new Map(
+    hidden.map((d) => [d.id, hiddenLeaseById.get((d.kind === "REVISION" || d.kind === "BROKEN_PROMISE" ? leaseIdOfRef.get(d.refId) : d.refId) ?? "")]),
   );
 
   const hasAlerts =
@@ -326,6 +349,39 @@ export default async function AlertsPage() {
             })}
           </div>
         </div>
+      )}
+
+      {hidden.length > 0 && (
+        <details className="card">
+          <summary className="cursor-pointer font-semibold text-stone-900">{t.alerts.hiddenHeading(hidden.length)}</summary>
+          <p className="mt-2 text-sm text-stone-500">{t.alerts.hiddenHint}</p>
+          <ul className="mt-3 divide-y divide-stone-100">
+            {hidden.map((d) => {
+              const lease = hiddenLeaseOf.get(d.id);
+              return (
+                <li key={d.id} className="flex flex-wrap items-center justify-between gap-3 py-2 text-sm">
+                  <span className="min-w-0">
+                    <span className="font-medium text-stone-900">{t.alerts.kindLabels[d.kind]}</span>
+                    {lease && (
+                      <>
+                        {" · "}
+                        <Link href={`/leases/${lease.id}`} className="text-brand-600 hover:underline">
+                          {tenantDisplayName(lease.tenant)} — {leaseLocationName(lease)}
+                        </Link>
+                      </>
+                    )}
+                    <span className="block text-xs text-stone-400">
+                      {t.alerts.hiddenOn(formatDate(d.dismissedAt, locale), d.dismissedBy?.name ?? "—")}
+                    </span>
+                  </span>
+                  <form action={restoreAlert.bind(null, d.id)}>
+                    <button type="submit" className="btn-secondary">{t.alerts.restore}</button>
+                  </form>
+                </li>
+              );
+            })}
+          </ul>
+        </details>
       )}
     </div>
   );
