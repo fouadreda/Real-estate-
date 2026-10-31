@@ -1,3 +1,5 @@
+import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
+
 type AttachmentItem = {
   id: string;
   filename: string;
@@ -10,11 +12,16 @@ export default function AttachmentGallery({
   deleteAction,
   emptyLabel,
   removeLabel,
+  confirmMessage,
+  cancelLabel,
 }: {
   attachments: AttachmentItem[];
   deleteAction: (id: string) => Promise<void>;
   emptyLabel: string;
   removeLabel: string;
+  /** Asked before a file is removed for good (a mis-tap would otherwise lose the receipt photo). */
+  confirmMessage: string;
+  cancelLabel: string;
 }) {
   if (attachments.length === 0) {
     return <p className="text-sm text-stone-500">{emptyLabel}</p>;
@@ -41,9 +48,14 @@ export default function AttachmentGallery({
               {attachment.filename}
             </p>
             <form action={removeThisAttachment} className="px-2 pb-2">
-              <button type="submit" className="text-xs text-red-600 hover:underline">
+              <ConfirmSubmitButton
+                confirmMessage={confirmMessage}
+                confirmLabel={removeLabel}
+                cancelLabel={cancelLabel}
+                className="text-xs text-red-600 hover:underline"
+              >
                 {removeLabel}
-              </button>
+              </ConfirmSubmitButton>
             </form>
           </li>
         );

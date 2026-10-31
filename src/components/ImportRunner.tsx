@@ -8,7 +8,16 @@ import type { Dictionary } from "@/lib/i18n";
 type Building = { key: string; name: string; units: number; leases: number; payments: number; expenses: number };
 type Row = { state: "idle" | "running" | "done" | "error"; result?: SyncResult; error?: string; applied?: boolean };
 
-export default function ImportRunner({ buildings, labels }: { buildings: Building[]; labels: Omit<Dictionary["importer"], "registerDate"> }) {
+export default function ImportRunner({
+  buildings,
+  labels,
+  locked,
+}: {
+  buildings: Building[];
+  labels: Omit<Dictionary["importer"], "registerDate">;
+  /** Writes are locked: only the preview (a comparison with the Excel) can run. */
+  locked: boolean;
+}) {
   const [rows, setRows] = useState<Record<string, Row>>({});
   const [busy, setBusy] = useState(false);
   const [previewed, setPreviewed] = useState(false);
@@ -39,7 +48,7 @@ export default function ImportRunner({ buildings, labels }: { buildings: Buildin
     }
     setBusy(false);
     if (!failed) {
-      setMessage(apply ? labels.importDone : labels.previewDone);
+      setMessage(apply ? labels.importDone : locked ? labels.previewDoneLocked : labels.previewDone);
       if (!apply) setPreviewed(true);
     } else {
       setPreviewed(false);
@@ -50,6 +59,12 @@ export default function ImportRunner({ buildings, labels }: { buildings: Buildin
 
   return (
     <div className="space-y-4">
+      {locked && (
+        <div className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900" role="note">
+          <strong>{labels.lockedTitle}</strong> {labels.lockedText}
+        </div>
+      )}
+      {!locked && (
       <label className="card flex cursor-pointer items-start gap-3">
         <input
           type="checkbox"
@@ -66,12 +81,13 @@ export default function ImportRunner({ buildings, labels }: { buildings: Buildin
           <span className="mt-1 block text-sm text-stone-500">{labels.replaceHelp}</span>
         </span>
       </label>
+      )}
 
       <div className="flex flex-wrap items-center gap-3">
         <button type="button" className="btn-secondary" disabled={busy} onClick={() => run(false)}>
-          {labels.previewAll}
+          {locked ? labels.previewOnly : labels.previewAll}
         </button>
-        {!asking ? (
+        {locked ? null : !asking ? (
           <button type="button" className="btn-primary" disabled={busy || !previewed} onClick={() => setAsking(true)}>
             {labels.importAll}
           </button>
