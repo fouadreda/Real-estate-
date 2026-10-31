@@ -301,6 +301,9 @@ model RentReview {
   rate         Float
   letterSentAt DateTime?
   appliedAt    DateTime?
+  /// the rent just before / just after the increase was applied (un-applying puts rentBefore back)
+  rentBefore   Float?
+  rentAfter    Float?
   createdAt    DateTime  @default(now())
 }
 
@@ -339,4 +342,24 @@ model AppSetting {
   key       String   @id
   value     String
   updatedAt DateTime @updatedAt
+}
+
+/// One line per change staff made in the app (who, when, what), so corrections can be traced.
+/// No relations on purpose: the line stays when the record or the account is deleted.
+model ChangeLog {
+  id       String   @id @default(cuid())
+  at       DateTime @default(now())
+  userId   String?
+  /// The name at the time of the change, so the line stays readable after the account is deleted.
+  userName String
+  /// payment, expense, lease, tenant, property, rentReview, followUp, alert
+  entity   String
+  entityId String
+  leaseId  String?
+  /// created, updated, deleted, moved, status, verified, applied, unapplied, restored
+  action   String
+  summary  String
+
+  @@index([at])
+  @@index([leaseId])
 }
