@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
-import { toDateInputValue } from "@/lib/format";
+import { formatMoney, toDateInputValue } from "@/lib/format";
 import { updatePayment } from "@/lib/actions/payments";
 import { deletePaymentAttachment, uploadPaymentAttachment } from "@/lib/actions/attachments";
 import AttachmentGallery from "@/components/AttachmentGallery";
@@ -10,17 +10,20 @@ import { leaseLocationName } from "@/lib/leaseLocation";
 import { tenantDisplayName } from "@/lib/tenantName";
 import FileInput from "@/components/FileInput";
 import SubmitButton from "@/components/SubmitButton";
+import { safeBackPath } from "@/lib/backPath";
+import { monthlyEquivalentRent } from "@/lib/ledger";
 
 export default async function EditPaymentPage({
   params,
   searchParams,
 }: {
   params: Promise<{ id: string; paymentId: string }>;
-  searchParams: Promise<{ error?: string }>;
+  searchParams: Promise<{ error?: string; back?: string }>;
 }) {
   const { id, paymentId } = await params;
-  const { error } = await searchParams;
-  const { t } = await requireUserWithDictionary();
+  const { error, back: backParam } = await searchParams;
+  const back = safeBackPath(backParam);
+  const { t, locale } = await requireUserWithDictionary();
   const payment = await prisma.payment.findUnique({
     where: { id: paymentId },
     include: {
@@ -31,6 +34,21 @@ export default async function EditPaymentPage({
 
   if (!payment || payment.leaseId !== id) notFound();
 
+  // every lease, so a payment recorded on the wrong tenant or unit can be moved to the right one:
+  // the same tenant's leases first, then the others by building
+  const leases = await prisma.lease.findMany({ include: { tenant: true, property: { include: { building: true } } } });
+  // the monthly rent is shown so staff can check the months a moved rent payment pays on its new lease
+  const optionLabel = (l: (typeof leases)[number]) =>
+    `${leaseLocationName(l)} — ${tenantDisplayName(l.tenant)} · ${t.leaseDetail.perMonth(formatMoney(monthlyEquivalentRent(l.rentAmount, l.billingFrequency), locale))}${l.status === "ENDED" || l.status === "TERMINATED" ? ` (${t.status.ENDED.toLowerCase()})` : ""}`;
+  const byLabel = (a: (typeof leases)[number], b: (typeof leases)[number]) => optionLabel(a).localeCompare(optionLabel(b), "fr");
+  const sameTenant = leases.filter((l) => l.tenantId === payment.lease.tenantId).sort(byLabel);
+  const groups = new Map<string, typeof leases>();
+  for (const l of leases.filter((x) => x.tenantId !== payment.lease.tenantId).sort(byLabel)) {
+    const name = l.property.building?.name ?? "—";
+    groups.set(name, [...(groups.get(name) ?? []), l]);
+  }
+  const cancelHref = back ?? `/leases/${payment.leaseId}`;
+
   const updatePaymentWithIds = updatePayment.bind(null, payment.id, payment.leaseId);
   const uploadReceiptForPayment = uploadPaymentAttachment.bind(null, payment.leaseId, payment.id);
   const deleteReceiptForPayment = deletePaymentAttachment.bind(null, payment.leaseId, payment.id);
@@ -38,8 +56,8 @@ export default async function EditPaymentPage({
   return (
     <div className="max-w-xl space-y-6">
       <div>
-        <Link href={`/leases/${payment.leaseId}`} className="text-sm text-brand-600 hover:underline">
-          ← {leaseLocationName(payment.lease)}
+        <Link href={cancelHref} className="text-sm text-brand-600 hover:underline">
+          ← {back ? t.common.goBack : leaseLocationName(payment.lease)}
         </Link>
         <h1 className="mt-1 text-2xl font-semibold text-stone-900">{t.leaseDetail.editPaymentTitle}</h1>
         <p className="mt-1 text-sm text-stone-500">
@@ -48,11 +66,38 @@ export default async function EditPaymentPage({
       </div>
 
       <form action={updatePaymentWithIds} className="card space-y-4">
-        {(error === "amount" || error === "months") && (
+        {(error === "amount" || error === "months" || error === "lease" || error === "stale") && (
           <p className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700" role="alert">
-            {error === "amount" ? t.leaseDetail.paymentErrorAmount : t.leaseDetail.paymentErrorMonthsEdit}
+            {error === "amount"
+              ? t.leaseDetail.paymentErrorAmount
+              : error === "lease"
+                ? t.leaseDetail.paymentErrorLease
+                : error === "stale"
+                  ? t.leaseDetail.paymentErrorStale
+                  : t.leaseDetail.paymentErrorMonthsEdit}
           </p>
         )}
+        {back && <input type="hidden" name="back" value={back} />}
+        <div>
+          <label className="label" htmlFor="leaseId">{t.leaseDetail.paymentLease}</label>
+          <select className="input" id="leaseId" name="leaseId" defaultValue={payment.leaseId}>
+            <optgroup label={t.leaseDetail.sameTenant}>
+              {sameTenant.map((l) => (
+                <option key={l.id} value={l.id}>{optionLabel(l)}</option>
+              ))}
+            </optgroup>
+            {[...groups.entries()]
+              .sort(([a], [b]) => a.localeCompare(b, "fr"))
+              .map(([name, list]) => (
+                <optgroup key={name} label={name}>
+                  {list.map((l) => (
+                    <option key={l.id} value={l.id}>{optionLabel(l)}</option>
+                  ))}
+                </optgroup>
+              ))}
+          </select>
+          <p className="mt-1 text-xs text-stone-500">{t.leaseDetail.paymentLeaseHelp}</p>
+        </div>
         <div>
           <label className="label" htmlFor="amount">{t.leaseDetail.amount}</label>
           <input
@@ -117,7 +162,7 @@ export default async function EditPaymentPage({
         </label>
         <div className="flex gap-3 pt-2">
           <SubmitButton className="btn-primary" pendingLabel={t.leaseDetail.saving}>{t.common.save}</SubmitButton>
-          <Link href={`/leases/${payment.leaseId}`} className="btn-secondary">{t.common.cancel}</Link>
+          <Link href={cancelHref} className="btn-secondary">{t.common.cancel}</Link>
         </div>
       </form>
 
@@ -128,6 +173,8 @@ export default async function EditPaymentPage({
           deleteAction={deleteReceiptForPayment}
           emptyLabel={t.leaseDetail.noReceipts}
           removeLabel={t.leaseDetail.removeAttachment}
+          confirmMessage={t.leaseDetail.removeAttachmentConfirm}
+          cancelLabel={t.common.cancel}
         />
         <form action={uploadReceiptForPayment} className="space-y-2 border-t border-stone-200 pt-4">
           <FileInput required invalidMessage={t.formErrors.file} />
