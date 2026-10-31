@@ -52,6 +52,15 @@ export default async function EditPropertyPage({
             <option value="OTHER">{t.status.OTHER}</option>
           </select>
         </div>
+        <div>
+          <label className="label" htmlFor="status">{t.propertyForm.statusLabel}</label>
+          <select className="input" id="status" name="status" defaultValue={property.status}>
+            <option value="VACANT">{t.status.VACANT}</option>
+            <option value="OCCUPIED">{t.status.OCCUPIED}</option>
+            <option value="MAINTENANCE">{t.status.MAINTENANCE}</option>
+          </select>
+          <p className="mt-1 text-xs text-stone-500">{t.propertyForm.statusHint}</p>
+        </div>
 
         <div className="rounded-lg border border-stone-200 p-3">
           <label className="label" htmlFor="buildingId">{t.propertyForm.building}</label>
