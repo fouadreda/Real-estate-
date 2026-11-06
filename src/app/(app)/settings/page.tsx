@@ -59,6 +59,16 @@ export default async function SettingsPage({
 
       {user.role === "ADMIN" && (
         <div className="card space-y-2">
+          <h2 className="font-semibold text-stone-900">{t.monthlyEmail.settingsCard}</h2>
+          <p className="text-sm text-stone-500">{t.monthlyEmail.settingsHelp(overdueDays)}</p>
+          <Link href="/settings/monthly-report" className="btn-secondary inline-block">
+            {t.monthlyEmail.openSettings}
+          </Link>
+        </div>
+      )}
+
+      {user.role === "ADMIN" && (
+        <div className="card space-y-2">
           <h2 className="font-semibold text-stone-900">{t.importer.settingsCard}</h2>
           <p className="text-sm text-stone-500">{t.importer.settingsHelp}</p>
           <Link href="/admin/import" className="btn-secondary inline-block">
